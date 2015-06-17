@@ -1,7 +1,7 @@
-# Schedule Week N
+# Schedule Week 1
 
 | Section | Monday                            | Tuesday | Wednesday | Thursday  | Friday  |  
 | ------  | ------                            | ------- | --------  | --------- | ------- |  
-| Dawn    | Orientation                       |         |           |           |         |  
-| Dusk    | Bash, Github, Sublime Review      |         |           |           |         |  
+| Dawn    | Orientation                       | HTML/CSS & Twitter Bootstrap        |  Control Flow         |           |         |  
+| Dusk    | Project Setup - Bash, Github, Sublime Review   | JS Data Types        |           |           |         |  
 | Lab/HW  |                                   |         |           |           |         |
