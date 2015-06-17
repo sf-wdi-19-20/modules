@@ -2,7 +2,7 @@
 
 | Section | Monday                            | Tuesday | Wednesday | Thursday  | Friday  |  
 | ------  | ------                            | ------- | --------  | --------- | ------- |  
-| CS      | Intro to CS problems for the week |         |           |           |         |  
+| iPrep   | Intro to CS problems for the week |         |           |           |         |  
 | Dawn    |                                   |         |           |           |         |  
 | Dusk    |                                   |         |           |           |         |  
-| Lab     |                                   |         |           |           |         |
+| Lab/HW  |                                   |         |           |           |         |
