@@ -9,7 +9,7 @@ Each day usually looks like this:
   </tr>
   <tr>
     <td>9:17</td>
-    <td>Interview Prep</td>
+    <td>Interview Prep (not week 1)</td>
   </tr>
   <tr>
     <td>9:47</td>
