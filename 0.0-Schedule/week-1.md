@@ -2,6 +2,6 @@
 
 | Section | Monday                            | Tuesday | Wednesday | Thursday  | Friday  |  
 | ------  | ------                            | ------- | --------  | --------- | ------- |  
-| Dawn    |                                   |         |           |           |         |  
-| Dusk    |                                   |         |           |           |         |  
-| Lab     |                                   |         |           |           |         |
+| Dawn    | Orientation                       |         |           |           |         |  
+| Dusk    | Bash, Github, Sublime Review      |         |           |           |         |  
+| Lab/HW  |                                   |         |           |           |         |
