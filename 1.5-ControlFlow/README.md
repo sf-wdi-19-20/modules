@@ -1,7 +1,13 @@
 
+##Objectives  
 
+Students will be able to...
+  * trace the flow of a program based on its code
+  * predict the output from `if/else` and `switch` statements
+  * explain the differences between `for` loops and `while` loops, and when to use each
+  * implement `if/else` logic, `for` and `while` loops, and combinations
 
-#Challenges
+##Challenges
 
 ###Basic Control Flow Challenges
 1. In a snippet inside of developer tools create a variable that is an array of 5 strings. Loop over the array and log it to the console if its length is 4 or longer.
