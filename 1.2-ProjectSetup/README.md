@@ -5,7 +5,7 @@
 
 ##Terminal
 
-Welcome to the Terminal is the command line interface of your computer. Developers live in the command line.
+Welcome to the Terminal is the command line interface of your computer.
 
 ###Terminology
 Although they technically mean slightly different things, the following terms are synonymous with the Terminal Environment
@@ -39,7 +39,14 @@ Although they technically mean slightly different things, the following terms ar
 
 ##Sublime Text
 
+Sublime Text 2 (or 3!) is a **text editor** - a program built to help you code. Some common uses:
 
+* Autocomplete of common blocks of code (`fun + TAB` will autocomplete to `function() {};`)
+* Syntax highlighting
+* Indentation
+* Using Multiple Cursors
+* File/Folder Navigation
+* Find and Replace
 
 ##Git & Github
 
@@ -58,6 +65,7 @@ Although they technically mean slightly different things, the following terms ar
 2. Navigate to the root directory
 3. Create a directory called 'dev' in the root of your computer
 4. Inside 'dev' Make a directory called `blogtastic`
+5. Change directories into `blogtastic`
 5. Make a file called `index.html`
 6. Make a file called `app.js`
 7. Make file called `style.css`
@@ -66,8 +74,6 @@ Although they technically mean slightly different things, the following terms ar
 6. Edit index.html to say a message in `<h1></h1>` tags
 7. From the terminal, open index.html in the browser
 8. List the files in your blogtastic directory
-6. Install "tree" - `$ brew install tree`
-7. Call tree on your `blogtastic` directory. Pretty nice . . . : )
 9. Initialize a github repository in your `blogtstic` directory
 10. Create a github repo called **blogtastic**
 11. Add, commit, and push your `blogtastic` files to your new blogtastic repo
@@ -76,16 +82,27 @@ Although they technically mean slightly different things, the following terms ar
 
 
 ### Stretch Challenges & Extra Practice
+
+(if you don't have homebrew installed - install it now with the following terminal command)
+
+`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+
+6. Install "tree" - `$ brew install tree`
+7. Call tree in your `blogtastic` directory. Pretty nice . . . : )
+2. In Sublime, add a new folder to `blogtastic` and add two new files to that folder.
 1. In Sublime, change your default spaces to 2
-2. From inside sublime add a new folder to `blogtastic` and add two new files to that folder.
-3. Create a new project from the beginning with the file `index.html`, `README.md`, and a folder called `assets`.
+
+
+3. From your Terminal, navigate to your `dev` folder and begin a new project from the beginning by adding a new directory called `stretch` and within that directory add the file `index.html`, `README.md`, and a folder called `assets`.
 4. Inside of assets create the folders `js`, `style`, `images`, `fonts`.
 5. Inside `style` create the file `style.css`, inside `js` create the file `scripts.js`
-6. Go to
+6. In the `<head></head>` tag of `index.html` link to your `scripts.js` and `styles.css` files.
+7. Add a custom style `body { color:red; }` to `styles.css` and a `console.log("Tada!")` to `scripts.js`. Did they work?
 5. In Sublime, remove text wrapping
 6. Add the Twitter Bootstrap [basic template](http://getbootstrap.com/getting-started/#template) to `index.html`
 7. Open index.html
 8. Add the Twitter Bootstrap Navbar to `index.html`
+9. Use the Twitter Bootstrap grid classes to make a 3-6-3 grid similar to Quora.com or Facebook.com. Put placeholder text in the columns.
 8. [Trygit](https://try.github.io/levels/1/challenges/1)
 
 ### Resources
