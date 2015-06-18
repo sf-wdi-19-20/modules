@@ -7,6 +7,12 @@
 
 #Teacher Talk and Learning Activities
 
+### Motivation (Why?)
+
+### Analogy (What?)
+
+### Demo (How?)
+
 #Challenges
 
 ### Docs & Resources
