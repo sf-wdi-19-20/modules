@@ -35,7 +35,7 @@ Lat: 37.790834
 Lng: -122.401572
 ```
 
-As a hypthetical URL and IP Address
+General Assembly as a hypothetical URL and IP Address
 ```
 http://sfbay.california.us/streets/bush/buildings/225?floor=5
 
@@ -45,13 +45,6 @@ http://sfbay.california.us/streets/bush/buildings/225?floor=5
 | https:// | sfbay.craigslist.org | /search/apa | ?query=one+bedroom |
 | :---: |
 | Protocol | Host (subdomain, domain, top-level domain) | Path | Query with Parameter "query" |
-
-
-http://sfbay.craigslist.org/search/apa?query=nice
-
-![URL](http://doepud.co.uk/images/blogs/simple_url.png)
-
-!
 
 #Analogy: Ordering a Washing machine
 
