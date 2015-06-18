@@ -9,19 +9,6 @@
 ![thegoogle](http://2.bp.blogspot.com/-733-FaBo8NI/UqrprWh_2_I/AAAAAAAACUo/3EnmfKisTHI/s1600/The-Internet-map11.png)
 ![theinterwebs](https://mountpeaks.files.wordpress.com/2012/03/1069646562-lgl-2d-4096x40962.png)
 
-### Core Concepts & Tools
-
-* Browser
-* Developer Tools
-
-### Terminology
-
-* **Client** -
-* **Server** -
-* **URL** - An address - Uniform Resource Locator
-* **Domain** - e.g. ("www.google.com")
-* **Path** -
-
 ## Domains, Paths, and IP Addresses
 
 General Assembly as a Physical Address:

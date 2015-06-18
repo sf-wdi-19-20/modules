@@ -1,22 +1,18 @@
 #The DOM and Vanilla JS
+
 | Objectives |
 | :--- |
 |  |
-| Students will be able to . . . |
-
-### Core Concepts & Tools
-
-* Concept
-* Concept
-* Tool
-* Tool
+| Manipulate the DOM using plain vanilla Javascript |
 
 #Teacher Talk and Learning Activities
 
 #Challenges
 
+### Docs & Resources
+
 ### Basic Challenges
 
 ### Stretch Challenges
 
-### External Resources & Further Reading
+# Further Reading

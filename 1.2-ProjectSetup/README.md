@@ -39,6 +39,8 @@
 5. Make a file called `index.html`
 5. Open the `blogtastic` folder in Sublime (if you do not already have sublime's terminal command installed follow [these instructions](https://www.sublimetext.com/docs/2/osx_command_line.html))
 6. Edit index.html to say a message in `<h1></h1>` tags
+7. Command + P to jump to `style.css`
+8. add `h1 { color: red }` to `style.css`
 6. From the Terminal, open `index.html` in the browser
 6. From the Terminal, Make a file called `app.js`
 7. Make file called `style.css`
@@ -80,7 +82,7 @@
 
 ### Stretch Git Challenges
 
-6. Imagine you and your neighbor were going to work together on the `blogtastic` project. Fork their **blogtastic** repo from github.com. Make a change and push it. Have them pull. Can they see your change?
+6. Imagine you and your neighbor were going to work together on the `blogtastic` project. Clone their **blogtastic** repo from github.com. Make a change and push it. Have them pull. Can they see your change?
 7. Developers often begin projects from "seed projects" - from open source basic projects. But be careful! Don't use seed projects with libraries you are not familiar with. Clone this "[jquery seed project](https://github.com/ajbraus/seed-jquery)" repo and give the project a new name
 6. Create a new branch of the new project
 7. open the project and make some small change to index.html
