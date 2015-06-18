@@ -38,21 +38,19 @@ Although they technically mean slightly different things, the following terms ar
 
 ###Basic Terminal Commands
 
-  | Command  | What it does
-  | ------  | ------- 
-  | `$ pwd` | See the path of the directory you are in |  
-
-
-  | `$ cd ~/Desktop` | Change Directory |
-  | `$ cd ..`    | Go up one level of the current path |
-  | `$ cd -` | Go 'back' to the last path you were at |
-  | `$ mkdir` | Makes a new directory in the current directory |
-  | `$ ls` |   Lists the folders and files in the current directory |
-  | `$ touch <<file name>>` | Creates a file in the current directory |
-  | `$ open <<path>>` | Opens the file at the path you |
-  | `$ sudo <<command>>` | Means "Superuser Do" - overrides any permissions allowing you to make changes and install programs on the computer (requires your computer's password) |
-  | `TAB` |  Autocompletes directory and file names |
-  | `$ sublime <<path>>` | Opens file in sublime
+| Command  | What it does
+| ------  | ------- |
+| `$ pwd` | See the path of the directory you are in |  
+| `$ cd ~/Desktop` | Change Directory |
+| `$ cd ..`    | Go up one level of the current path |
+| `$ cd -` | Go 'back' to the last path you were at |
+| `$ mkdir` | Makes a new directory in the current directory |
+| `$ ls` |   Lists the folders and files in the current directory |
+| `$ touch <<file name>>` | Creates a file in the current directory |
+| `$ open <<path>>` | Opens the file at the path you |
+| `$ sudo <<command>>` | Means "Superuser Do" - overrides any permissions allowing you to make changes and install programs on the computer (requires your computer's password) |
+| `TAB` |  Autocompletes directory and file names |
+| `$ sublime <<path>>` | Opens file in sublime
 
 ##Sublime Text
 
