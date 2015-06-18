@@ -86,3 +86,4 @@
 7. Developers often begin projects from "seed projects" - from open source basic projects. But be careful! Don't use seed projects with libraries you are not familiar with. Clone this "[jquery seed project](https://github.com/ajbraus/seed-jquery)" repo and give the project a new name
 6. Create a new branch of the new project
 7. open the project and make some small change to index.html
+8. [git-it](https://github.com/jlord/git-it)
