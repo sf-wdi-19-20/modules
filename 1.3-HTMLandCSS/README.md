@@ -80,4 +80,4 @@ As developers, we want to make web applications that are *useable* and make peop
 
 ## Activities, Pt. 2
 1. Add a [form](http://getbootstrap.com/css/#forms) to your page.
-2. Visit Bootsnip
+2. [Bootsnip](http://bootsnipp.com) ...
