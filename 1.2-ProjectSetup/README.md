@@ -39,7 +39,7 @@ Although they technically mean slightly different things, the following terms ar
 ###Basic Terminal Commands
 
 | Command  | What it does
-| ------  | ------- |
+| :------  | :------- |
 | `$ pwd` | See the path of the directory you are in |  
 | `$ cd ~/Desktop` | Change Directory |
 | `$ cd ..`    | Go up one level of the current path |
@@ -63,7 +63,7 @@ Sublime Text 2 (or 3!) is a **text editor** - a program built to help you code. 
 * Find and Replace
 
 | Shortcut  | What it does
-| ------  | -------
+| :------  | -------
 | `TAB` | Autocomplete of common blocks of code (`fun + TAB` will autocomplete to `function() {};`) |  
 | `cmd + CLICK` | add new cursors |
 | `alt + CLICK & DRAG`| add new cursors |
@@ -77,12 +77,12 @@ Git and Github.com are used to:
 * Collaborate with many developers
 * Version your code (e.g. "AHHHH I messed up, oh good, I can use git to step back and try again")
 
-[Try Git](https://try.github.io/levels/1/challenges/1)
+#Now [Try Git](https://try.github.io/levels/1/challenges/1) 
 
 ###Beginner Github Commands
 
 | Command  | What it does
-| :------  | -------
+| :------  | :-------
 | `$ git status` | See you current branch and unstaged or staged files |
 | `$ git init` | Initialize git in a directory |
 | `$ git add <<PATH>>` | Stage a file (or `.` for all files in a directory) for commit. |
@@ -95,7 +95,7 @@ Git and Github.com are used to:
 ###Intermediate Github Commands
 
 | Command  | What it does
-| :------  | -------
+| :------  | :-------
 | `$ git branch` | See all branches |
 | `$ git checkout <<COMMIT/BRANCH>>` | Move to a branch or commit |
 | `$ git checkout -b <<NEW BRANCH NAME>>h` | "stash" your current changes |
