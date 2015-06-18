@@ -33,26 +33,26 @@ behaviors <--> methods (functions)
 ##Constructor and Prototype Review
 
 ###Constructors  
- * variables and functions are **declared** once for each instance
- * functions have access to "private" variables declared within the constructor's scope
- * when you update the constructor, previously created instances DON'T update
- * data is "embedded" in each instance
+  * variables and functions are declared once for each instance
+  * functions have access to "private" variables declared within the constructor's scope
+  * when you update the constructor, previously created instances DON'T update
+  * data is "embedded" in each instance
 
 
  ###Prototypes   
-  * all instances use the same function and variable declarations
+  * all instances share the same function and variable declarations
   * when you update the prototype, previously created instances DO get the updates
   * data is "referenced" from the prototype copy
 
 ##Activities
 
-We'll be modeling a car dealership!
+1. Work with your table to list important attributes and methods for a Car object type.
 
-0) List important attributes and methods for a Car object type.
+2. Create a constructor for the Car object type. 
 
-1) Create a constructor for a Car object type. Include the attributes we discussed.
+3. Create a "private" `_price` variable for the Car object.  Create a getter method and a setter for the `_price` property.
 
-2) Create a "private" `_price` variable for the Car object along with a setter method and a getter method. 
+
 
 
 
