@@ -1,5 +1,7 @@
 #How to Get Help
 
+
+
 You're going to have a lot of questions . . . A lot. So here's what you should do when you can't figure something out and you want help:
 
 ##25 min total -> READ - GOOGLE - ASK
@@ -30,6 +32,7 @@ Say you have a question about how to serve an express template from a route and 
 
 ####How to ask?
 When asking a question, be sure to include ALL the following elements:
+
 1. What you are trying to do
 2. What you did
 3. What error you got
