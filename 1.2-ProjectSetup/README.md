@@ -5,19 +5,18 @@
 
 ![getting started](http://alock011.students.digitalodu.com/wp-content/uploads/2014/03/Padawans.jpg)
 
+###Core Concepts
+* The Terminal, Sublime Text, and Github core industry tools
+* Always move in baby steps and take pulse checks
+* Version your code, Commit a lot
+* Code is collaborative
+* GA is collaborative
+
 ###Demo
 1. Bootstrapping a project from the terminal
 2. Adding and manipulating code in Sublime Text
 3. Initializing git in the project and adding, committing, and pushing to a github repo.
 4. Cloning and customizing a repo
-
-###Core Concepts
-
-* All of these are core industry tools
-* Always move in baby steps and take pulse checks
-* Version your code, Commit a lot
-* Code is collaborative
-* GA is collaborative
 
 ##Terminal
 
