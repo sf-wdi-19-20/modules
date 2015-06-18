@@ -41,6 +41,8 @@ Although they technically mean slightly different things, the following terms ar
   | Command  | What it does |
   | :------  | :------- |
   | `$ pwd` | See the path of the directory you are in |  
+
+  
   | `$ cd ~/Desktop` | Change Directory |
   | `$ cd ..`    | Go up one level of the current path |
   | `$ cd -` | Go 'back' to the last path you were at |
