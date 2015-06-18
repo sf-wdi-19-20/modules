@@ -38,8 +38,8 @@ Although they technically mean slightly different things, the following terms ar
 
 ###Basic Terminal Commands
 
-  | Command  | What it does
-  | :------  | -------
+  | Command  | What it does |
+  | :------  | ------- |
   | `$ pwd` | See the path of the directory you are in |  
   | `$ cd ~/Desktop` | Change Directory |
   | `$ cd ..`    | Go up one level of the current path |

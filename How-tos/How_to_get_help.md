@@ -1,7 +1,5 @@
 #How to Get Help
 
-
-
 You're going to have a lot of questions . . . A lot. So here's what you should do when you can't figure something out and you want help:
 
 ##25 min total -> READ - GOOGLE - ASK
