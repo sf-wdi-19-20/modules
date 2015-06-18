@@ -22,7 +22,7 @@
 * **Domain** - e.g. ("www.google.com")
 * **Path** -
 
-### Domains, Paths, and IP Addresses
+## Domains, Paths, and IP Addresses
 
 General Assembly as a Physical Address:
 
@@ -44,9 +44,9 @@ http://sfbay.california.us/streets/bush/buildings/225?floor=5
 
 | https:// | sfbay.craigslist.org | /search/apa | ?query=one+bedroom |
 | :---: |
-| Protocol | Host (subdomain, domain, top-level domain) | Path | Query with Parameter "query" |
+| Protocol | Host (subdomain, domain, top-level domain) | Path | Query with Parameter "query" with value "one bedroom" |
 
-#Analogy: Ordering a Washing machine
+##Analogy: Ordering a Washing machine
 
 #Challenges
 
