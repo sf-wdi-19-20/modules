@@ -38,11 +38,11 @@ Although they technically mean slightly different things, the following terms ar
 
 ###Basic Terminal Commands
 
-  | Command  | What it does |
-  | :------  | :------- |
+  | Command  | What it does
+  | ------  | ------- 
   | `$ pwd` | See the path of the directory you are in |  
 
-  
+
   | `$ cd ~/Desktop` | Change Directory |
   | `$ cd ..`    | Go up one level of the current path |
   | `$ cd -` | Go 'back' to the last path you were at |
@@ -79,6 +79,8 @@ Git and Github.com are used to:
 * Collaborate with many developers
 * Version your code (e.g. "AHHHH I messed up, oh good, I can use git to step back and try again")
 
+[Try Git](https://try.github.io/levels/1/challenges/1)
+
 ###Beginner Github Commands
 
 | Command  | What it does
@@ -104,7 +106,7 @@ Git and Github.com are used to:
 
 #Challenges
 
-More resources at the bottom:
+(More resources at the bottom)
 
 ###Basic Terminal & Sublime Challenges
 
