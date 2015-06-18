@@ -18,11 +18,16 @@
 3. Initializing git in the project and adding, committing, and pushing to a github repo.
 4. Cloning and customizing a repo
 
-#Now [Try Git](https://try.github.io/levels/1/challenges/1)
+### Resources
+
+1. [Terminal Cheatsheet](https://github.com/0nn0/terminal-mac-cheatsheet/wiki/Terminal-Cheatsheet-for-Mac-(-basics-)
+2. [Sublime Text Shortcuts Cheatsheet](http://www.cheatography.com/martinprins/cheat-sheets/sublime-text-3-osx/)
+3. [Github Cheatsheet](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf)
+4. [Github Markdown Basics](https://help.github.com/articles/markdown-basics/)
 
 #Challenges
 
-(More resources at the bottom)
+###FIRST: [Try Git](https://try.github.io/levels/1/challenges/1)
 
 ###Basic Terminal & Sublime Challenges
 
@@ -79,10 +84,3 @@
 7. Developers often begin projects from "seed projects" - from open source basic projects. But be careful! Don't use seed projects with libraries you are not familiar with. Clone this "[jquery seed project](https://github.com/ajbraus/seed-jquery)" repo and give the project a new name
 6. Create a new branch of the new project
 7. open the project and make some small change to index.html
-
-### Resources
-
-1. [Terminal Cheatsheet](https://github.com/0nn0/terminal-mac-cheatsheet/wiki/Terminal-Cheatsheet-for-Mac-(-basics-)
-1. [Sublime Text Shortcuts Cheatsheet](http://www.cheatography.com/martinprins/cheat-sheets/sublime-text-3-osx/)
-2. [Github Markdown Basics](https://help.github.com/articles/markdown-basics/)
-3. [Github Cheatsheet](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf)
