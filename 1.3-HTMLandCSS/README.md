@@ -1,10 +1,10 @@
 # HTML/CSS Review, UX and Bootstrap
-  | Objectives |
-  | :--- |
-  | Explain why UX is important as a developer |
-  | Apply basic UX principles to your projects |
-  | Build a static webpage with HTML and CSS (review) |
-  | Add the Bootstrap library to your projects |
+| Objectives |
+| :--- |
+| Explain why UX is important as a developer |
+| Apply basic UX principles to your projects |
+| Build a static webpage with HTML and CSS (review) |
+| Add the Bootstrap library to your projects |
 
 ## Activity (5 mins)
   * Draw your favorite website on the table
@@ -79,5 +79,5 @@ As developers, we want to make web applications that are *useable* and make peop
 6. Add a [nav bar](http://getbootstrap.com/components/#navbar) to the top of your page
 
 ## Activities, Pt. 2
-1. Add a [form]() to your page.
+1. Add a [form](http://getbootstrap.com/css/#forms) to your page.
 2. Visit Bootsnip
