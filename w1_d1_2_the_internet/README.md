@@ -8,6 +8,7 @@
 ![theinternet](http://www.mindthesciencegap.org/wp-content/uploads/2013/07/the-internet-1024x691.jpg)
 ![thegoogle](http://2.bp.blogspot.com/-733-FaBo8NI/UqrprWh_2_I/AAAAAAAACUo/3EnmfKisTHI/s1600/The-Internet-map11.png)
 ![theinterwebs](https://mountpeaks.files.wordpress.com/2012/03/1069646562-lgl-2d-4096x40962.png)
+![requestresponse](http://s.hswstatic.com/gif/internet-diagram.gif)
 
 ##Analogy: Ordering a Washing machine
 
