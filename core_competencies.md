@@ -182,7 +182,7 @@ Design algorithms and describe the basic principles that define low-level comput
 
   - **Recursion:** _Distinguish between iterative and recursive algorithms and trace recursive function calls_
   
-  **Sorting Algorithms:** _Examine classic approaches to the practical problem_
+  **Sorting Algorithms:** _Explore various types of algorithms in the context of this classic practical problem_
 
   - **Algorithm Efficiency:** _Write code that solves problems without using unnecessary time or memory resources_
 
