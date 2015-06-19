@@ -187,6 +187,6 @@ Design algorithms and describe the basic principles that define low-level comput
   
   **Sorting Algorithms:** _Examine classic approaches to the practical problem_
 
-  - **Algorithm Efficiency::** _Write code that solves problems without using unnecessary time or memory resources_
+  - **Algorithm Efficiency:** _Write code that solves problems without using unnecessary time or memory resources_
 
   - **Programming Paradigms:** _Identify ways of organizing and thinking about computer code_
