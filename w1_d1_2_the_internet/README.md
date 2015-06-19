@@ -1,20 +1,21 @@
 #The Internet
 | Objectives |
 | :--- |
-| Describe what the difference between a client and a server is and what URL is and how it works. |
-| Use the Developer Tools to explore and manipulate the elements, sources, resources, and JS console.  |
+| Describe the difference between a client and a server and how they interact. |
+| Explain what a URL is and how it works. |
+| Use the Chrome Developer Tools to explore and manipulate the Elements, Sources, Resources, and JS Console. |
 
-#### What is the internet?
+## What is the internet?
 ![theinternet](http://www.mindthesciencegap.org/wp-content/uploads/2013/07/the-internet-1024x691.jpg)
 ![thegoogle](http://2.bp.blogspot.com/-733-FaBo8NI/UqrprWh_2_I/AAAAAAAACUo/3EnmfKisTHI/s1600/The-Internet-map11.png)
 ![theinterwebs](https://mountpeaks.files.wordpress.com/2012/03/1069646562-lgl-2d-4096x40962.png)
 ![requestresponse](http://s.hswstatic.com/gif/internet-diagram.gif)
 
-##Analogy: Ordering a Washing machine
+##Analogy: Ordering a Washing Machine
 
-## Domains, Paths, and IP Addresses
+### Domains, Paths, and IP Addresses
 
-General Assembly as a Physical Address:
+General Assembly as a physical address:
 
 ```
 General Assembly
@@ -25,7 +26,7 @@ Lat: 37.790834
 Lng: -122.401572
 ```
 
-General Assembly as a hypothetical URL and IP Address
+General Assembly as a hypothetical URL and IP address
 ```
 http://sfbay.california.us/streets/bush/buildings/225?floor=5
 
@@ -39,7 +40,36 @@ http://sfbay.california.us/streets/bush/buildings/225?floor=5
 #Challenges
 
 ### Basic Challenges
+  1. Go to your favorite website.
+  2. Right click in the browser, click `Save As`, then save to your desktop.
+  3. On your desktop, you should have a newly saved folder and HTML file. Open both - what do you notice?
+  4. Back in the browser, hit `command + option + i`
+  5. You are now in the Elements tab of the Chrome Developer Tools. Click through the other tabs and explore!
+  6. Back in the Elements tab, make some CSS changes using the Inspect Elements tool. Take a screenshot so you can show your work to a friend!
 
 ### Stretch Challenges
+  1. Go to the Console tab of the Chrome Developer Tools.
+  2. Type `4 + 4` in the console, and hit `enter`.
+  3. Now, type `hello world` - what does that return?
+  4. Try it again, but this time with quotes, `"hello world"`. Much better!
 
-### External Resources & Further Reading
+# Tonight's Homework
+  1. Make sure you have a GitHub account and have successfully pushed your fundamentals project.
+  2. Make sure you have the `subl` command set up so you can open Sublime from your Terminal.
+  3. Read at least one article from **The Internet** section in the readings listed below.
+
+# Further Reading
+
+#### The Internet
+  * [How the Internet Works in 5 Minutes [VIDEO]](https://www.youtube.com/watch?v=7_LPdttKXPc)
+  * [How does the internet work?](http://computer.howstuffworks.com/internet/basics/internet.htm)
+  * [Understanding the GitHub Flow](https://guides.github.com/introduction/flow/index.html)
+
+#### Words of Wisdom
+  * [Things I Wish Someone Had Told Me When I Was Learning How to Code](https://medium.com/@cecilycarver/things-i-wish-someone-had-told-me-when-i-was-learning-how-to-code-565fc9dcb329)
+  * [On Being a Junior Developer](http://mattsencenbaugh.com/on-being-a-junior-developer)
+  * ["I don’t understand"](http://bjk5.com/post/38101106878/i-dont-understand)
+
+#### Tech News
+  * [Hacker News](https://news.ycombinator.com/)
+  * [Product Hunt](http://www.producthunt.com/)
