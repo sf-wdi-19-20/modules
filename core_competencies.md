@@ -1,7 +1,4 @@
-#![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)  Themes & Core Competencies
-
-themes we teach and core competencies WDI students develop
-
+#![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)  WDI Themes & Core Competencies
 
 ## Command Line
 
@@ -185,7 +182,7 @@ Design algorithms and describe the basic principles that define low-level comput
 
   - **Recursion:** _Distinguish between iterative and recursive algorithms and trace recursive function calls_
   
-  **Sorting Algorithms:** _Examine classic approaches to the practical problem_
+  **Sorting Algorithms:** _Explore various types of algorithms in the context of this classic practical problem_
 
   - **Algorithm Efficiency:** _Write code that solves problems without using unnecessary time or memory resources_
 
