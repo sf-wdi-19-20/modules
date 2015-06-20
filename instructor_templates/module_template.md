@@ -5,13 +5,13 @@
 |  |
 | Students will be able to . . . |
 
-#Teacher Talk and Learning Activities
-
 ### Motivation (Why?)
 
 ### Analogy (What?)
 
-### Demo/Explanation/Activites (How?)
+### Setup (How?)
+
+# Demo & Learning Activities
 
 #Challenges
 

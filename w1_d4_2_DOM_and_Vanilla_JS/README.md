@@ -18,6 +18,11 @@ Vanilla JS underlies all Javascript frameworks. Understanding basic JS is an imp
 
 ### Demo (How?)
 
+```
+var el = document.querySelector("#myId");
+var arr = document.querySelector(".myclass");
+```
+
 #Challenges
 
 ### Docs & Resources

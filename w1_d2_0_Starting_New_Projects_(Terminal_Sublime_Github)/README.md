@@ -2,6 +2,7 @@
 | Objectives |
 | :--- |
 | Start a basic web project from scratch using the terminal, sublime, and then push an initial commit to github. |
+| Explain how Git and Github.com help developers version their code and collaborate on teams. |
 
 ![getting started](http://alock011.students.digitalodu.com/wp-content/uploads/2014/03/Padawans.jpg)
 
