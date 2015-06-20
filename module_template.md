@@ -11,7 +11,7 @@
 
 ### Analogy (What?)
 
-### Demo (How?)
+### Demo/Explanation/Activites (How?)
 
 #Challenges
 
@@ -20,5 +20,3 @@
 ### Basic Challenges
 
 ### Stretch Challenges
-
-# Further Reading
