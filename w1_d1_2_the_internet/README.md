@@ -34,7 +34,7 @@ http://sfbay.california.us/streets/bush/buildings/225?floor=5
 ```
 
 | Protocol | Host (subdomain, domain, top-level domain) | Path | Query with Parameter "query" with value "one bedroom" |
-| ---------- | ---------- | ---------- | ---------- |
+| :---------- | :---------- | :---------- | :---------- |
 | https:// | sfbay.craigslist.org | /search/apa | ?query=one+bedroom |
 
 #Challenges
