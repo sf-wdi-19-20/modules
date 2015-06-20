@@ -11,9 +11,7 @@
 ![theinterwebs](https://mountpeaks.files.wordpress.com/2012/03/1069646562-lgl-2d-4096x40962.png)
 ![requestresponse](http://s.hswstatic.com/gif/internet-diagram.gif)
 
-##Analogy: Ordering a Washing Machine
-
-### Domains, Paths, and IP Addresses
+## Domains, Paths, and IP Addresses
 
 General Assembly as a physical address:
 
@@ -37,9 +35,9 @@ http://sfbay.california.us/streets/bush/buildings/225?floor=5
 | :---------- | :---------- | :---------- | :---------- |
 | https:// | sfbay.craigslist.org | /search/apa | ?query=one+bedroom |
 
-#Challenges
+##Challenges
 
-### Basic Challenges
+#### Basic Challenges
   1. Go to your favorite website.
   2. Right click in the browser, click `Save As`, then save to your desktop.
   3. On your desktop, you should have a newly saved folder and HTML file. Open both - what do you notice?
@@ -47,23 +45,26 @@ http://sfbay.california.us/streets/bush/buildings/225?floor=5
   5. You are now in the Elements tab of the Chrome Developer Tools. Click through the other tabs and explore!
   6. Back in the Elements tab, make some CSS changes using the Inspect Elements tool. Take a screenshot so you can show your work to a friend!
 
-### Stretch Challenges
+#### Stretch Challenges
   1. Go to the Console tab of the Chrome Developer Tools.
   2. Type `4 + 4` in the console, and hit `enter`.
   3. Now, type `hello world` - what does that return?
   4. Try it again, but this time with quotes, `"hello world"`. Much better!
 
-# Tonight's Homework
+## Tonight's Homework
   1. Make sure you have a GitHub account and have successfully pushed your fundamentals project.
   2. Make sure you have the `subl` command set up so you can open Sublime from your Terminal.
-  3. Read at least one article from **The Internet** section in the readings listed below.
+  3. Read at least one article from **The Internet** section in the further readings listed below.
+  4. Create a directory (folder) somewhere on your computer called `wdi-day-1`.
+  5. Inside that directory, create an `index.html` file, and write three interesting things you learned or questions you have from the reading you chose in part 3.
+  6. Create a new repo on GitHub called `wdi-day-1`, and push your `index.html` file to that remote repo.
 
-# Further Reading
+## Further Reading
 
 #### The Internet
   * [How the Internet Works in 5 Minutes [VIDEO]](https://www.youtube.com/watch?v=7_LPdttKXPc)
   * [How does the internet work?](http://computer.howstuffworks.com/internet/basics/internet.htm)
-  * [Understanding the GitHub Flow](https://guides.github.com/introduction/flow/index.html)
+  * [Introduction to HTML](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Introduction)
 
 #### Words of Wisdom
   * [Things I Wish Someone Had Told Me When I Was Learning How to Code](https://medium.com/@cecilycarver/things-i-wish-someone-had-told-me-when-i-was-learning-how-to-code-565fc9dcb329)
