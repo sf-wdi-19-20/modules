@@ -60,12 +60,13 @@ http://sfbay.california.us/streets/bush/buildings/225?floor=5
     ```
     ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
     ```
+
     * For **Sublime Text 3**, type this in your terminal:
 
     ```
     ln -s "/Applications/Sublime Text 3.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
-
     ```
+
     * If you're having problems getting `subl` set up, try reading [this](http://stackoverflow.com/questions/16199581/opening-sublime-text-on-command-line-as-subl-on-mac-os) or [this](http://ashleynolan.co.uk/blog/launching-sublime-from-the-terminal).
 
   3. Read at least one article from **The Internet** section in the further readings listed below.
