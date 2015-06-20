@@ -53,7 +53,7 @@ http://sfbay.california.us/streets/bush/buildings/225?floor=5
 
 ## Tonight's Homework
   1. Make sure you have a GitHub account and have successfully pushed your fundamentals project.
-  2. Make sure you have the `subl` command set up so you can open Sublime from your Terminal.
+  2. Make sure you have the `subl` command set up so you can open Sublime from your Terminal.g
     * For Sublime Text 2, type this in your terminal:
 
     ```
@@ -74,6 +74,7 @@ http://sfbay.california.us/streets/bush/buildings/225?floor=5
   4. Create a directory (folder) somewhere on your computer called `wdi-day-1`.
   5. Inside that directory, create an `index.html` file, and write three interesting things you learned or questions you have from the reading you chose in part 3.
   6. Create a new repo on GitHub called `wdi-day-1`, and push your `index.html` file to that remote repo.
+  7. Submit the link to your GitHub repo [here](https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform).
 
 ## Further Reading
 
