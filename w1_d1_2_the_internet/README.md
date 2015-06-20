@@ -24,7 +24,7 @@ Lat: 37.790834
 Lng: -122.401572
 ```
 
-General Assembly as a hypothetical URL and IP address
+General Assembly as a hypothetical URL and IP address:
 ```
 http://sfbay.california.us/streets/bush/buildings/225?floor=5
 
@@ -54,6 +54,22 @@ http://sfbay.california.us/streets/bush/buildings/225?floor=5
 ## Tonight's Homework
   1. Make sure you have a GitHub account and have successfully pushed your fundamentals project.
   2. Make sure you have the `subl` command set up so you can open Sublime from your Terminal.
+    * For Sublime Text 2, type this in your terminal:
+
+    ```
+    ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+    ```
+
+    * Sublime Text 3, type this in your terminal:
+
+    ```
+    ln -s "/Applications/Sublime Text 3.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+
+    ```
+
+    * If you're having problems getting `subl` set up, try reading [this](http://stackoverflow.com/questions/16199581/opening-sublime-text-on-command-line-as-subl-on-mac-os) or [this](http://ashleynolan.co.uk/blog/launching-sublime-from-the-terminal).
+
+
   3. Read at least one article from **The Internet** section in the further readings listed below.
   4. Create a directory (folder) somewhere on your computer called `wdi-day-1`.
   5. Inside that directory, create an `index.html` file, and write three interesting things you learned or questions you have from the reading you chose in part 3.
