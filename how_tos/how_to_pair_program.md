@@ -21,7 +21,7 @@ Once roles are defined, time for each roles should be discussed, switch roles ar
 Be vocal with each other about what's going on:
 * what's being typed
 * why it's being typed
-* TRUST each other (mistakes that either of you won't catch --> proofreading, syntax errors, style [indetations, coding conventions, etc.])
+* TRUST each other (mistakes that either of you won't catch --> proofreading, syntax errors, style [indentations, coding conventions, etc.])
 
 ###3. Check-In
 
@@ -31,7 +31,7 @@ Be vocal with each other about what's going on:
 
 ###4. Celebrate
 
-* Celebrate the victories.... Mandatory HIGH FIVES!.... or HUGS.
+* Celebrate the victories.... Mandatory HIGH FIVES!.... or hugs, or cheers, or thumbs way way up :D
 * Celebrate the failures as well.  They can lead to breakthroughs.
 
 ###5. Remember to Switch
