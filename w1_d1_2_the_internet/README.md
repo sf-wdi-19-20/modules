@@ -9,9 +9,10 @@
 ![theinternet](http://www.mindthesciencegap.org/wp-content/uploads/2013/07/the-internet-1024x691.jpg)
 ![thegoogle](http://2.bp.blogspot.com/-733-FaBo8NI/UqrprWh_2_I/AAAAAAAACUo/3EnmfKisTHI/s1600/The-Internet-map11.png)
 ![theinterwebs](https://mountpeaks.files.wordpress.com/2012/03/1069646562-lgl-2d-4096x40962.png)
-![requestresponse](http://s.hswstatic.com/gif/internet-diagram.gif)
 
 ## Domains, Paths, and IP Addresses
+
+![requestresponse](http://s.hswstatic.com/gif/internet-diagram.gif)
 
 General Assembly as a physical address:
 
@@ -39,7 +40,7 @@ http://sfbay.california.us/streets/bush/buildings/225?floor=5
 
 #### Basic Challenges
   1. Go to your favorite website.
-  2. Right click in the browser, click `Save As`, then save to your desktop.
+  2. Right click in the browser, click `Save As`, then save to your desktop. (If you don't see a `Save As` option, try right clicking a different part of the page or another site. Some sites override the default right click behavior.)
   3. On your desktop, you should have a newly saved folder and HTML file. Open both - what do you notice?
   4. Back in the browser, hit `command + option + i`
   5. You are now in the Elements tab of the Chrome Developer Tools. Click through the other tabs and explore!
