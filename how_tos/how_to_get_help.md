@@ -1,6 +1,6 @@
 #How to Get Help
 
-You're going to have a lot of questions as you go through WDI. . . a lot. This document describes steps you should take when you can't figure something out and you want help.  Practice using these steps, because your questions won't stop after WDI.  This same process will be essential throughout your web development career!
+You're going to have a lot of questions as you go through WDI... a lot. This document describes steps you should take when you can't figure something out and you want help.  Practice using these steps, because your questions won't stop after WDI.  This same process will be essential throughout your web development career!
 
 ##25 min total -> READ - GOOGLE - ASK
 
@@ -21,7 +21,7 @@ Say you have a question about how to serve an express template from a route and 
 	Good Google:   "Express template routing how to"
 			      "Getting started express routing templates"
 
-	Say you are making your first rails app and don't know where to begin
+Say you are making your first rails app and don't know where to begin
 
 	Bad Google:    "new rails"
 			    "new rails app"
