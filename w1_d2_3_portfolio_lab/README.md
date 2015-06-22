@@ -2,7 +2,7 @@
 
   You're going to need a portfolio site to showcase the amazing projects you'll build in WDI. Your task is to create the "projects" page of your portfolio site using [Bootstrap](http://getbootstrap.com/css) and one of the common portfolio layouts in the **Wireframes** section below.
 
-  Feel free to put in placeholder images and text for now. [Placeit](https://placeit.net), [placekitten](http://placekitten.com), and [Hipster Ipsum](http://hipsum.co) are great resources.
+  Feel free to put in placeholder images and text for now. [Placeit](https://placeit.net), [Placehold.it](http://placehold.it), and [Hipster Ipsum](http://hipsum.co) are great resources.
 
 ## Requirements
   1. Create a new GitHub repo for your portfolio or fork the [Bootstrap boilerplate](https://github.com/sf-wdi-19-20/staging-modules/tree/master/w1_d2_2_bootstrap_css/bootstrap_boilerplate).
