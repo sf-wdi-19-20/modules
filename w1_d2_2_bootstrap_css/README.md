@@ -80,8 +80,13 @@
 
 ## Further Reading
 
-#### CSS & Bootstrap
+#### HTML & CSS
   * [Learn CSS Layout](http://learnlayout.com)
+  * [WTF, HTML and CSS?](http://wtfhtmlcss.com)
+  * [Opening the Box Model](http://learn.shayhowe.com/html-css/opening-the-box-model)
+  * [70 Expert Ideas For Better CSS Coding](http://www.smashingmagazine.com/2007/05/10/70-expert-ideas-for-better-css-coding)
+
+#### Bootstrap
   * [Understanding the Bootstrap Grid System](https://scotch.io/tutorials/understanding-the-bootstrap-3-grid-system)
   * [Inspiring Uses of Bootstrap](http://expo.getbootstrap.com)
 
