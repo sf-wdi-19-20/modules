@@ -10,7 +10,7 @@
   * UI = User Interface
 
 #### Key Takeaways
-  * UX refers to all aspects of the user experience, including user stories, user flow, and site layout
+  * UX encompasses all aspects of the end user's interaction, including product design, usability, and interface layout
   * UI refers to the visual elements (typography, buttons, forms, etc.)
 
 #### Why is UX important?
