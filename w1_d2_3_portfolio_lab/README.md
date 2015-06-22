@@ -5,7 +5,7 @@
   Feel free to put in placeholder images and text for now. [Placeit](https://placeit.net), [Placehold.it](http://placehold.it), and [Hipster Ipsum](http://hipsum.co) are great resources.
 
 ## Requirements
-  1. Create a new GitHub repo for your portfolio or fork the [Bootstrap boilerplate](https://github.com/sf-wdi-19-20/staging-modules/tree/master/w1_d2_2_bootstrap_css/bootstrap_boilerplate).
+  1. Create a new GitHub repo for your portfolio or fork the [Bootstrap boilerplate](https://github.com/sf-wdi-19-20/modules/tree/master/w1_d2_2_bootstrap_css/bootstrap_boilerplate).
   2. Start with an `index.html` for your portfolio's "projects" page.
   3. Choose one of the **Wireframes** below to implement with HTML, CSS, and Bootstrap.
   4. Use the [Bootstrap grid system](http://getbootstrap.com/css/#grid) to make your page responsive.
