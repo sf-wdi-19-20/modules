@@ -74,7 +74,7 @@ http://sfbay.california.us/streets/bush/buildings/225?floor=5
   4. Create a directory (folder) somewhere on your computer called `wdi-day-1`.
   5. Inside that directory, create an `index.html` file, and write three interesting things you learned or questions you have from the reading you chose in part 3.
   6. Create a new repo on GitHub called `wdi-day-1`, and push your `index.html` file to that remote repo.
-  7. Submit the link to your GitHub repo [here](https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform).
+  7. Submit the link to your GitHub repo in the [homework submission form](https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform).
 
 ## Further Reading
 
