@@ -10,6 +10,7 @@
   3. Choose one of the **Wireframes** below to implement with HTML, CSS, and Bootstrap.
   4. Use the [Bootstrap grid system](http://getbootstrap.com/css/#grid) to make your page responsive.
   5. Use at least one [Bootstrap component](http://getbootstrap.com/components) on your page (like a [nav](http://getbootstrap.com/components/#nav), [jumbotron](http://getbootstrap.com/components/#jumbotron), or [thumbnails](http://getbootstrap.com/components/#thumbnails-custom-content)).
+  6. Submit the link to your GitHub repo [here](https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform).
 
 ## Wireframes
 
