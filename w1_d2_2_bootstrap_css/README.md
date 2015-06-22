@@ -64,7 +64,7 @@
       * Number between `1-12` sets width of `col` on that device and all larger devices
 
 
-  * The best way to learn about the Boostrap grid system is to [see it in action](https://sf-wdi-19-20.github.io/staging-modules/w1_d2_2_bootstrap_css/bootstrap_grid/index.html)
+  * The best way to learn about the Boostrap grid system is to [see it in action](https://sf-wdi-19-20.github.io/modules/w1_d2_2_bootstrap_css/bootstrap_grid/index.html)
 
 ## Challenges
   1. Create an `index.html` file and add the [Bootstrap CDN](http://getbootstrap.com/getting-started/#download) (or fork this [Bootstrap boilerplate](https://github.com/sf-wdi-19-20/staging-modules/tree/master/w1_d2_2_bootstrap_css/bootstrap_boilerplate) to get started)
