@@ -47,9 +47,25 @@
 ## Homework
   1. Complete the [Codecademy module on Data Structures](http://www.codecademy.com/courses/javascript-beginner-en-9Sgpi/0/1?curriculum_id=506324b3a7dffd00020bf661)
   2. Find a partner to exchange secret messages with
-    * How you encode your message is up to you
-    * You might want to [convert your message to binary](http://www.binaryhexconverter.com/ascii-text-to-binary-converter) or use some built-in JS functions (`slice`, `replace`, etc) to obscure the data you are sending.
-  3. Get creative and make sure to include detailed instructions so that your partner knows how to decode the message.
+    * How you encode your message is up to you.
+    * You might want to [convert your message to binary](http://www.binaryhexconverter.com/ascii-text-to-binary-converter) and/or use some built-in JS functions (`slice`, `replace`, etc) to obscure the data you are sending.
+    * Get creative and make sure to include detailed instructions so that your partner knows how to decode the message.
+
+
+#### Example
+  1. [Convert this binary data to text](http://www.binaryhexconverter.com/binary-to-ascii-text-converter):
+  ```
+  01100001 01110111 01100101 01110011 01101111 01101101 01100101 00101100 00100000 01100100 01101111 01100111 01110011 00100000 01100001 01110010 01100101
+  ```
+  2. Open the JS console and store the decoded string in a variable:
+  ```
+    var message = decoded_string_here;
+  ```
+  3. Translate from yodaspeak to regular english:
+  ```
+    message = message.split(", ");
+    message = message[1] + " " + message[0];
+  ```
 
 
 #### Extra Credit
