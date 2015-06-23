@@ -6,7 +6,7 @@
 
 ## Requirements
   1. Create a new GitHub repo for your portfolio.
-  2. Start with an `index.html` for your portfolio's "projects" page (you can use this [Bootstrap boilerplate](https://github.com/sf-wdi-19-20/staging-modules/tree/master/w1_d2_2_bootstrap_css/bootstrap_boilerplate) to help you get started).
+  2. Start with an `index.html` for your portfolio's "projects" page (you can use this [Bootstrap boilerplate](https://github.com/sf-wdi-19-20/modules/tree/master/w1_d2_2_bootstrap_css/bootstrap_boilerplate) to help you get started).
   3. Choose one of the **Wireframes** below to implement with HTML, CSS, and Bootstrap.
   4. Use the [Bootstrap grid system](http://getbootstrap.com/css/#grid) to make your page responsive.
   5. Use at least one [Bootstrap component](http://getbootstrap.com/components) on your page (like a [nav](http://getbootstrap.com/components/#nav), [jumbotron](http://getbootstrap.com/components/#jumbotron), or [thumbnails](http://getbootstrap.com/components/#thumbnails-custom-content)).
