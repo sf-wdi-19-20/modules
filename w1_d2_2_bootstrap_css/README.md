@@ -67,7 +67,7 @@
   * The best way to learn about the Boostrap grid system is to [see it in action](https://sf-wdi-19-20.github.io/modules/w1_d2_2_bootstrap_css/bootstrap_grid/index.html)
 
 ## Challenges
-  1. Create an `index.html` file and add the [Bootstrap CDN](http://getbootstrap.com/getting-started/#download) (or fork this [Bootstrap boilerplate](https://github.com/sf-wdi-19-20/modules/tree/master/w1_d2_2_bootstrap_css/bootstrap_boilerplate) to get started)
+  1. Create an `index.html` file and add the [Bootstrap CDN](http://getbootstrap.com/getting-started/#download) (or use this [Bootstrap boilerplate](https://github.com/sf-wdi-19-20/modules/tree/master/w1_d2_2_bootstrap_css/bootstrap_boilerplate) to get started)
   2. Add one `.container`, one `.row`, and three `.col-*` classes (your columns can be any widths that add up to 12)
   3. Make sure your three columns stack vertically when you are on mobile (`xs`) devices. (**Hint:** Your column class names will NOT contain `xs`)
   4. Add content to your columns (`<h1>`, `<p>`, `<img>`, etc.)
