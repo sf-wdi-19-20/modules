@@ -147,11 +147,7 @@ Edit the code above to check the following additional Requirements:
 10. Create and log an array containing only the objects with an age over 20.
 11. Create and log an array of all the names, in which any names that begin with a consonant are upper case.
 12. Create and log an array that is the original array in a random order.
-
-
-### Homework
-
-1. Write the "Bottles of beer on the wall" song:
+13. Write the "Bottles of beer on the wall" song:
 
 		5 bottles of beer on the wall,
 		5 bottles of beer!
