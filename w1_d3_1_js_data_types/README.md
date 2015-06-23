@@ -48,7 +48,7 @@
   1. Complete the [Codecademy module on Data Structures](http://www.codecademy.com/courses/javascript-beginner-en-9Sgpi/0/1?curriculum_id=506324b3a7dffd00020bf661)
   2. Find a partner to exchange secret messages with
     * How you encode your message is up to you
-    * You might want to convert your message to binary or use some built-in JS functions (`slice`, `replace`, etc) to obscure the data you are sending.
+    * You might want to [convert your message to binary](http://www.binaryhexconverter.com/ascii-text-to-binary-converter) or use some built-in JS functions (`slice`, `replace`, etc) to obscure the data you are sending.
   3. Get creative and make sure to include detailed instructions so that your partner knows how to decode the message.
 
 
