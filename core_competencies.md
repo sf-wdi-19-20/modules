@@ -30,7 +30,7 @@ Manage changes to code individually and within groups, and learn how to particip
 
 Describe the basic anatomy of programs and programming languages.
 
-  - **Problem-Solving Workflow:** _Strategically approach problems and work towards a solution_
+  - **Problem-Solving Workflow:** _Strategically approach problems and work towards a solution._
 
   - **Documentation:** _Use expert references to find information efficiently._
 
@@ -90,7 +90,7 @@ Design and develop modern, interactive experiences in the browser.
 
   - **UI Binding and Rendering:** _Render user interface components by combining data and templates._
 
-  - **Reusable Components:** _Define reusable structural, stylistic, and behavioral directions to attach to DOM elements_
+  - **Reusable Components:** _Define reusable structural, stylistic, and behavioral directions to attach to DOM elements._
 
   - **Client-side Routing:** _Access an application through various URLs managed by a browser framework._
 
@@ -113,7 +113,7 @@ Build server applications that respond to requests with files and data.
 
   - **Third-party Services:** _Call third-party services from your server app._
 
-  - **Input Validation:** _Detect invalid data and process input data before acting on it_
+  - **Input Validation:** _Detect invalid data and process input data before acting on it._
 
   - **Error Handling:** _Identify and remediate problems in your server app._
 
@@ -126,7 +126,7 @@ Manage and access large amounts of data in your application in a structured way.
 
   - **Database Administration:** _Install, setup, and administer a database server._
   
-  - **Data Modeling:** _Put thought into how you will structure your data and relationships between them_
+  - **Data Modeling:** _Put thought into how you will structure your data and relationships between them._
 
   - **SQL Fundamentals:** _Interact with a database using SQL syntax._
 
@@ -176,14 +176,14 @@ Work with a team to design and document technical products that users love.
 
 Design algorithms and describe the basic principles that define low-level computer interactions.
 
-  - **Data Structures:** _Recognize widely-used data structures and how they can simplify common tasks_
+  - **Data Structures:** _Recognize widely-used data structures and how they can simplify common tasks._
 
-  - **Memory Management:** _Explain how computers store data and how programs manipulate data stored in memory_
+  - **Memory Management:** _Explain how computers store data and how programs manipulate data stored in memory._
 
-  - **Recursion:** _Distinguish between iterative and recursive algorithms and trace recursive function calls_
+  - **Recursion:** _Distinguish between iterative and recursive algorithms and trace recursive function calls._
   
-  **Sorting Algorithms:** _Explore various types of algorithms in the context of this classic practical problem_
+  **Sorting Algorithms:** _Explore various types of algorithms in the context of this classic practical problem._
 
-  - **Algorithm Efficiency:** _Write code that solves problems without using unnecessary time or memory resources_
+  - **Algorithm Efficiency:** _Write code that solves problems without using unnecessary time or memory resources._
 
-  - **Programming Paradigms:** _Identify ways of organizing and thinking about computer code_
+  - **Programming Paradigms:** _Identify various ways of organizing and thinking about computer code._
