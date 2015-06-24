@@ -4,8 +4,8 @@
 | Describe and use boolean logic |
 | Trace the flow of a program based on its code |
 | Predict the output from `if/else` and `switch` statements |
-| explain the differences between `for` loops and `while` loops, and when to use each |
-| implement `if/else` logic, `for` and `while` loops, and combinations |
+| Explain the differences between `for` loops and `while` loops, and when to use each |
+| Implement `if/else` logic, `for` and `while` loops, and combinations |
 
 ### Motivation (Why?)
 
@@ -13,11 +13,11 @@ Conditionals and loops are fundamental to all programming in every language and 
 
 ### Analogy (What?)
 
-Condtionals are like a **choose your own adventure book**
+Condtionals are like a **choose your own adventure book**.
 
 Loops are like a **room of people introducing themselves**.
 
-### Examples/Demo (How?)
+### Examples (How?)
 
 #### Basic Boolean Operators
 
@@ -67,6 +67,24 @@ if ( hasCar ) {
 }
 ```
 
+#### `switch`
+
+```
+switch (row){	
+	case 1: 	
+		price = 0.25;
+	case 2: 
+		price = 0.50;
+	case 3:
+		price = 0.75;
+	case 4: 
+		price = 1.00;
+	default:  // the rest of the products (rows 5-7) 
+		price = 1.25
+}	
+// ^ vending machine with prices organized by row!		
+```
+
 #### `while/for` loops
 
 ```
@@ -75,6 +93,15 @@ for (i = 0; i < m.length; i++) {
   console.log(m[i] + " is a nice person")
 }
 
+```
+
+```
+var movieData = {director: "Burton", year: 1993, title: "The Nightmare Before Christmas", price: 4.55}
+for (key in movieData){
+	if (movieData.hasOwnProperty(key)){
+		console.log(key + ": ", movieData[key]);
+	}
+}
 ```
 
 ```
