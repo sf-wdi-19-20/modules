@@ -32,20 +32,11 @@
   3. `split` on `" "`
   4. How is the output of `split` different from the input? (hint: `typeof`)
   5. Define a new array and concatenate the first and last elements
+  6. Complete the [Codecademy module on Data Structures](http://www.codecademy.com/courses/javascript-beginner-en-9Sgpi/0/1?curriculum_id=506324b3a7dffd00020bf661)
 
 
 ## Stretch Challenges
   1. Explain why `null == undefined` and `null !== undefined` are both true statements.
-
-
-## Further Reading
-  1. [JavaScript data types and data structures [MDN]](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
-  2. [Different ways to define an object [SO]](http://stackoverflow.com/questions/1143498/difference-between-an-object-and-a-hash)
-  3. [Working with strings](http://learnjsdata.com/strings.html)
-
-
-## Homework
-  1. Complete the [Codecademy module on Data Structures](http://www.codecademy.com/courses/javascript-beginner-en-9Sgpi/0/1?curriculum_id=506324b3a7dffd00020bf661)
   2. Find a partner to exchange secret messages with
     * How you encode your message is up to you.
     * You might want to [convert your message to binary](http://www.binaryhexconverter.com/ascii-text-to-binary-converter) and/or use some built-in JS functions (`slice`, `replace`, etc) to obscure the data you are sending.
@@ -70,3 +61,9 @@
 
 #### Extra Credit
   Send the instructions for decoding via email and the message body via slack for extra security. How is this similar to public/private key cryptography?
+
+
+## Further Reading
+  1. [JavaScript data types and data structures [MDN]](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
+  2. [Different ways to define an object [SO]](http://stackoverflow.com/questions/1143498/difference-between-an-object-and-a-hash)
+  3. [Working with strings](http://learnjsdata.com/strings.html)
