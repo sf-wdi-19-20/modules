@@ -96,7 +96,7 @@ while (timeBeforeWork > 180000) { // Remember JS counts time in milliseconds
 
 
 ### Basic Challenges
-1. Which of the following are truthy values? (hint: try `if("abc"){"console.log('I'm truthy!')"}` in the JS console)
+1. Which of the following are truthy values? (hint: try `if("abc"){console.log("I'm truthy!")}` in the JS console)
   * 1
   * "abc"
   * ""
