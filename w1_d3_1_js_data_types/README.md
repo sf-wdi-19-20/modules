@@ -29,8 +29,8 @@
 ## Challenges
   1. Store your first name in a string variable
   2. Concatenate your last name with your first name
-  3. `split` on `" "`
-  4. How is the output of `split` different from the input? (hint: `typeof`)
+  3. Use [`split`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) to turn your string variable into an array
+  4. Use [`typeof`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) to show how the output of [`split`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) is different from the input
   5. Define a new array and concatenate the first and last elements
   6. Complete the [Codecademy module on Data Structures](http://www.codecademy.com/courses/javascript-beginner-en-9Sgpi/0/1?curriculum_id=506324b3a7dffd00020bf661)
 
@@ -39,7 +39,7 @@
   1. Explain why `null == undefined` and `null !== undefined` are both true statements.
   2. Find a partner to exchange secret messages with
     * How you encode your message is up to you.
-    * You might want to [convert your message to binary](http://www.binaryhexconverter.com/ascii-text-to-binary-converter) and/or use some built-in JS functions (`slice`, `replace`, etc) to obscure the data you are sending.
+    * You might want to [convert your message to binary](http://www.binaryhexconverter.com/ascii-text-to-binary-converter) and/or use some built-in JS functions ([`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice), [`replace`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace), etc) to obscure the data you are sending.
     * Get creative and make sure to include detailed instructions so that your partner knows how to decode the message.
 
 
