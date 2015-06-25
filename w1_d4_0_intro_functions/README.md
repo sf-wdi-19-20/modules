@@ -16,7 +16,7 @@ x == "b"; // => true
 y == "a"; // => true
 ```
 
-**Note:** Think about why we cant just do something like `x=y` followed by `y=x`. What goes wrong when we try to do this?
+**Note:** Think about why we cant just do something like `x = y` followed by `y = x`. What goes wrong when we try to do this?
 
 ## Problem 2: Reverse a String
 
