@@ -218,7 +218,7 @@ firstClassFunction("Functions are fun!", consoleMe);
 
 3. Write a `vowels` function that counts the number of vowels in a given string.
 
-4. Work through the [functions problem set](functions_problem_set.md).
+4. Work through the [functions problem set](functions_problem_set).
 
 ## Further Reading
 
