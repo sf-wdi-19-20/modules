@@ -17,7 +17,7 @@ Vanilla JS underlies all Javascript frameworks. Understanding basic JS is an imp
 * Javascript = Muscles, Brain, and Organs
 * CSS = Skin and Clothes
 
-![muscles](http://www.anselm.edu/homepage/jpitocch/genbio/antagmusc.JPG)
+![muscles](https://github.com/sf-wdi-19-20/modules/blob/master/w1_d4_2_dom_vanilla_js/muscles.jpg?raw=true)
 
 ### Demo (How?)
 
