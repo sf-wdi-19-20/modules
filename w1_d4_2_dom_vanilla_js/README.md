@@ -41,11 +41,15 @@ Vanilla JS underlies all Javascript frameworks. Understanding basic JS is an imp
 
 #### Select Elements
 
-Get DOM element by selector
+Get the first matching DOM element by selector
 ```
-var h1Elements = document.querySelector("h1")
+var h1Element = document.querySelector("h1")
 var myId = document.querySelector("#myId")
-var primaryButtons = document.querySelector(".btn-primary")
+```
+
+Get all matching DOM elements by selector
+```
+var primaryButtons = document.querySelectorAll(".btn-primary")
 ```
 
 --------------------------------------------------------
