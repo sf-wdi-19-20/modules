@@ -82,7 +82,6 @@ el.addEventListener("click", function() {
 // "submit"
 ```
 
-
 Change or add a style attribute value
 ```JS
 var arr = document.getElementsByClassName('text-good');
@@ -156,3 +155,8 @@ The browser gives us an event called "DOMContentLoaded" that can help us get aro
     })
 
 Now the code won't run until the browser finishes setting up the DOM for us.
+
+# Further Reading
+
+  * [Getting started with selectors [MDN]](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors)
+  * [Selectors with multiple classes and ids [CSS Tricks]](https://css-tricks.com/multiple-class-id-selectors/)
