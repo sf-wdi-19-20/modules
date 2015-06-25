@@ -156,5 +156,3 @@ The browser gives us an event called "DOMContentLoaded" that can help us get aro
     })
 
 Now the code won't run until the browser finishes setting up the DOM for us.
-
-# Further Reading
