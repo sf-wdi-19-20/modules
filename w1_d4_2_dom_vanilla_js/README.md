@@ -30,7 +30,7 @@ Vanilla JS underlies all Javascript frameworks. Understanding basic JS is an imp
   <!-- LOCAL SCRIPTS -->
   <script src="scripts/funky-script.js"></script>
 
-  <!-- REMOTE SCRIPT (FROM CONTENT DELIVERY NETWOR(CDN)) -->
+  <!-- REMOTE SCRIPT (FROM CONTENT DELIVERY NETWORK (CDN)) -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -45,24 +45,24 @@ Get DOM element by selector
 ```
 var h1Elements = document.querySelector("h1")
 var myId = document.querySelector("#myId")
-var primaryButtons = document.querySelector("btn-primary")
+var primaryButtons = document.querySelector(".btn-primary")
 ```
 
-###### Or
+--------------------------------------------------------
 
 Get DOM element by id
 ```
-var el = document.getElementById("#myId");
+var el = document.getElementById("myId");
 ```
 
 Get DOM elements by class
 ```
-var arr = document.getElementsByClassName(".myclass");
+var arr = document.getElementsByClassName("myclass");
 ```
 
 Get DOM elements by HTML tag
 ```
-var el = document.getElementsByTagName(".myclass");
+var el = document.getElementsByTagName("h1");
 ```
 
 #### Add Dynamic Changes to Events with Functions
