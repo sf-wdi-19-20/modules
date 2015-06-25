@@ -3,6 +3,8 @@
 | Objectives |
 | :--- |
 | Manipulate the DOM using plain vanilla Javascript |
+| Detect DOM events with event listeners and trigger changes |
+| Detect form submissions and display submitted data |
 
 ### Motivation (Why?)
 
@@ -124,7 +126,7 @@ button.onclick = function(event){
 4. Make it so when you click any link a popup comes up with the link's text.
 5. When you mouse over links, make their background color turn to pink. Can you make it turn back to white when the mouse is not hovering over the element?
 
-### Stretch Challenges - Making your Portfolio Site Dynamic
+### Stretch Challenges & Homework - Making your Portfolio Site Dynamic
 
 6. Add a contact form (email, subject, messasge) to your portfolio project. Remember to use Bootstrap's input styling.
 8. When the form is submitted make an alert display the text that is typed into the text field. Do you need to prevent the default behavior?
