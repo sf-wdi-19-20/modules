@@ -135,11 +135,26 @@ button.onclick = function(event){
 
 ### Stretch Challenges & Homework - Making your Portfolio Site Dynamic
 
-5. Switch to your Protfolio you built earlier this week and add and link a `scripts.js` file.
-6. Add a contact form (email, subject, messasge) to your portfolio project. Remember to use Bootstrap's input styling.
-8. When the form is submitted make an alert display the text that is typed into the text field. Do you need to prevent the default behavior?
-1. Add an "about me", "projects", and "background" buttons to your site. When they are clicked let a different corresponding section appear and hide the other two without reloading the page. This is called "pill tabs."
-2. For extra credit: Add two more dynamic elements to your portfolio site.
-3. If you are looking for more, go back to the [stretch challenges from js_functions lesson](../w1_d4_1_js_functions#stretch-challenges) this morning.
+1. Switch to your portfolio you built earlier this week and add a link to a `scripts.js` file.
+2.
+2. Add a contact form (email, subject, messasge) to your portfolio project. Remember to use Bootstrap's input styling.
+3. When the form is submitted make an alert display the text that is typed into the text field. Do you need to prevent the default behavior?
+4. Add an "about me", "projects", and "background" buttons to your site. When they are clicked let a different corresponding section appear and hide the other two without reloading the page. This is called "pill tabs."
+5. For extra credit: Add two more dynamic elements to your portfolio site.
+6. If you are looking for more, go back to the [stretch challenges from js_functions lesson](../w1_d4_1_js_functions#stretch-challenges) this morning.
+
+**Important note:**
+
+Any code we put in our `scripts.js` will be run as soon as the page loads. The browser needs a little extra time to get the DOM ready for us. You'll see the following error in the JS console if you attempt to add an event listener to a DOM element before the DOM is ready:
+
+    Cannot read property 'addEventListener' of null
+
+The browser gives us an event called "DOMContentLoaded" that can help us get around this issue. Try putting all of your code inside a block like this:
+
+    window.addEventListener("DOMContentLoaded", function() {
+      // all code goes here
+    })
+
+Now the code won't run until the browser finishes setting up the DOM for us.
 
 # Further Reading
