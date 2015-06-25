@@ -28,7 +28,7 @@ Vanilla JS underlies all Javascript frameworks. Understanding basic JS is an imp
 <head>
   <title>Funky Blog</title>
   <!-- LOCAL SCRIPTS -->
-  <script src="scripts/funky-script.js"></script>
+  <script src="scripts.js"></script>
 
   <!-- REMOTE SCRIPT (FROM CONTENT DELIVERY NETWOR(CDN)) -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -122,13 +122,16 @@ button.onclick = function(event){
 ### Basic Challenges:
 0. Navigate to Craigslist SF.
 1. Type "document" in the console. Examine this tree-structured object.
+2. Use a snippet for the rest of the basic challenges.
+3. Use JavaScript to change the text of the craigslist logo to "CL Disco"
 2. Add an event listener to the craigslist logo that when you click it changes the font color of links to green. (hint: make sure to prevent the default behavior)
-3. Make it so when you click the logo it changes the link color to either blue, red, green, or yellow. (Cragslist DISCO!). Can you get it to select a random color?
+3. Make it so when you click the logo it changes the link color randomly to either blue, red, green, or yellow. (Cragslist DISCO!). (remember [#GTS](https://www.google.com/search?q=return+a+random+array+element+javascript&oq=return+a+random+array+element+javascript&aqs=chrome..69i57j0.13214j0j1&sourceid=chrome&es_sm=91&ie=UTF-8))
 4. Make it so when you click any link a popup comes up with the link's text.
 5. When you mouse over links, make their background color turn to pink. Can you make it turn back to white when the mouse is not hovering over the element?
 
 ### Stretch Challenges & Homework - Making your Portfolio Site Dynamic
 
+5. Switch to your Protfolio you built earlier this week and add and link a `scripts.js` file.
 6. Add a contact form (email, subject, messasge) to your portfolio project. Remember to use Bootstrap's input styling.
 8. When the form is submitted make an alert display the text that is typed into the text field. Do you need to prevent the default behavior?
 1. Add an "about me", "projects", and "background" buttons to your site. When they are clicked let a different corresponding section appear and hide the other two without reloading the page. This is called "pill tabs."
