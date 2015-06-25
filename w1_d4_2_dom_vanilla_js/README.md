@@ -3,6 +3,7 @@
 | Objectives |
 | :--- |
 | Manipulate the DOM using plain vanilla Javascript |
+| Select DOM elements using vanilla JS selector functions |
 | Detect DOM events with event listeners and trigger changes |
 | Detect form submissions and display submitted data |
 
