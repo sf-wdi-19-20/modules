@@ -123,19 +123,18 @@ button.onclick = function(event){
 * [List of DOM Events](https://developer.mozilla.org/en-US/docs/Web/Events)
 
 ### Basic Challenges:
-0. Navigate to Craigslist SF.
-1. Type "document" in the console. Examine this tree-structured object.
-2. Use a snippet for the rest of the basic challenges.
-3. Use JavaScript to change the text of the craigslist logo to "CL Disco"
-2. Add an event listener to the craigslist logo that when you click it changes the font color of links to green. (hint: make sure to prevent the default behavior)
-3. Make it so when you click the logo it changes the link color randomly to either blue, red, green, or yellow. (Cragslist DISCO!). (remember [#GTS](https://www.google.com/search?q=return+a+random+array+element+javascript&oq=return+a+random+array+element+javascript&aqs=chrome..69i57j0.13214j0j1&sourceid=chrome&es_sm=91&ie=UTF-8))
-4. Make it so when you click any link a popup comes up with the link's text.
-5. When you mouse over links, make their background color turn to pink. Can you make it turn back to white when the mouse is not hovering over the element?
+1. Navigate to Craigslist SF.
+2. Type "document" in the console. Examine this tree-structured object.
+3. Use a snippet for the rest of the basic challenges.
+4. Use JavaScript to change the text of the craigslist logo to "CL Disco"
+5. Add an event listener to the craigslist logo that when you click it changes the font color of links to green. (hint: make sure to prevent the default behavior)
+6. Make it so when you click the logo it changes the link color randomly to either blue, red, green, or yellow. (Cragslist DISCO!). (remember [#GTS](https://www.google.com/search?q=return+a+random+array+element+javascript&oq=return+a+random+array+element+javascript&aqs=chrome..69i57j0.13214j0j1&sourceid=chrome&es_sm=91&ie=UTF-8))
+7. Make it so when you click any link a popup comes up with the link's text.
+8. When you mouse over links, make their background color turn to pink. Can you make it turn back to white when the mouse is not hovering over the element?
 
 ### Stretch Challenges & Homework - Making your Portfolio Site Dynamic
 
 1. Switch to your portfolio you built earlier this week and add a link to a `scripts.js` file.
-2.
 2. Add a contact form (email, subject, messasge) to your portfolio project. Remember to use Bootstrap's input styling.
 3. When the form is submitted make an alert display the text that is typed into the text field. Do you need to prevent the default behavior?
 4. Add an "about me", "projects", and "background" buttons to your site. When they are clicked let a different corresponding section appear and hide the other two without reloading the page. This is called "pill tabs."
