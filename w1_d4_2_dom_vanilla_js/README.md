@@ -30,7 +30,7 @@ Vanilla JS underlies all Javascript frameworks. Understanding basic JS is an imp
   <!-- LOCAL SCRIPTS -->
   <script src="scripts.js"></script>
 
-  <!-- REMOTE SCRIPT (FROM CONTENT DELIVERY NETWOR(CDN)) -->
+  <!-- REMOTE SCRIPT (FROM CONTENT DELIVERY NETWORK (CDN)) -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -41,28 +41,32 @@ Vanilla JS underlies all Javascript frameworks. Understanding basic JS is an imp
 
 #### Select Elements
 
-Get DOM element by selector
+Get the first matching DOM element by selector
 ```
-var h1Elements = document.querySelector("h1")
+var h1Element = document.querySelector("h1")
 var myId = document.querySelector("#myId")
-var primaryButtons = document.querySelector("btn-primary")
 ```
 
-###### Or
+Get all matching DOM elements by selector
+```
+var primaryButtons = document.querySelectorAll(".btn-primary")
+```
+
+--------------------------------------------------------
 
 Get DOM element by id
 ```
-var el = document.getElementById("#myId");
+var el = document.getElementById("myId");
 ```
 
 Get DOM elements by class
 ```
-var arr = document.getElementsByClassName(".myclass");
+var arr = document.getElementsByClassName("myclass");
 ```
 
 Get DOM elements by HTML tag
 ```
-var el = document.getElementsByTagName(".myclass");
+var el = document.getElementsByTagName("h1");
 ```
 
 #### Add Dynamic Changes to Events with Functions
@@ -136,6 +140,6 @@ button.onclick = function(event){
 8. When the form is submitted make an alert display the text that is typed into the text field. Do you need to prevent the default behavior?
 1. Add an "about me", "projects", and "background" buttons to your site. When they are clicked let a different corresponding section appear and hide the other two without reloading the page. This is called "pill tabs."
 2. For extra credit: Add two more dynamic elements to your portfolio site.
-3. If you are looking for more, go back to the stretch challenges from js_functions lesson this morning.
+3. If you are looking for more, go back to the [stretch challenges from js_functions lesson](../w1_d4_1_js_functions#stretch-challenges) this morning.
 
 # Further Reading
