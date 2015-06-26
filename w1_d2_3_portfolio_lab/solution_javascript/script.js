@@ -8,10 +8,6 @@ window.addEventListener("DOMContentLoaded", function() {
 
   var message = document.getElementById("message");
 
-  name.addEventListener("onfocus", function(event) {
-    console.log("hi");
-  });
-
   submit.addEventListener("click", function(event) {
     event.preventDefault();
     alert(message.value);
