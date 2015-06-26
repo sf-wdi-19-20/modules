@@ -2,10 +2,6 @@ window.addEventListener("DOMContentLoaded", function() {
 
   var submit = document.getElementById("submit");
 
-  var name = document.getElementById("name");
-
-  var email = document.getElementById("email");
-
   var message = document.getElementById("message");
 
   submit.addEventListener("click", function(event) {
