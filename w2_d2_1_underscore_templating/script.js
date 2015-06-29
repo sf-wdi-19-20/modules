@@ -17,7 +17,7 @@ $(function() {
   ];
 
   // append our existing pets (from seed data) to `$petsList`
-  _(pets).each(function (pet, index) {
+  _.each(pets, function (pet, index) {
     var $pet = $(petsTemplate(pet));
     $pet.attr('data-index', index);
     $petsList.append($pet);
@@ -26,12 +26,12 @@ $(function() {
   // submit form to create a new pet
   $newPet.on('submit', function(event) {
     event.preventDefault();
-    
+
     // create new pet object from form data
     var petName = $('#pet-name').val();
     var petSpecies = $('#pet-species').val();
     var petData = {name: petName, species: petSpecies};
-    
+
     // store our new pet in the `pets` array
     pets.push(petData);
     console.log(pets);
@@ -47,17 +47,23 @@ $(function() {
     $('#pet-name').focus();
   });
 
-  // remote pets from 
+  // remove pets from model and view
   $petsList.on("click", ".delete", function () {
     var $pet = $(this).closest(".pet");
     var index = $pet.attr('data-index');
 
-    // remove pet from the `pets` array
+    // remove pet from the `pets` array (model)
     pets.splice(index, 1);
     console.log(pets);
-    
-    // remove pet from the DOM
+
+    // remove pet from the DOM (view)
     $pet.remove();
+
+    // reset indexes in DOM to match `pets` array
+    // $.each loops through DOM elements
+    $('.pet').each(function(index, pet) {
+      $(this).attr('data-index', index);
+    });
   });
 
 });
