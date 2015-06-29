@@ -7,9 +7,11 @@
 
 ## What is a template?
 
-* A **template** is a document (or piece of code) that contains **parameters** that will be dynamically replaced by data by the template processing system.
+* A **template** is a document (or piece of code) that contains **parameters** which are dynamically replaced with data by the templating engine.
 
-* We'll use Underscore's template processing system, and the parameters will live inside `<%= %>` tags.
+* Thus far, we've been coding information (or data) directly into our HTML file. Eventually, the data on our HTML page will come from a server, and we'll need a way to dynamically display that data.
+
+* We'll use <a href="http://underscorejs.org/#template" target="_blank">Underscore's templating engine</a> to dynamically display data in our HTML, and the parameters will live inside `<%= %>` tags. We won't have data from a server yet, so for now, we'll store our data in an array.
 
 ## Why use client-side templating?
 
@@ -19,31 +21,31 @@
   $('#task-list').append('<li class="task">' + taskName + ' ' + taskDesc + '</li>')
   ```
 
-  *The string of HTML elements to append will only get longer as you begin to write more complex markup.*
+  * When appending new HTML elements to the page, the string of elements to append will only get longer as you begin to write more complex markup.
 
-  *Wouldn't it be nice if the HTML structure was already set up for us? That's where templating comes in!*
+  * Wouldn't it be nice if the HTML structure was already set up for us? That's where templating comes in!
 
 * Maximize code reusability and maintainability.
 
-  *If you need to change your HTML structure related to new elements you're creating (e.g. adding an additional class name to your tasks), all you have to do is change the template!*
-
-## Analogy (What?)
+  * If you need to change your HTML structure for elements you're creating and displaying (e.g. adding an additional class name to your tasks), all you have to do is change the template!
 
 ## Underscore.js
 
-Underscore.js is a JavaScript library that provides over 100 functions to help you manipulate and display data in JavaScript. Underscore also provides a template processing system, which we'll be using here.
+<a href="http://underscorejs.org/" target="_blank">Underscore.js</a> is a JavaScript library that provides over 100 functions to help you manipulate and display data in JavaScript. Underscore also provides a templating engine, which we'll be using here.
 
 ## A Note on Iterators
 
-Among Underscore's 100+ helper functions are iterators that help us work with arrays. Perhaps most notably is the `_.each` iterator that loops through each element in an array and performs some action on it. `_.each` takes in an array and a callback function that gives us access to the element in the array and its index.
+Among Underscore's 100+ helper functions are `iterators` that help us manipulate arrays. Perhaps most notably is the <a href="http://underscorejs.org/#each" target="_blank">_.each iterator</a> that loops through every element in an array and performs some action on it.
+
+`_.each` takes in an array and a callback function as arguments. The callback function gives us access to the element we're at in the array and its index.
 
 ```js
-_.each([1, 2, 3], function (el, index) {
-  console.log("index " + index + ": " + el)
+_.each([1, 2, 3], function (element, index) {
+  console.log("index " + index + ": " + element)
 });
 ```
 
-`_.each` replates our need for a for loop in this scenario.
+`_.each` replaces our need for a `for loop`. The above code could be written like this:
 
 ```js
 var arr = [1, 2, 3];
@@ -56,7 +58,7 @@ We'll be using `_.each` to iterate over the data we want to use in our template.
 
 ## Setup
 
-1. Add the Underscore CDN to your `index.html` (remember you can go to <a href="https://cdnjs.com" target="_blank">cdnjs</a> to search for CDN's). Make sure to require it before your custom script file.
+1. Add the Underscore CDN to your `index.html` (remember you can go to <a href="https://cdnjs.com" target="_blank">cdnjs</a> to search for CDN's). Make sure to require Underscore before your custom script file.
 
   ```html
   <body>
@@ -76,7 +78,7 @@ We'll be using `_.each` to iterate over the data we want to use in our template.
   </body>
   ```
 
-2. Next create the template below your custom script.
+2. Next create the template below your custom script. Remember to give your template an `id` so we can use jQuery to select it (e.g. `pets-template`).
 
   ```html
   <body>
@@ -97,7 +99,7 @@ We'll be using `_.each` to iterate over the data we want to use in our template.
   </body>
   ```
 
-3. You will also need a container in your `index.html` where you will append the data from your template.
+3. You will also need an element in your `index.html` where you will append the data from your template. Make sure to give this an `id` as well (e.g. `pets-list`).
 
   ```html
   <body>
@@ -111,15 +113,13 @@ We'll be using `_.each` to iterate over the data we want to use in our template.
   </body>
   ```
 
-4. Compile your template in your `script.js` file.
+4. Compile your template in your `script.js` file. This step turns `petsTemplate` into a function, where we will later pass in the data we want to render in the template.
 
   ```js
-  $(function() {
-    var petsTemplate = _.template($('#pets-template').html());
-  });
+  var petsTemplate = _.template($('#pets-template').html());
   ```
 
-5. Set up some test data in your `script.js` file. **Your object keys must match the `<%= name %>` and `<%= species %>` parameters you set up in your template!** This is how Underscore knows how to populate the tempate with dynamic data.
+5. Set up some test data in your `script.js` file. **Your object keys must match the parameters you set up in your template!** (e.g. `<%= name %>` and `<%= species %>`)
 
   ```js
   var pets = [
@@ -129,7 +129,7 @@ We'll be using `_.each` to iterate over the data we want to use in our template.
   ];
   ```
 
-6. Iterate through your test data, using your template to create a new DOM element for each data object. Once the DOM element is created, append it to the container you set up in step 3. Note: We are also saving the object's index in the array to an HTML data attribute (this will come in handy when we want to delete elements from the DOM).
+6. Iterate through your test data, using your template to create a new HTML element for each data object. Once the element is created, append it to the list element you set up in step 3 (e.g. `pets-list`). **Note:** We're also saving the object's index in the array to an HTML data attribute (this will come in handy when we want to delete elements from the DOM).
 
   ```js
   _.each(pets, function (pet, index) {
@@ -143,29 +143,29 @@ We'll be using `_.each` to iterate over the data we want to use in our template.
 
 1. Add the Underscore CDN to your To Do app. Make sure to require it before your custom script.
 
-2. Create an underscore template below your custom script. Make sure to give it an id. Think about the data you will be displaying related to each to do item. That data will determine your template's parameters (inside the `<%= %>` tags).
+2. Create an underscore template below your custom script. Remember to give it an id. Think about the data you will be displaying related to each to do item. That data will determine your template's parameters (inside the `<%= %>` tags).
 
-3. Set up a container in your HTML where you will eventually append the data from your template. A `<div>` or a `<ul>` is a good choice. Make sure to give it an id.
+3. Set up a "list" element in your HTML where you will eventually append the data from your template. A `<div>` or a `<ul>` is a good choice. Remember to give it an id.
 
 ## Challenges, Part 2
 
 1. Compile your template, using jQuery to select it by its id.
 
-2. Set up test data in your custom script file. This should be an array of objects.
+2. Set up test data in your custom script file. This should be an array of objects, where the keys match your template's paraeters.
 
 ## Challenges, Part 3
 
-1. Iterate through your test data, creating a new DOM element for each object in the array and appending that new element to the container you set up in part 1 of the challenges.
+1. Iterate through your test data, creating a new HTML element for each object in the array and appending it to the "list" element you set up in part 1 of the challenges.
 
-2. Open your `index.html` file in the broser to see if your test data displayed on the page. If not, check the JS console to see what errors you're getting.
+2. Open your `index.html` in the browser to see if your test data displays on the page. If not, check the JS console to see what errors you're getting.
 
-3. Once you've successfully displayed your test data on the page, refactor your new to do form to use the template when adding new tasks.
+3. Once you've successfully displayed your test data on the page, refactor your new To Do form to use the template when adding new tasks.
 
 ## Stretch Challenges
 
 1. When a new task is created, make sure you are pushing it into the array of "test" data you set up in part 2 of the challenges to keep your model updated with your view.
 
-2. Implement a delete functionality to remove tasks from your to do list. Think about the places you'll need to make updates (**Hint:** Model and View).
+2. Implement a delete functionality to remove tasks from your To Do list. Think about the places you'll need to make updates (**Hint:** Model and View).
 
 ## Docs & Reading
 
