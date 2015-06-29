@@ -113,13 +113,13 @@ We'll be using `_.each` to iterate over the data we want to use in our template.
   </body>
   ```
 
-4. Compile your template in your `script.js` file. This step turns `petsTemplate` into a function, where we will later pass in the data we want to render in the template.
+4. Compile your template in your `script.js`. Calling `_.template` returns a function, which we save to the variable `petsTemplate`. We will later use our new `petsTemplate` function to pass in the data we want to render in the template.
 
   ```js
   var petsTemplate = _.template($('#pets-template').html());
   ```
 
-5. Set up some test data in your `script.js` file. **Your object keys must match the parameters you set up in your template!** (e.g. `<%= name %>` and `<%= species %>`)
+5. Set up some test data in your `script.js` file. **Your object keys must match the parameters you set up in your template!** (e.g. `<%= name %>` and `<%= species %>`) This array of test data is our **model**.
 
   ```js
   var pets = [
@@ -165,7 +165,7 @@ We'll be using `_.each` to iterate over the data we want to use in our template.
 
 1. When a new task is created, make sure you are pushing it into the array of "test" data you set up in part 2 of the challenges to keep your model updated with your view.
 
-2. Implement a delete functionality to remove tasks from your To Do list. Think about the places you'll need to make updates (**Hint:** Model and View).
+2. Implement a delete functionality to remove tasks from your To Do list. Think about the places you'll need to make updates (**Hint:** model and view).
 
 ## Docs & Reading
 
