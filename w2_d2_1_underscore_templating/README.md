@@ -15,7 +15,7 @@
 
 ## Why use client-side templating?
 
-* Separate markup and from logic. Remember this?
+* Separate markup from logic. Remember this?
 
   ```js
   $('#task-list').append('<li class="task">' + taskName + ' ' + taskDesc + '</li>')
