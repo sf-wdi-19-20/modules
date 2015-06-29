@@ -119,7 +119,7 @@ We'll be using `_.each` to iterate over the data we want to use in our template.
   var petsTemplate = _.template($('#pets-template').html());
   ```
 
-5. Set up some test data in your `script.js` file. **Your object keys must match the parameters you set up in your template!** (e.g. `<%= name %>` and `<%= species %>`) This array of test data is our **model**.
+5. Set up some test data in your `script.js`. **Your object keys must match the parameters you set up in your template!** (e.g. `<%= name %>` and `<%= species %>`) This array of test data is our **model**.
 
   ```js
   var pets = [
