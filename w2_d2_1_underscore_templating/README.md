@@ -2,12 +2,12 @@
 | Objectives |
 | :--- |
 | Add the Underscore.js library to your projects |
-| Create and compile and Underscore template |
+| Create and compile an Underscore template |
 | Use Underscore templating to display data from an array on your HTML page |
 
 ## What is a template?
 
-* A **template** is a document (or piece of code) that contains **parameters** that will be replaced by actual data by the template processing system.
+* A **template** is a document (or piece of code) that contains **parameters** that will be dynamically replaced by data by the template processing system.
 
 * We'll use Underscore's template processing system, and the parameters will live inside `<%= %>` tags.
 
