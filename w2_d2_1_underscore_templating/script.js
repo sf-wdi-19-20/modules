@@ -3,7 +3,7 @@ $(function() {
   // form to create a new pet
   var $newPet = $('#new-pet');
 
-  // container to list our pets
+  // element to hold our list of pets
   var $petsList = $('#pets-list');
 
   // pets template
