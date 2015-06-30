@@ -6,8 +6,10 @@ $(function() {
   // element to hold our list of pets
   var $petsList = $('#pets-list');
 
-  // pets template
+  // pets template (this is a function)
   var petsTemplate = _.template($('#pets-template').html());
+  console.log("this is the compiled template");
+  console.log(petsTemplate);
 
   // start with seed data
   var pets = [
@@ -19,7 +21,8 @@ $(function() {
   // append our existing pets (from seed data) to `$petsList`
   _.each(pets, function (pet, index) {
     var $pet = $(petsTemplate(pet));
-    $pet.attr('data-index', index);
+    console.log($pet);
+    // $pet.attr('data-index', index);
     $petsList.append($pet);
   });
 
