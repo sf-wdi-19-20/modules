@@ -141,7 +141,7 @@ We'll be using `_.each` to iterate over the data we want to use in our template.
 
 ## Challenges (& Tonight's Homework)
 
-Refactor your To Do app to use Underscore templating. Feel free to make a copy of the To Do app solution if you want to start with fresh code. Follow the steps below and the code sample in this repo to guide your refactor.
+Refactor your To Do app to use Underscore templating. Feel free to make a copy of the <a href="../w2_d1_3_todo_lab/solution" target="_blank">To Do app solution</a> if you want to start with fresh code. Follow the steps below and the code sample in this repo to guide your refactor.
 
 Submit the link to your To Do app repo in the <a href="https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform" target="_blank">homework submission form</a>.
 
