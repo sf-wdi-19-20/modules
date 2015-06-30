@@ -157,15 +157,15 @@ Submit the link to your To Do app repo in the <a href="https://docs.google.com/a
 
 1. Compile your template, using jQuery to select it by its id.
 
-2. Set up test data in your custom script file. This should be an array of objects, where the keys match your template's paraeters.
+2. Set up test data in your custom script file. This should be an array of objects, where the keys match your template's parameters.
+
+3. Iterate through your test data, creating a new HTML element for each object in the array and appending it to the "list" element you set up in part 1 of the challenges.
 
 ### Part 3
 
-1. Iterate through your test data, creating a new HTML element for each object in the array and appending it to the "list" element you set up in part 1 of the challenges.
+1. Open your `index.html` in the browser to see if your test data displays on the page. If not, check the JS console to see what errors you're getting.
 
-2. Open your `index.html` in the browser to see if your test data displays on the page. If not, check the JS console to see what errors you're getting.
-
-3. Once you've successfully displayed your test data on the page, refactor your new To Do form to use the template when adding new tasks.
+2. Once you've successfully displayed your test data on the page, refactor your new To Do form to use the template when adding new tasks.
 
 ### Stretch Challenges / Bonus
 
