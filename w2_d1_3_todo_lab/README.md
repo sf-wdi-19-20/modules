@@ -65,7 +65,7 @@ Consider using the JavaScript [Date](https://developer.mozilla.org/en-US/docs/We
   (a) Fork this repository, and clone it onto your local computer, OR
 	(b) Create a repo for the To Do app on your local computer.
 
-1. Meet the minimum requirements listed above. Use the [module notes]() as a reference.
+1. Meet the minimum requirements listed above. Use the [module notes](https://github.com/sf-wdi-19-20/staging-modules/tree/master/w2_d1_2_jquery_forms_app) as a reference.
 
 1. Push your To Do app to a remote repo on your GitHub account.
 
