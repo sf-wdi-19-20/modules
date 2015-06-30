@@ -82,8 +82,6 @@ var carInstance = new Car("Honda", "Civic", 2000, 24);
 1. Write a `Dice` constructor that takes a `numberOfSides`.
   * Add a method called `roll` that randomly returns a number from 1 up to the `numberOfSides`.
   * Modify the `roll` method to record the returned side in a lastRoll property.
-
-### Stretch Challenges
 1. Write a `Radio` constructor that takes in an `ownerName` and a `signalType` ("AM" or "FM").
   * Add a setStation method to your radio that allows the following ranges for a station property:
     * 535 to 1705 for "AM".
@@ -91,4 +89,6 @@ var carInstance = new Car("Honda", "Civic", 2000, 24);
   * Add a listen method that returns the following:
     * "distorted music" for "AM".
     * "clear music" for "FM".
-  1. Add a `toggleSignal` method that lets you set `signalType` to AM or FM. Make sure the station is valid when you toggle. Your radio should remember your station when you toggle.
+
+### Stretch Challenges
+  1. Add a `toggleSignal` method to your `Radio` constructor that lets you set `signalType` to AM or FM. Make sure the station is valid when you toggle. Your radio should remember your station when you toggle.
