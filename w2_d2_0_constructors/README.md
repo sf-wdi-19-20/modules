@@ -91,4 +91,4 @@ var carInstance = new Car("Honda", "Civic", 2000, 24);
   * Add a listen method that returns the following:
     * "distorted music" for "AM".
     * "clear music" for "FM".
-  1. Add a `toggleSignal` method that lets you set `signalType` to AM or FM. Make sure the station is valid when you toggle. Your radio should remember your station when you toggle.
+  1. Add a `toggleSignal` method that lets you set `signalType` to AM or FM. Make sure the station number is valid when you toggle. Your radio should remember your station when you toggle and return to that station when you toggle back.
