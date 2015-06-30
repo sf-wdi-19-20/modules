@@ -1,5 +1,11 @@
 $(function() {
 
+  // constructor functions
+  function ToDo(name, desc) {
+    this.name = name;
+    this.desc = desc;
+  };
+
   // form to create new todo
   var $newToDo = $('#new-todo');
 
@@ -32,15 +38,15 @@ $(function() {
     // create new todo object from form data
     var toDoName = $('#todo-name').val();
     var toDoDesc = $('#todo-desc').val();
-    var toDoData = {name: toDoName, desc: toDoDesc};
+    var toDo = new ToDo(toDoName, toDoDesc);
 
     // store our new todo
-    toDos.push(toDoData);
+    toDos.push(toDo);
     console.log(toDos);
-    var index = toDos.indexOf(toDoData);
+    var index = toDos.indexOf(toDo);
 
     // append our new todo to the page
-    var $todo = $(toDoTemplate(toDoData));
+    var $todo = $(toDoTemplate(toDo));
     $todo.attr('data-index', index);
     $toDoList.append($todo);
 
