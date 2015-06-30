@@ -69,4 +69,4 @@ Consider using the JavaScript [Date](https://developer.mozilla.org/en-US/docs/We
 
 1. Push your To Do app to a remote repo on your GitHub account.
 
-1. Submit the link to your To Do app repo in the [homework submission form](), along with any questions or comments from the pre-reading.
+1. Submit the link to your To Do app repo in the [homework submission form](https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform), along with any questions or comments from the pre-reading.
