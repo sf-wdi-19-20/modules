@@ -7,7 +7,7 @@
 
 ## What is a template?
 
-* A **template** is a document (or piece of code) that contains **parameters** which are dynamically replaced with data by the templating engine.
+* A **template** is a document (or piece of code) that contains **parameters** that are dynamically replaced with data.
 
 * Thus far, we've been coding information (or data) directly into our HTML file. Eventually, the data on our HTML page will come from a server, and we'll need a way to dynamically display that data.
 
@@ -18,7 +18,7 @@
 * Separate markup from logic. Remember this?
 
   ```js
-  $('#task-list').append('<li class="task">' + taskName + ' ' + taskDesc + '</li>')
+  $('#todo-list').append('<li class="todo">' + newTodoText + '</li>');
   ```
 
   * When appending new HTML elements to the page, the string of elements to append will only get longer as you begin to write more complex markup.
@@ -27,7 +27,7 @@
 
 * Maximize code reusability and maintainability.
 
-  * If you need to change your HTML structure for elements you're creating and displaying (e.g. adding an additional class name to your tasks), all you have to do is change the template!
+  * If you need to change your HTML structure for elements you're creating and displaying (e.g. adding an additional class name to your to-do tasks), all you have to do is change the template!
 
 ## Underscore.js
 
@@ -45,7 +45,7 @@ _.each([1, 2, 3], function (element, index) {
 });
 ```
 
-`_.each` replaces our need for a `for loop`. The above code could be written like this:
+`_.each` replaces our need for a `for loop`. The above code could be written like this if we weren't using `_.each`:
 
 ```js
 var arr = [1, 2, 3];
@@ -119,7 +119,7 @@ We'll be using `_.each` to iterate over the data we want to use in our template.
   var petsTemplate = _.template($('#pets-template').html());
   ```
 
-5. Set up some test data in your `script.js`. **Your object keys must match the parameters you set up in your template!** (e.g. `<%= name %>` and `<%= species %>`) This array of test data is our **model**.
+5. Set up an array of test data in your `script.js`. **Your object keys must match the parameters you set up in your template!** (e.g. `<%= name %>` and `<%= species %>`) This array is our **model**, which we will use to store our data.
 
   ```js
   var pets = [
@@ -139,7 +139,13 @@ We'll be using `_.each` to iterate over the data we want to use in our template.
   });
   ```
 
-## Challenges, Part 1
+## Challenges (& Tonight's Homework)
+
+Refactor your To Do app to use Underscore templating. Feel free to make a copy of the To Do app solution if you want to start with fresh code. Follow the steps below and the code sample in this repo to guide your refactor.
+
+Submit the link to your To Do app repo in the <a href="https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform" target="_blank">homework submission form</a>.
+
+### Part 1
 
 1. Add the Underscore CDN to your To Do app. Make sure to require it before your custom script.
 
@@ -147,13 +153,13 @@ We'll be using `_.each` to iterate over the data we want to use in our template.
 
 3. Set up a "list" element in your HTML where you will eventually append the data from your template. A `<div>` or a `<ul>` is a good choice. Remember to give it an id.
 
-## Challenges, Part 2
+### Part 2
 
 1. Compile your template, using jQuery to select it by its id.
 
 2. Set up test data in your custom script file. This should be an array of objects, where the keys match your template's paraeters.
 
-## Challenges, Part 3
+### Part 3
 
 1. Iterate through your test data, creating a new HTML element for each object in the array and appending it to the "list" element you set up in part 1 of the challenges.
 
@@ -161,7 +167,7 @@ We'll be using `_.each` to iterate over the data we want to use in our template.
 
 3. Once you've successfully displayed your test data on the page, refactor your new To Do form to use the template when adding new tasks.
 
-## Stretch Challenges
+### Stretch Challenges / Bonus
 
 1. When a new task is created, make sure you are pushing it into the array of "test" data you set up in part 2 of the challenges to keep your model updated with your view.
 
