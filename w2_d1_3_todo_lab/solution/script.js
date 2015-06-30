@@ -27,7 +27,7 @@ $(function() {
     // create new todo object from form data
     var toDoName = $('#todo-name').val();
     var toDoDesc = $('#todo-desc').val();
-    var toDoData = { name: toDoName, desc: toDoDesc };
+    var toDoData = {name: toDoName, desc: toDoDesc};
 
     // store our new todo
     toDos.push(toDoData);
