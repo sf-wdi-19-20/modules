@@ -13,5 +13,5 @@ Objective: Refactor your existing todo app to use constructor functions
 
 ### Bonus
 1. Save each todo to a `List` object instead of a regular array
-  1. `List` should have its own constructor
-  1. Modify your todo constructor to add items to an instance of `List`
+  * `List` should have its own constructor
+  * Modify your todo constructor to add items to an instance of `List`
