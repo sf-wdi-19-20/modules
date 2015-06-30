@@ -167,6 +167,15 @@ Submit the link to your To Do app repo in the <a href="https://docs.google.com/a
 
 2. Once you've successfully displayed your test data on the page, refactor your new To Do form to use the template when adding new tasks.
 
+### Part 4
+
+Readings for tonight are from Mozilla Developer Network's [Introduction to Object-Oriented JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript). Read these sections:
+* Object-oriented programming
+* Terminology
+* Prototype-based programming
+* JavaScript object oriented programming -- Custom Objects section
+
+
 ### Stretch Challenges / Bonus
 
 1. When a new task is created, make sure you are pushing it into the array of "test" data you set up in part 2 of the challenges to keep your model updated with your view.
