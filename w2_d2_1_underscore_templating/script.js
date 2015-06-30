@@ -61,7 +61,7 @@ $(function() {
 
     // reset indexes in DOM to match `pets` array
     // $.each loops through DOM elements
-    $('.pet').each(function(index, pet) {
+    $('.pet').each(function(index) {
       $(this).attr('data-index', index);
     });
   });
