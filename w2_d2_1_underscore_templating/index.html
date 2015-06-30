@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- custom styles -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <title>Pet Shop</title>
+</head>
+<body>
+  <div class="jumbotron">
+    <div class="container">
+    </div>
+  </div>
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-6">
+        <h2>Buy a Pet</h2>
+        <hr>
+        <form id="new-pet">
+          <div class="form-group">
+            <input class="form-control" id="pet-name" placeholder="Name" autofocus>
+          </div>
+          <div class="form-group">
+            <input class="form-control" id="pet-species" placeholder="Species">
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-info" value="Buy New Pet">
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <h2>Your Pets</h2>
+        <hr>
+        <div id="pets-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jquery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <!-- underscore -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+  <!-- custom script -->
+  <script type="text/javascript" src="script.js"></script>
+
+  <!-- underscore template -->
+  <script type="text/template" id="pets-template">
+    <div class="pet">
+      <p>
+        <%= name %> - <%= species %>
+        &nbsp;
+        <button type="button" class="close delete" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </p>
+      <hr>
+    </div>
+  </script>
+
+</body>
+</html>

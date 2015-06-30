@@ -1,0 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
+
+body {
+  font-family: Open Sans, "Helvetica Neue", Helvetica, Arial;
+  font-size: 16px;
+}
+
+.jumbotron {
+  background: url(https://lh5.googleusercontent.com/-v0XdS6iU7uI/VGIeF5DHT6I/AAAAAAAAAI8/J-WqE4szawI/w500-h375/doge-bite.png) center;
+  height: 310px;
+}
