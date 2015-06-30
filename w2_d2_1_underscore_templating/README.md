@@ -18,7 +18,7 @@
 * Separate markup from logic. Remember this?
 
   ```js
-  $('#todo-list').append('<li class="todo">' + newTodoText + '</li>');
+  $('#todo-list').append('<li class="todo">' + todo.name + ' - ' + todo.desc + '</li>');
   ```
 
   * When appending new HTML elements to the page, the string of elements to append will only get longer as you begin to write more complex markup.
