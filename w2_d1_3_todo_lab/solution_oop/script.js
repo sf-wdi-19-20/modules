@@ -6,6 +6,13 @@ $(function() {
     this.desc = desc;
   };
 
+  // `ToDo.all` contains our seed data
+  ToDo.all = [
+    {name: "laundry", desc: "clean clothes"},
+    {name: "grocery shopping", desc: "buy food"},
+    {name: "nap time", desc: "remember to sleep!"}
+  ];
+
   // form to create new todo
   var $newToDo = $('#new-todo');
 
@@ -15,17 +22,9 @@ $(function() {
   // todo template
   var toDoTemplate = _.template($('#todo-template').html());
 
-  // `toDos` array is our model (holds our data)
-  // contains test (or "seed") data
-  var toDos = [
-    {name: "laundry", desc: "clean clothes"},
-    {name: "grocery shopping", desc: "buy food"},
-    {name: "nap time", desc: "remember to sleep!"}
-  ];
-
   // append existing todos (from seed data) to `$toDoList`
   // `_.each` is an "iterator" function provided by Underscore.js
-  _.each(toDos, function (todo, index) {
+  _.each(ToDo.all, function (todo, index) {
     var $todo = $(toDoTemplate(todo));
     $todo.attr('data-index', index);
     $toDoList.append($todo);
@@ -41,9 +40,9 @@ $(function() {
     var toDo = new ToDo(toDoName, toDoDesc);
 
     // store our new todo
-    toDos.push(toDo);
-    console.log(toDos);
-    var index = toDos.indexOf(toDo);
+    ToDo.all.push(toDo);
+    console.log(ToDo.all);
+    var index = ToDo.all.indexOf(toDo);
 
     // append our new todo to the page
     var $todo = $(toDoTemplate(toDo));
@@ -65,14 +64,14 @@ $(function() {
     var $todo = $(this).closest(".todo");
     var index = $todo.attr('data-index');
 
-    // remove todo from the `toDos` array (model)
-    toDos.splice(index, 1);
-    console.log(toDos);
+    // remove todo from the `ToDo.all` array (model)
+    ToDo.all.splice(index, 1);
+    console.log(ToDo.all);
 
     // remove todo from the DOM (view)
     $todo.remove();
 
-    // reset indexes in DOM to match `toDos` array
+    // reset indexes in DOM to match `ToDo.all` array
     // $.each loops through DOM elements
     $('.todo').each(function(index) {
       $(this).attr('data-index', index);
