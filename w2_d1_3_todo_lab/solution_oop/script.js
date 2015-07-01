@@ -13,6 +13,20 @@ $(function() {
     new ToDo('nap time', 'remember to sleep!')
   ];
 
+  ToDo.prototype.save = function() {
+    // store our new todo
+    ToDo.all.push(this);
+    console.log(ToDo.all);
+    this.index = ToDo.all.indexOf(this);
+  };
+
+  ToDo.prototype.render = function() {
+    // append our new todo to the page
+    var $todo = $(toDoTemplate(this));
+    $todo.attr('data-index', this.index);
+    $toDoList.append($todo);
+  };
+
   // form to create new todo
   var $newToDo = $('#new-todo');
 
@@ -34,20 +48,16 @@ $(function() {
   $newToDo.on('submit', function(event) {
     event.preventDefault();
 
-    // create new todo object from form data
+    // create new toDo object from form data
     var toDoName = $('#todo-name').val();
     var toDoDesc = $('#todo-desc').val();
     var toDo = new ToDo(toDoName, toDoDesc);
 
-    // store our new todo
-    ToDo.all.push(toDo);
-    console.log(ToDo.all);
-    var index = ToDo.all.indexOf(toDo);
+    // save toDo
+    toDo.save()
 
-    // append our new todo to the page
-    var $todo = $(toDoTemplate(toDo));
-    $todo.attr('data-index', index);
-    $toDoList.append($todo);
+    // render toDo
+    toDo.render()
 
     // reset the form
     $newToDo[0].reset();
