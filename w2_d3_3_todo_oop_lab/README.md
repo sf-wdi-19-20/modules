@@ -2,17 +2,13 @@
 
 **Objective:** Refactor your existing To Do App to use constructor functions. Feel free to reference the [existing To Do App solutions](../w2_d1_3_todo_lab) to get started.
 
-### Minimum Requirements
-
+### Requirements
 1. All todos should be created with a constructor function
   * The constructor should accept `title` and `description`
-  * The constructor should add the created todo to an array
-2. The `Todo` prototype should include a `render` function
-  * Calling render should append the todo item
+1. The `ToDo` constructor should have a property `all`
+  * `all` should be an array of `toDo`s
+1. The `ToDo` prototype should have a `save` method that adds the `toDo` to `ToDo.all`
+1. The `Todo` prototype should have a `render` function
   * `render` should use underscore templates
-
-### Bonus
-
-1. Save each todo to a `List` object instead of a regular array
-  * `List` should have its own constructor
-  * Modify your `Todo` constructor to add items to an instance of `List`
+  * Calling render should append the `toDo` to the page
+1. Submit the link to your To Do app repo in the [homework submission form](https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform)
