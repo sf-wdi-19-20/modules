@@ -1,0 +1,8 @@
+body {
+  font-size: 16px;
+}
+
+.todo-text:hover, .todo-text.done {
+  cursor: pointer;
+  text-decoration: line-through;
+}
