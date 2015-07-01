@@ -39,9 +39,7 @@ $(function() {
   // append existing todos (from seed data) to `$toDoList`
   // `_.each` is an "iterator" function provided by Underscore.js
   _.each(ToDo.all, function (todo, index) {
-    var $todo = $(toDoTemplate(todo));
-    $todo.attr('data-index', index);
-    $toDoList.append($todo);
+    todo.render()
   });
 
   // submit form to create new todo
