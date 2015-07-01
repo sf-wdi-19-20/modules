@@ -55,7 +55,7 @@ Basically, "delegating" tasks to another part of the program. In JS, think of **
 
 ###Inheritance 
 
-Basically, letting objects by "a kind of" other objects. The process by which, for example, we can easily create both `Employee` and `Student` object types starting from the features of a base `Person` object type. Tomorrow!
+Basically, letting objects be "a kind of" other objects. The process by which, for example, we can easily create both `Employee` and `Student` object types starting from the features of a base `Person` object type. Tomorrow!
 
 
 ###Encapsulation
@@ -117,7 +117,7 @@ console.log("'age': ",grandpa.getAge());  // 62 :D
 | prototype | all instances share a lookup copy | commonalities (numLegs on Dog), or shared data (numCreated) | common, same behavior across instances |
 | instance | only one copy, for this instance | singularities (secretCode with a sibling) or overwriting (3-legged dog)| rare, singularities (interpretSecretCode) |
 
-Remember, when possibly overwriting an existing prototype property, always use `||`:
+Remember, when possibly overwriting an existing prototype property or method (especially on built-in objects' prototypes), always use `||`:
 
 `Array.prototype.sort = Array.prototype.sort || mySort;`
 
