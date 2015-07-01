@@ -10,12 +10,12 @@ Imagine you want to let people write really short public blog posts. The homepag
 | :------: | :---: | :-----: |
 | User Stories, OOP | Underscore, Bootstrap, jQuery, Git, Kanman Board | Post |
 
-* Make your basic user narrative, object list, and Kanman board
-* Start by creating a basic project and push to a public repo. Make frequent commits and pushes (every hour or so). Include a very, VERY short README.md that outlines what your app does and the libraries you are using.
-* Use default Bootstrap classes with minimal custom CSS
-* Make a list of posts using Underscore.js tempting
-* Make a form to add new posts to the list using jQuery
-* Be sure to comment your code; make the code clean (mind spacing and indentation);
+1. Make your basic user narrative, object list, and Kanman board
+2. Start by creating a basic project and push to a public repo. Make frequent commits and pushes (every hour or so). Include a very, VERY short README.md that outlines what your app does and the libraries you are using.
+3. Make your initial layout. Use default Bootstrap classes with minimal custom CSS
+4. Make a list of posts using Underscore.js tempting
+5. Make a form to add new posts to the list using jQuery
+6. Be sure to comment your code; make the code clean (mind spacing and indentation);
 
 ## Stretch Requirements (optional)
 
