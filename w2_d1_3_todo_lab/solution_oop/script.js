@@ -4,7 +4,7 @@ $(function() {
   function ToDo(name, desc) {
     this.name = name;
     this.desc = desc;
-  };
+  }
 
   // `ToDo.all` contains our seed data
   ToDo.all = [
@@ -17,12 +17,12 @@ $(function() {
     // store our new todo
     ToDo.all.push(this);
     console.log(ToDo.all);
-    this.index = ToDo.all.indexOf(this);
   };
 
   ToDo.prototype.render = function() {
     // append our new todo to the page
     var $todo = $(toDoTemplate(this));
+    this.index = ToDo.all.indexOf(this);
     $todo.attr('data-index', this.index);
     $toDoList.append($todo);
   };
@@ -39,7 +39,7 @@ $(function() {
   // append existing todos (from seed data) to `$toDoList`
   // `_.each` is an "iterator" function provided by Underscore.js
   _.each(ToDo.all, function (todo, index) {
-    todo.render()
+    todo.render();
   });
 
   // submit form to create new todo
@@ -52,10 +52,10 @@ $(function() {
     var toDo = new ToDo(toDoName, toDoDesc);
 
     // save toDo
-    toDo.save()
+    toDo.save();
 
     // render toDo
-    toDo.render()
+    toDo.render();
 
     // reset the form
     $newToDo[0].reset();
