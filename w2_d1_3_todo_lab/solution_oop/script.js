@@ -4,22 +4,6 @@ $(function() {
   function ToDo(name, desc) {
     this.name = name;
     this.desc = desc;
-
-    // store our new todo
-    var toDos = JSON.parse(localStorage.getItem('toDos')) || [];
-    toDos.push(this);
-    localStorage.setItem('toDos', JSON.stringify(toDos));
-
-    this.render = function() {
-      // find the index of this toDo
-      var toDos = JSON.parse(localStorage.getItem('toDos'));
-      var index = toDos.indexOf(this);
-
-      // append this toDo to the page
-      var $todo = $(toDoTemplate(this));
-      $todo.attr('data-index', index);
-      $toDoList.append($todo);
-    }
   };
 
   // `ToDo.all` contains our seed data
@@ -55,8 +39,15 @@ $(function() {
     var toDoDesc = $('#todo-desc').val();
     var toDo = new ToDo(toDoName, toDoDesc);
 
-    // render the toDo
-    toDo.render();
+    // store our new todo
+    ToDo.all.push(toDo);
+    console.log(ToDo.all);
+    var index = ToDo.all.indexOf(toDo);
+
+    // append our new todo to the page
+    var $todo = $(toDoTemplate(toDo));
+    $todo.attr('data-index', index);
+    $toDoList.append($todo);
 
     // reset the form
     $newToDo[0].reset();
