@@ -1,13 +1,5 @@
 //OOP Modeling Challenges (Car Dealership)
 
-//For each challenge that asks you to add a variable to the Car
-// object type, write a comment that explains why you chose to 
-//put it on the constructor, prototype, or individual car instance.
-
-//1. List important attributes and methods for a Car object type.
-
-attributes: 
-
 // constructor for the Car object type.
 var Car = function(make, model, year, actualPrice, priceMarkup){
 	this.make = make;
