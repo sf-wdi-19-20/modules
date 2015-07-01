@@ -1,7 +1,7 @@
 //OOP Modeling Challenges (Car Dealership)
 
 // constructor for the Car object type.
-var Car = function(make, model, year, actualPrice, priceMarkup){
+var Car = function(make, model, year, location, actualPrice, priceMarkup){
 	this.make = make;
 	this.model = model;
 	this.year = year;
@@ -9,7 +9,7 @@ var Car = function(make, model, year, actualPrice, priceMarkup){
 	// location attribute is on Car constructor because 
 	// we DON'T want all cars to share a location - 
 	// they're probably in different places!
-	this.location = "Lot A";
+	this.location = location;
 
 	// color could go either way, but we'll put it in constructor
 	// because color is more tied to each car (constructor)
@@ -71,7 +71,7 @@ Car.prototype.numWheels = 4;
 
 
 // creating an instance
-blueCar = new Car("Ford", "Focus", 2005, 6000, 0.25);
+blueCar = new Car("Ford", "Focus", 2005, "Lot A", 6000, 0.25);
 
 // changing its color
 blueCar.color = "blue";
