@@ -8,9 +8,9 @@ $(function() {
 
   // `ToDo.all` contains our seed data
   ToDo.all = [
-    {name: "laundry", desc: "clean clothes"},
-    {name: "grocery shopping", desc: "buy food"},
-    {name: "nap time", desc: "remember to sleep!"}
+    new ToDo('laundry', 'clean clothes'),
+    new ToDo('grocery shopping', 'buy food'),
+    new ToDo('nap time', 'remember to sleep!')
   ];
 
   // form to create new todo
