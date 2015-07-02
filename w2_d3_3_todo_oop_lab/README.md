@@ -7,6 +7,7 @@
   * The constructor should accept `title` and `description`
 1. The `ToDo` constructor should have a property `all`
   * `all` should be an array of `toDo`'s
+  * **Hint:** `all` should be set directly on the `ToDo` constructor, NOT on new instances of `ToDo`
 1. The `ToDo` prototype should have a `save` method that adds the `toDo` to `ToDo.all`
 1. The `Todo` prototype should have a `render` function
   * `render` should use underscore templates
