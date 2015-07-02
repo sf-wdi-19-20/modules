@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- custom styles -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <title>Micro-Blog</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h3>Micr&#248;bl&#248;g</h3>
+        <hr>
+        <form id="new-post">
+          <div class="form-group">
+            <textarea class="form-control" id="post-title" placeholder="How are you?" autofocus></textarea>
+          </div>
+          <div class="form-group">
+            <input class="form-control" id="post-username" placeholder="Your appelation"/>
+          </div>
+          <div class="form-group text-right">
+            <input type="submit" class="btn btn-success" value="Publish">
+          </div>
+        </form>
+        <hr>
+        <div id="post-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jquery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <!-- underscore -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+  <!-- custom script -->
+  <script type="text/javascript" src="script.js"></script>
+
+  <!-- underscore template -->
+  <script type="text/template" id="post-template">
+    <div class="row">
+      <div class="col-xs-12">
+        <p><%= title %></p>
+        <div class='text-muted text-right'>
+          <small>posted by <%= username %></small>
+        </div>
+      </div>
+      </p>
+      <hr>
+    </div>
+  </script>
+
+</body>
+</html>
