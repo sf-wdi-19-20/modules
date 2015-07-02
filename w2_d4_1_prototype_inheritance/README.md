@@ -65,8 +65,8 @@ window.localStorage.clear();
 
 ##Prototypal Inheritance
 - In general OOP practices, prototypes (similar to classes in other languages) can inherit properties from parent constructors and prototypes.
-- We will demonstrate this through a simple library application. The starter app can be found [here]().
+- We will demonstrate this through a simple library application. The starter app can be found [here](https://github.com/sf-wdi-19-20/w2_oop_book_library).
 
 ##Challenges
 - Implement prototypal inheritance in your todo application.
-- You will need to think about which functions are more generic and which ones are more specific. This will determine how you break things up. 
+- You will need to think about which functions are more generic and which ones are more specific. This will determine how you break things up.
