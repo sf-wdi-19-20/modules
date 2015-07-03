@@ -2,9 +2,16 @@
 
 Put the "ud" in CRUD!
 
+| Objectives |
+| :--- |
+| Delete data items from a server using RESTful routing and AJAX |
+| Update data items on a server using RESTful routing and AJAX |
+| Create Express app routes with parameterized URLs |
+| Use ids in data to manage CRUD operations | 
+
 ##Requirements
 
-**To Delete an item, we'll need:  **
+**To Delete an item, we'll need:**
 
 1. Some way for the user to indicate they want the item deleted (a button!),
 
@@ -18,7 +25,7 @@ Put the "ud" in CRUD!
 
 3. Client-side code to change the state of the app after the item is deleted from the data (a response handler!).
 
-**To Update an item, we'll need:  **
+**To Update an item, we'll need:**
 
 1. Some way for the user to indicate they want to update the item (a button!),
 
