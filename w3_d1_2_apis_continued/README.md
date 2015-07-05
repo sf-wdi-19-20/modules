@@ -8,6 +8,13 @@
 
 * What are they, analogies, why we use them
 
+Application Program Interfaces (APIs) are similar to Graphical User Interfaces (GUIs):
+  * A GUI is an interface between a computer and a human
+  * An API is an interface between two computers
+
+A GUI exists to make an application more convenient for the user.
+An API does the same for its users, which are usually developers of other applications.
+
 ## Tools
 
 * Spotify API example (returns JSON)
