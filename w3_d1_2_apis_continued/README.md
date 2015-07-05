@@ -8,6 +8,13 @@
 
 * What are they, analogies, why we use them
 
+Application Program Interfaces (APIs) are similar to Graphical User Interfaces (GUIs):
+  * A GUI is an interface between a computer and a human
+  * An API is an interface between two computers
+
+A GUI exists to make an application more convenient for the user.
+An API does the same for its users, which are usually developers of other applications.
+
 ## Tools
 
 * Spotify API example (returns JSON)
@@ -20,6 +27,13 @@
 
 * What is it, why use it
 * Explain GET requests
+
+The HyperText Transfer Protocol (HTTP) is similar to a written language like English.
+English was made for humans; the HTTP language is specifically for web browsers and servers to communicate with each other.
+
+`GET` and `POST` are the most important verbs in HTTP:
+  * A browser will use `GET` to indicate it would like to receive a specific web page or resource from a server.
+  * A browser will use `POST` to indicate it would like to send some data to a server.
 
 ## AJAX Setup
 
