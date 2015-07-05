@@ -47,11 +47,19 @@
   <!-- underscore template -->
   <script type="text/template" id="track-template">
     <div class="track">
-      <p>
-        <img src="<%= albumArt %>" width="100">
-        &nbsp;&nbsp;
-        <strong><%= name %></strong> by <%= artist %>
-      </p>
+      <div class="row">
+        <div class="col-xs-4">
+          <img src="<%= albumArt %>" class="img-responsive">
+        </div>
+        <div class="col-xs-8">
+          <p>
+            <strong><%= name %></strong> by <%= artist %>
+          </p>
+          <p>
+            <a href="<%= previewUrl %>" target="_blank" class="btn btn-sm btn-default">Preview <span class="glyphicon glyphicon-play"></span></a>
+          </p>
+        </div>
+      </div>
       <hr>
     </div>
   </script>

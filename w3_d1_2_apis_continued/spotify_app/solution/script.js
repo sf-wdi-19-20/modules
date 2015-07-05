@@ -31,7 +31,8 @@ $(function() {
         var templateData = {
           albumArt: result.album.images.length > 0 ? result.album.images[0].url : null,
           artist: result.artists[0].name,
-          name: result.name
+          name: result.name,
+          previewUrl: result.preview_url
         };
         var $trackResult = $(trackTemplate(templateData));
         $results.append($trackResult);
