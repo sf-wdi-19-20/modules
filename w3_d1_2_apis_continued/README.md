@@ -21,6 +21,13 @@
 * What is it, why use it
 * Explain GET requests
 
+The HyperText Transfer Protocol (HTTP) is similar to a written language like English.
+English was made for humans; the HTTP language is specifically for web browsers and servers to communicate with each other.
+
+`GET` and `POST` are the most important verbs in HTTP:
+  * A browser will use `GET` to indicate it would like to receive a specific web page or resource from a server.
+  * A browser will use `POST` to indicate it would like to send some data to a server.
+
 ## AJAX Setup
 
 * Make a call, JSON parse the result
