@@ -14,6 +14,11 @@ Express is an unopinionated server-side javascript MVC framework that runs on a 
 
 ### Analogy (What?)
 
+Think of web frameworks like you are building your own computer.
+Node is like the microprocessor and Express is like the motherboard of a computer and you can plug in more stuff to Express, for example any memory (database) or video card (view engine), and Node will run it all.
+
+![computer](computer.png)
+
 ### Key Snippets
 
 #Challenges
