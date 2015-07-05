@@ -1,18 +1,20 @@
-#Title
+# Exploring APIs
 
 | Objectives |
 | :--- |
-| Students will be able to . . . |
+| Explore and make queries on open APIs |
 
 | Concepts | Tools | Activities |
 | :---: | :---: | :---: |
-| APIs, HTTP, RESTful Routes,  | | Challenges |
+| APIs, HTTP, RESTful Routes  | Postman | Challenges |
 
 ### Motivation (Why?)
 
-APIs are the conventions for c
+APIs are the URL conventions for accessing web servers.
 
 ### Analogy (What?)
+
+APIs are like a robot that needs special commands to have it do things. If you say the right commands, then it behaves, if you don't then the robot doesn't understand.
 
 ### Key Snippets & Concepts
 
