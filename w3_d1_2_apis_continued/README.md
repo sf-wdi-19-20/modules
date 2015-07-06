@@ -161,6 +161,8 @@ Make a music search app using jQuery, AJAX, and the Spotify API. You will be usi
 
 6. Submit the link to your `spotify_app` repo in the <a href="https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform" target="_blank">homework submission form</a>.
 
+7. Read about <a href="http://piwik.org/blog/2008/01/how-to-design-an-api-best-practises-concepts-technical-aspects" target="_blank">How to Design an API</a> to prepare for tomorrow, and do this <a href="http://www.codecademy.com/en/tracks/youtube" target="_blank">YouTube API tutorial</a> for some extra practice.
+
 ### Stretch Challenges / Bonus
 
 1. Display a track's album artwork next to each track name and artist name in the view. (**Super Bonus:** You'll notice if you try to access the album artwork but none is available, your app will break. Prevent this from happening with a check to see if any artwork is available first.)
