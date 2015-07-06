@@ -55,8 +55,8 @@ function addAllArrays(arrayOfArrays){
     for (var i=0; i<arrayOfArrays.length; i++){
         oneArray = arrayOfArrays[i];
         for (var j=0; j<oneArray.length; j++){
-	    sum +=  numArray[j];
-	}
+            sum +=  numArray[j];
+        }
     }
     return sum;
 }
