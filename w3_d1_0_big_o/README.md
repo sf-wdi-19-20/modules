@@ -95,9 +95,9 @@ Big O is the most commonly-used notations for comparing functions in computer sc
 
 ##Resources
 
-* simple reading from (Interview Cake)[https://www.interviewcake.com/article/big-o-notation-time-and-space-complexity]
-* lecture notes from (an intro computer science class)[https://courses.edx.org/c4x/MITx/6.00.1x_5/asset/handouts_Big_O_Notes.pdf]
-* video from (an algorithms course on Coursera)[https://class.coursera.org/algo-003/lecture/11]
+* simple reading from [Interview Cake](https://www.interviewcake.com/article/big-o-notation-time-and-space-complexity)
+* lecture notes from [an intro computer science class](https://courses.edx.org/c4x/MITx/6.00.1x_5/asset/handouts_Big_O_Notes.pdf)
+* video from [an algorithms course on Coursera](https://class.coursera.org/algo-003/lecture/11)
 
 ##Challenges: Algorithm Analysis
 
