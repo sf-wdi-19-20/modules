@@ -77,7 +77,11 @@ function addAllArrays(arrayOfArrays){
 
 Every row listed in this table is more complex (takes more time or space) than the rows above it.  That means, if we decide an algorithm takes polynomial time to do one set of operations and then moves on and needs a linear amount of work to finish up, we can just say it's a polynomial algorithm for the purposes of Big O notation. 
 
+
+Graph: how the number of operations (time) grows with the number of input    
+elements for various orders of complexity   
 ![time complexity graph from daveperrett.com](http://www.daveperrett.com/images/articles/2010-12-07-comp-sci-101-big-o-notation/Time_Complexity.png)
+
 
 
 ###Bonus: Related Notations
