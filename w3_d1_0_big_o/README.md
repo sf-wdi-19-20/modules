@@ -91,6 +91,8 @@ Big O is the most commonly-used notations for comparing functions in computer sc
 | f(n) =  ω(g(n)) | < |
 
 
+##Readings
+
 
 
 ##Challenges: Algorithm Analysis
