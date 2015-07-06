@@ -8,8 +8,8 @@
 ## APIs
 
 Application Program Interfaces (APIs) are similar to Graphical User Interfaces (GUIs):
-  * A **GUI** is an interface between a computer and a human (e.g. <a href="https://github.com/" target="_blank">github.com</a>).
-  * An **API** is an interface between two computers (e.g. <a href="https://developer.github.com/v3" target="_blank">GitHub API</a>).
+  * A **GUI** is an interface between a program and a human (e.g. <a href="https://github.com/" target="_blank">github.com</a>).
+  * An **API** is an interface between two programs (e.g. <a href="https://developer.github.com/v3" target="_blank">GitHub API</a>).
 
 A **GUI** exists to make an application more convenient for the user. An **API** does the same for its users, which are usually developers of other applications.
 
@@ -20,8 +20,16 @@ A **GUI** exists to make an application more convenient for the user. An **API**
 
 ## AJAX
 
-* What is it, why use it
-* Explain GET requests
+Asynchronous JavaScript And XML (AJAX) allows us to make requests to a server (ours or another application's) without refreshing the page.
+
+#### Why do we care?
+
+* AJAX lets us exchange data with the server behind the scenes. We can update our web pages (and the data on our server!) without reloading the page at all.
+* Limiting page reloads makes our web apps *faster* and gives our users a *better experience*.
+
+#### How do we use it?
+
+## Explain GET requests
 
 The HyperText Transfer Protocol (HTTP) is similar to a written language like English.
 English was made for humans; the HTTP language is specifically for web browsers and servers to communicate with each other.
