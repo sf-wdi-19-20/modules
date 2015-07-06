@@ -110,7 +110,7 @@ $.post(
 
 #### AJAX and Event Handlers
 
-We can combine AJAX calls with any jQuery event handlers. You may want to execute your AJAX call when the user clicks and button or submits a form.
+We can combine AJAX calls with any jQuery event handlers. You may want to execute an AJAX call when the user clicks and button or submits a form.
 
 ```js
 // click event on button
@@ -141,9 +141,9 @@ Make a music search app using jQuery, AJAX, and the Spotify API. You will be usi
 
 3. Use AJAX to call <a href="https://developer.spotify.com/web-api/search-item" target="_blank">Spotify's search endpoint</a> with the search keyword from the form.
 
-4. Parse the data you receive from Spotify, and use jQuery and Underscore templating to render that data in the view.
+4. Use jQuery and Underscore templating to render the data you receive from Spotify in the view.
 
-5. The data you show in the view should include the track name and artist name.
+5. The data you render in the view should include the track name and artist name.
 
 ### How to Get Started
 
