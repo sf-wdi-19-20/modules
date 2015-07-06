@@ -55,7 +55,7 @@ Using jQuery's `$.ajax()` method, we can specify a list of parameters, including
 ```js
 $.ajax({
   type: 'GET',
-  url: 'https://api.spotify.com/v1/artists/3jOstUTkEu2JkjvRdBA5Gu',
+  url: 'https://api.spotify.com/v1/artists/1jTAvg7eLZQFonjWIXHiiT',
   dataType: 'json',
   success: function(data) {
     console.log(data);
@@ -67,7 +67,7 @@ If we're doing a simple `GET` request, we can (and should) avoid the `$.ajax()` 
 
 ```js
 $.get(
-  'https://api.spotify.com/v1/artists/3jOstUTkEu2JkjvRdBA5Gu',
+  'https://api.spotify.com/v1/artists/1jTAvg7eLZQFonjWIXHiiT',
   function(data) {
     console.log(data);
   }
@@ -108,21 +108,24 @@ $.post(
 );
 ```
 
-We can combine our AJAX calls with any jQuery event handlers.
+#### AJAX and Event Handlers
+
+We can combine AJAX calls with any jQuery event handlers. You may want to execute your AJAX call when the user clicks and button or submits a form.
 
 ```js
-$("button").click(function(){
-    $.post("demo_test.asp", function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
-    });
+// click event on button
+$('button').on('click', function() {
+  $.get('https://api.spotify.com/v1/search?q=hello&type=album', function(data) {
+    console.log(data);
+  });
 });
-```
 
-```js
-$("form").on('submit', function(){
-    $.post("demo_test.asp", function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
-    });
+
+// submit event on form
+$('form').on('submit', function(){
+  $.get('https://api.spotify.com/v1/search?q=goodbye&type=artist', function(data) {
+    console.log(data);
+  });
 });
 ```
 
@@ -161,6 +164,8 @@ Make a music search app using jQuery, AJAX, and the Spotify API. You will be usi
 1. Display a track's album artwork next to each track name and artist name in the view. (**Super Bonus:** You'll notice if you try to access the album artwork but none is available, your app will break. Prevent this from happening with a check to see if any artwork is available first.)
 
 2. Spotify gives us a `preview_url` for each track. Create a play button for each track in your view that opens the `preview_url` in a new tab (it will start playing the song!).
+
+3. Handle the case where no data comes back from Spotify. You'll want to let the user know that there are no results, rather than just showing a blank page.
 
 ## Docs & Reading
 
