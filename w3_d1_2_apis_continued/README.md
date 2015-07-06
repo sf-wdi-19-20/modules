@@ -1,7 +1,7 @@
 # APIs and AJAX
 | Objectives |
 | :--- |
-| Explain why we use AJAX |
+| Explain AJAX and why we use it |
 | Use AJAX to GET data from APIs |
 | Use jQuery and Underscore templating to render data from APIs |
 
