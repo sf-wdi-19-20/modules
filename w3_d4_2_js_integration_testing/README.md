@@ -18,15 +18,15 @@
 
 ### Analogy (What?)
 
-### Key Snippets & Concepts
+### Key Concepts & Snippets
 
-#### Unit vs. Integration Tests
+#### Unit & Integration Tests
 
-**Unit** test test only one part of the code independently.
+**Unit Tests** test only one part of the code independently.
 
-**Integration** test test all the code the way a user would use it.
+**Integration Tests** test all the code the way a user would use it.
 
-#### Example of Basic Test
+#### Example of a Simple Test
 
 ```
 var request = require('request')
@@ -35,7 +35,6 @@ var request = require('request')
 
 var baseUrl = 'http://localhost:3000';
 
-var agent = request.agent(app);
 describe('home page should have title "App Title"', function() {
   request(baseUrl, function (error, response, body) {
     expect(error).to.be.not.ok;
@@ -53,6 +52,14 @@ describe('home page should have title "App Title"', function() {
 
 ### Docs & Resources
 
+* **[Mocha](http://mochajs.org/#getting-started)** - for running asynchronous tests
+* **[Request](https://github.com/request)** - for handling HTTP request/response
+* **[Chai](http://chaijs.com/api/)** - for assertions
+* **[Cheerio](https://github.com/cheeriojs/cheerio)** - for selecting HTML elements from responses (like "jQuery for tests")
+
 ### Basic Challenges
+
+1. Add 3 GET tests to a project from this week
+2. Add 1 POST test to a project from this week
 
 ### Stretch Challenges
