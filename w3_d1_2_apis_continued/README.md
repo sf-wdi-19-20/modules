@@ -25,22 +25,94 @@ Asynchronous JavaScript And XML (AJAX) allows us to make requests to a server (o
 #### Why do we care?
 
 * AJAX lets us exchange data with the server behind the scenes. We can update our web pages (and the data on our server!) without reloading the page at all.
-* Limiting page reloads makes our web apps *faster* and gives our users a *better experience*.
+* Limiting page reloads makes our web apps *faster* and gives our users a *better experience*. (Imagine if you experienced a full page refresh every time you "liked" a post on Facebook!)
 
 #### How do we use it?
 
-## Explain GET requests
+jQuery gives us a <a href="http://api.jquery.com/jquery.ajax" target="_blank">method for making AJAX requests</a>.
+
+## GET and POST
 
 The HyperText Transfer Protocol (HTTP) is similar to a written language like English.
 English was made for humans; the HTTP language is specifically for web browsers and servers to communicate with each other.
 
 `GET` and `POST` are the most important verbs in HTTP:
+
   * A browser will use `GET` to indicate it would like to receive a specific web page or resource from a server.
   * A browser will use `POST` to indicate it would like to send some data to a server.
 
+We can use AJAX to make both `GET` and `POST` requests to servers. In addition to $.ajax(), jQuery also gives us helper methods for $.get() and $.post().
+
 ## AJAX Setup
 
-* Make a call, JSON parse the result
+Using $.ajax(), we can specify the type of request, the request url, the data type, and a callback function (which will run on successful completion of the AJAX request.)
+
+```js
+$.ajax({
+  type: "GET",
+  url: 'https://api.spotify.com/v1/artists/3jOstUTkEu2JkjvRdBA5Gu',
+  dataType: "json",
+  success: function(data) {
+    console.log(data);
+  }
+});
+```
+
+If we are just doing a simple GET request, we should avoid the $.ajax() method and use the helper $.get() instead. Here, we only pass in the request URL and a callback function.
+
+```js
+$.get('https://api.spotify.com/v1/artists/3jOstUTkEu2JkjvRdBA5Gu', function(data) {
+  console.log(data);
+})
+```
+
+A sample POST request using the $.ajax() method. We pass in the type of request, the request url, the data we're sending to the server, the data type, and a callback function.
+
+```js
+$.ajax({
+  type: "POST",
+  url: "/books",
+  data: {
+    book: {
+      title: "The Giver",
+      author: "Lowis Lowry"
+    }
+  },
+  dataType: "json",
+  success: function(data) {
+    console.log(data);
+  }
+});
+```
+
+Same post request, refactored to use $.post().
+
+```js
+$.post('/books', {
+  title: "The Giver",
+  author: "Lowis Lowry"
+}, function(data) {
+  console.log(data);
+})
+```
+
+We can combine our AJAX calls with any jQuery event handlers.
+
+```js
+$("button").click(function(){
+    $.post("demo_test.asp", function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+    });
+});
+```
+
+```js
+$("form").on('submit', function(){
+    $.post("demo_test.asp", function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+    });
+});
+```
 
 ## Challenges (& Tonight's Homework)
 
