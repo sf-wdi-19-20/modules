@@ -56,4 +56,4 @@ fib(8) // returns 21
 
 Imagine what would happen when you call `fib(50)` (**Hint:** It will most likely crash your browser). When calling `fib(50)`, how many times would `fib(10)` run in your recursive solution? How about `fib(1)`?
 
-Can you think of another way to implement your `fib` function without using recursion?
+Can you think of another way to write your `fib` function without using recursion? Try to implement a solution that runs in O(n) time (linear).
