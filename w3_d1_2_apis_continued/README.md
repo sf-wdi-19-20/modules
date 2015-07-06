@@ -1,4 +1,4 @@
-# APIs and AJAX
+# APIs & AJAX
 | Objectives |
 | :--- |
 | Explain AJAX and why we use it |
