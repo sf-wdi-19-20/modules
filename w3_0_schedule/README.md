@@ -7,6 +7,5 @@
 | **Evening Readings** | [API Best Practices](http://piwik.org/blog/2008/01/how-to-design-an-api-best-practises-concepts-technical-aspects) // [YouTube API](http://www.codecademy.com/en/tracks/youtube) |  |  |  |  |
 
 
-Special Announcement!
-
+**Special Announcement!**   
 Thursday lunch will be later, at 12:30-1:30, for a Lunch & Learn with [Karl Puzon](https://www.linkedin.com/profile/view?id=62614390&authType=NAME_SEARCH&authToken=KyP-&locale=en_US&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2Cidx%3A1-1-1%2CtarId%3A1435859685113%2Ctas%3Akarl%20puz), WDI grad and Software Engineer at Nest.
