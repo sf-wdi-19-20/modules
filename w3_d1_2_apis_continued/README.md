@@ -145,6 +145,8 @@ Make a music search app using jQuery, AJAX, and the Spotify API. You will be usi
 
 5. The data you render in the view should include the track name and artist name.
 
+6. Each time the user submits the form, clear the previous search results from the view.
+
 ### How to Get Started
 
 1. Create a new directory and GitHub repo called `spotify_app`.
@@ -165,7 +167,9 @@ Make a music search app using jQuery, AJAX, and the Spotify API. You will be usi
 
 2. Spotify gives us a `preview_url` for each track. Create a play button for each track in your view that opens the `preview_url` in a new tab (it will start playing the song!).
 
-3. Handle the case where no data comes back from Spotify. You'll want to let the user know that there are no results, rather than just showing a blank page.
+3. It would be nice to let the user know something is happening in the few milliseconds between submitting the form and getting data on the page. Show `loading.gif` when the form submits, and hide it when you get data back from Spotify.
+
+4. Handle the case where no data comes back from Spotify. You'll want to let the user know that there are no results, rather than just showing a blank page.
 
 ## Docs & Reading
 
