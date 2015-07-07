@@ -64,7 +64,6 @@ Phrases.update = function(event, form){
   var newWord = $form.find("input[name='word']").val();
   var newdefinition = $form.find("input[name='definition']").val();
   // send a POST request with the form values
-  console.log("sending update request");
   $.post("/phrases/"+phraseId, {word: newWord, definition: newdefinition})
   .done(function(res){
     updatedPhrase = JSON.parse(res);
