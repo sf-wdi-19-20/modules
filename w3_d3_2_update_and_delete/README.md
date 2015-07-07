@@ -84,7 +84,7 @@ Phrases.delete = function(delBtn) {
 
 app.delete('/phrases/:id', function(req, res) {
   // set the value of the id
-  var targetId = req.params.id;
+  var targetId = parseInt(req.params.id);
   // find item in the array matching the id
   var targetItem = _.findWhere(phrases, {id: targetId});
   console.log("item found: ", targetItem)
