@@ -46,12 +46,12 @@ Node is like the microprocessor and Express is like the motherboard of a compute
 2. Start an Express project called ```my-first-server``` (directions in first express doc link above)
 3. Make a route to ```/``` that returns "Hello World" (directions in next express link above ... you get the idea)
 4. Make a route to ```/hello/:name``` that returns "Hello NAME_FROM_URL".
-> Hint:
-```
-app.get("/my_name_is/:name", function (req, res) {
-    res.send( "My name is " + req.params.name );
-});
-```
+  * Hint:
+  ```
+  app.get("/my_name_is/:name", function (req, res) {
+      res.send( "My name is " + req.params.name );
+  });
+  ```
 5. Give your server another route to ```/api/users``` and return an array of two users with names and ages. (hint: use ```res.json()```)
 6. Give your server another route to ```/api/books``` and return an array of three books with titles.
 7. Use a clone of a jQuery, Underscore, Bootstrap project you've already done to query and display your ```/api/books``` endpoint. (hint: use ```$.get('localhost:3000/api/books', function(data) {})```)
