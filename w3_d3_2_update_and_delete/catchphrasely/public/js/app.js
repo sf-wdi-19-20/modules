@@ -20,7 +20,7 @@ var setUpView = function(){
   });
 }
 
-// Phrases object  (a "singleton" object type)
+// Phrases is a "controller"
 function Phrases() {};
 
 Phrases.all = function() {
