@@ -32,7 +32,9 @@ Node is like the microprocessor and Express is like the motherboard of a compute
 
 ### Basic Challenges
 
-1. Install Node & NPM (one download: [https://nodejs.org/download/](https://nodejs.org/download/))
+1. Install Node & NPM
+  * Standalone installer: [https://nodejs.org/download/](https://nodejs.org/download/)
+  * Homebrew: [http://blog.teamtreehouse.com/install-node-js-npm-mac](http://blog.teamtreehouse.com/install-node-js-npm-mac)
 2. Start an Express project called ```my-first-server``` (directions in first express doc link above)
 3. Make a route to ```/``` that returns "Hello World" (directions in next express link above ... you get the idea)
 4. Make a route to ```/hello/:name``` that returns "Hello NAME_FROM_URL".
@@ -46,11 +48,11 @@ app.get("/my_name_is/:name", function (req, res) {
 4. Give your server another route to ```/api/users``` and return an array of two users with names and ages. (hint: use ```res.json()```)
 5. Give your server another route to ```/books``` and return an array of three books with titles.
 6. Use a clone of a jQuery, Underscore, Bootstrap project you've already done to query and display your ```/api/books``` endpoint. (hint: use ```$.get('localhost:3000/api/books', function(data) {})```)
-7. Follow [this tutorial](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction)) to push your app to Heroku. Tips:
-  * Start with ```git init```
-  * Skip the Prepare the App step - we're gonna use yours!)
-  * Also do the ```Define a Procfile``` before the ```Deploy the App``` step.
-  * Before deploying make sure you're app.listen function looks like this:
+7. Follow [this tutorial](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction) to push your app to Heroku. Tips:
+  * Start with ```git init```.
+  * Skip the Prepare the App step - we're gonna use yours!
+  * Do the ```Define a Procfile``` step before the ```Deploy the App``` step.
+  * Make sure your app.listen function looks like this before you deploy:
   ```
   var server = app.listen(process.env.PORT || 3000, function () {
     var host = server.address().address;
