@@ -10,7 +10,7 @@
 
 ### Motivation (Why?)
 
-Express is an unopinionated server-side javascript MVC framework that runs on a NodeJS server. It is a very, very popular and trending framework with a bevy of modules you can add to it. 
+Express is an unopinionated server-side javascript MVC framework that runs on a NodeJS server. It is a very, very popular and trending framework with a bevy of modules you can add to it.
 
 ### Analogy (What?)
 
@@ -44,18 +44,21 @@ app.get("/my_name_is/:name", function (req, res) {
 ```
 
 4. Give your server another route to ```/api/users``` and return an array of two users with names and ages. (hint: use ```res.json()```)
-5. Give your server another route to ```/books``` and return an array of three books with titles.
+5. Give your server another route to ```/api/books``` and return an array of three books with titles.
 6. Use a clone of a jQuery, Underscore, Bootstrap project you've already done to query and display your ```/api/books``` endpoint. (hint: use ```$.get('localhost:3000/api/books', function(data) {})```)
-7. Follow [this tutorial](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction)) to push your app to Heroku. Tips:
-  * Start with ```git init```
-  * Skip the Prepare the App step - we're gonna use yours!)
-  * Also do the ```Define a Procfile``` before the ```Deploy the App``` step.
-  * Before deploying make sure you're app.listen function looks like this:
+
+###  Stretch
+7. Do [this heroku deployment tutorial](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction)). The tutorial will provide you with a starter node project to push to heroku.
+8. Now do what you did in the tutorial for your ```my-first-server``` project.
+  * Start with ```git init``` (don't worry about putting a remote repo in github, we're gonna just push to heroku.)
+  * Skip the Prepare the App step - we're gonna use your app!
+  * Do the ```Define a Procfile``` before the ```Deploy the App``` step.
+  * Before deploying make sure you're setting the port properly in the ```app.listen``` function:
   ```
   var server = app.listen(process.env.PORT || 3000, function () {
-    var host = server.address().address;
-    var port = server.address().port;
-    console.log('Example app listening at http://%s:%s', host, port);
+      var host = server.address().address;
+      var port = server.address().port;
+      console.log('Example app listening at http://%s:%s', host, port);
   });
   ```
-8. Now, consume your app with your jQuery, Underscore, Bootstrap project from your remote YOUR_APP.herokuapp.com url.
+8. Now, point your jQuery, Underscore, Bootstrap project from your local url ```localhost:XXXX``` to your public heroku url ```YOUR_APP.herokuapp.com```.
