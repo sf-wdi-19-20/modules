@@ -52,12 +52,11 @@ app.get("/my_name_is/:name", function (req, res) {
     res.send( "My name is " + req.params.name );
 });
 ```
-
-4. Give your server another route to ```/api/users``` and return an array of two users with names and ages. (hint: use ```res.json()```)
-5. Give your server another route to ```/api/books``` and return an array of three books with titles.
-6. Use a clone of a jQuery, Underscore, Bootstrap project you've already done to query and display your ```/api/books``` endpoint. (hint: use ```$.get('localhost:3000/api/books', function(data) {})```)
-7. Do [this heroku deployment tutorial](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction). The tutorial will provide you with a starter node project to push to heroku.
-8. Now do what you did in the tutorial for your ```my-first-server``` project.
+5. Give your server another route to ```/api/users``` and return an array of two users with names and ages. (hint: use ```res.json()```)
+6. Give your server another route to ```/api/books``` and return an array of three books with titles.
+7. Use a clone of a jQuery, Underscore, Bootstrap project you've already done to query and display your ```/api/books``` endpoint. (hint: use ```$.get('localhost:3000/api/books', function(data) {})```)
+8. Do [this heroku deployment tutorial](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction). The tutorial will provide you with a starter node project to push to heroku.
+9. Now do what you did in the tutorial for your ```my-first-server``` project.
   * Start with ```git init``` (don't worry about putting a remote repo in github, we'll just push to heroku).
   * Skip the ```Prepare the App``` step - we're gonna use your app!
   * Do the ```Define a Procfile``` step before the ```Deploy the App``` step.
@@ -69,4 +68,4 @@ app.get("/my_name_is/:name", function (req, res) {
       console.log('Example app listening at http://%s:%s', host, port);
   });
   ```
-8. Now, point your jQuery, Underscore, Bootstrap project from your local url ```localhost:XXXX``` to your public heroku url ```YOUR_APP.herokuapp.com```.
+10. Now, point your jQuery, Underscore, Bootstrap project from your local url ```localhost:XXXX``` to your public heroku url ```YOUR_APP.herokuapp.com```.
