@@ -56,16 +56,17 @@ The examples below are from a Web Dev Dictionary app.
   <!-- definition -->
   JavaScript Object Notation
   <!-- delete button w/ registered onclick function -->
-  <button data-id="0" onclick="Phrases.delete(this)" type="button" class="close" aria-label="Close">
+  <button data-id="0" onclick="Phrases.delete(this)" type="button" class="close right-side" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </li>
+
 ```
 
 ```js
 // client-side JavaScript
 
-Phrases.prototype.delete = function(delBtn){
+Phrases.delete = function(delBtn) {
   var phraseId = $(delBtn).data().id;
   $.ajax({
     type: 'DELETE',
@@ -84,16 +85,13 @@ Phrases.prototype.delete = function(delBtn){
 app.delete('/phrases/:id', function(req, res) {
   // set the value of the id
   var targetId = req.params.id;
-
   // find item in the array matching the id
   var targetItem = _.findWhere(phrases, {id: targetId});
-
+  console.log("item found: ", targetItem)
   // get the index of the found item
   var index = phrases.indexOf(targetItem);
-
   // remove the item at that index, only remove 1 item
   phrases.splice(index, 1);
-
   // send back deleted object
   res.send(JSON.stringify(targetItem));
 });
@@ -103,13 +101,12 @@ app.delete('/phrases/:id', function(req, res) {
 
 ```html
 <!-- item we want to edit in the HTML -->
+<!-- edit link (pencil icon) to toggle form -->
+ <a id="edit-form-toggler" data-toggle="collapse" class="active right-side" data-target="#update-0" >
+   <span class="glyphicon glyphicon-pencil edit" ></span>
+ </a>
 
-<!-- edit link (pencil icon) to toggle form (insert into each phrase li) -->
-<a id="edit-form-toggler" data-toggle="collapse" class="active" data-target="#update-0" >
-  <span class="glyphicon glyphicon-pencil edit" ></span>
-</a>
-
-<!-- toggle-able edit form -->
+<!-- toggling update phrase form -->
 <div id="update-0" class="collapse">
   <form id="update-form-0" data-phraseid="0" class="form-inline" onsubmit="Phrases.update(event, this)">
     <input name="word" type="text" class="form-control" placeholder="New word?">
@@ -122,30 +119,31 @@ app.delete('/phrases/:id', function(req, res) {
 ```js
 // client-side JavaScript
 
-Phrases.prototype.update = function(event, editForm){
+Phrases.update = function(event, form){
   event.preventDefault();
-  var $form = $(editForm);
+  // pull the values we want out of form
+  var $form = $(form);
   var phraseId = $form.data().phraseid;
-  var newWord = $form.find('input[name="word"]').val();
-  var newdefinition = $form.find('input[name="definition"]').val();
-  $.post('/phrases/' + phraseId, {word: newWord, definition: newdefinition});
-  .done(function(res) {
+  var newWord = $form.find("input[name='word']").val();
+  var newdefinition = $form.find("input[name='definition']").val();
+  // send a POST request with the form values
+  console.log("sending update request");
+  $.post("/phrases/"+phraseId, {word: newWord, definition: newdefinition})
+  .done(function(res){
+    updatedPhrase = JSON.parse(res);
     // once done, use template to format edited phrase
-    // @TODO change from pseudocode
-    var newPhraseHTML = compiled_template(res)
-    $('#phrase-' + phraseId).replaceWith(newPhraseHTML);
+    var updatedPhraseHTML = Phrases.template({item: updatedPhrase});
+    $('#phrase-'+phraseId).replaceWith(updatedPhraseHTML);
   });
-};
+}
+
 ```
 
 ```js
-//server-side JavaScript
-
-app.post('/phrases/:id', function(req, res) {
-  console.log('updating with these params', req.body);
-
+app.post("/phrases/:id", function(req, res){
+  console.log("updating with these params", req.body);e
   // set the value of the id
-  var targetId = req.params.id;
+  var targetId = parseInt(req.params.id);
 
   // find item in the array matching the id
   var targetItem = _.findWhere(phrases, {id: targetId});
