@@ -43,14 +43,17 @@ Put the "ud" in CRUD!
 
 ##Examples
 
+We'll be looking at examples from a Web Dev Dictionary app.
+
 ### Delete (aka DESTROY)
 
 ```html
 
-<li class='list-group-item'>
-  JSON
-  <!-- label for definiton -->
-  <span class="label label-default">JavaScript Object Notation</span>
+<li class='list-group-item' id="phrase-0">
+  <!-- label for phrase -->
+  <span class="label label-default">JSON</span>
+  <!-- definition -->
+  JavaScript Object Notation
   <!-- delete button w/ registered onclick function -->
   <button data-id="0" onclick="Phrases.delete(this)" type="button" class="close" aria-label="Close">
     <span aria-hidden="true">&times;</span>
@@ -68,8 +71,8 @@ Phrases.prototype.delete = function(delBtn){
     url: '/phrases/' + phraseId,
     type: 'DELETE',
     success: function(res) {
-      // once successful, re-render all phrases
-      Phrases.renderAll();
+      // once successful, remove deleted phrase li from the DOM
+      $('#phrase-'+phraseId).remove();
     }
   });
 };
@@ -100,7 +103,7 @@ app.delete("/phrases/:id", function(req, res) {
 ###Update (Edit)
 
 ```html
-<!-- edit link (pencil icon) to toggle form -->
+<!-- edit link (pencil icon) to toggle form (insert into each phrase li)-->
  <a id="edit-form-toggler" data-toggle="collapse" class="active" data-target="#update-0" >
    <span class="glyphicon glyphicon-pencil edit" ></span>
  </a>
@@ -108,7 +111,7 @@ app.delete("/phrases/:id", function(req, res) {
 
 <!-- toggle-able edit form -->
 <div id="update-0" class="collapse">
-  <form id="update-form-0" data-itemid="0" class="form-inline" onsubmit="Phrases.update(event, this)">
+  <form id="update-form-0" data-phraseid="0" class="form-inline" onsubmit="Phrases.update(event, this)">
     <input name="word" type="text" class="form-control" placeholder="New word?">
     <input name="definition" class="form-control" placeholder="New definition?">
     <button type="submit" class="btn btn-default">Update phrase</button>
@@ -120,13 +123,14 @@ app.delete("/phrases/:id", function(req, res) {
 Phrases.prototype.update = function(event, editForm){
   event.preventDefault();
   var $form = $(editForm);
-  var phraseId = $form.data().itemid;
+  var phraseId = $form.data().phraseid;
   var newWord = $form.find("input[name='word']").val();
   var newdefinition = $form.find("input[name='definition']").val();
-  $.post("/update", {id: phraseId, word: newWord, definition: newdefinition})
+  $.post("/update", {id: phraseId, word: newWord, definition: newdefinition});
   .done(function(res){
-    // once done, re-render everything
-    Phrases.all();
+    // once done, use template to format edited phrase
+    var newPhraseHTML = compiled_template(res) //@TODO change from pseudocode
+    $('#phrase-'+phraseId).replaceWith(newPhraseHTML);
   });
 };
 
