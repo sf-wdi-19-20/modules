@@ -2,15 +2,15 @@
 
 | Objectives |
 | :--- |
-| Deploy a local Node web server with Express |
+| Deploy a local Node web server with Express to Heroku |
 
 | Concepts | Tools | Activities |
 | :---: | :---: | :---: |
-| Frameworks, Packages/Libraries/Modules | Node, NPM, Express | Challenges |
+| Frameworks, Packages/Libraries/Modules, Deployment | Node, NPM, Express, Heroku | Build an API |
 
 ### Motivation (Why?)
 
-Express is an unopinionated server-side javascript MVC framework that runs on a NodeJS server. It is a very, very popular and trending framework with a bevy of modules you can add to it.
+Express is an unopinionated server-side javascript MVC framework that runs on a NodeJS server. It is a very, very popular and trending framework with a bevy of modules you can add to it. 
 
 ### Analogy (What?)
 
