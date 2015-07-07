@@ -35,6 +35,14 @@ Node is like the microprocessor and Express is like the motherboard of a compute
 1. Install Node & NPM
   * Standalone installer: [https://nodejs.org/download/](https://nodejs.org/download/)
   * Homebrew: [http://blog.teamtreehouse.com/install-node-js-npm-mac](http://blog.teamtreehouse.com/install-node-js-npm-mac)
+    1. Install Homebrew:
+      ```
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      ```
+    2. Install node
+      ```
+        brew install node
+      ```
 2. Start an Express project called ```my-first-server``` (directions in first express doc link above)
 3. Make a route to ```/``` that returns "Hello World" (directions in next express link above ... you get the idea)
 4. Make a route to ```/hello/:name``` that returns "Hello NAME_FROM_URL".
@@ -48,8 +56,6 @@ app.get("/my_name_is/:name", function (req, res) {
 4. Give your server another route to ```/api/users``` and return an array of two users with names and ages. (hint: use ```res.json()```)
 5. Give your server another route to ```/api/books``` and return an array of three books with titles.
 6. Use a clone of a jQuery, Underscore, Bootstrap project you've already done to query and display your ```/api/books``` endpoint. (hint: use ```$.get('localhost:3000/api/books', function(data) {})```)
-
-###  Stretch
 7. Do [this heroku deployment tutorial](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction). The tutorial will provide you with a starter node project to push to heroku.
 8. Now do what you did in the tutorial for your ```my-first-server``` project.
   * Start with ```git init``` (don't worry about putting a remote repo in github, we'll just push to heroku).
