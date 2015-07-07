@@ -37,11 +37,11 @@ Node is like the microprocessor and Express is like the motherboard of a compute
   * Homebrew: [http://blog.teamtreehouse.com/install-node-js-npm-mac](http://blog.teamtreehouse.com/install-node-js-npm-mac)
     1. Install Homebrew:
 
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 
     2. Install node
 
-        brew install node
+        `brew install node`
 
 2. Start an Express project called ```my-first-server``` (directions in first express doc link above)
 3. Make a route to ```/``` that returns "Hello World" (directions in next express link above ... you get the idea)
