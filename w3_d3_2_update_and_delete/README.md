@@ -126,7 +126,7 @@ Phrases.prototype.update = function(event, editForm){
   var phraseId = $form.data().phraseid;
   var newWord = $form.find("input[name='word']").val();
   var newdefinition = $form.find("input[name='definition']").val();
-  $.post("/update", {id: phraseId, word: newWord, definition: newdefinition});
+  $.post("/phrases/"+phraseId, {word: newWord, definition: newdefinition});
   .done(function(res){
     // once done, use template to format edited phrase
     var newPhraseHTML = compiled_template(res) //@TODO change from pseudocode
@@ -137,7 +137,7 @@ Phrases.prototype.update = function(event, editForm){
 ```
 
 ```js
-app.post("/update", function(req, res){
+app.post("/phrases/:id", function(req, res){
   console.log("updating with these params", req.body);
 
   // set the value of the id
