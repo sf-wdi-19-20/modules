@@ -50,7 +50,7 @@ app.get("/my_name_is/:name", function (req, res) {
 6. Use a clone of a jQuery, Underscore, Bootstrap project you've already done to query and display your ```/api/books``` endpoint. (hint: use ```$.get('localhost:3000/api/books', function(data) {})```)
 
 ###  Stretch
-7. Do [this heroku deployment tutorial](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction)). The tutorial will provide you with a starter node project to push to heroku.
+7. Do [this heroku deployment tutorial](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction). The tutorial will provide you with a starter node project to push to heroku.
 8. Now do what you did in the tutorial for your ```my-first-server``` project.
   * Start with ```git init``` (don't worry about putting a remote repo in github, we'll just push to heroku).
   * Skip the ```Prepare the App``` step - we're gonna use your app!
