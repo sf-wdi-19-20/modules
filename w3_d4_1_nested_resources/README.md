@@ -4,13 +4,16 @@
 | :--- |
 | Explain the difference between referenced and embedded data |
 | Create an express API to CRUD referenced data |
-<!--| Create an express API to CRUD embedded data |-->
+
+
+<!--    | Create an express API to CRUD embedded data |-->
 
 ##@TODO
 
 * docs & resources
 * check feasibility of extra views: can we use the same `app.get('/study-sets')` to both send back all study sets and send back the view file? (same for single study sets data versus views)
 * create challenge solutions based on updated catchphrasely app (prereq: get latest catchphrasely app)
+*  check viability of multi-param urls for nested resources (http://stackoverflow.com/questions/25260818/rest-with-express-js-nested-router)
 
 
 
