@@ -100,39 +100,66 @@ Then a single study set might look like this:
 }
 ```
 
-##Basic Challenges: Study Sets
+##Basic Challenges: Study Sets Routes
 
 **Goal: make a route to show all study sets from the server**
-1. Create a `studySets` array on in your server-side JavaScript file, and add seed data - a few study sets.
-1. Create a new route on your server to GET all of the study sets. What should the RESTful route for this resource be?
+1. Make a `studySets` array on in your server-side JavaScript file, and add seed data - a few study sets.
+1. Make a new route on your server to handle requests to GET all of the study sets. What should the RESTful route for this resource be?
 	Hint: remember the route we used for all phrases: `/phrases`.
 1. Start your server and look at your site in the browser. Navigate to the route you set up, and make sure you see the data you expected.  
-   Hint: when you navigate to a url in the browser, the server usually makes a GET request to the route from the url.
+   Hint: when you navigate to a url in the browser, the browser usually makes a GET request to the route from the url.
 
 **Goal: make a route to show a specific study set**
-1. Create a new route on your server to GET a single study set. What should the RESTful route for this resource be?
+1. Make a new route on your server to handle requests to GET a single study set. What should the RESTful route for this resource be?
 	Hint: remember the route we used for a single phrase: `/phrases/:id`
 1. Start your server and look at your site in the browser. Navigate to the route you set up, and make sure you see the data you expected.  
-   Hint: when you navigate to a url in the browser, the server usually makes a GET request to the route from the url.
+   Hint: when you navigate to a url in the browser, the  browser usually makes a GET request to the route from the url.
 
 **Goal: make a route to create a new study set**
-1.
-1.
-1.
+1. Make a route on your server to create a study set. What should the RESTful route be?
+	Hint: remember the action and route we used for creating a phrase: `app.post('/phrases')`
 
 **Goal: make a route to delete a specific study set**
-1.
-1.
-1.
+1. Make a route to delete a study set. What should the RESTful route be?
+	Hint: remember the action and route we used for deleting a phrase: `app.delete('/phrases/:id')`
+
+**Goal: make a route to update a specific study set**
+1. Make a route to edit which phrases are included in a study set. What should the RESTful route be?
+	Hint: remember the action and route we used for editing a phrase: `app.patch('/phrases/:id')`
 
 
-##Stretch Challenges: Study Sets
+##Stretch Challenges: Study Sets Views/UI
 
+**Goal: make a view on the client to display all study sets**
 
-<!-- **Goal:
+We currently only have one view: `index.html`. Let's make a new one for study sheets!
 
-##Goal: Comments on Phrases
+1. Create a new `all-sets.html` file in your `views` directory.
+1. Set up your new html file with structure to show a list of all of the study set names.
+  Hint: feel free to copy over and modify what you had in `index.html` for this new view.
+1. Change the route for all study sets to send back the new view file instead of just sending raw data.
+  Hint: look at our route that displayed `index.html` for an example.
 
-Let's add commenting to the phrases in our dictionary so that people can leave details or tips. -->
+**Goal: make a view on the client to display a single study set**
+ Let's make a new view for single study sheets!
 
+1. Create a new `single-set.html` file in your `views` directory.
+1. Set up your new html file with structure to show the study set name and a list of all of the phrases in that study set.
+  Hint: again, feel free to copy over and modify what you had in `index.html` for this new view.
+1. Change the route for a single study sets to send back the new view file instead of just sending raw data.
+  Hint: look at our route that displayed `index.html` for an example.
+
+**Goal: make a form on the all study sets view to add a new study set**
+1. In the all study sets view, make a form that allows the user to create a new study set. The form should require a study sheet name.
+
+<!-- ##Stretch Challenges: Comments on Phrases
+
+Let's add commenting to the phrases in our dictionary so that people can leave details or tips.
+
+**Goal: update phrase data model to include an array of embedded comments**
+1. Change the phrases data in your server file to include a list of embedded comments. Add some seed comments to a few of your phrases.
+1. Change your view templates to display the comments users have made on each phrase.
+1. Change your client-side javascript code to send the new templates all of the information they need to display comments.
+
+ -->
 ##Docs & Resources
