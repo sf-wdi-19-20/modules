@@ -84,6 +84,6 @@ Submit the url for your `my_first_server` app in [the homework submission form](
 
 ##Hooray
 
-You've made your first server, and it's live on the web!
+You've made your first server, and it's serving up a cool books/users API, and it's live on the web!
 
 ![Zoidberg hooray gif](http://31.media.tumblr.com/tumblr_l9y7wqbkag1qzjefho1_500.gif#hooray%20gif%20483x500)
