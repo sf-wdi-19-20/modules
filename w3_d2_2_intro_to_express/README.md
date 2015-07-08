@@ -20,7 +20,7 @@ Node is like the microprocessor and Express is like the motherboard of a compute
 
 ![computer](computer.png)
 
-#Challenges
+##Challenges
 
 ### Docs & Resources
 
@@ -69,3 +69,21 @@ Node is like the microprocessor and Express is like the motherboard of a compute
   });
   ```
 10. Now, point your jQuery, Underscore, Bootstrap project from your local url ```localhost:XXXX``` to your public heroku url ```YOUR_APP.herokuapp.com```.
+
+
+##Homework
+
+For homework we'll continue to work on the challenges above. 
+
+**Important notes:** 
+* Skip challenges 7 and 10.
+* Heroku tutorial is only required up to the Push Local Changes step, no need to go farther.
+* Focus on challenge 9, deploying your `my_first_server` app on heroku.
+
+Submit the url for your `my_first_server` app in [the homework submission form](https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform). If you didn't get the `my_first_server` app up and running on heroku, please tell us how far you got in the submission form comments section.
+
+##Hooray
+
+You've made your first server, and it's live on the web!
+
+![Zoidberg hooray gif](http://31.media.tumblr.com/tumblr_l9y7wqbkag1qzjefho1_500.gif#hooray%20gif%20483x500)
