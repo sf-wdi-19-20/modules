@@ -80,7 +80,7 @@ For homework we'll continue to work on the challenges above.
 * Heroku tutorial is only required up to the Push Local Changes step, no need to go farther.
 * Focus on challenge 9, deploying your `my_first_server` app on heroku.
 
-Submit the url for your `my_first_server` app in [the homework submission form](https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform). If you didn't get the `my_first_server` app up and running on heroku, please tell us how far you got in the submission form comments section.
+Submit the heroku url for your `my_first_server` app in [the homework submission form](https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform). If you didn't get the `my_first_server` app up and running on heroku, please tell us how far you got in the submission form comments section.
 
 ##Hooray
 
