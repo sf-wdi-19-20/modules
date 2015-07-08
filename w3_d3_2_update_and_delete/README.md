@@ -53,7 +53,6 @@ The examples below are from a "catchphrasely" web dev dictionary app.
   <span class="glyphicon glyphicon-pencil edit" ></span>
 </a>
 
-
 <!-- toggling update phrase form -->
 <div id="update-<%=item.id%>" class="collapse">
   <form id="update-form-<%=item.id%>" data-phraseid="<%=item.id%>" class="form-inline" onsubmit="Phrases.update(event, this)">
@@ -70,21 +69,20 @@ The examples below are from a "catchphrasely" web dev dictionary app.
 // remember:
 Phrases.template = _.template($("#phrase-template").html());
 
-Phrases.update = function(event, form){
+Phrases.update = function(event, form) {
   event.preventDefault();
   // pull the values we want out of form
   var $form = $(form);
   var phraseId = $form.data().phraseid;
-  var newWord = $form.find("input[name='word']").val();
-  var newdefinition = $form.find("input[name='definition']").val();
+  var newWord = $form.find('input[name="word"]').val();
+  var newdefinition = $form.find('input[name="definition"]').val();
   // send a POST request with the form values
-  console.log("sending update request");
-  $.post("/phrases/"+phraseId, {word: newWord, definition: newdefinition})
+  $.post('/phrases/' + phraseId, {word: newWord, definition: newdefinition})
   .done(function(res){
     updatedPhrase = JSON.parse(res);
     // once done, use template to format edited phrase
     var updatedPhraseHTML = Phrases.template({item: updatedPhrase});
-    $('#phrase-'+phraseId).replaceWith(updatedPhraseHTML);
+    $('#phrase-' + phraseId).replaceWith(updatedPhraseHTML);
   });
 }
 
@@ -94,12 +92,12 @@ Phrases.update = function(event, form){
 // server side
 
 // remember:
-var phrases =[
-  {id: 0, word: "REPL", definition: "Read, Eval, Print, Loop"}
+var phrases = [
+  {id: 0, word: 'REPL', definition: 'Read, Eval, Print, Loop'}
 ];
 
-app.post("/phrases/:id", function(req, res){
-  console.log("updating with these params", req.body);e
+app.post('/phrases/:id', function(req, res){
+  console.log('updating with these params', req.body);
   // set the value of the id
   var targetId = parseInt(req.params.id);
 
@@ -116,6 +114,7 @@ app.post("/phrases/:id", function(req, res){
   res.send(JSON.stringify(targetItem));
 });
 ```
+
 ### Delete (aka DESTROY)
 
 ```html
@@ -146,7 +145,7 @@ Phrases.delete = function(delBtn) {
 
 // remember:
 var phrases =[
-  {id: 0, word: "REPL", definition: "Read, Eval, Print, Loop"}
+  {id: 0, word: 'REPL', definition: 'Read, Eval, Print, Loop'}
 ];
 
 app.delete('/phrases/:id', function(req, res) {
@@ -154,7 +153,7 @@ app.delete('/phrases/:id', function(req, res) {
   var targetId = parseInt(req.params.id);
   // find item in the array matching the id
   var targetItem = _.findWhere(phrases, {id: targetId});
-  console.log("item found: ", targetItem)
+  console.log('item found: ', targetItem)
   // get the index of the found item
   var index = phrases.indexOf(targetItem);
   // remove the item at that index, only remove 1 item
@@ -163,7 +162,6 @@ app.delete('/phrases/:id', function(req, res) {
   res.send(JSON.stringify(targetItem));
 });
 ```
-
 
 ## Challenges (& Tonight's Homework)
 
@@ -181,17 +179,15 @@ Implement the "D" in CRUD in the RESTful API you started this morning.
 
 Use an outside-in approach. Start with the client-side code, then move to the server-side. You can do this by thinking through everything that has to happen starting with the user clicking a button on the page:
 
-```
-User clicks button > JS event-handler > AJAX request > handle DELETE on server > server sends response to client > update the DOM
-```
+> User clicks delete button > JS event-handler > AJAX request > handle DELETE on server > server sends response to client > update the DOM
 
 ### Stretch Challenges / Bonus
 
-Add another resource to your API (e.g. if you're working on a `books` API, you could add an `authors` resource).
+Add another resource to your API and implement CRUD (e.g. if you're working on a `books` API, you could add an `authors` resource).
 
 ### Docs & Resources
 
-* [underscore _.findWhere() method]()
-* [jQuery  .remove() method]()
-* [express app.delete() method](http://expressjs.com/api.html#app.delete.method)
-* [express Request docs](http://expressjs.com/api.html#req)
+* <a href="http://underscorejs.org/#findWhere" target="_blank">Underscore _.findWhere() method</a>
+* <a href="https://api.jquery.com/remove" target="_blank">jQuery .remove() method</a>
+* <a href="http://expressjs.com/api.html#app.delete.method" target="_blank">Express app.delete() method</a>
+* <a href="http://expressjs.com/api.html#req" target="_blank">Express Request Docs</a>
