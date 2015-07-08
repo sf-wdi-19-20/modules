@@ -48,7 +48,7 @@ The examples below are from a "catchphrasely" web dev dictionary app.
 ### Update (Edit)
 
 ```html
-<!-- edit button (pencil icon) to toggle form -->
+<!-- edit link (pencil icon) to toggle form -->
 <a class="edit-pencil" data-toggle="collapse" data-target="#update-<%= id %>">
   <span class="glyphicon glyphicon-pencil edit"></span>
 </a>
