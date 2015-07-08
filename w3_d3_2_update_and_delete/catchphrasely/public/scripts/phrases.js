@@ -2,9 +2,65 @@
 
 $(function() {
 
+  // `phrasesController` holds all our phrase funtionality
   var phrasesController = {
+    
     // compile phrase template
     template: _.template($('#phrase-template').html()),
+
+    all: function() {
+      $.get('/phrases', function(data) {
+        var allPhrases = data;
+        
+        // iterate through allPhrases
+        _.each(allPhrases, function(phrase) {
+          // pass each phrase object through template and append to view
+          var $phraseHtml = $(phrasesController.template(phrase));
+          $('#phrase-list').append($phraseHtml);
+        });
+        // add event-handlers to phrases for updating/deleting
+        phrasesController.addEventHandlers();
+      });
+    },
+
+    create: function(newWord, newDefinition) {
+      var phraseData = {word: newWord, definition: newDefinition};
+      // send POST request to server to create new phrase
+      $.post('/phrases', phraseData, function(data) {
+        // pass phrase object through template and append to view
+        var $phraseHtml = $(phrasesController.template(data));
+        $('#phrase-list').append($phraseHtml);
+      });
+    },
+
+    update: function(phraseId, updatedWord, updatedDefinition) {
+      // send PUT request to server to update phrase
+      $.ajax({
+        type: 'PUT',
+        url: '/phrases/' + phraseId,
+        data: {
+          word: updatedWord,
+          definition: updatedDefinition
+        },
+        success: function(data) {
+          // pass phrase object through template and append to view
+          var $phraseHtml = $(phrasesController.template(data));
+          $('#phrase-' + phraseId).replaceWith($phraseHtml);
+        }
+      });
+    },
+    
+    delete: function(phraseId) {
+      // send DELETE request to server to delete phrase
+      $.ajax({
+        type: 'DELETE',
+        url: '/phrases/' + phraseId,
+        success: function(data) {
+          // remove deleted phrase li from the view
+          $('#phrase-' + phraseId).remove();
+        }
+      });
+    },
 
     // add event-handlers to phrases for updating/deleting
     addEventHandlers: function() {
@@ -14,81 +70,31 @@ $(function() {
           var phraseId = $(this).closest('.phrase').attr('data-id');
           var updatedWord = $(this).find('.updated-word').val();
           var updatedDefinition = $(this).find('.updated-definition').val();
-          phrasesController.updatePhrase(phraseId, updatedWord, updatedDefinition);
+          phrasesController.update(phraseId, updatedWord, updatedDefinition);
         })
         .on('click', '.delete-phrase', function(event) {
           event.preventDefault();
           var phraseId = $(this).closest('.phrase').attr('data-id');
-          phrasesController.deletePhrase(phraseId);
+          phrasesController.delete(phraseId);
         });
     },
 
-    getAllPhrases: function() {
-      $.get('/phrases', function(data) {
-        var allPhrases = data;
-        // iterate through allPhrases and pass each phrase object through phrasesController.template
-        _.each(allPhrases, function(phrase) {
-          var $phraseHtml = $(phrasesController.template(phrase));
-          $('#phrase-list').append($phraseHtml);
-        });
-        phrasesController.addEventHandlers();
-      });
-    },
-
-    createPhrase: function(word, definition) {
-      var phraseData = {word: word, definition: definition};
-      $.post('/phrases', phraseData, function(data) {
-        console.log(data);
-        var $phraseHtml = $(phrasesController.template(data));
-        $('#phrase-list').append($phraseHtml);
-      });
-    },
-
-    updatePhrase: function(phraseId, word, definition) {
-      console.log(phraseId);
-    
-      // send a POST request with the form values
-      $.ajax({
-        type: 'PUT',
-        url: '/phrases/' + phraseId,
-        data: {
-          word: word,
-          definition: definition
-        },
-        success: function(data) {
-          var updatedPhrase = data;
-          console.log(data);
-          var $updatedPhraseHTML = $(phrasesController.template(updatedPhrase));
-          $('#phrase-' + phraseId).replaceWith($updatedPhraseHTML);
-        }
-      });
-    },
-    
-    deletePhrase: function(phraseId) {
-      $.ajax({
-        type: 'DELETE',
-        url: '/phrases/' + phraseId,
-        success: function(data) {
-          // once successful, remove deleted phrase li from the DOM
-          $('#phrase-' + phraseId).remove();
-        }
-      });
-    },
-
-    // runs on page-load to append existing phrases to view and
-    // add event-handler to new-phrase form
     setupView: function() {
-      phrasesController.getAllPhrases();
+      // append existing phrases to view
+      phrasesController.all();
+      
+      // add event-handler to new-phrase form
       $('#new-phrase').on('submit', function(event) {
         event.preventDefault();
         var newWord = $('#new-word').val();
         var newDefinition = $('#new-definition').val();
-        phrasesController.createPhrase(newWord, newDefinition);
+        phrasesController.create(newWord, newDefinition);
+        
+        // reset the form
         $(this)[0].reset();
         $('#new-word').focus();
       });
     }
-
   };
 
   phrasesController.setupView();
