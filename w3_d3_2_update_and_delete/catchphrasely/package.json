@@ -1,0 +1,17 @@
+{
+  "name": "catchphrasely",
+  "version": "1.0.0",
+  "description": "dictionary of web dev words and phrases",
+  "main": "server.js",
+  "scripts": {
+    "test": "catch",
+    "start": "node server.js"
+  },
+  "author": "WDI 19/20",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "underscore": "^1.8.3"
+  }
+}
