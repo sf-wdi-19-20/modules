@@ -1,13 +1,17 @@
-#Title
+#Nested Resources
 
 | Objectives |
 | :--- |
-| Students will be able to . . . |
 | Explain the difference between referenced and embedded data |
 | Create an express API to CRUD referenced data |
-| Create an express API to CRUD data embedded inside other data |
+<!--| Create an express API to CRUD embedded data |-->
 
-@TODO: objectives wording help?
+##@TODO
+
+* docs & resources
+* check feasibility of extra views: can we use the same `app.get('/study-sets')` to both send back all study sets and send back the view file? (same for single study sets data versus views)
+* create challenge solutions based on updated catchphrasely app (prereq: get latest catchphrasely app)
+
 
 
 ##Motivation (Why?)
@@ -150,7 +154,8 @@ We currently only have one view: `index.html`. Let's make a new one for study sh
   Hint: look at our route that displayed `index.html` for an example.
 
 **Goal: make a form on the all study sets view to add a new study set**
-1. In the all study sets view, make a form that allows the user to create a new study set. The form should require a study sheet name.
+1. In the all study sets view file, make a form that allows the user to create a new study set. The form should require a study sheet name.
+
 
 <!-- ##Stretch Challenges: Comments on Phrases
 
