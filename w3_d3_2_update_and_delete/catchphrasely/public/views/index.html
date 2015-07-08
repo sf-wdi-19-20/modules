@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Catchphrasely Dictionary</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- bootstrap -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  <!-- custom styles -->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <div id="page-wrapper" class="well">
+    <!-- header -->
+    <div class="page-header">
+      <h1>catchphrasely <small>speak like a web dev!</small></h1>
+    </div>
+
+    <!-- new phrase form-->
+    <form id="new-phrase-form" class="form-inline">
+      <input type="text" name="word" class="form-control" id="new-phrase" placeholder="Word or phrase?">
+      <input type="text" name="definition" class="form-control" placeholder="Definition?">
+      <input type="submit" class="btn btn-default">Add phrase</button>
+    </form>
+
+    <!-- main content: phrase list group -->
+    <ul class="list-group" id="phrase-ul"></ul>
+  </div>
+
+  <!-- Single phrase Underscore template -->
+  <script type="text/template" id="phrase-template">
+    <li class='list-group-item' id="phrase-<%=item.id%>">
+      
+      <!-- label for phrase -->
+      <span class="label label-default"><%= item.word %></span>
+      
+      <!-- definition -->
+      <%= item.definition %>
+
+      <!-- delete button w/ registered onclick function -->
+      <button data-id="<%= item.id %>" onclick="Phrases.delete(this)" type="button" class="close right-side" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+      <!-- edit link (pencil icon) to toggle form -->
+      <a id="edit-form-toggler" data-toggle="collapse" class="active right-side" data-target="#update-<%=item.id%>" >
+        <span class="glyphicon glyphicon-pencil edit" ></span>
+      </a>
+
+      <!-- toggling update phrase form -->
+      <div id="update-<%=item.id%>" class="collapse">
+        <form id="update-form-<%=item.id%>" data-phraseid="<%=item.id%>" class="form-inline" onsubmit="Phrases.update(event, this)">
+          <input name="word" type="text" class="form-control" placeholder="New word?">
+          <input name="definition" class="form-control" placeholder="New definition?">
+          <button type="submit" class="btn btn-default">Update phrase</button>
+        </form>
+      </div>
+    </li>
+  </script>
+
+  <!-- jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+
+  <!-- bootstrap js -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <!-- underscore -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+  <!-- custom script -->
+  <script src="js/app.js"></script>
+
+</body>
+</html>
