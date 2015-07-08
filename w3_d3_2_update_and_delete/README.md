@@ -130,7 +130,6 @@ app.put('/phrases/:id', function(req, res) {
 
 // remember:
 var phrasesController = {}
-phrasesController.template = _.template($('#phrase-template').html());
 
 phrasesController.delete = function(phraseId) {
   // send DELETE request to server to delete phrase
@@ -154,7 +153,7 @@ var phrases = [
 ];
 
 app.delete('/phrases/:id', function(req, res) {
-  
+
   // set the value of the id
   var targetId = parseInt(req.params.id);
 
@@ -163,10 +162,10 @@ app.delete('/phrases/:id', function(req, res) {
 
   // get the index of the found item
   var index = phrases.indexOf(foundPhrase);
-  
+
   // remove the item at that index, only remove 1 item
   phrases.splice(index, 1);
-  
+
   // send back deleted object
   res.json(foundPhrase);
 });
@@ -174,7 +173,7 @@ app.delete('/phrases/:id', function(req, res) {
 
 ## Challenges (& Tonight's Homework)
 
-Implement the "D" in CRUD in the RESTful API you started this morning.
+Implement the "D" (delete) in CRUD in the RESTful API you started this morning.
 
 ### Requirements
 
