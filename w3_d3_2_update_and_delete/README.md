@@ -48,17 +48,18 @@ The examples below are from a "catchphrasely" web dev dictionary app.
 ### Update (Edit)
 
 ```html
-<!-- edit link (pencil icon) to toggle form -->
-<a id="edit-form-toggler" data-toggle="collapse" class="active right-side" data-target="#update-<%=item.id%>" >
-  <span class="glyphicon glyphicon-pencil edit" ></span>
+<!-- edit button (pencil icon) to toggle form -->
+<a class="edit-pencil" data-toggle="collapse" data-target="#update-<%= id %>">
+  <span class="glyphicon glyphicon-pencil edit"></span>
 </a>
 
-<!-- toggling update phrase form -->
-<div id="update-<%=item.id%>" class="collapse">
-  <form id="update-form-<%=item.id%>" data-phraseid="<%=item.id%>" class="form-inline" onsubmit="Phrases.update(event, this)">
-    <input name="word" type="text" class="form-control" placeholder="New word?">
-    <input name="definition" class="form-control" placeholder="New definition?">
-    <button type="submit" class="btn btn-default">Update phrase</button>
+<!-- form to update phrase -->
+<div class="collapse" id="update-<%= id %>">
+  <br>
+  <form class="form-inline update-phrase">
+    <input type="text" class="form-control updated-word" value="<%= word %>" placeholder="New word?">
+    <input type="text" class="form-control updated-definition" value="<%= definition %>" placeholder="New definition?">
+    <input type="submit" class="btn btn-default" value="Update phrase">
   </form>
 </div>
 ```
@@ -67,59 +68,59 @@ The examples below are from a "catchphrasely" web dev dictionary app.
 // client-side JavaScript
 
 // remember:
-Phrases.template = _.template($("#phrase-template").html());
+var phrasesController = {}
+phrasesController.template = _.template($('#phrase-template').html());
 
-Phrases.update = function(event, form) {
-  event.preventDefault();
-  // pull the values we want out of form
-  var $form = $(form);
-  var phraseId = $form.data().phraseid;
-  var newWord = $form.find('input[name="word"]').val();
-  var newdefinition = $form.find('input[name="definition"]').val();
-  // send a POST request with the form values
-  $.post('/phrases/' + phraseId, {word: newWord, definition: newdefinition})
-  .done(function(res){
-    updatedPhrase = JSON.parse(res);
-    // once done, use template to format edited phrase
-    var updatedPhraseHTML = Phrases.template({item: updatedPhrase});
-    $('#phrase-' + phraseId).replaceWith(updatedPhraseHTML);
+phrasesController.update = function(phraseId, updatedWord, updatedDefinition) {
+  // send PUT request to server to update phrase
+  $.ajax({
+    type: 'PUT',
+    url: '/phrases/' + phraseId,
+    data: {
+      word: updatedWord,
+      definition: updatedDefinition
+    },
+    success: function(data) {
+      // pass phrase object through template and append to view
+      var $phraseHtml = $(phrasesController.template(data));
+      $('#phrase-' + phraseId).replaceWith($phraseHtml);
+    }
   });
-}
-
+};
 ```
 
 ```js
-// server side
+// server-side JavaScript
 
 // remember:
 var phrases = [
   {id: 0, word: 'REPL', definition: 'Read, Eval, Print, Loop'}
 ];
 
-app.post('/phrases/:id', function(req, res){
-  console.log('updating with these params', req.body);
+app.put('/phrases/:id', function(req, res) {
+
   // set the value of the id
   var targetId = parseInt(req.params.id);
 
-  // find item in the array matching the id
-  var targetItem = _.findWhere(phrases, {id: targetId});
+  // find item in `phrases` array matching the id
+  var foundPhrase = _.findWhere(phrases, {id: targetId});
 
   // if form gave us a new word, update the phrase's word
-  targetItem.word = req.body.word || targetItem.word;
+  foundPhrase.word = req.body.word || foundPhrase.word;
 
   // if form gave us a new definition, update that
-  targetItem.definition = req.body.definition || targetItem.definition;
+  foundPhrase.definition = req.body.definition || foundPhrase.definition;
 
   // send back edited object
-  res.send(JSON.stringify(targetItem));
+  res.json(foundPhrase);
 });
 ```
 
 ### Delete (aka DESTROY)
 
 ```html
-<!-- delete button w/ registered onclick function -->
-<button data-id="<%= item.id %>" onclick="Phrases.delete(this)" type="button" class="close right-side" aria-label="Close">
+<!-- delete button -->
+<button class="close right-side delete-phrase" aria-label="Close">
   <span aria-hidden="true">&times;</span>
 </button>
 ```
@@ -127,39 +128,47 @@ app.post('/phrases/:id', function(req, res){
 ```js
 // client-side JavaScript
 
-Phrases.delete = function(delBtn) {
-  var phraseId = $(delBtn).data().id;
+// remember:
+var phrasesController = {}
+phrasesController.template = _.template($('#phrase-template').html());
+
+phrasesController.delete = function(phraseId) {
+  // send DELETE request to server to delete phrase
   $.ajax({
     type: 'DELETE',
     url: '/phrases/' + phraseId,
     success: function(data) {
-      // once successful, remove deleted phrase li from the DOM
+      // remove deleted phrase li from the view
       $('#phrase-' + phraseId).remove();
     }
   });
-};
+}
 ```
 
 ```js
-//server-side JavaScript
+// server-side JavaScript
 
 // remember:
-var phrases =[
+var phrases = [
   {id: 0, word: 'REPL', definition: 'Read, Eval, Print, Loop'}
 ];
 
 app.delete('/phrases/:id', function(req, res) {
+  
   // set the value of the id
   var targetId = parseInt(req.params.id);
-  // find item in the array matching the id
-  var targetItem = _.findWhere(phrases, {id: targetId});
-  console.log('item found: ', targetItem)
+
+  // find item in `phrases` array matching the id
+  var foundPhrase = _.findWhere(phrases, {id: targetId});
+
   // get the index of the found item
-  var index = phrases.indexOf(targetItem);
+  var index = phrases.indexOf(foundPhrase);
+  
   // remove the item at that index, only remove 1 item
   phrases.splice(index, 1);
+  
   // send back deleted object
-  res.send(JSON.stringify(targetItem));
+  res.json(foundPhrase);
 });
 ```
 
