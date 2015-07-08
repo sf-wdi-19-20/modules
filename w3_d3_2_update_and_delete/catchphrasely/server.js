@@ -1,88 +1,96 @@
 // SERVER-SIDE JAVASCRIPT
 
-// requirements
-var express = require("express"),
+// require express and other modules
+var express = require('express'),
     app = express(),
-    path = require("path"),
-    _ = require("underscore"),
-    bodyParser = require("body-parser");
+    bodyParser = require('body-parser'),
+    _ = require("underscore");
 
-// config
-// serve js & css files into a public folder
-app.use(express.static(__dirname + "/public"));
-// body parser config
-app.use(bodyParser.urlencoded({ extended: true }));
+// serve js and css files from public folder
+app.use(express.static(__dirname + '/public'));
+
+// configure bodyParser (for handling data)
+app.use(bodyParser.urlencoded({extended: true}));
 
 // pre-seeded phrase data
 var phrases = [
-  {id: 0, word: "REPL", definition: "Read, Eval, Print, Loop"},
-  {id: 1, word: "Reference Type", definition: "Any data type that is not a primitive type"},
-  {id: 2, word: "Constructor", definition: "Function used as a blueprint to create a new object with specified properties and methods"},
-  {id: 3, word: "Callback", definition: "Function passed as an argument to another function"},
-  {id: 4, word: "Query string", definition: "A list of parameters (represented as key-value pairs) appended to the end of a URL string"}
+  {id: 0, word: 'REPL', definition: 'Read, Eval, Print, Loop'},
+  {id: 1, word: 'Reference Type', definition: 'Any data type that is not a primitive type'},
+  {id: 2, word: 'Constructor', definition: 'Function used as a blueprint to create a new object with specified properties and methods'},
+  {id: 3, word: 'Callback', definition: 'Function passed as an argument to another function'},
+  {id: 4, word: 'Query string', definition: 'A list of parameters (represented as key-value pairs) appended to the end of a URL string'}
 ];
 
 // ROUTES
-// root path
-app.get("/", function (req, res){
-  // render index.html
-  res.sendFile(__dirname + "/public/views/index.html");
+// root route (serves index.html)
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/public/views/index.html');
 });
 
-// phrases index path
-app.get("/phrases", function (req, res){
-  // render phrases index as JSON
-  res.send(JSON.stringify(phrases));
+// phrases index
+app.get('/phrases', function (req, res) {
+  // send all phrases as JSON response
+  res.json(phrases);
 });
 
-app.post("/phrases", function (req, res){
-  // grab the word and definition from the form
+// create new phrase
+app.post('/phrases', function (req, res) {
+  // grab params (word and definition) from form data
   var newPhrase = req.body;
-  // set a sequential id
-  if (phrases.length !== 0){
-    newPhrase.id = phrases[phrases.length - 1].id + 1;
+  
+  // set sequential id (last id in `phrases` array + 1)
+  if (phrases.length > 0) {
+    newPhrase.id = phrases[phrases.length - 1].id +  1;
   } else {
     newPhrase.id = 0;
   }
-  // add the new phrase to the phrases array
+
+  // add newPhrase to `phrases` array
   phrases.push(newPhrase);
-  // send a JSON response
-  res.send(JSON.stringify(newPhrase));
+  
+  // send newPhrase as JSON response
+  res.json(newPhrase);
 });
 
-app.delete("/phrases/:id", function(req, res) {
-  // set the value of the id
-  var targetId = parseInt(req.params.id);
-  // find item in the array matching the id
-  var targetItem = _.findWhere(phrases, {id: targetId});
-  console.log("item found: ", targetItem)
-  // get the index of the found item
-  var index = phrases.indexOf(targetItem);
-  // remove the item at that index, only remove 1 item
-  phrases.splice(index, 1);
-  // send back deleted object
-  res.send(JSON.stringify(targetItem));
-});
+// update phrase
+app.put('/phrases/:id', function(req, res) {
 
-app.post("/phrases/:id", function(req, res){
-  console.log("updating with these params", req.body);
   // set the value of the id
   var targetId = parseInt(req.params.id);
 
-  // find item in the array matching the id
-  var targetItem = _.findWhere(phrases, {id: targetId});
+  // find item in `phrases` array matching the id
+  var foundPhrase = _.findWhere(phrases, {id: targetId});
 
   // if form gave us a new word, update the phrase's word
-  targetItem.word = req.body.word || targetItem.word;
+  foundPhrase.word = req.body.word || foundPhrase.word;
 
   // if form gave us a new definition, update that
-  targetItem.definition = req.body.definition || targetItem.definition;
+  foundPhrase.definition = req.body.definition || foundPhrase.definition;
 
   // send back edited object
-  res.send(JSON.stringify(targetItem));
+  res.json(foundPhrase);
 });
 
-// listen on port 3000
-app.listen(3000, function (){
-  console.log("Listening on port 3000...");
+// delete phrase
+app.delete('/phrases/:id', function(req, res) {
+  
+  // set the value of the id
+  var targetId = parseInt(req.params.id);
+
+  // find item in `phrases` array matching the id
+  var foundPhrase = _.findWhere(phrases, {id: targetId});
+
+  // get the index of the found item
+  var index = phrases.indexOf(foundPhrase);
+  
+  // remove the item at that index, only remove 1 item
+  phrases.splice(index, 1);
+  
+  // send back deleted object
+  res.json(foundPhrase);
+});
+
+// set server to localhost:3000
+app.listen(3000, function () {
+  console.log('server started on localhost:3000');
 });
