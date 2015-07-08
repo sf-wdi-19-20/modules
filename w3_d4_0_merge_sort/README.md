@@ -26,7 +26,7 @@ In a recursive implementation, we first solve for the simplest version of the pr
 
 If you were given an array of 10 random numbers, how would you sort them in ascending order?
 
-Arrays in JavScript have a [`sort()`](http://www.w3schools.com/jsref/jsref_sort.asp) function. If we have access to a JavaScript runtime, we can treat this as a small problem and simply call the built-in array function.
+Arrays in JavScript have a [`sort`](http://www.w3schools.com/jsref/jsref_sort.asp) function. If we have access to a JavaScript runtime, we can treat this as a small problem and simply call the built-in array function.
 
 Without a JS runtime, we'd be on our own. We'd have to think of sorting arrays as a big problem and come up with an implementation ourselves.
 
@@ -34,10 +34,21 @@ Without a JS runtime, we'd be on our own. We'd have to think of sorting arrays a
 
 Sorting algorithms might seem like a contrived example because most languages have built-in functionality for sorting. When building web apps, we generally avoid re-inventing the wheel by reusing functionality that the language or framework provides.
 
-Sorting algorithms are a popular interview topic because they force candidates to take a very disciplined approach. The seemingly simple problem of sorting an array of integers quickly becomes complex when you don't have access to `sort()`. Just explaining the steps involved cam give the interviewer a lot of insight into your abilities as a problem solver.
+Sorting algorithms are a popular interview topic because they force candidates to take a very disciplined approach. The seemingly simple problem of sorting an array of integers quickly becomes complex when you don't have access to `sort`. Just explaining the steps involved cam give the interviewer a lot of insight into your abilities as a problem solver.
 
 ## Sorting Recursively
 
+There are many ways to sort an array of numbers. Each have their pros and cons in terms of time complexity, space complexity, readability, etc.
+
+Today, we'll focus on a recursive solution called merge sort. We'll use the `merge` function you wrote yesterday.
+
 ## Challenge
 
-## Stretch Challenge
+Write a function `mergeSort` that takes an array of numbers as input and returns a new array. The new array should have all the same elements as the input and they should be sorted in ascending order.
+
+## Stretch Challenges
+
+  * What's another way to sort an array?
+  * Compare the two approaches
+    * Which one is faster for a given input? (time complexity)
+    * Which one has more space complexity?
