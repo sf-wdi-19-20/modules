@@ -64,15 +64,15 @@
       <!-- phrase definition -->
       <%= definition %>
 
-      <!-- edit button (pencil icon) to toggle form -->
-      <a class="edit-pencil" data-toggle="collapse" data-target="#update-<%= id %>">
-        <span class="glyphicon glyphicon-pencil edit"></span>
-      </a>
-
       <!-- delete button -->
       <button class="close right-side delete-phrase" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
+
+      <!-- edit link (pencil icon) to toggle form -->
+      <a class="edit-pencil" data-toggle="collapse" data-target="#update-<%= id %>">
+        <span class="glyphicon glyphicon-pencil edit"></span>
+      </a>
 
       <!-- form to update phrase -->
       <div class="collapse" id="update-<%= id %>">
