@@ -115,24 +115,45 @@ Then a single study set might look like this:
 	Hint: remember the route we used for all phrases: `/phrases`.
 1. Start your server and look at your site in the browser. Navigate to the route you set up, and make sure you see the data you expected.  
    Hint: when you navigate to a url in the browser, the browser usually makes a GET request to the route from the url.
+1. Now, to be double-sure, use `curl` from your terminal to check that the route is working. For all phrases, the curl command would be:
+
+```bash
+$ curl -X GET http://localhost:3000/phrases
+```
 
 **Goal: make a route to show a specific study set**
 1. Make a new route on your server to handle requests to GET a single study set. What should the RESTful route for this resource be?
-	Hint: remember the route we used for a single phrase: `/phrases/:id`
+	Hint: remember the route we used to edit or delete a single phrase: `/phrases/:id`
 1. Start your server and look at your site in the browser. Navigate to the route you set up, and make sure you see the data you expected.  
    Hint: when you navigate to a url in the browser, the  browser usually makes a GET request to the route from the url.
+1. Use `curl` from your terminal again to check that the route is working.
+  Hint: You'll have to modify the `curl` command from the last goal.
 
 **Goal: make a route to create a new study set**
 1. Make a route on your server to create a study set. What should the RESTful route be?
 	Hint: remember the action and route we used for creating a phrase: `app.post('/phrases')`
 
+1. Use `curl` with a `--data` option from your terminal again to check that the route is working.
+	Hint: The `curl` command to create a new phrase would be:
+	```bash
+	$ curl -X POST --data "word=1905&definition=%20OK%20"  http://localhost:3000/phrases
+	```
+
 **Goal: make a route to delete a specific study set**
 1. Make a route to delete a study set. What should the RESTful route be?
 	Hint: remember the action and route we used for deleting a phrase: `app.delete('/phrases/:id')`
+1. Use `curl` with a `--data` option from your terminal again to check that the route is working.
+	Hint: The `curl` command to delete phrase 1 would be:
+	```bash
+	$ curl -X DELETE --data "word=1905&definition=%20OK%20"  http://localhost:3000/phrases/1
+	```
 
 **Goal: make a route to update a specific study set**
 1. Make a route to edit which phrases are included in a study set. What should the RESTful route be?
 	Hint: remember the action and route we used for editing a phrase: `app.patch('/phrases/:id')`
+1. Use `curl` with a `--data` option from your terminal again to check that the route is working.
+	Hint: model your `curl` command after the one from the last goal.
+
 
 
 ##Stretch Challenges: Study Sets Views/UI
@@ -156,8 +177,9 @@ We currently only have one view: `index.html`. Let's make a new one for study sh
 1. Change the route for a single study sets to send back the new view file instead of just sending raw data.
   Hint: look at our route that displayed `index.html` for an example.
 
-**Goal: make a form on the all study sets view to add a new study set**
+**Super Stretch Goal: make a form on the all study sets view to add a new study set**
 1. In the all study sets view file, make a form that allows the user to create a new study set. The form should require a study sheet name.
+1. Add a UI element that lets users select which phrases to add.
 
 
 <!-- ##Stretch Challenges: Comments on Phrases
