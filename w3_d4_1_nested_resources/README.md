@@ -15,37 +15,124 @@
 In the real-world, data we want to model isn't all separate and flat; there are important relationships among the object types we'll want to work with.
 
 Bloggers have Posts
+Posts have Comments
 
 Classes have Students
 
-We need to be create APIs that allow apps (including our own apps) to CRUD *nested* data that represents these situations.
+To Do Lists are made up of Tasks
+
+We need to be create APIs that allow apps (including our own apps) to easily CRUD *nested* data that represents these situations.
 
 
+##Nested Data Modeling
 
-##Examples
+In general, there are 2 ways to include information inside a data record -- you can *reference* the other information, or *embed* it.
 
-Today's goal is to create studysheets of words in the catchphrasely dictionary app. Each studysheet will have a name and a list of phrases. 
+###Embeding
 
-###Design
+**Embedded** information is directly copied into the larger data record.
 
-How to represent studysheetS, and especially the phrase lists?
+Strengths
+* Speed: to get at embedded information, you just look at the data record you already have.
 
-Embedded data is directly copied into the record for an item. Its most appropriate when the embedded data doesnt change often or when its only accessible through the main data type (studysheets have notes).
+Weaknesses
+* Space: if the information is shared by multiple data records, they each need their own copy. This isn't usually a problem for small amounts of unneeded information, but it can get unweildy if we're sending along  large items like video files that the client may not need.
+* Multiple "sources of truth": when emebedded information has to be updated, you must be careful to update *every* copy.
 
-Reference is appropriate when data is shared, though it takes longer to look up; it's safer against getting out of synch.
+Embedding is most appropriate when the embedded data doesn't change often, or when each piece of embedded information is only used once.
 
-Ways to embed: store  embedded, or store ref and embed upon req
-
-Ways to reference:
-- id
-- link (preferred) + id + name
-
+Example:
+* Comments might be embedded in Articles in a "comments" list.
 
 
-#Challenges
+###Referencing
 
-### Docs & Resources
+When **referencing** outside information, we embed a short identifier in the larger data record that can be used to look up the outside information separately.
 
-### Basic Challenges
+Strengths
+* Space: we only need to keep one copy of the referenced information.
+* Single "source of truth": since there is only one copy, we can use a simpler update pattern to make changes to the referenced information. There's less risk of getting out of synch.
 
-### Stretch Challenges
+Weaknesses
+* Speed: looking up the referenced information separately takes extra time.
+* Extra identifier requirement: we have to make sure each piece of information that we might want to reference has its own unique lookup code - usually an id or a direct url to look up the referenced data.
+
+Referencing is most appropriate when the same data is used in many larger records, when large data objects don't need to be sent along with every request, or when shared data will change frequently.
+
+Example:
+* Videos might be referenced by Users in a "favorite videos" list.
+
+##Example: Study Sets
+
+We'd like to allow users to make named sets of phrases that they can use to study.
+
+ <!-- On the page, maybe we'll display it like this:
+
+![Acronyms (list of phrases)](acronyms.png)
+
+There could be a little confusion over whether the X button will delete the phrase or remove it from the study set, but we can work on that later (see stretch challenges). -->
+
+Recall that the phrases data on our server looks something like this:
+
+```js
+
+var phrases =[
+  {id: 0, word: "REPL", definition: "Read, Eval, Print, Loop"},
+  {id: 1, word: "Reference Type", definition: "Any data type that is not a primitive type"},
+  {id: 2, word: "Constructor", definition: "Function used as a blueprint to create a new object with specified properties and methods"},
+  {id: 3, word: "Callback", definition: "Function passed as an argument to another function"},
+  {id: 4, word: "Query string", definition: "A list of parameters (represented as key-value pairs) appended to the end of a URL string"},
+  {id: 5, word: "REST", defintion: "Representational State Transfer"},
+  {id: 9, word: "JSON", definition: "JavaScript Object Notation"}
+];
+```
+
+
+Since many study sets might include the same phrases, let's reference the phrase data.
+
+
+Then a single study set might look like this:
+```js
+{
+	id: 0,
+	name: "Acronyms",
+	phrases: [0, 5, 9]
+}
+```
+
+##Basic Challenges: Study Sets
+
+**Goal: make a route to show all study sets from the server**
+1. Create a `studySets` array on in your server-side JavaScript file, and add seed data - a few study sets.
+1. Create a new route on your server to GET all of the study sets. What should the RESTful route for this resource be?
+	Hint: remember the route we used for all phrases: `/phrases`.
+1. Start your server and look at your site in the browser. Navigate to the route you set up, and make sure you see the data you expected.  
+   Hint: when you navigate to a url in the browser, the server usually makes a GET request to the route from the url.
+
+**Goal: make a route to show a specific study set**
+1. Create a new route on your server to GET a single study set. What should the RESTful route for this resource be?
+	Hint: remember the route we used for a single phrase: `/phrases/:id`
+1. Start your server and look at your site in the browser. Navigate to the route you set up, and make sure you see the data you expected.  
+   Hint: when you navigate to a url in the browser, the server usually makes a GET request to the route from the url.
+
+**Goal: make a route to create a new study set**
+1.
+1.
+1.
+
+**Goal: make a route to delete a specific study set**
+1.
+1.
+1.
+
+
+##Stretch Challenges: Study Sets
+
+
+<!-- **Goal:
+
+##Goal: Comments on Phrases
+
+Let's add commenting to the phrases in our dictionary so that people can leave details or tips. -->
+
+##Docs & Resources
