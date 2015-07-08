@@ -174,6 +174,7 @@ Implement the "D" in CRUD in the RESTful API you started this morning.
 3. When sending the DELETE request, you need to send over the id of the item the user wants to delete.
 4. The server should have a route that handles the DELETE request and removes the item from our "database" (an array).
 5. On success of the DELETE request, change the state of the view by removing the deleted item from the DOM.
+6. You should push your API to a GitHub repo. Remember to submit the link in the <a href="https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform" target="_blank">homework submission form</a>.
 
 ### How to Get Started
 
