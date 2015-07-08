@@ -1,5 +1,7 @@
 # How to Set Up an Express Project
 
+## Basic Setup
+
 1. Create a directory for your project and `cd` into that directory
 
   ```
@@ -57,6 +59,35 @@
 7. Back in the terminal, in your project's root directory, run either `node server.js`, `npm start`, or `nodemon` (<a href="http://nodemon.io" target="_blank">docs</a>). All three commands do the same thing, which is start your server :)
 
 8. Visit `localhost:3000` in the browser. Make sure you see your "hello world" response before moving further.
+
+## Serving Static Assets
+
+1. You need to tell your Express app where to look for your CSS files and client-side JavaScript. Add the following line to your `server.js` to let your Express app know to look in the `public` directory.
+
+  ```js
+  // serve js and css files from public folder
+  app.use(express.static(__dirname + '/public'));
+  ```
+
+2. In your view (`index.html`), you don't need to specify the `public` path when requiring CSS and JavaScript files (since your express app knows to serve files from `public`). It's a good idea to make separate directories within `public` for your CSS and JavaScript files (e.g. `styles` and `scripts`).
+
+  ```html
+  <!-- stylesheet -->
+  <link type="text/css" rel="stylesheet" href="styles/main.css">
+
+  <!-- client-side javascript -->
+  <script type="text/javascript" src="scripts/main.js"></script>
+  ```
+
+## Serving HTML Files
+
+* We can use `res.sendFile` to tell our Express app to server static HTML files. Similar to serving static assets, we have to let our Express app know where to look, in this case `/public/views/index.html`
+
+  ```js
+  app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/public/views/index.html');
+  });
+  ```
 
 ## More Tips
 
