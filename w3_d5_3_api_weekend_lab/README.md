@@ -17,10 +17,22 @@ This week, you learned how to call APIs with AJAX, and you built your first API 
 
 ## Client-Side Requirements
 
-1. A list of blog posts in your view
-2. A form to create a new blog post
-3. Forms for editing each individual blog post
-4. Buttons to delete each individual blog post
+1. A list of blog posts in your view. You'll need:
+  * An AJAX call to `GET` all the blog posts from your API
+  * jQuery and Underscore templating to render the posts in the view
+2. A form to create a new blog post. You'll need:
+  * A jQuery event-handler on the form
+  * An AJAX call to `POST` the data to your API
+  * jQuery and Underscore templating to render the newly created post in the view
+3. Forms for editing each individual blog post. You'll need:
+  * Edit buttons to toggle the forms
+  * jQuery event-handlers on the forms
+  * An AJAX call to `PUT` the new post data to your API
+  * jQuery and Underscore templating to replace the current blog post with the updated version
+4. Buttons to delete each individual blog post. You'll need:
+  * jQuery event-handlers on the buttons
+  * An AJAX call to `DELETE` the data from your server
+  * jQuery to remove the deleted blog post from the view
 
 ## How to Get Started
 
