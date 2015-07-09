@@ -7,7 +7,7 @@
 
 | Concepts | Tools | Activities |
 | :---: | :---: | :---: |
-| Integration Testing TDD/BDD | Mocha, Supertest, Chai | Challenges |
+| Integration Testing TDD/BDD | Mocha, Chai, Request, Cheerio | Challenges |
 
 ### Preparatory Readings
 
@@ -138,7 +138,12 @@ expect(object)
 ```
 npm install mocha chai request --save
 ```
-1. Add 5 GET tests to your API (make sure they fail and pass). Reproduce example above in notes.
+2. Add ```test/test.js``` to your project.
+3. Add the example code that tests Google.com and run it with ```$ mocha```
+3. Log to the console ```err```, ```res```, and ```body```.
+4. Change the test to test amazon.com. Make assertions that pass and fail.
+5. Turn on your localhost:3000 server and point the test at the url to one of your localhost:3000 GET API paths. Log to the console ```err```, ```res```, and ```body```.
+1. Write 1 test for each of your API's GET routes (make sure you can make them both fail and pass). Reproduce example above in notes.
 2. Add 1 POST test to your API - look at request docs to send request.post() and check response.
 3. Add 1 PUT test to your API - ditto.
 4. Add 1 DELTE test to your API - ditto.
