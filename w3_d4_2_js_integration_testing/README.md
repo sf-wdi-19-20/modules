@@ -24,7 +24,7 @@ Automated testing makes you have a clearer spec of what you want to build, and l
 **Test Coverage** means the percentage of your features that have tests that secure them.
 
 * Basic Coverage: %40 of major features have tests
-* Medium Coverage: 80% of major features and 30% of
+* Medium Coverage: 80% of major features and 30% of minor features
 * High Coverage: 80% of all features have tests
 
 **TDD/BDD** Means writing tests first
