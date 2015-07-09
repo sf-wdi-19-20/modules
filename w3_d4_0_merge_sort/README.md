@@ -34,13 +34,13 @@ Without a JS runtime, we'd be on our own. We'd have to think of sorting arrays a
 
 Sorting algorithms might seem like a contrived example because most languages have built-in functionality for sorting. When building web apps, we generally avoid re-inventing the wheel by reusing functionality that the language or framework provides.
 
-Sorting algorithms are a popular interview topic because they force candidates to take a very disciplined approach. The seemingly simple problem of sorting an array of integers quickly becomes complex when you don't have access to `sort`. Just explaining the steps involved cam give the interviewer a lot of insight into your abilities as a problem solver.
+Sorting algorithms are a popular interview topic because they force candidates to take a very disciplined approach. The seemingly simple problem of sorting an array of integers quickly becomes complex when you don't have access to `sort`. Just explaining the steps involved can give the interviewer a lot of insight into your abilities as a problem solver.
 
 ## Sorting Recursively
 
 There are many ways to sort an array of numbers. Each have their pros and cons in terms of time complexity, space complexity, readability, etc.
 
-Today, we'll focus on a recursive solution called merge sort. We'll use the `merge` function you wrote yesterday.
+Today, we'll focus on a recursive solution called merge sort.
 
 ## Challenge
 
