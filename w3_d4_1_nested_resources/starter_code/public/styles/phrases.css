@@ -1,0 +1,9 @@
+.edit-pencil {
+  color: #aaaaaa;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.edit-pencil:hover {
+  color: #333333;
+}
