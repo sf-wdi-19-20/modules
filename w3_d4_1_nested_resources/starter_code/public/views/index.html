@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- bootstrap css -->
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- custom styles -->
+  <link type="text/css" rel="stylesheet" href="styles/phrases.css">
+
+  <title>Catchphrasely</title>
+</head>
+<body>
+  
+  <!-- header -->
+  <div class="well">
+    <div class="container">
+      <div class="page-header">
+        <h1>Catchphrasely <small>speak like a web dev</small></h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- page content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        
+        <!-- new phrase form-->
+        <form class="form-inline" id="new-phrase">
+          <input type="text" class="form-control" id="new-word" placeholder="Word or phrase?" autofocus>
+          <input type="text" class="form-control" id="new-definition" placeholder="Definition?">
+          <input type="submit" class="btn btn-default" value="Add Phrase">
+        </form>
+        <br>
+
+        <!-- list of phrases (appended to page with dynamically with ajax, underscore, jquery) -->
+        <ul class="list-group" id="phrase-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- jquery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <!-- underscore -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+  <!-- custom script -->
+  <script type="text/javascript" src="scripts/phrases.js"></script>
+
+  <!-- underscore template for single phrase -->
+  <script type="text/template" id="phrase-template">
+    <li class="list-group-item phrase" id="phrase-<%= id %>" data-id="<%= id %>">
+     
+      <!-- phrase label (word) -->
+      <span class="label label-default"><%= word %></span>
+     
+      <!-- phrase definition -->
+      <%= definition %>
+
+      <!-- delete button -->
+      <button class="close right-side delete-phrase" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+      <!-- edit link (pencil icon) to toggle form -->
+      <a class="edit-pencil" data-toggle="collapse" data-target="#update-<%= id %>">
+        <span class="glyphicon glyphicon-pencil edit"></span>
+      </a>
+
+      <!-- form to update phrase -->
+      <div class="collapse" id="update-<%= id %>">
+        <br>
+        <form class="form-inline update-phrase">
+          <input type="text" class="form-control updated-word" value="<%= word %>" placeholder="New word?">
+          <input type="text" class="form-control updated-definition" value="<%= definition %>" placeholder="New definition?">
+          <input type="submit" class="btn btn-default" value="Update phrase">
+        </form>
+      </div>
+    </li>
+  </script>
+  
+</body>
+</html>
