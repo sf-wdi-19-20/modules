@@ -28,7 +28,7 @@ Classes have Students
 
 To Do Lists are made up of Tasks
 
-We need to be create APIs that allow apps (including our own apps) to easily CRUD *nested* data that represents these situations.
+We need to create APIs that allow apps (including our own apps) to easily CRUD *nested* data that represents these situations.
 
 
 ##Nested Data Modeling
@@ -58,7 +58,7 @@ When **referencing** outside information, we embed a short identifier in the lar
 
 Strengths
 * Space: we only need to keep one copy of the referenced information.
-* Single "source of truth": since there is only one copy, we can use a simpler update pattern to make changes to the referenced information. There's less risk of getting out of synch.
+* Single "source of truth": since there is only one copy, we can use a simpler update pattern to make changes to the referenced information. There's less risk of getting out of sync.
 
 Weaknesses
 * Speed: looking up the referenced information separately takes extra time.
