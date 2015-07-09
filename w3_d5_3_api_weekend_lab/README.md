@@ -47,13 +47,13 @@ This week, you learned how to call APIs with AJAX, and you built your first API 
 
 ## Bonus
 
-* Write request tests for each of your API routes.
+1. Write <a href="https://github.com/sf-wdi-19-20/modules/tree/master/w3_d4_2_js_integration_testing" target="_blank">request tests</a> for each of your API routes. (**Super Bonus:** Use `cheerio` to write <a href="https://github.com/sf-wdi-19-20/modules/tree/master/w3_d4_2_js_integration_testing#stretch-challenges-view-testing" target="_blank">view tests</a>.)
+2. Create a <a href="https://github.com/sf-wdi-19-20/modules/tree/master/w3_d4_1_nested_resources" target="_blank">nested resource</a> for blog post comments (`posts` "have many" `comments`).
 
 ## Docs & Resources
 
 * <a href="http://expressjs.com/api.html#app" target="_blank">Express App Docs</a>
-* <a href="https://github.com/sf-wdi-19-20/modules/blob/master/how_tos/express_project_setup.md" target="_blank">How to Setup an Express Project</a>
-* <a href="https://github.com/sf-wdi-19-20/modules/tree/master/w3_d3_2_update_and_delete" target="_blank">Notes on Updating and Deleting Data</a>
-* <a href="https://github.com/sf-wdi-19-20/modules/tree/master/w2_d2_1_underscore_templating" target="_blank">Notes on Underscore Templating</a>
-* <a href="https://github.com/sf-wdi-19-20/modules/tree/master/w3_d4_2_js_integration_testing" target="_blank">Notes on Testing</a>
+* <a href="https://github.com/sf-wdi-19-20/modules/blob/master/how_tos/express_project_setup.md" target="_blank">How to Set Up an Express Project</a>
+* <a href="https://github.com/sf-wdi-19-20/modules/tree/master/w3_d3_2_update_and_delete" target="_blank">Updating and Deleting Data</a>
+* <a href="https://github.com/sf-wdi-19-20/modules/tree/master/w2_d2_1_underscore_templating" target="_blank">Underscore Templating</a>
 * <a href="https://github.com/sf-wdi-19-20/w3_catchphrasely" target="_blank">Catchphrasely</a> (This is a great example of the type of client-server interaction you'll be building. DO NOT copy any of this code unless you understand exactly what it's doing. You've been warned.)
