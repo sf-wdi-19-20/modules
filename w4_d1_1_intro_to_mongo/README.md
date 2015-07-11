@@ -53,7 +53,7 @@ mongoose.connect("mongodb://localhost/test");
 ##### Make a Model
 ```
 //
-//  models/book.js
+//  models/dinosaur.js
 //
 
 var Schema = mongoose.Schema;
@@ -135,28 +135,27 @@ Install MongoDB, a popular noSQL database.
 
 ### Basic Mongo CLI Challenges
 
-3. Open your mongo console with ```mongo```
+3. Open your mongo console with ```mongo```.
 4. Type ```help``` - can you find out how to show all your database names?
-5. type ```use awesomeshop```
-6. check which db your in with ```db.show```
-7. look at your database names again. Is your new DB there?
-8. add a collection and item to your ```awesomeshop``` DB. ```db.products.insert({title:"iphone"})```
+5. Type ```use awesomeshop```.
+6. Check which db you're in with ```db.show```.
+7. Look at your database names again. Is your new DB there?
+8. Add a collection and item to your ```awesomeshop``` DB. ```db.products.insert({title:"iphone"})```
 9. Now check your database names.
 10. Read [this doc](http://docs.mongodb.org/manual/core/crud-introduction/) on MongoDB CRUD operations. (Ignore the "Related Features" section.)
-11. [Insert another 2 documents into two collections ](http://docs.mongodb.org/manual/tutorial/insert-documents/)
-with at least two attributes each. E.g.
+11. [Insert another 2 documents into two collections](http://docs.mongodb.org/manual/tutorial/insert-documents/) with at least two attributes each. E.g.
 ```
   book: { title:"title", published_on_year:1994 } }
   users: { name:"George", email:"george@gmail.com" } }
 ```
 12. [Query all your user documents.](http://docs.mongodb.org/manual/tutorial/query-documents/)
-13. Query only book documents published after 1990
+13. Query only book documents published after 1990.
 
 ### Basic Mongo/Express Challenges
 
-1. Create a new node project with ```npm init```
-2. Add express and mongoose to the project with ```npm install express mongoose --save```
-2. Start your MongoDB database in a new terminal window with ```mongod```
+1. Create a new node project with ```npm init```.
+2. Add express and mongoose to the project with ```npm install express mongoose --save```.
+2. Start your MongoDB database in a new terminal window with ```mongod```.
 3. Connect your node/express server to mongoDB using mongoose. See key snippets above.
 4. Create a model for ```Book``` and include it in ```app.js```. See key snippets above.
 5. Let's create a get route to ```/books``` that returns a JSON array of all saved books. Use your existing code and the a key snippet above. Expected output: ```[]``` an empty array. Why is this empty?
@@ -166,4 +165,4 @@ with at least two attributes each. E.g.
 
 ### Stretch Challenges
 
-9. Add Mongoose to your API projects query and create routes (POST and GET).
+9. Add Mongoose to your API project's query and create routes (POST and GET).
