@@ -218,6 +218,10 @@ Add Mongo/Mongoose to your Project 0 Microblog. If you would like to start with 
 
 ### Stretch Challenges / Bonus
 
+1. Read about <a href="http://mongoosejs.com/docs/validation" target="_blank">validations</a> and the built-in <a href="http://mongoosejs.com/docs/api.html#schematype_SchemaType-required" target="_blank">required validator</a> in Mongoose.
+2. Add the required validator to all fields in your blog post schema.
+3. **Super Bonus:** In your API routes to create and update blog posts, respond with the error if the required validation is not met.
+
 ## Docs & Reading
 
 * <a href="http://mongoosejs.com/docs" target="_blank">Mongoose Docs</a>
