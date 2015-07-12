@@ -45,7 +45,7 @@ Mongoose allows us to use JavaScript and Object-Oriented Programming to talk to 
   $ use catchphrasely
   ```
 
-5. In your application, create a folder called `models` with a file for your first model. In the example, we have a `Phrase` model, so our file name is `phrase.js`. Your folder structure should look similar to this:
+5. In your application, create a folder called `models` with a file for your first model. In the example, we have a `Phrase` model, so our model's filename is `phrase.js`. Your folder structure should look similar to this:
 
   ```
   | catchphrasely
@@ -85,13 +85,11 @@ Mongoose allows us to use JavaScript and Object-Oriented Programming to talk to 
 
   ```js
   // server.js
-  
+
   var Phrase = require('./models/phrase').Phrase;
   ```
 
 ## Review: RESTful Routing
-
-**Note:** We can use `/api` to differentiate our API routes from any static routes in our application (like our root route `/`, which renders our `index.html`). The `/api` part of the routes is not required and is not a part of RESTful routing.
 
 | HTTP Verb | Path | Description |
 | :---: | :---: | :---: |
@@ -100,6 +98,8 @@ Mongoose allows us to use JavaScript and Object-Oriented Programming to talk to 
 | GET | /api/phrases/:id | Get one phrase |
 | PUT | /api/phrases/:id | Update a phrase |
 | DELETE | /api/phrases/:id | Delete a phrase |
+
+**Note:** We can use `/api` to differentiate our API routes from any static routes in our application (like our root route `/`, which renders our `index.html`). The `/api` part of the routes is not required and is not a part of RESTful routing.
 
 ## CRUD Operations with Mongoose
 
