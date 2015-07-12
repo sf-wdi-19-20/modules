@@ -7,7 +7,87 @@
 
 ## Review: What is Mongoose?
 
+<a href="http://mongoosejs.com" target="_blank">Mongoose</a> is an ORM (<a href="https://en.wikipedia.org/wiki/Object-relational_mapping" target="_blank">Object-Relational Mapping</a>) for the non-relational, document-based database <a href="http://docs.mongodb.org/manual" target="_blank">MongoDB</a>.
+
+An ORM is a layer between our application and our database, which allows us to query and manipulate data in the language and structure of our application.
+
+Mongoose allows us to use JavaScript and Object-Oriented Programming to talk to our database, making our code DRY-er and eliminating the need to manually query our Mongo database.
+
 ## Review: Mongoose Setup
+
+1. In the terminal, add Mongoose to your application's node modules.
+
+  ```
+  $ npm install --save mongoose
+  ```
+
+2. In `server.js`, require Mongoose and connect to the database you're using for your application.
+
+  ```js
+  // server.js
+
+  var mongoose = require('mongoose');
+  mongoose.connect('mongodb://localhost/catchphrasely');
+  ```
+
+3. At this point, if you haven't already created the database you're using, do so in the terminal. You'll need to start up MongoDB by running:
+
+  ```
+  $ mongod
+  ```
+
+  **Note:** If you already have an instance of MongoDB running, you'll get an error at this step. If that's the case, you can move on to the next step, since MongoDB is already running!
+
+4. In a separate terminal tab, create and connect to your database. In the example, our new database is called `catchphrasely`.
+
+  ```
+  $ mongo
+  $ use catchphrasely
+  ```
+
+5. In your application, create a folder called `models` with a file for your first model. In the example, we have a `Phrase` model, so our file name is `phrase.js`. Your folder structure should look similar to this:
+
+  ```
+  | catchphrasely
+    | models
+      - phrase.js
+    | public
+      | scripts
+        - script.js
+      | styles
+        - style.css
+      | views
+        - index.html
+    - .gitignore
+    - package.json
+    - server.js
+  ```
+
+6. In your model file (e.g. `phrase.js`), create the model schema, and export it so that you can require it in other parts of your app.
+
+  ```js
+  // phrase.js
+
+  var mongoose = require('mongoose'),
+      Schema = mongoose.Schema;
+
+  var PhraseSchema = new Schema({
+    word: String,
+    definition: String
+  });
+
+  var Phrase = mongoose.model('Phrase', PhraseSchema);
+
+  module.exports.Phrase = Phrase;
+  ```
+
+7. In `server.js`, require your model.
+
+  ```js
+  // server.js
+  
+  var Phrase = require('./models/phrase').Phrase;
+  ```
 
 ## Review: RESTful Routing
 
