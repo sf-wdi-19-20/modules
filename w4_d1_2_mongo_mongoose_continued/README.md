@@ -103,10 +103,9 @@ Mongoose allows us to use JavaScript and Object-Oriented Programming to talk to 
 
 ## CRUD Operations with Mongoose
 
-#### Get all: `.find()`
-**Note:** We can also specify conditions to find specific set. (TODO: add detail here)
+### Get all: <a href="http://mongoosejs.com/docs/api.html#model_Model.find"  target="_blank">`.find()`</a>
 
-http://mongoosejs.com/docs/api.html#model_Model.find
+We can use `.find()` to get all documents in the collection.
 
 ```js
 // get all phrases
@@ -118,7 +117,11 @@ app.get('/api/phrases', function (req, res) {
 });
 ```
 
-#### Create: `new` and `.save()`
+**Note:** We can also use `.find()` to get a specific set of documents in the collection (rather than ALL documents) by setting conditions. <a href="http://mongoosejs.com/docs/api.html#model_Model.find"  target="_blank">Read more in the docs.</a>
+
+### Create: `new` and `.save()`
+
+We've seen the `new` keyword before! It creates new instances of an object. We use it here to create new instances of our `Phrase` model. We then call `.save()` to store the new phrase in our database.
 
 ```js
 // create new phrase
@@ -136,11 +139,9 @@ app.post('/api/phrases', function (req, res) {
 });
 ```
 
-#### Get one: `.findOne()`
-**Note:** We can also use `.findById()`. (TODO: add detail here)
+### Get one: <a href="http://mongoosejs.com/docs/api.html#query_Query-findOne">`.findOne()`</a>
 
-http://mongoosejs.com/docs/api.html#query_Query-findOne
-http://mongoosejs.com/docs/api.html#model_Model.findById
+We can use `.findOne()` to return the first document in the collection that matches certain criteria. In this case, we're looking for a phrase with our target id.
 
 ```js
 // get one phrase
@@ -155,7 +156,11 @@ app.get('/api/phrases/:id', function (req, res) {
 });
 ```
 
-#### Update: `.findOne()` and `.save()`
+**Note:** The <a href="http://mongoosejs.com/docs/api.html#model_Model.findById" target="_blank">`.findById()`</a> method will also return a single document matching a specified id field.
+
+### Update: `.findOne()` and `.save()`
+
+Similar to the last example, we can use `.findOne()` to find the document with our target id. After updating the document, we use `.save()` to persist our changes to the database.
 
 ```js
 // update phrase
@@ -177,11 +182,9 @@ app.put('/api/phrases/:id', function (req, res) {
 });
 ```
 
-#### Delete: `.findOneAndRemove()`
-**Note:** We can also use `.findOne()` (or `.findById()`) and `.remove()`. (TODO: Add detail here)
+### Delete: <a href="http://mongoosejs.com/docs/api.html#model_Model.findOneAndRemove" target="_blank">`.findOneAndRemove()`</a>
 
-http://mongoosejs.com/docs/api.html#model_Model.findOneAndRemove
-http://mongoosejs.com/docs/api.html#model_Model.remove
+The `.findOneAndRemove()` method takes care of finding the document with our target id and removing it from the database.
 
 ```js
 // delete phrase
@@ -196,9 +199,11 @@ app.delete('/api/phrases/:id', function (req, res) {
 });
 ```
 
+**Note:** Another way to achieve the same functionality is by finding the document first (using `.findOne()` or  `.findById()`) and calling <a href="http://mongoosejs.com/docs/api.html#model_Model.remove" target="_blank">`.remove()`</a> on the found document.
+
 ## Challenges (& Tonight's Homework)
 
-Add Mongo/Mongoose to your Project 0 Microblog. If you would like to start with fresh code, you can clone this <a href="" target="_blank">Microblog solution</a>. (TODO: Add link)
+Add Mongo/Mongoose to your Project 0 Microblog. If you would like to start with fresh code, you can clone this <a href="https://github.com/sf-wdi-19-20/w4_microblog_starter_code" target="_blank">Microblog starter code</a>.
 
 ### Base Challenges
 
@@ -216,3 +221,8 @@ Add Mongo/Mongoose to your Project 0 Microblog. If you would like to start with 
 ## Docs & Reading
 
 * <a href="http://mongoosejs.com/docs" target="_blank">Mongoose Docs</a>
+* <a href="http://mongoosejs.com/docs/api.html#model_Model.find" target="_blank">.find()</a>
+* <a href="http://mongoosejs.com/docs/api.html#query_Query-findOne" target="_blank">.findOne()</a>
+* <a href="http://mongoosejs.com/docs/api.html#model_Model.findById" target="_blank">.findById()</a>
+* <a href="http://mongoosejs.com/docs/api.html#model_Model.findOneAndRemove" target="_blank">.findOneAndRemove()</a>
+* <a href="http://mongoosejs.com/docs/api.html#model_Model.remove" target="_blank">.remove()</a>
