@@ -113,7 +113,6 @@ If we want to manipulate cookies we should problem do a better job of parsing th
 
 ```
 $ npm install --save cookie-parser
-
 ```
 
 ```js
@@ -136,8 +135,6 @@ app.listen(3000, function () {
 ```
 
 ## Sessions
-
-What if instead of storing all the information in a cookie we give each new session a **globally unique id** or **guid** and just store things in an object associated to that **guid**.
 
 Sessions allow us to store the actual data on the server. Every session has a Globally Unique Identifier (GUID) associated with it. The client stores only the GUID.
 
