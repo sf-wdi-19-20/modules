@@ -222,6 +222,11 @@ Add Mongo/Mongoose to your Project 0 Microblog. If you would like to start with 
 2. Add the required validator to all fields in your blog post schema.
 3. **Super Bonus:** In your API routes to create and update blog posts, respond with the error if the required validation is not met.
 
+
+###Evening Reading
+
+For tomorrow morning, read "Model One-to-One Relationships with Embedded Documents", "Model One-to-Many Relationships with Embedded Documents", and "Model One-to-Many Relationships with Document References" from the [Mongo docs](http://docs.mongodb.org/manual/applications/data-models-relationships/). 
+
 ## Docs & Reading
 
 * <a href="http://mongoosejs.com/docs" target="_blank">Mongoose Docs</a>
