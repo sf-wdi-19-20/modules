@@ -200,4 +200,4 @@ app.get("/", function (req, res) {
 });
 ```
 
-**Note**: Check out `[express-session](https://github.com/expressjs/session)` for more session functionality.
+**Note**: Check out [express-session](https://github.com/expressjs/session) for more session functionality.
