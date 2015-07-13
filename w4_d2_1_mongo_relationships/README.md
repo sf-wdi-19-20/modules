@@ -98,7 +98,7 @@ var userSchema = new Schema({
 
 ##Route Design
 
-RESTful routing is the most popular modern convention for designing resource paths for nested data. Here is an example of an application that has routes for `Store` and `Item` models:
+Remember RESTful routing? It's the most popular modern convention for designing resource paths for nested data. Here is an example of an application that has routes for `Store` and `Item` models:
 
 ###RESTful Routing
 || | |
@@ -113,13 +113,13 @@ RESTful routing is the most popular modern convention for designing resource pat
 | GET | /store/:store_id/items/:item_id | Get an item from a store |
 | DELETE | /store/:store_id/items/:item_id | Delete an item from a store |
 
-*In routes, resources should not be nested more than one level deep*
+*In routes, avoid nesting resources more than one level deep.*
 
 ##Queries Challenge
 
 #####Goal
 
-Create and navigate through relational data in MongoDB
+Create and navigate through relational data in MongoDB.
 
 #####Setup
 * startup mongoDB with `mongod`
