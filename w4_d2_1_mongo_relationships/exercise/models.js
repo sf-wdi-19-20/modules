@@ -1,22 +1,27 @@
 // Setup
 var mongoose = require("mongoose");
 
-// open a connection to the database
+// what does the next line do?
 mongoose.connect("mongodb://localhost/mongoRelationships");
+
 var Schema = mongoose.Schema;
 
+
 // Referenced Data
+
+// what does this code block do?
 var foodSchema = new Schema({
   name: {
     type: String,
     default: ""
   },
   ingredients: [{
-    type: Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,  // what does this line do?
     ref: 'Ingredient'
   }]
 });
 
+// what does this code block do?
 var ingredientSchema = new Schema({
   title: {
     type: String,
@@ -29,10 +34,12 @@ var ingredientSchema = new Schema({
 })
 
 
+// what do these next two lines do?
 var Food = mongoose.model("Food", foodSchema);
 var Ingredient = mongoose.model("Ingredient", ingredientSchema);
 
 // Embedded Data
+// what does this code block do?
 var tweetSchema = new Schema({
   body: {
     type: String,
@@ -40,15 +47,16 @@ var tweetSchema = new Schema({
   }
 });
 
+// what does this code block do?
 var userSchema = new Schema({
   name: {
     type: String,
     default: ""
   },
-  tweets: [tweetSchema]
+  tweets: [tweetSchema]   // what does this line do?
 });
 
-
+// what do these next two lines do?
 var User = mongoose.model("User", userSchema);
 var Tweet = mongoose.model("Tweet", tweetSchema);
 
@@ -59,8 +67,8 @@ module.exports.Ingredient = Ingredient;
 module.exports.User = User;
 module.exports.Tweet = Tweet;
 
-// For the purposes of these console exercises, 
-// we'll close the database connection when we type 
+// For the purposes of these console exercises,
+// we'll close the database connection when we type
 // command + C in the terminal.
 // Don't worry about exactly how this works.
 // If you're curious feel free to look it up.

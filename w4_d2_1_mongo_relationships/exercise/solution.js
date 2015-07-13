@@ -1,32 +1,38 @@
-//1) Create a user
+// Embedded data: Users and Tweets
+// 1) Create a user
 
 
 
-//2) Build tweets and save them as embedded data in a user
+// 2) Build two tweets
+
+
+// 3) Save the tweets as embedded data in a user
 
 
 
-//3) List all the users
+// 4) List all the users
 
 
 
-//4) List all tweets of a specific user
+// 5) List all tweets of a specific user
 
 
 
-// 5) Create several ingredients
+
+// Referenced data: Foods and Ingredients
+// 1) Create several ingredients
 
 
 
-// 6) Create a food that references those ingredients
+// 2) Create a food that references those ingredients
 
 
 
-// 7) List all the Foods
+// 3) List all the Foods
 
 
 
-// 8) List all the ingredients in a Food
+// 4) List all the ingredients in a Food
 
 
 

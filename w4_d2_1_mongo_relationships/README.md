@@ -15,7 +15,7 @@
 
 Each person "has one" social security number, and each social security number "has one" person.
 
-###One-to-Many 
+###One-to-Many
 
 Each tree "has many" leaves, and each leaf "has one" tree.
 
@@ -41,7 +41,7 @@ Each student "has many" classes, and each class "has many" students.
 
 There is a tradeoff between *efficiency* and *consistency* depending on which one you choose.
 
-###Scenario: 
+###Scenario:
 
 How would you design the following?
 
@@ -115,37 +115,62 @@ Remember RESTful routing? It's the most popular modern convention for designing 
 
 *In routes, avoid nesting resources more than one level deep.*
 
-##Queries Challenge
-
-#####Goal
+##Challenges
 
 Create and navigate through relational data in MongoDB.
 
-#####Setup
-* startup mongoDB with `mongod`
-* `cd` into the folder `exercise` in this directory
-* `node console.js` to enter into a REPL where you can interact with your DB
+**Goal: start up a node REPL with access to our database**
 
-#####Tips
-* save your successful code in Sublime for each step
-* all your models will be inside an object `db`
-* inspect `models.js` to understand what properties each model has
+1. `git clone` the `w4_d2_1_exercise` repo, and `cd` into the new `w4_d2_1_exercise` directory.
+
+1. Start mongoDB with `mongod`.
+
+1. `cd` into the folder `exercise`.
+
+1. Take a quick look at `console.js`, a script we wrote to help set up your REPL to use your database. Don't worry about exactly how it works, but notice this line:
+
+  ```js
+  var db = require("./models");
+  ```
+
+  Hint: in the REPL, all your models will be inside an object called `db`.
+
+1. Use `node console.js` to enter into a REPL where you can interact with your database.
 
 
-#####Steps
+**Goal: inspect and understand existing code base**
 
-	1) Create a user
+1. You're working from existing code here, so start by figuring it out. Open `models.js` in Sublime.
+
+1. `models.js` has many comment lines that ask questions (cmd+f to find them all).  Replace these lines with a VERY brief answer to their questions.
+
+1. **Stretch:** Draw an entity relationship diagram for Users and Tweets.
+
+1. **Stretch:** Draw an entity relationship diagram for  Foods and Ingredients.
+
+
+**Goal: manipulate embedded data**
+
+NOTE: After each step is successful, save the code you used in `solution.js`.
+
+1. In the REPL, create a user.
 	
-	2) Create tweets embedded in that user
-	
-	3) List all the users
-	
-	4) List all tweets of a specific user
-	
-	5) Create several ingredients
-	
-	6) Create a food that references those ingredients
-	
-	7) List all the Foods
-	
-	8) List all the ingredients in a Food
+1. Create at least two tweets.
+
+1. Embedded the tweets you created into the user.
+
+1. List all the users.
+
+1. List all tweets of a specific user.
+
+**Goal: manipulate referenced data**
+
+NOTE: After each step is successful, save the code you used in `solution.js`.
+
+1. Create at least two ingredients.
+
+1. Create a food that references those ingredients.
+
+1. List all the foods.
+
+1. List all the ingredients in the food you created.
