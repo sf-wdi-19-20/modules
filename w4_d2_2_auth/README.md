@@ -2,9 +2,10 @@
 
 | Objectives |
 | :---- |
-| Review the request and response cycle and the stateless web |
-| Discuss and use a cookie in a web application |
-| Implement Sessions and review the concept of middleware. |
+| Review the request and response cycle and the stateless web. |
+| Use Express to add cookies to your application. |
+| Use Express to add session middleware to your application. |
+| Add PIN authentication to your application. |
 
 ## Cookies
 
