@@ -134,3 +134,73 @@ app.listen(3000, function () {
   console.log("UP AND RUNNING");
 });
 ```
+
+## Sessions
+
+What if instead of storing all the information in a cookie we give each new session a **globally unique id** or **guid** and just store things in an object associated to that **guid**.
+
+Sessions allow us to store the actual data on the server. Every session has a Globally Unique Identifier (GUID) associated with it. The client stores only the GUID.
+
+```js
+var express      = require('express');
+var cookieParser = require('cookie-parser');
+
+var app = express();
+app.use(cookieParser());
+
+var sessions = {};
+var guid = 0;
+
+app.get("/", function (req, res) {
+  var userGuid = req.cookies.guid;
+  console.log(req.cookies.guid)
+  if (!userGuid) {
+    guid += 1;
+    userGuid = guid;
+    sessions[guid] = {
+                        count: 0
+                      };
+    res.cookie("guid", userGuid);
+  }
+  sessions[userGuid].count += 1;
+  res.send("Hello World " + sessions[userGuid].count);
+});
+
+app.listen(3000, function () {
+  console.log("UP AND RUNNING");
+});
+```
+
+Express enables us to DRY up our code with [middleware](http://expressjs.com/guide/using-middleware.html):
+
+```js
+var checkGuid = function (req, res, next) {
+  var userGuid = req.cookies.guid;
+  console.log(req.cookies.guid)
+  if (!userGuid) {
+    guid += 1;
+    userGuid = guid;
+    sessions[guid] = {
+                        count: 0
+                      };
+    res.cookie("guid", userGuid);
+  }
+
+  req.session = sessions[userGuid];
+  next();
+}
+
+app.use(checkGuid);
+```
+
+The middleware function will run within every request/response cycle. Our route become simpler:
+
+```js
+app.get("/", function (req, res) {
+  req.session.count += 1;
+  var count = req.session.count;
+  res.send("Hello World " + count);
+});
+```
+
+**Note**: Check out `[express-session](https://github.com/expressjs/session)` for more session functionality.
