@@ -53,9 +53,9 @@ Mongoose allows us to use JavaScript and Object-Oriented Programming to talk to 
       - phrase.js
     | public
       | scripts
-        - script.js
+        - phrases.js
       | styles
-        - style.css
+        - phrases.css
       | views
         - index.html
     - .gitignore
@@ -78,7 +78,7 @@ Mongoose allows us to use JavaScript and Object-Oriented Programming to talk to 
 
   var Phrase = mongoose.model('Phrase', PhraseSchema);
 
-  module.exports.Phrase = Phrase;
+  module.exports = Phrase;
   ```
 
 7. In `server.js`, require your model.
@@ -86,7 +86,7 @@ Mongoose allows us to use JavaScript and Object-Oriented Programming to talk to 
   ```js
   // server.js
 
-  var Phrase = require('./models/phrase').Phrase;
+  var Phrase = require('./models/phrase');
   ```
 
 ## Review: RESTful Routing
