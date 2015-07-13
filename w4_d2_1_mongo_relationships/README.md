@@ -9,6 +9,26 @@
 | Write mongoose schemas for referenced and embedded data |
 | Build the appropriate queries for nested data relationships |
 
+##Types of Data Relationships
+
+###One-to-One
+
+Each person "has one" social security number, and each social security number "has one" person.
+
+###One-to-Many 
+
+Each tree "has many" leaves, and each leaf "has one" tree.
+
+###Many-to-Many
+
+Each student "has many" classes, and each class "has many" students.
+
+###Entity Relationship Diagrams
+
+![Entity Relationship Diagram example](https://www.edrawsoft.com/images/examples/entity-relationship-diagram.png)
+
+[Full guidelines for ERDs](http://docs.oracle.com/cd/A87860_01/doc/java.817/a81358/05_dev1.htm)
+
 ##Data Relationships with Mongoose
 
 ###Embedded Data
