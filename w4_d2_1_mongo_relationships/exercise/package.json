@@ -1,0 +1,14 @@
+{
+  "name": "mongo_relationships_exercise",
+  "version": "1.0.0",
+  "description": "exploring data relationships with users/tweets and food/ingredients",
+  "main": "solution.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^4.0.3"
+  }
+}
