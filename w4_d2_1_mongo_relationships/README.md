@@ -142,7 +142,7 @@ Create and navigate through relational data in MongoDB.
 
 1. You're working from existing code here, so start by figuring it out. Open `models.js` in Sublime.
 
-1. `models.js` has many comment lines that ask questions (cmd+f to find them all).  Replace these lines with a VERY brief answer to their questions.
+1. `models.js` has many comment lines that currently just ask questions (`cmd+f ?` to find them all).  Replace these lines with a VERY brief answer to their questions.
 
 1. **Stretch:** Draw an entity relationship diagram for Users and Tweets.
 
