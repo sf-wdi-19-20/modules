@@ -290,83 +290,69 @@ TODO: Explain static and instance methods
   });
   ```
 
-2 Test your `POST /login` route with Postman. Check that it sends the authenticated user as a response.
+2. Test your `POST /login` route with Postman. Check that it sends the authenticated user as a response.
 
   TODO: Add image with sample Postman request/response
 
+## Challenges: Part 6
 
-### Creating Sessions
+**Goal:** Set up sessions to keep track of logged-in user throughout our app.
 
-To introduce sessions we will need the `express-session` middleware.
+1. In the terminal, install the `express-session` middleware.
 
-```bash
-npm install --save express-session
+  ```
+  $ npm install --save express-session
+  ```
 
-```
+2. In `server.js`, require `express-session` and set up the middleware.
 
+  ```js
+  // server.js
 
-Then we add it to the list of require statements
+  var express = require('express'),
+      app = express(),
+      ejs = require('ejs'),
+      bodyParser = require('body-parser'),
+      mongoose = require('mongoose'),
+      User = require('./models/user'),
+      // new addition
+      session = require('express-session');
 
+  // middleware (new addition)
+  app.use(session({
+    secret: 'super secret',
+    resave: false,
+    saveUninitialized: true
+  }));
+  ```
 
-`simple_login/app.js`
+  TODO: What are all these keys?
 
-```javascript
-var express = require('express'),
-    bodyParser = require('body-parser'),
-    db = require("./models"),
-    session = require("express-session"),
-    app = express();
+3. Now that you have `express-session` set up, add the below methods in `server.js` to save a user's data in the session:
 
-app.use(bodyParser.urlencoded({extended: true}));
+  TODO: Comment this code
 
-app.use(session({
-  secret: 'super secret',
-  resave: false,
-  saveUninitialized: true
-}))
+  ```js
+  app.use('/', function (req, res, next) {
+    req.login = function (user) {
+      req.session.userId = user.id;
+    };
 
-```
-
-Then your routes to see if they have a `set-cookie` header
-
-```
-curl --data "user[email]=foobar&user[password]=foobar" -i localhost:3000/signup
-curl --data "user[email]=foobar&user[password]=foobar" -i localhost:3000/login
-```
-
-
-Notice the headers have a `set-cookie` key and value. Now we can create some special login functionality to save a user's data in the session.
-
-`simple_login/app.js`
-
-```javascript
-
-app.use("/", function (req, res, next) {
-
-  req.login = function (user) {
-    req.session.userId = user.id;
-  };
-
-  req.currentUser = function (cb) {
-     db.User.
-      find({
-          id: req.session.userId
-      },
-      function (err, user) {
+    req.currentUser = function (callback) {
+      User.findOne({_id: req.session.userId}, function (err, user) {
         req.user = user;
-        cb(null, user);
-      })
-  };
+        callback(null, user);
+      });
+    };
 
-  req.logout = function () {
-    req.session.userId = null;
-    req.user = null;
-  }
+    req.logout = function () {
+      req.session.userId = null;
+      req.user = null;
+    };
 
-  next();
-});
-
-```
+    next();
+  });
+  ```
 
 ## Logging In: Part 2 -- Routing
 
