@@ -102,6 +102,8 @@ Goal: Write a `UserSchema` and define a `User` model.
     salt = bcrypt.genSaltSync(10);
   ```
 
+  TODO: Explain salt
+
 4. Also in `user.js`, write your `UserSchema`. Users should have the properties **email** and **passwordDigest**.
 
   ```js
@@ -113,142 +115,163 @@ Goal: Write a `UserSchema` and define a `User` model.
   });
   ```
 
-5. Continuing in `user.js`, define a `User` model using your `UserSchema`.
+5. Continuing in `user.js`, define a `User` model using your `UserSchema` and export the model (so we can require it in other parts of our application).
 
-#### Exercise
+  ```js
+  // user.js
 
-Let's add some code for our `User`.
+  var User = mongoose.model('User', UserSchema);
+  module.exports = User;
+  ```
 
-```javascript
-userSchema.statics.createSecure = function (email, password, cb) {
-  var that = this;
-  bcrypt.genSalt(function (err, salt) {
-    bcrypt.hash(password, salt, function (err, hash) {
-      console.log(hash);
-      that.create({
-        email: email,
-        passwordDigest: hash
-       }, cb)
+## Challenges: Part 3
+
+**Goal:** Define static and instance methods for our `UserSchema`.
+
+TODO: Explain static and instance methods
+
+1. In `user.js`, define methods for our `UserSchema`. These methods handle creating a user with a secure (hashed) password and authenticating a user.
+
+  TODO: Comment this code
+
+  ```js
+  UserSchema.statics.createSecure = function (email, password, callback) {
+    var that = this;
+    bcrypt.genSalt(function (err, salt) {
+      bcrypt.hash(password, salt, function (err, hash) {
+        console.log(hash);
+        that.create({
+          email: email,
+          passwordDigest: hash
+        }, callback);
+      });
     });
-  })
-};
+  };
 
-userSchema.statics.encryptPassword = function (password) {
-   var hash = bcrypt.hashSync(password, salt);
-   return hash;
- };
+  UserSchema.statics.encryptPassword = function (password) {
+    var hash = bcrypt.hashSync(password, salt);
+    return hash;
+  };
 
-userSchema.statics.authenticate = function(email, password, cb) {
-  this.find({
-     email: email
-    },
-    function(err, user){
-      if (user === null){
-        throw new Error("Username does not exist");
-      } else if (user.checkPassword(password)){
-        cb(null, user);
+  UserSchema.statics.authenticate = function (email, password, callback) {
+    this.findOne({email: email}, function (err, user) {
+      console.log(user);
+      if (user === null) {
+        throw new Error('Can\'t find user with email ' + email);
+      } else if (user.checkPassword(password)) {
+        callback(null, user);
       }
+    });
+  };
 
-    })
- }
+  UserSchema.methods.checkPassword = function (password) {
+    return bcrypt.compareSync(password, this.passwordDigest);
+  };
+  ```
 
-userSchema.methods.checkPassword= function(password) {
-        return bcrypt.compareSync(password, this.passwordDigest);
-};
+2. In the terminal, start up the node REPL, and create a user with our new `createSecure` method.
 
-var User = mongoose.model("User", userSchema);
-module.exports = User;
-```
+  TODO: Test this step for potential bugs
 
-### Creating A User
+  ```js
+  $ node
+  > var User = require('./models/user');
+  > User.createSecure('test@example.com', 'secretpass', function (err, user) { console.log('success!', user); });
+  ```
 
-Let's go into the node terminal to play with our model.
+## Challenges: Part 4
 
-```javascript
-var db = require("./models");
-db.User.
-  createSecure("foobar", "foobar", function(err, user){
-    console.log("success!", user);
+**Goal:** Add a route to create users with secure (hashed) passwords.
+
+1. In `server.js`, require `mongoose` and our `User` model.
+
+  ```js
+  // server.js
+
+  var express = require('express'),
+      app = express(),
+      ejs = require('ejs'),
+      bodyParser = require('body-parser'),
+      // new additions
+      mongoose = require('mongoose'),
+      User = require('./models/user');
+  ```
+
+2. Also in `server.js`, connect to your `test` database.
+
+  ```js
+  // server.js
+
+  mongoose.connect('mongodb://localhost/test');
+  ```
+
+3. Continuing in `server.js` add a `POST /users` route to accept user signup requests.
+
+  ```js
+  // server.js
+
+  // user submits the signup form
+  app.post('/users', function (req, res) {
+
+    // grab user data from params (req.body)
+    var newUser = req.body.user;
+
+    // create the new user
+    User.createSecure(newUser.email, newUser.password, function () {
+      res.send('signed up!!!');
+    });
   });
-```
+  ```
 
+4. At this point, your complete `server.js` code should look like the following:
 
-### Putting It Together
+  ```js
+  // server.js
 
-Let's add our models to our app.
-
-`simple_login/app.js`
-
-```js
-var express = require('express'),
+  // require express framework and additional modules
+  var express = require('express'),
+    app = express(),
+    ejs = require('ejs'),
     bodyParser = require('body-parser'),
-    db = require("./models"),
-    app = express();
+    mongoose = require('mongoose'),
+    User = require('./models/user');
 
+  // connect to mongodb test database
+  mongoose.connect('mongodb://localhost/test');
 
-```
+  // set view engine for server-side templating
+  app.set('view engine', 'ejs');
 
-Let's add a `POST /users` route to accept user signup requests.
+  // middleware
+  app.use(bodyParser.urlencoded({extended: true}));
 
-```javascript
-// where the user submits the sign-up form
-app.post("/users", function (req, res) {
+  // signup route with placeholder response
+  app.get('/signup', function (req, res) {
+    res.send('coming soon');
+  });
 
-  // grab the user from the params
-  var user = req.body.user;
+  // user submits the signup form
+  app.post('/users', function (req, res) {
 
-  // create the new user
-  db.User.
-    createSecure(user.email, user.password,
-    function(){
-        res.send("SIGNED UP!");
-      });
-});
+    // grab user data from params (req.body)
+    var newUser = req.body.user;
 
-```
+    // create the new user
+    User.createSecure(newUser.email, newUser.password, function () {
+      res.send('signed up!!!');
+    });
+  });
 
+  // listen on port 3000
+  app.listen(3000, function () {
+    console.log('server started on locahost:3000');
+  });
+  ```
 
-The complete code is just the following:
+5. Test your `POST /users` route with Postman. Check that it creates a new user with a secure (hashed) password.
 
+  TODO: Add image with sample Postman request/response
 
-`simple_login/app.js`
-
-
-```javascript
-var express = require('express'),
-    bodyParser = require('body-parser'),
-    db = require("./models"),
-    app = express();
-
-app.use(bodyParser.urlencoded({extended: true}))
-
-app.get("/signup", function (req, res) {
-  res.send("Coming soon");
-});
-
-// where the user submits the sign-up form
-app.post("/users", function (req, res) {
-
-  // grab the user from the params
-  var user = req.body.user;
-
-  // create the new user
-  db.User.
-    createSecure(user.email, user.password,
-    function(){
-        res.send("SIGNED UP!");
-      });
-});
-
-app.listen(3000, function () {
-  console.log("SERVER RUNNING");
-});
-```
-
-```bash
-curl --data "user[email]=foobar&user[password]=foobar" localhost:3000/users
-
-```
 
 ## Logging In: Part 1 -- Setup
 
