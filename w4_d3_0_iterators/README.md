@@ -1,6 +1,6 @@
 # Interview Prep - Iterators
 
-Today you'll be implementing iterator functions on the whiteboard in groups of three. Since there are three problems, each group member should take a turn "driving" for one problem, with the other two as support ("navigators").
+Today you'll be implementing iterator functions on the whiteboard in groups of three. Since there are three problems, each group member should take a turn "driving" for one problem with the other two as support ("navigators").
 
 **Note:** DO NOT use any built-in iterator functions from Underscore or another library. You will often be asked in interviews to implement well-known methods like this from scratch as problem-solving exercises.
 
@@ -16,4 +16,4 @@ Today you'll be implementing iterator functions on the whiteboard in groups of t
 
 * Use pseudo-code to diagram the input and output of your function before writing any code on the board.
 * Come up with at least three examples of test input, and write down the expected output. **Hint:** For `each` and `map`, one of your test inputs will be a function.
-* Only when you have pseudo-code and test input with expected output should you write code to implement the function body.
+* Only when you have pseudo-code and test input with expected output should you write code to implement the body of the function.
