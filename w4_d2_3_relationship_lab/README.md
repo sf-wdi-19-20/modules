@@ -73,7 +73,7 @@ Each post "has one" author and "has many" comments.
 1. Set up a place in your `index.html` to display comments.
 Hint: How about a new column off to one side that shows all the comments for the last clicked post?
 
-![two-column wireframe suggestion](./img/wireframe.png)
+    ![two-column wireframe suggestion](./img/wireframe.png)
 
 1. Add a click event listener to tell when a post is clicked. Hint: check out the delete button click event listeners in one of the sample projects.
 
