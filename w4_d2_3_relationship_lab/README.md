@@ -79,7 +79,7 @@ Each post "has one" author and "has many" comments.
 
 1. Make a route to assign a specific author to a specific post: `PUT /api/posts/:postid/authors/:authorid`. When the server receives a request at this route, it should:
 
-  * query the database to find the author
+  * query the database to find the author (to make sure the id actually matches an author)
 
   * query the database to find the post
 
