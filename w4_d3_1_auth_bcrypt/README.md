@@ -171,7 +171,7 @@ TODO: Explain static and instance methods
 
 2. In the terminal, start up the node REPL, and create a user with our new `createSecure` method.
 
-  TODO: Test this step for potential bugs
+  TODO: Maybe take this out? Potential bugs/confusion
 
   ```js
   $ node
