@@ -272,33 +272,28 @@ TODO: Explain static and instance methods
 
   TODO: Add image with sample Postman request/response
 
+## Challenges: Part 5
 
-## Logging In: Part 1 -- Setup
+**Goal:** Add routes for user login.
 
-Let's add some routes to be able to login.
+1. In `server.js`, add a `POST /login` route to authenticate a user.
 
-`simple_login/app.js`
+  ```js
+  // server.js
 
-```javascript
+  app.post('/login', function (req, res) {
+    var user = req.body.user;
 
-app.post("/login", function (req, res) {
-  var user = req.body.user;
-
-  db.User
-    .authenticate(user.email, user.password,
-    function (err, user) {
-          res.send(user);
+    User.authenticate(user.email, user.password, function (err, user) {
+      res.send(user);
     });
-});
+  });
+  ```
 
-```
+2 Test your `POST /login` route with Postman. Check that it sends the authenticated user as a response.
 
-Then test the route
+  TODO: Add image with sample Postman request/response
 
-```
-curl --data "user[email]=foobar&user[password]=foobar" localhost:3000/login
-
-```
 
 ### Creating Sessions
 
