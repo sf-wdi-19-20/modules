@@ -74,7 +74,7 @@ var foodSchema = new Schema({
     default: ""
   },
   ingredients: [{
-    type: Schema.Types.ObjectId,	//REFERENCING :D
+    type: Schema.Types.ObjectId,  //REFERENCING :D
     ref: 'Ingredient'
   }]
 });
@@ -106,7 +106,7 @@ var userSchema = new Schema({
     type: String,
     default: ""
   },
-  tweets: [tweetSchema]		// EMBEDDING :D
+  tweets: [tweetSchema]   // EMBEDDING :D
 });
 ```
 
@@ -135,9 +135,10 @@ Create and navigate through relational data in MongoDB.
 
 **Goal: start up a node REPL with access to our database**
 
-1. `git clone` the `w4_d2_1_exercise` repo, and `cd` into the new `w4_d2_1_exercise` directory.
 
 1. Start mongoDB with `mongod`.
+
+1. In another tab, `git clone` the `w4_d2_1_exercise` repo, and `cd` into the new `w4_d2_1_exercise` directory.
 
 1. `cd` into the folder `exercise`.
 
@@ -149,7 +150,7 @@ Create and navigate through relational data in MongoDB.
 
   Hint: in the REPL, all your models will be inside an object called `db`.
 
-1. Use `node console.js` to enter into a REPL where you can interact with your database.
+1. Type `node console.js` in the terminal to enter a REPL where you can interact with your database.
 
 
 **Goal: inspect and understand existing code base**
@@ -165,9 +166,9 @@ Create and navigate through relational data in MongoDB.
 
 **Goal: manipulate embedded data**
 
-NOTE: After each step is successful, save the code you used in `solution.js`.
+NOTE: After each step is successful, save the code you used in `challenges.js`.
 
-1. In the REPL, create a user.
+1. In the REPL, create a user. 
 
 1. Create at least two tweets.
 
@@ -179,7 +180,7 @@ NOTE: After each step is successful, save the code you used in `solution.js`.
 
 **Goal: manipulate referenced data**
 
-NOTE: After each step is successful, save the code you used in `solution.js`.
+NOTE: After each step is successful, save the code you used in `challenges.js`.
 
 1. Create at least two ingredients.
 
@@ -187,4 +188,4 @@ NOTE: After each step is successful, save the code you used in `solution.js`.
 
 1. List all the foods.
 
-1. List all the ingredients in the food you created.
+1. List all the ingredients in the food you created. Hint: see the story/creator example in the [mongoose `populate` documentation](http://mongoosejs.com/docs/populate.html).
