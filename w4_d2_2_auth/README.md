@@ -10,6 +10,8 @@
 | :---: | :---: | :---: |
 | Stateless web, sessions, authentication | Node, Express, Postman | Challenges |
 
+![cookiemonster](http://media0.giphy.com/media/EKUvB9uFnm2Xe/giphy.gif)
+
 ### Motivation (Why?)
 
 Every HTTP request/response stands on its own. Because the request is the only context the client needs understand the response, the HTTP protocol is said to be *stateless*.
@@ -33,14 +35,7 @@ Without sessions, each request/response is self contained. It would be as though
 // server.js
 //
 
-<<<<<<< HEAD
 var session = require('express-session')
-=======
-var session = require('express-session');
-var cookieParser = require('cookie-parser');
-
-...
->>>>>>> 231e71c35eb92f4f9e64abb787377e7936168392
 
 app.use(session({
   saveUninitialized: true,
@@ -112,7 +107,7 @@ UserSchema.statics.authenticate = function (email, password, callback) {
 2. create a ```GET``` and ```POST``` routes to `/login`
 3. Try logging in with your username. It should display your username.
 4. In developer tools look at Resources > Cookies. What is the Cookie's value?
-4. Log the ```req.session``` and ```req.sessionID``` to the console. Is the sessionID the samea s the cookie value? These are generated behind the scenes by ```express-session```. 
+4. Log the ```req.session``` and ```req.sessionID``` to the console. Is the sessionID the samea s the cookie value? These are generated behind the scenes by ```express-session```.
 5. What happens when you or nodemon restarts your server?
 6. Change ```userName``` to ```email``` and add a ```password``` field.
 7. Can you login with both those now? Can you see them in the session? Do you really want to store the password in the session? :) (more on encrypting passwords tomorrow)
@@ -128,8 +123,4 @@ UserSchema.statics.authenticate = function (email, password, callback) {
 
 ### Evening Challenges
 
-<<<<<<< HEAD
 Look at the morning notes . . .
-=======
-Relationship Lab
->>>>>>> 231e71c35eb92f4f9e64abb787377e7936168392
