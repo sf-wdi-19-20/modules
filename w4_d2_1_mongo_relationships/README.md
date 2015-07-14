@@ -15,31 +15,45 @@
 
 Each person "has one" social security number, and each social security number "has one" person.
 
+<img src="./img/one_to_one.png" alt="one to one erd" style="width: 250px;">
+
 ###One-to-Many
 
 Each tree "has many" leaves, and each leaf "has one" tree.
+
+<img src="./img/one_to_many.png" alt="one to many erd" style="width: 250px;">
 
 ###Many-to-Many
 
 Each student "has many" classes, and each class "has many" students.
 
+<img src="./img/many_to_many.png" alt="many to many erd" style="width: 250px;">
+
 ###Entity Relationship Diagrams
+
+Entity relationship diagrams (ERDs) represent the relationships between data or entities.
 
 ![Entity Relationship Diagram example](https://www.edrawsoft.com/images/examples/entity-relationship-diagram.png)
 
-[Full guidelines for ERDs](http://docs.oracle.com/cd/A87860_01/doc/java.817/a81358/05_dev1.htm)
+Note: Attributes can be represented as line items under a heading (like all of the Item1, Item2, Item3 under each heading above) or as ovals stemming from the heading's rectangle.  
+
+Note: when one side of the relationship doesn't have to be present, we draw a circle (or 0) on its side of the relationship line.
+
+[More guidelines for ERDs](http://docs.oracle.com/cd/A87860_01/doc/java.817/a81358/05_dev1.htm)
+
+
 
 ##Data Relationships with Mongoose
 
 ###Embedded Data
 
-* **Embedded Data** is directly nested *inside* of other data
+* **Embedded Data** is directly nested *inside* of other data. Each record has a copy of the data.
 
 ###Referenced Data
 
-* **Referenced Data** contains an *id* that can be used to lookup the information
+* **Referenced Data** is stored as an *id* inside other data. The id can be used to look up the information. All records that reference the same data look up the same copy.
 
-There is a tradeoff between *efficiency* and *consistency* depending on which one you choose.
+There are tradeoffs between *efficiency* and *consistency* depending on which one you choose.
 
 ###Scenario:
 
@@ -154,7 +168,7 @@ Create and navigate through relational data in MongoDB.
 NOTE: After each step is successful, save the code you used in `solution.js`.
 
 1. In the REPL, create a user.
-	
+
 1. Create at least two tweets.
 
 1. Embedded the tweets you created into the user.
