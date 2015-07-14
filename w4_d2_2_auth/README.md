@@ -29,7 +29,60 @@ Without sessions, each request/response is self contained. It would be as though
 ### Key Snippets
 
 ```js
-userSchema.statics.authenticate = function (email, password, cb) {
+//
+// server.js
+//
+...
+
+var session = require('express-session')
+var cookieParser = require('cookie-parser')
+
+...
+
+app.use(cookieParser('miyahamiyahimiyahemiyahoho'));
+app.use(session({
+  saveUninitialized: true,
+  resave: true,
+  secret: 'OurSuperSecretCookieSecret',
+  cookie: { maxAge: 60000 }
+}));
+```
+
+```js
+//
+// server.js
+//
+
+...
+
+app.get('/login', function(req, res) {
+  var html = '<form action="/" method="post">' +
+               'Your name: <input type="text" name="userName"><br>' +
+               '<button type="submit">Submit</button>' +
+               '</form>';
+  if (req.session.user) {
+    html += '<br>Your username from your session is: ' + req.session.user.userName;
+  }
+  res.send(html);
+})
+
+app.post('/', function(req, res){
+  req.session.user = { userName: req.body.userName }
+  res.redirect('/login');
+});
+
+...
+
+```
+
+```js
+//
+// user.js
+//
+
+...
+
+UserSchema.statics.authenticate = function (email, password, cb) {
   this.find({
     email: email
     },
@@ -51,6 +104,25 @@ userSchema.statics.authenticate = function (email, password, cb) {
 
 ### Basic Challenges
 
-1. Add insecure authentication to one of your existing Express projects.
+**Goal: Add insecure authentication to one of your existing Express projects.**
+
+1. Initialize ```express-session``` and ```cookie-parser``` to your express server file.
+2. create a ```GET``` and ```POST``` routes to `/login`
+3. Try logging in with your username.
+4. Log the ```req.session``` and ```req.sessionID``` to the console. These are generated behind the scenes by ```express-session```.
+5. What happens when you or nodemon restarts your server?
+6. Change ```userName``` to ```email``` and add a ```password``` field.
+7. Can you login with both those now? Can you see them in the session? Do you really want to store the password in the session? :) (more on encrypting passwords tomorrow)
+8. Add an ```authenticate``` method to your User model using ```UserSchema.statics```
+9. Add a few user documents to the users collection in db using the mongo CLI. Set emails and plain-text passwords (more on password encryption tomorrow!)
+9. Use the ```User.authenticate(email, password, function(data){})``` method to authenticate the user.
 
 ### Stretch Challenges
+
+1. What would a ```/logout``` route method look like?
+2. Can you set a "remember me" function?
+3. What other data could you save to the session?
+
+### Evening Challenges
+
+From the morning.
