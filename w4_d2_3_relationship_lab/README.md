@@ -18,7 +18,7 @@ Each post "has one" author and "has many" comments.
 
 1. Update the Post schema to include a reference to one Author. If you have an author attribute, replace it.
 
-File connection hints: 
+**File connection hints:**
 
  * In the solutions, we add all of the schemas and models to one file and rename it from `post.js` to `models.js`.
  
