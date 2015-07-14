@@ -37,8 +37,6 @@ Entity relationship diagrams (ERDs) represent the relationships between data or 
 
 Note: Attributes can be represented as line items under a heading (like all of the Item1, Item2, Item3 under each heading above) or as ovals stemming from the heading's rectangle.  
 
-Note: when one side of the relationship doesn't have to be present, we draw a circle (or 0) on its side of the relationship line.
-
 [More guidelines for ERDs](http://docs.oracle.com/cd/A87860_01/doc/java.817/a81358/05_dev1.htm)
 
 
