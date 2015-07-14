@@ -1,204 +1,37 @@
 # Authentication
 
 | Objectives |
-| :---- |
+| :--- |
 | Review the request and response cycle and the stateless web. |
-| Use Express to add cookies to your application. |
-| Use Express to add session middleware to your application. |
-| Add PIN authentication to your application. |
+| Use Express to add sessions to your application. |
+| Implement basic authentication in your application. |
 
-## Cookies
+| Concepts | Tools | Activities |
+| :---: | :---: | :---: |
+| Stateless web, sessions, authentication | Node, Express, Postman | Challenges |
 
-Let's take a look at how to create cookies before discussing their utility:
+### Motivation (Why?)
 
-```js
-var express = require("express");
+Every HTTP request/response stands on its own. Because the request is the only context the client needs understand the response, the HTTP protocol is said to be *stateless*.
 
-var app = express();
+Sometimes we need state to persist across requests; this is where sessions come in. One example is a shopping cart. Without sessions, your shopping cart would be empty as soon as you navigated to the next page!
 
-app.get("/", function (req, res) {
-  res.set({
-    "Set-Cookie": "count=1"
-  });
-  res.send("Hello World");
-});
+User authentication is another common example. When a user logs in, we'd like them to stay logged in until they log out or their session expires.
 
-app.listen(3000, function () {
-  console.log("UP AND RUNNING");
-});
-```
+User/password combinations are a common way of authenticating. They are relatively insecure but provide sufficient security for most web applications. Thumb prints, driver's license, etc. are other ways we authenticate ourselves in the physical world.
 
-This sends a response that looks something like the following:
+### Analogy (What?)
 
-```
-HTTP/1.1 200 OK
-X-Powered-By: Express
-Set-Cookie: count=1
-Content-Type: text/html; charset=utf-8
-Content-Length: 11
-ETag: W/"b-4a17b156"
-Date: Mon, 18 May 2015 07:36:50 GMT
-Connection: keep-alive
+Imagine you're in the habit of having deep conversations with a close friend every Sunday night. Every time you speak, you're able to pick up right where you left off. You're able to do this because you both have the context provided by previous conversations. The context you both share is analogous to a session.
 
-Hello World
-```
+Without sessions, each request/response is self contained. It would be as though you and your friend both had Alzheimer's.
 
-The browser will save the cookie; you can view all cookies for the current domain with Chrome's developer tools (Resources tab).
+### Key Snippets
 
-The cookie will be included the next time your browser makes a request to the same domain.
+## Challenges
 
-```
-...
-  cookie: 'count=1',
-...
-```
+### Docs & Resources
 
-Here's how cookies can be used to count the number of times someone has come to your site:
+### Basic Challenges
 
-```js
-var express = require("express");
-
-var app = express();
-
-app.get("/", function (req, res) {
-  console.log(req.headers);
-  var cookieStr = req.get("Cookie");
-  var count = 0;
-  if (cookieStr ) {
-    count = parseInt(cookieStr.split("=")[1]);
-  }
-  count += 1;
-  res.set({
-    "Set-Cookie": "count=" + count
-  });
-  res.send("Hello World");
-});
-
-app.listen(3000, function () {
-  console.log("UP AND RUNNING");
-});
-
-
-```
-
-Express also has a built in method called `res.cookie` to make writing cookies easier:
-
-```js
-
-var express = require("express");
-
-var app = express();
-
-app.get("/", function (req, res) {
-  console.log(req.headers);
-  var cookieStr = req.get("Cookie");
-  var count = 0;
-  if (cookieStr ) {
-    count = parseInt(cookieStr.split("=")[1]);
-  }
-  count += 1;
-  res.cookie('count', count);
-  res.send("Hello World");
-});
-
-app.listen(3000, function () {
-  console.log("UP AND RUNNING");
-});
-```
-
-**Note**: Cookies that don't have expiration dates are considered to be session cookies; they are deleted after the browser is closed.
-
-If we want to manipulate cookies we should problem do a better job of parsing them.
-
-`cookie-parser` gives us a nicer way to parse cookies from the request:
-
-```
-$ npm install --save cookie-parser
-```
-
-```js
-var express      = require('express');
-var cookieParser = require('cookie-parser');
-
-var app = express();
-app.use(cookieParser());
-
-app.get("/", function (req, res) {
-  console.log(req.cookies);
-  var count = parseInt(req.cookies.count)
-  res.cookie('count', count);
-  res.send("Hello World");
-});
-
-app.listen(3000, function () {
-  console.log("UP AND RUNNING");
-});
-```
-
-## Sessions
-
-Sessions allow us to store the actual data on the server. Every session has a Globally Unique Identifier (GUID) associated with it. The client stores only the GUID.
-
-```js
-var express      = require('express');
-var cookieParser = require('cookie-parser');
-
-var app = express();
-app.use(cookieParser());
-
-var sessions = {};
-var guid = 0;
-
-app.get("/", function (req, res) {
-  var userGuid = req.cookies.guid;
-  console.log(req.cookies.guid)
-  if (!userGuid) {
-    guid += 1;
-    userGuid = guid;
-    sessions[guid] = {
-                        count: 0
-                      };
-    res.cookie("guid", userGuid);
-  }
-  sessions[userGuid].count += 1;
-  res.send("Hello World " + sessions[userGuid].count);
-});
-
-app.listen(3000, function () {
-  console.log("UP AND RUNNING");
-});
-```
-
-Express enables us to DRY up our code with [middleware](http://expressjs.com/guide/using-middleware.html):
-
-```js
-var checkGuid = function (req, res, next) {
-  var userGuid = req.cookies.guid;
-  console.log(req.cookies.guid)
-  if (!userGuid) {
-    guid += 1;
-    userGuid = guid;
-    sessions[guid] = {
-                        count: 0
-                      };
-    res.cookie("guid", userGuid);
-  }
-
-  req.session = sessions[userGuid];
-  next();
-}
-
-app.use(checkGuid);
-```
-
-The middleware function will run within every request/response cycle. Our route become simpler:
-
-```js
-app.get("/", function (req, res) {
-  req.session.count += 1;
-  var count = req.session.count;
-  res.send("Hello World " + count);
-});
-```
-
-**Note**: Check out [express-session](https://github.com/expressjs/session) for more session functionality.
+### Stretch Challenges
