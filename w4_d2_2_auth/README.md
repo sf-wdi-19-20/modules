@@ -129,4 +129,4 @@ UserSchema.methods.checkPassword = function (password) {
 
 ### Evening Challenges
 
-Look at the morning notes . . .
+[Mongoose Relationship Lab](https://github.com/sf-wdi-19-20/modules/tree/master/w4_d2_3_relationship_lab)
