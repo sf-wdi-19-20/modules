@@ -139,6 +139,27 @@ Each post "has one" author and "has many" comments.
 
 ### Stretch Challenges: Client-Side Code
 
+**Goal: update old requests to accommodate new author format**
+
+When the server sends back post data, the post objects now look like this:
+
+```js
+{
+    "_id": "55a5835042964888612bc16f",
+    "author": {
+        "_id": "55a5835042964888612bc16e",
+        "name": "Oscar Wilde",
+        "__v": 0
+    },
+    "text": "I can resist everything except temptation.",
+    "__v": 0,
+    "comments": []
+}
+```
+
+We'll need to update the client side code to account for the new format of author -- it's not a string any more; it's an object.  In particular, wherever `author` appears in our template, we'll need to change that to use the author's name.
+ 
+
 **Goal: Update your view to show all the comments on a post when the post is clicked.**
 
 1. Set up a place in your `index.html` to display comments.
