@@ -42,6 +42,28 @@ Each post "has one" author and "has many" comments.
 
 ### Server Code
 
+**Goal: update old routes to accommodate new author format**
+
+1. Update your route to get all blog posts, `GET /api/posts`. When the server receives a request at this route, it should:
+ 
+ * find all of the posts from the database
+ 
+ * populate all of the post's author information
+ 
+ * send back all the posts as the JSON response
+ 
+1. Update your route to create a new blog post,  `POST /api/posts`. When the server receives a request at this route, it should:
+
+  * create and save a new author record
+  
+  * create a new post
+  
+  * save the new author record's _id as the new post's author
+  
+  * save the new post
+  
+  * send the new post as the JSON response
+
 **Goal: add basic routes for making and reading embedded comments**
 
 1. Make a route to read the comments on one blog post: `GET /api/posts/:postid/comments`. When the server receives a request at this route, it should:
