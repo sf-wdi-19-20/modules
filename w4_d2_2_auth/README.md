@@ -33,7 +33,14 @@ Without sessions, each request/response is self contained. It would be as though
 // server.js
 //
 
+<<<<<<< HEAD
 var session = require('express-session')
+=======
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+
+...
+>>>>>>> 231e71c35eb92f4f9e64abb787377e7936168392
 
 app.use(session({
   saveUninitialized: true,
@@ -121,4 +128,8 @@ UserSchema.statics.authenticate = function (email, password, callback) {
 
 ### Evening Challenges
 
+<<<<<<< HEAD
 Look at the morning notes . . .
+=======
+Relationship Lab
+>>>>>>> 231e71c35eb92f4f9e64abb787377e7936168392
