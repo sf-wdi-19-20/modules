@@ -57,6 +57,8 @@ Each post "has one" author and "has many" comments.
   * create a new comment record
 
   * add the new comment to the post's list of embedded comments
+  
+  * save the changes to the post
 
   * send the new comment as the JSON response
 
@@ -84,6 +86,8 @@ Each post "has one" author and "has many" comments.
   * query the database to find the post
 
   * update the post to reference the author
+  
+  * save the updated post
 
   * send the updated post as the JSON response
 
