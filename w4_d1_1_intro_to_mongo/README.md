@@ -72,6 +72,8 @@ mongoose.model('Dinosaur', DinosuarSchema);
 ##### Get Documents using a Model
 
 ```
+require('./models/dinosaur.js')
+
 var Dinosaur = require('mongoose').model('Dinosaur');
 
 var dinosaurs = Dinosaur.find().exec(function(err, dinosaurs) {
@@ -111,24 +113,30 @@ Install MongoDB, a popular noSQL database.
 * First we'll need to run brew update to update our brew packages.
 
   ```bash
-  brew update
+  $ brew update
   ```
 * Next we'll need to run `brew install` for **MongoDB**
 
   ```bash
-  brew install mongodb
+  $ brew install mongodb
   ```
 
 * Then we'll need a directory for **MongoDB** to save data.
 
   ```bash
-  sudo mkdir -p /data/db
+  $ sudo mkdir -p /data/db
   ```
 
   * Finally we'll want to make sure we have permission to read and write to this directory.
 
   ```bash
-  sudo chown -R $USER /data/db
+  $ sudo chown -R $USER /data/db
+  ```
+
+  * Now you can start your mongo service
+
+  ```
+  $ mongod
   ```
 
 ### Basic Mongo CLI Challenges
