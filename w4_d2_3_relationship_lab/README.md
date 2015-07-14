@@ -37,7 +37,7 @@ File connection hints:
    ```js
    db.Post.find(function(err, posts){
       console.log(posts);
-   }
+   });
    ```
 
 ### Server Code
