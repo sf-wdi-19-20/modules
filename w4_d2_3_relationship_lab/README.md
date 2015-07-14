@@ -8,7 +8,7 @@ Each post "has one" author and "has many" comments.
 
 ### Models
 
-**Goal: set up or update schema and models**
+**Goal: set up or update schema and models in models file**
 
 1. Create a schema and a model for Comment data. The Comment schema should include at least the text of the comment.
 
@@ -16,7 +16,7 @@ Each post "has one" author and "has many" comments.
 
 1. Update the Post schema to include a list of embedded Comments.
 
-1. Update the Post schema to include one referenced Author.
+1. Update the Post schema to include a reference to one Author. If you have an author attribute, replace it.
 
 ### Server Code
 
@@ -114,70 +114,6 @@ Each post "has one" author and "has many" comments.
 1. Update your new comment form event handler to `POST` the data to your API. Hint: which route creates a new comment for a post?
 
 
+## Submission
 
-## Stretch Challenges: Tags
-
-We'll add an additional Tag feature so we can tag posts with topics like "algorithms" or "birdwatching" or "CoD".
-
-This is a many-to-many relationship, because each tag may be added to multiple posts, and each post may have multiple tags. For MongoDB, we'll treat it as two one-to-many relationships.
-
-We want to be able to look up all the posts with a certain tag, or all the tags on a certain post.  
-
-### Models
-
-1. Create a schema and a model for Tag data. The Tag schema should include at least the text of the tag.
-
-1. Add a list of referenced Posts to the Tag schema.
-
-1. Update the Post schema to include a list of referenced Tags.
-
-
-### Server Code
-
-1. Make a route to get all tags: `GET /api/tags`. When the server receives a request at this route, it should:
-
-  * query the database to find all tags
-
-  * send the tags as the JSON response
-
-1. Make a route to create a new tag: `POST /api/tags`. When the server receives a request at this route, it should:
-
-  * make a new tag
-
-  * save the new tag in the database
-
-  * send the new tag as the JSON response
-
-1. Make a route to read the tags on one blog post: `GET /api/posts/:postid/tags`. When the server receives a request at this route, it should:
-
-  * query the database to find the post indicated by the id
-
-  * populate or query the tag data
-
-  * send the post's list of tags as the JSON response
-
-1. Make a route to read the blog posts with one tag: `GET /api/tags/:tagid/posts`. When the server receives a request at this route, it should:
-
-  * query the database to find the tag indicated by the id
-
-  * populate or query the post data
-
-  * send the tag's list of posts as the JSON response
-
-<!-- 1. Make a route to add a tag to a blog post: `PUT /api/posts/:postid/tags/:tagid`.  When the server receives a request at this route, it should:
-
-  * query the database to find the post indicated by the post id
-
-  * query the database to find the tag indicated by the tag id
-
-  * add the tag to the post's list of tags
-
-  * save the post
-
-  * add the post to the tag's list of posts
-
-  * save the tag
-
-  * send the post as the JSON response -->
-
-[Submit the HW form](https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform)
+Submit the link for your microblog repo on github, along with any comments, in [the HW form](https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform).
