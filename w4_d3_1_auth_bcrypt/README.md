@@ -296,15 +296,19 @@ TODO: Explain static and instance methods
 
 ## Challenges: Part 6
 
-**Goal:** Set up sessions to keep track of logged-in user throughout our app.
+**Goal:** Set up sessions and cookies to keep track of logged-in user throughout our app.
 
 1. In the terminal, install the `express-session` middleware.
+
+  TODO: Also add cookie-parser
 
   ```
   $ npm install --save express-session
   ```
 
 2. In `server.js`, require `express-session` and set up the middleware.
+
+  TODO: app.use(session) consistent with Tues afternoon lesson
 
   ```js
   // server.js
