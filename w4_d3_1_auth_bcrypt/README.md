@@ -2,7 +2,7 @@
 
 | Objectives |
 | :--- |
-| Implement a password **authentication** strategy with Bcrypt |
+| Implement a password **authentication** strategy with bcrypt |
 | Saved a logged-in user's data to the session |
 | Implement routes for a user to `/login` and `/logout` |
 
@@ -22,88 +22,59 @@ To give users the ability to sign up and log in to our site, we'll need:
 * **Mongoose Models:** for CRUD-ing users and setting up authentication methods
 * <a href="https://github.com/ncb000gt/node.bcrypt.js" target="_blank">**bcrypt:**</a> for hashing users' passwords
 
-### Getting Setup (7mins)
+## Challenges: Part 1
 
+1. Initialize a new Node project and install `express`, `body-parser`, and `ejs`.
 
-Set yourself up with a project folder.
+  ```
+  $ mkdir simple_login
+  $ cd simple_login
+  $ npm init
+  $ npm install --save express body-parser ejs
+  $ touch server.js
+  ```
 
-```bash
-mkdir simple_login
-cd simple_login
+  **Note:** <a href="https://github.com/mde/ejs" target="_blank">ejs</a> is a server-side templating engine that allows us to render views from our server with dynamic data.
 
-touch package.json
-touch app.js
+2. Open your project in Sublime, and set up your server in `server.js` with the following code snippet:
 
-subl .
-```
+  ```js
+  // server.js
 
-At the very least we need something like the following:
+  // require express framework and additional modules
+  var express = require('express'),
+    app = express(),
+    ejs = require('ejs'),
+    bodyParser = require('body-parser');
 
-`simple_login/app.js`
+  // set view engine for server-side templating
+  app.set('view engine', 'ejs');
 
-```js
-var express = require('express'),
-    bodyParser = require('body-parser'),
-    app = express();
+  // middleware
+  app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(bodyParser.urlencoded({extended: true}))
+  // signup route with placeholder response
+  app.get('/signup', function (req, res) {
+    res.send('coming soon');
+  });
 
-app.get("/signup", function (req, res) {
-  res.send("Coming soon");
-});
+  // listen on port 3000
+  app.listen(3000, function () {
+    console.log('server started on locahost:3000');
+  });
+  ```
 
-app.listen(3000, function () {
-  console.log("SERVER RUNNING");
-});
-```
+3. In the terminal, run `nodemon` and make sure your server starts without any errors. If you get an error, read the line number and error message. Most likely, you're trying to use an undefined variable or a module that's not installed.
 
-The above won't run unless we install those dependencies, so let's go ahead and make sure we do that now.
+  ```
+  $ nodemon
+  ```
 
-#### Exercise 1
-
------------
-
-```
-npm install --save express body-parser
-```
-
-* What happened? Why?
-
->  The problem is there is nothing in our `package.json` file.
-
-Let's put something minimal in there.
-
-`simple_login/package.json`
-
-```js
-{}
-```
-
-Now let's try to install
-
-```
-npm install --save express body-parser
-```
-
-
---------------
-
-#### Exercise 2
-
--------
-Run your `app.js` file using `nodemon`
-
-* What happens? What needs to be updated? Why?
-
--------
-
-
-
+  **Note:** Keep `nodemon` running the entire time you're developing your application. When you need to execute other terminal commands, press `command + T` to open a new terminal tab.
 
 ### Setting Up `Mongo`
 
 Now we don't have models yet so that's as good as any place as any to start.
-
 
 #### Exercise
 
