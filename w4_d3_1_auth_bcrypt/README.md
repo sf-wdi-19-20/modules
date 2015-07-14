@@ -24,7 +24,9 @@ To give users the ability to sign up and log in to our site, we'll need:
 
 ## Challenges: Part 1
 
-1. Initialize a new Node project and install `express`, `body-parser`, and `ejs`.
+**Goal:** Create a new Node/Express project.
+
+1. In the terminal, initialize a new Node project and install `express`, `body-parser`, and `ejs`.
 
   ```
   $ mkdir simple_login
@@ -72,48 +74,52 @@ To give users the ability to sign up and log in to our site, we'll need:
 
   **Note:** Keep `nodemon` running the entire time you're developing your application. When you need to execute other terminal commands, press `command + T` to open a new terminal tab.
 
-### Setting Up `Mongo`
+## Challenges: Part 2
 
-Now we don't have models yet so that's as good as any place as any to start.
+Goal: Write a `UserSchema` and define a `User` model.
+
+1. In the terminal, create a new directory for `models` and create a file for your `User` model.
+
+  ```
+  $ mkdir models
+  $ touch models/user.js
+  ```
+
+2. Also in the terminal, install `mongoose` and `bcrypt`.
+
+  ```
+  $ npm install --save mongoose bcrypt
+  ```
+
+3. In Sublime, open `user.js` and require your newly installed dependencies, `mongoose` and `bcrypt`.
+
+  ```js
+  // user.js
+
+  var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    bcrypt = require('bcrypt'),
+    salt = bcrypt.genSaltSync(10);
+  ```
+
+4. Also in `user.js`, write your `UserSchema`. Users should have the properties **email** and **passwordDigest**.
+
+  ```js
+  // user.js
+
+  var UserSchema = new Schema({
+    email: String,
+    passwordDigest: String
+  });
+  ```
+
+5. Continuing in `user.js`, define a `User` model using your `UserSchema`.
 
 #### Exercise
-
-1. Write a `userSchema` for your Users. It should have the following: **email**, **firstname**, **lastname**, **passwordDigest**.
-2. Define a `User` model using your `userSchema`.
-
-
-#### Creating A User Model
-
-Let's begin with a more organized approach.
-
-```
-mkdir models
-touch models/index.js
-touch models/user.js
-```
-
-Let's write some logic in our `models/index`.
-
-
-`index.js`
-
-```
-module.exports.User = require("./user");
-```
 
 Let's add some code for our `User`.
 
 ```javascript
-
-var bcrypt = require("bcrypt");
-var salt = bcrypt.genSaltSync(10);
-var mongoose = require("mongoose");
-
-var userSchema = new mongoose.Schema({
-  email: String,
-  passwordDigest: String
-});
-
 userSchema.statics.createSecure = function (email, password, cb) {
   var that = this;
   bcrypt.genSalt(function (err, salt) {
@@ -132,7 +138,6 @@ userSchema.statics.encryptPassword = function (password) {
    return hash;
  };
 
-
 userSchema.statics.authenticate = function(email, password, cb) {
   this.find({
      email: email
@@ -146,23 +151,14 @@ userSchema.statics.authenticate = function(email, password, cb) {
 
     })
  }
+
 userSchema.methods.checkPassword= function(password) {
         return bcrypt.compareSync(password, this.passwordDigest);
 };
 
-
 var User = mongoose.model("User", userSchema);
-
 module.exports = User;
-
 ```
-
-Be sure to install bcrypt
-
-```bash
-npm install --save bcrypt
-```
-
 
 ### Creating A User
 
