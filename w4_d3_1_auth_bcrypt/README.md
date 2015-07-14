@@ -333,6 +333,8 @@ TODO: Explain static and instance methods
   TODO: Comment this code
 
   ```js
+  // server.js
+
   app.use('/', function (req, res, next) {
     req.login = function (user) {
       req.session.userId = user.id;
@@ -354,61 +356,36 @@ TODO: Explain static and instance methods
   });
   ```
 
-## Logging In: Part 2 -- Routing
+## Challenges: Part 7
 
-In our app.js we want to make sure we have the correct routing for logging in a user so let's update our login route.
+Goal: Refactor the `POST /login` route to set the session and redirect to a user profile page.
 
-`simple_login/app.js`
+1. After authenticating a user, log them in (by calling `req.login(user)`, which sets the session data), and redirect the user to their profile page. In `server.js`, your `POST /login` route should now look like this:
 
-```javascript
+  ```js
+  // server.js
 
-app.post("/login", function (req, res) {
-  var user = req.body.user;
+  app.post('/login', function (req, res) {
+    var user = req.body.user;
 
-  db.User
-    .authenticate(user.email, user.password, function (err, user) {
-          res.send(user);
+    User.authenticate(user.email, user.password, function (err, user) {
+      // call login function (sets session data)
+      req.login(user);
+      // redirect to user profile
+      res.redirect('/profile');
     });
-});
+  });
+  ```
 
-```
+2. In the step above, we're redirecting the user to a route called `/profile`, which we don't have yet, so go ahead and set it up in `server.js`. For now, our profile route will just respond with the user.
 
-Technically after you log someone in you want to redirect them to somewhere meaningful.
-
-
-`simple_login/app.js`
-
-```javascript
-
-app.post("/login", function (req, res) {
-  var user = req.body.user;
-
-  db.User
-    .authenticate(user.email, user.password,
-    function (err, user) {
-          // note here the super step
-          req.login(user);
-          // We need to create this route
-          res.redirectTo("/profile"); // redirect to user profile
-      });
-});
-
-```
-
-The user show path will be the following.
-
-
-`simple_login/app.js`
-
-```javascript
-
-app.get("/profile", function (req, res) {
-  req.currentUser(function (err, user) {
-        res.send(user);
-   })
-});
-
-```
+  ```js
+  app.get('/profile', function (req, res) {
+    req.currentUser(function (err, user) {
+      res.send(user);
+    });
+  });
+  ```
 
 However we need to play with this in the browser to verify this is working, so it's time to add some views.
 
