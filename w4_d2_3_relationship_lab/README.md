@@ -70,13 +70,18 @@ Each post "has one" author and "has many" comments.
 
 **Goal: Update your view to show all the comments on a post when the post is clicked.**
 
-1. Set up a place in your `index.html` to display comments. Hint: How about a new div?
+1. Set up a place in your `index.html` to display comments.
+Hint: How about a new column off to one side that shows all the comments for the last clicked post?
+
+![two-column wireframe suggestion](./img/wireframe.png)
 
 1. Add a click event listener to tell when a post is clicked. Hint: check out the delete button click event listeners in one of the sample projects.
 
 1. Update your click event listener to include an AJAX call to `GET` all the comments for the blog post from your API when a post is clicked.
 
 1. Use jQuery and Underscore templating to render the comments in the view.
+
+Note: You may notice some bugs (for example, comments don't disappear when you delete their post). Don't worry about them for now.
 
 ###Stretch Challenges: Server Code
 
