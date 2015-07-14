@@ -18,6 +18,28 @@ Each post "has one" author and "has many" comments.
 
 1. Update the Post schema to include a reference to one Author. If you have an author attribute, replace it.
 
+File connection hints: 
+
+ * In the solutions, we add all of the schemas and models to one file and rename it from `post.js` to `models.js`.
+ 
+ * We then update the export line to say `module.exports.Post = Post;`. (We also add a few export lines.)
+ 
+ * In the server code, we create a variable called `db` to hold all of the model module exports:
+   
+   ```js
+   var db = require('./models/models');
+   ```
+   
+   This replaces where we directly required './models/posts' and created a `Post` variable.
+ 
+ * In the server code, we now access all of our models as attributes of `db`. Here's an example:
+
+   ```js
+   db.Post.find(function(err, posts){
+      console.log(posts);
+   }
+   ```
+
 ### Server Code
 
 **Goal: add basic routes for making and reading embedded comments**
