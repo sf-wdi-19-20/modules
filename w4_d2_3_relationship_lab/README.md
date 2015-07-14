@@ -114,6 +114,12 @@ Each post "has one" author and "has many" comments.
 1. Update your new comment form event handler to `POST` the data to your API. Hint: which route creates a new comment for a post?
 
 
-## Submission
+## Readings and Submission
+
+###Evening Reading
+
+Read Salted [Password Hashing - Doing it Right](https://crackstation.net/hashing-security.htm), sections: "What is password hashing?", "How Hashes are Cracked", "Adding Salt".
+
+###Submission
 
 Submit the link for your microblog repo on github, along with any comments, in [the HW form](https://docs.google.com/a/generalassemb.ly/forms/d/14rNXnDaq5X5Rvda-1BRZCl9YmkOoZzf7oxGBEZG_YJE/viewform).
