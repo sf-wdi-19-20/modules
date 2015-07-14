@@ -35,7 +35,7 @@ Without sessions, each request/response is self contained. It would be as though
 // server.js
 //
 
-var session = require('express-session')
+var session = require('express-session');
 
 app.use(session({
   saveUninitialized: true,
