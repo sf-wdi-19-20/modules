@@ -32,14 +32,9 @@ Without sessions, each request/response is self contained. It would be as though
 //
 // server.js
 //
-...
 
 var session = require('express-session')
-var cookieParser = require('cookie-parser')
 
-...
-
-app.use(cookieParser('miyahamiyahimiyahemiyahoho'));
 app.use(session({
   saveUninitialized: true,
   resave: true,
@@ -56,7 +51,7 @@ app.use(session({
 ...
 
 app.get('/login', function(req, res) {
-  var html = '<form action="/" method="post">' +
+  var html = '<form action="/api/sessions" method="post">' +
                'Your name: <input type="text" name="userName"><br>' +
                '<button type="submit">Submit</button>' +
                '</form>';
@@ -66,7 +61,7 @@ app.get('/login', function(req, res) {
   res.send(html);
 })
 
-app.post('/', function(req, res){
+app.post('/api/sessions', function(req, res){
   req.session.user = { userName: req.body.userName }
   res.redirect('/login');
 });
@@ -82,7 +77,7 @@ app.post('/', function(req, res){
 
 ...
 
-UserSchema.statics.authenticate = function (email, password, cb) {
+UserSchema.statics.authenticate = function (email, password, callback) {
   this.find({
     email: email
     },
@@ -90,7 +85,7 @@ UserSchema.statics.authenticate = function (email, password, cb) {
       if (user === null){
         throw new Error("Email does not exist");
       } else if (user.password == password){
-        cb(null, user);
+        callback(null, user);
       }
     });
 };
@@ -108,8 +103,9 @@ UserSchema.statics.authenticate = function (email, password, cb) {
 
 1. Initialize ```express-session``` and ```cookie-parser``` to your express server file.
 2. create a ```GET``` and ```POST``` routes to `/login`
-3. Try logging in with your username.
-4. Log the ```req.session``` and ```req.sessionID``` to the console. These are generated behind the scenes by ```express-session```.
+3. Try logging in with your username. It should display your username.
+4. In developer tools look at Resources > Cookies. What is the Cookie's value?
+4. Log the ```req.session``` and ```req.sessionID``` to the console. Is the sessionID the samea s the cookie value? These are generated behind the scenes by ```express-session```. 
 5. What happens when you or nodemon restarts your server?
 6. Change ```userName``` to ```email``` and add a ```password``` field.
 7. Can you login with both those now? Can you see them in the session? Do you really want to store the password in the session? :) (more on encrypting passwords tomorrow)
@@ -125,4 +121,4 @@ UserSchema.statics.authenticate = function (email, password, cb) {
 
 ### Evening Challenges
 
-From the morning.
+Look at the morning notes . . .
