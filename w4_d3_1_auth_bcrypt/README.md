@@ -377,76 +377,84 @@ Goal: Refactor the `POST /login` route to set the session and redirect to a user
   });
   ```
 
-2. In the step above, we're redirecting the user to a route called `/profile`, which we don't have yet, so go ahead and set it up in `server.js`. For now, our profile route will just respond with the user.
+2. In the step above, we're redirecting the user to a route called `/profile`, which we don't have yet, so go ahead and set it up in `server.js`. For now, our profile route will respond with a welcome message.
 
   ```js
   app.get('/profile', function (req, res) {
     req.currentUser(function (err, user) {
-      res.send(user);
+      res.send('Welcome ' + user.email);
     });
   });
   ```
 
-However we need to play with this in the browser to verify this is working, so it's time to add some views.
+## Challenges: Part 8
 
-## Adding Views
+**Goal:** Set up a login view to test our login functionality in the browser.
 
-First let's  `mkdir` for views
+1. In the terminal, make a `views` directory and a view called `login.ejs`.
 
+  **Note:** We're using the <a href="https://github.com/mde/ejs" target="_blank">ejs</a> view engine to easily render files from our server. No more `res.sendFile`!
 
+  ```
+  $ mkdir views
+  $ touch views/login.ejs
+  ```
 
-### Adding A Login Path
+2. In Sublime, open `login.ejs` and add this login form boilerplate. Writing ejs is no different from HTML, but the file must have the `.ejs` extension.
 
+  **Note:** We use the `name` HTML attribute to send form data to the server. Setting the names `user[email]` and `user[password]` allows us to use `req.body.user` on the server-side, which gives us a user object with `email` and `password` keys.
 
-We need a `GET /login` view and route.
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- bootstrap css -->
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-`simple_login/app.js`
+    <title>Simple Login</title>
+  </head>
+  <body>
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <h1>Log In</h1>
+          <hr>
+          <form method="post" action="/login">
+            <div class="form-group">
+              <input type="text" name="user[email]" class="form-control" placeholder="Email" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="password" name="user[password]" class="form-control" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Log In" class="btn btn-primary">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>
+  ```
 
-```javascript
+3. Now that the login view is ready, it's time for a login route. In `server.js`, set up `GET /login` to render the `login` view.
 
-app.get("/login", function (req, res) {
-  res.render("login");
-});
+  ```js
+  // server.js
 
-```
+  app.get('/login', function (req, res) {
+    res.render('login');
+  });
+  ```
 
-Then create the login view
+4. Test that you can go to `localhost:3000/login` and successfully log in your user that you created via Postman (Challenges: Part 4, #5). After logging in, you should be redirected to `/profile` with the welcome message response.
 
+## Stretch Challenges
 
-`simple_login/views/login.ejs`
-
-```html
-
-<form method="post" action="/login">
-  <div>
-    <input type="text" name="user[email]">
-  </div>
-  <div>
-    <input type="text" name="user[password]">
-  </div>
-  <button>Login</button>
-</form>
-
-```
-
-Redirect or send data after login.
-
-`simple_login/app.js`
-
-```javascript
-
-app.get("/profile", function (req, res) {
-  req.currentUser(function (err, user) {
-        res.send("Welcome " + user.email)
-      });
-});
-
-```
-
-
-
-## Exercises
-
-1. Add a `GET /signup` route and view.
-2. Login a user after `signup` and redirect to a `/profile` page.
+1. Add a `GET /signup` route and view. Hint: The `signup` view will have a form similar to the `login` view.
+2. Test that a new user can sign up via the form on the `signup` page.
+3. After a new user signs up, redirect them to `/login`. Test the user-flow of signing up, then logging in. After logging in, you should still be redirected to `/profile` with the welcome message response.
+4. Create a route `GET /logout` that calls your `req.logout` method to destroy the session. Add a link to your site that logs out the user.
