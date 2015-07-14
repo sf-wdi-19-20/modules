@@ -28,10 +28,29 @@ Without sessions, each request/response is self contained. It would be as though
 
 ### Key Snippets
 
+```js
+userSchema.statics.authenticate = function (email, password, cb) {
+  this.find({
+    email: email
+    },
+    function (err, user) {
+      if (user === null){
+        throw new Error("Email does not exist");
+      } else if (user.password == password){
+        cb(null, user);
+      }
+    });
+};
+```
+
 ## Challenges
 
 ### Docs & Resources
 
+* [express-session README](https://github.com/expressjs/session)
+
 ### Basic Challenges
+
+1. Add insecure authentication to one of your existing Express projects.
 
 ### Stretch Challenges
