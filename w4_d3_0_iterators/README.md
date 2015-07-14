@@ -6,7 +6,7 @@ Today you'll be implementing iterator functions on the whiteboard in groups of t
 
 ## Problems
 
-1. Write a function called `each` that takes in an array and a callback function. `each` should iterate through all items in the array and call the callback function with each item and its index as parameters.
+1. Write a function called `each` that takes in an array and a callback function. `each` should iterate through all items in the array and call the callback function with each item and its index as parameters. `each` should return the original array that was passed in.
 
 2. Write a function called `map` that takes in an array and a callback function. `map` should iterate through all items in the array, call the callback function with each item and its index as parameters, and return a new array of the results.
 
