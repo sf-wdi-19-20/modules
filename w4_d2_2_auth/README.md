@@ -34,8 +34,8 @@ Without sessions, each request/response is self contained. It would be as though
 //
 ...
 
-var session = require('express-session')
-var cookieParser = require('cookie-parser')
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
 
 ...
 
@@ -125,4 +125,4 @@ UserSchema.statics.authenticate = function (email, password, cb) {
 
 ### Evening Challenges
 
-From the morning.
+Relationship Lab
