@@ -52,20 +52,24 @@ app.use(session({
 
 ...
 
-app.get('/login', function(req, res) {
+app.get('/login', function (req, res) {
   var html = '<form action="/api/sessions" method="post">' +
-               'Your name: <input type="text" name="userName"><br>' +
+               'Your email: <input type="text" name="email"><br>' +
+               'Your password: <input type="text" name="password"><br>' +
                '<button type="submit">Submit</button>' +
                '</form>';
   if (req.session.user) {
-    html += '<br>Your username from your session is: ' + req.session.user.userName;
+    html += '<br>Your email from your session is: ' + req.session.user.email;
   }
+  console.log(req.session);
   res.send(html);
 })
 
-app.post('/api/sessions', function(req, res){
-  req.session.user = { userName: req.body.userName }
-  res.redirect('/login');
+app.post('/api/sessions', function (req, res) {
+  User.authenticate(req.body.email, req.body.password, function(error, user) {
+    req.session.user = user;
+    res.redirect('/login');
+  });
 });
 
 ...
@@ -80,16 +84,18 @@ app.post('/api/sessions', function(req, res){
 ...
 
 UserSchema.statics.authenticate = function (email, password, callback) {
-  this.find({
-    email: email
-    },
-    function (err, user) {
-      if (user === null){
-        throw new Error("Email does not exist");
-      } else if (user.password == password){
-        callback(null, user);
-      }
-    });
+  this.findOne({email: email}, function (err, user) {
+    console.log(user);
+    if (user === null) {
+      throw new Error('Can\'t find user with email ' + email);
+    } else if (user.checkPassword(password)) {
+      callback(null, user);
+    }
+  });
+};
+
+UserSchema.methods.checkPassword = function (password) {
+  return password == this.password;
 };
 ```
 
