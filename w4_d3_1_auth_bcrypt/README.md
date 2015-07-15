@@ -10,7 +10,14 @@
 
 * **Authentication** verifies that a user is who they say they are. When a user logs into our site, we *authenticate* them by checking that the password they typed in matches the password we have stored for them.
 * **Authorization** is the process of determining whether or not a user has *permission* to to perform certain actions on our site. For example, a user may *be authorized* to view their profile page and edit their own blog posts, but not to edit another user's blog posts.
-* **Why do we hash (and salt) passwords?** In order to authenticate a user, we need to store their password in our database. This allows us to check that the user typed in the correct password when logging into our site. The downside is that if anyone ever got access to our database, they would also have access to all of our users' login information. We use a <a href="https://crackstation.net/hashing-security.htm#normalhashing" target="_blank">hashing algorithm</a> to avoid storing plain-text passwords in the database. We also use a <a href="https://crackstation.net/hashing-security.htm#salt" target="_blank">salt</a> to randomize the hashing algorithm, providing extra security against potential attacks.
+
+## Why do we hash (and salt) passwords?
+
+In order to authenticate a user, we need to store their password in our database. This allows us to check that the user typed in the correct password when logging into our site.
+
+The downside is that if anyone ever got access to our database, they would also have access to all of our users' login information. We use a <a href="https://crackstation.net/hashing-security.htm#normalhashing" target="_blank">hashing algorithm</a> to avoid storing plain-text passwords in the database. We also use a <a href="https://crackstation.net/hashing-security.htm#salt" target="_blank">salt</a> to randomize the hashing algorithm, providing extra security against potential attacks.
+
+![](http://memeshare.net/memes/1/604.png)
 
 ## Implementing Authentication
 
