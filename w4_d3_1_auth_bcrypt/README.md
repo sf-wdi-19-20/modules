@@ -506,4 +506,8 @@ Goal: Refactor the `POST /login` route to set the session and redirect to a user
 
 4. Create a route `GET /logout` that uses the `req.logout` middleware to destroy the session. Add a link on your site that logs out the user.
 
-5. The `req.currentUser` middleware finds the user who is currently logged in. User `req.currentUser` to *authorize* parts of your site. For example, logged-in users shouldn't be able to see the `/signup` or `/login` pages. In contrast, users should only be able to see `/profile` when logged in. **Hint:** You'll need to add some logic related to the `err` parameter in the callback function you pass into `req.currentUser`. You'll also need to use `res.redirect` if a user tries to perform an unauthorized action.
+5. The `req.currentUser` middleware finds the user who is currently logged in. Use `req.currentUser` to *authorize* parts of your site.
+  * Logged-in users should NOT be able to see the `/signup` or `/login` pages.
+  * Users should only be able to see `/profile` when logged in.
+  
+  **Hint:** You'll need to add some logic related to the `err` parameter in the callback function you pass into `req.currentUser`. You'll also need to use `res.redirect` if a user tries to perform an unauthorized action.
