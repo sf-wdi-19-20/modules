@@ -45,6 +45,8 @@ app.use(session({
 }));
 ```
 
+Without User model
+
 ```js
 //
 // server.js
@@ -54,8 +56,7 @@ app.use(session({
 
 app.get('/login', function (req, res) {
   var html = '<form action="/api/sessions" method="post">' +
-               'Your email: <input type="text" name="email"><br>' +
-               'Your password: <input type="text" name="password"><br>' +
+               'Your email: <input type="text" name="userName"><br>' +
                '<button type="submit">Submit</button>' +
                '</form>';
   if (req.session.user) {
@@ -66,15 +67,15 @@ app.get('/login', function (req, res) {
 })
 
 app.post('/api/sessions', function (req, res) {
-  User.authenticate(req.body.email, req.body.password, function(error, user) {
-    req.session.user = user;
-    res.redirect('/login');
-  });
+  req.session.user = { userName: req.body.userName }
+  res.redirect('/login')
 });
 
 ...
 
 ```
+
+With User Model
 
 ```js
 //
@@ -87,7 +88,7 @@ UserSchema.statics.authenticate = function (email, password, callback) {
   this.findOne({email: email}, function (err, user) {
     console.log(user);
     if (user === null) {
-      throw new Error('Can\'t find user with email ' + email);
+      callback('Can\'t find user with email ' + email, user);
     } else if (user.checkPassword(password)) {
       callback(null, user);
     }
@@ -99,6 +100,19 @@ UserSchema.methods.checkPassword = function (password) {
 };
 ```
 
+```js
+app.post('/api/sessions', function (req, res) {
+  User.authenticate(req.body.email, req.body.password, function(error, user) {
+    if (error) {
+      res.send(error)
+    } else if (user) {
+      req.session.user = user;
+      res.redirect('/login');
+    }
+  });
+});
+```
+
 ## Challenges
 
 ### Docs & Resources
@@ -107,19 +121,19 @@ UserSchema.methods.checkPassword = function (password) {
 
 ### Basic Challenges
 
-**Goal: Add insecure authentication to one of your existing Express projects.**
-
-1. Initialize ```express-session``` and ```cookie-parser``` to your express server file.
-2. create a ```GET``` and ```POST``` routes to `/login`
-3. Try logging in with your username. It should display your username.
-4. In developer tools look at Resources > Cookies. What is the Cookie's value?
-4. Log the ```req.session``` and ```req.sessionID``` to the console. Is the sessionID the samea s the cookie value? These are generated behind the scenes by ```express-session```.
+1. Install ```express-session``` and require it in the express ```server.js``` file of an existing, working express project.
+2. Use ```app.get('/login')``` to create a ```GET``` route to the login form.
+3. Use ```app.post('/api/sessions')``` to create a ```POST``` route to create a new session. (Creating a new session is the same as logging in!).
+4. Try logging in with your username. It should display your username.
+5. In developer tools look at Resources > Cookies. What is the Cookie's value?
+6. Log the ```req.session``` and ```req.sessionID``` to the console. Is the sessionID the samea s the cookie value? These are generated behind the scenes by ```express-session```.
 5. What happens when you or nodemon restarts your server?
-6. Change ```userName``` to ```email``` and add a ```password``` field.
-7. Can you login with both those now? Can you see them in the session? Do you really want to store the password in the session? :) (more on encrypting passwords tomorrow)
-8. Add an ```authenticate``` method to your User model using ```UserSchema.statics```
-9. Add a few user documents to the users collection in db using the mongo CLI. Set emails and plain-text passwords (more on password encryption tomorrow!)
-9. Use the ```User.authenticate(email, password, function(data){})``` method to authenticate the user.
+6. Change ```userName``` to ```email``` and add a ```password``` field to the html you are sending to your ```app.get('/login')```
+7. Update the req.session.user object to have email and password.
+8. Pass the email and password form data to the ```User.authenticate()``` method.
+7. What happens when you login now? Is the user found?
+8. ```db.users.insert()``` at least one user to your ```mongo``` REPL console. Make sure the user has an email and password. (more on encrypting passwords tomorrow)
+9. Low try to login with the email and password of one of the users you just added to your DB. (make sure your ```mongoose.connect()``` is pointing to the same db you added the users to. Check which db you are in in the mongo REPL with: ```> db```)
 
 ### Stretch Challenges
 
