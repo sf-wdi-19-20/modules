@@ -8,8 +8,9 @@
 
 ## Authentication & Authorization
 
-* TODO: Add definitions of authentication & authorization
-* **Why do we hash passwords?**
+* **Authentication** verifies that a user is who they say they are. When a user logs into our site, we *authenticate* them by checking that the password they typed in matches the password we have stored for them.
+* **Authorization** is the process of determining whether or not a user has *permission* to to perform certain actions on our site. For example, a user may *be authorized* to view their profile page and edit their own blog posts, but not to edit another user's blog posts.
+* **Why do we hash (and salt) passwords?** In order to authenticate a user, we need to store their password in our database. This allows us to check that the user typed in the correct password when logging into our site. The downside is that if anyone ever got access to our database, they would also have access to all of our users' login information. We use a <a href="https://crackstation.net/hashing-security.htm#normalhashing" target="_blank">hashing algorithm</a> to avoid storing plain-text passwords in the database. We also use a <a href="https://crackstation.net/hashing-security.htm#salt" target="_blank">salt</a> to randomize the hashing algorithm, providing extra security against potential attacks.
 
 ## Implementing Authentication
 
@@ -34,9 +35,9 @@ To give users the ability to sign up and log in to our site, we'll need:
   $ npm init
   $ npm install --save express body-parser ejs
   $ touch server.js
-  ```
+  ```  
 
-  **Note:** <a href="https://github.com/mde/ejs" target="_blank">ejs</a> is a server-side templating engine that allows us to render views from our server with dynamic data.
+  **Note:** <a href="https://github.com/mde/ejs" target="_blank">`ejs`</a> is a server-side templating engine that allows us to render views from our server with dynamic data. We won't worry about the dynamic data part too much in this project - we'll be using `ejs` to render the views in our application.
 
 2. Open your project in Sublime, and set up your server in `server.js` with the following code snippet:
 
@@ -96,19 +97,21 @@ Goal: Write a `UserSchema` and define a `User` model.
   ```js
   // user.js
 
+  // require dependencies
   var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcrypt'),
     salt = bcrypt.genSaltSync(10);
   ```
 
-  TODO: Explain salt
+  **NOTE:** `bcrypt`'s `genSaltSync` function provides the salt we'll use to randomize the hashing algorithm.
 
 4. Also in `user.js`, write your `UserSchema`. Users should have the properties **email** and **passwordDigest**.
 
   ```js
   // user.js
 
+  // define user schema
   var UserSchema = new Schema({
     email: String,
     passwordDigest: String
@@ -120,26 +123,36 @@ Goal: Write a `UserSchema` and define a `User` model.
   ```js
   // user.js
 
+  // define user model
   var User = mongoose.model('User', UserSchema);
+  
+  // export user model
   module.exports = User;
   ```
 
 ## Challenges: Part 3
 
-**Goal:** Define static and instance methods for our `UserSchema`.
-
-TODO: Explain static and instance methods
+**Goal:** Define user authentication methods for our `UserSchema`.
 
 1. In `user.js`, define methods for our `UserSchema`. These methods handle creating a user with a secure (hashed) password and authenticating a user.
 
-  TODO: Comment this code
+   **Note:** We use `UserSchema.statics` to define <a href="http://mongoosejs.com/docs/guide#statics" target="_blank">static methods</a> for our schema and `UserSchema.methods` to define <a href="http://mongoosejs.com/docs/guide#methods" target="_blank">instance methods</a> for our schema. Static methods can hold any functionality related to the collection, while instance methods define functionality related to individual documents in the collection. You can think of instance methods like prototype methods in OOP!
 
   ```js
+  // user.js
+  
+  // create a new user with secure (hashed) password
   UserSchema.statics.createSecure = function (email, password, callback) {
+    // `this` references our schema
+    // store it in variable `that` because `this` changes context in nested callbacks
     var that = this;
+    
+    // hash password user enters at sign up
     bcrypt.genSalt(function (err, salt) {
       bcrypt.hash(password, salt, function (err, hash) {
         console.log(hash);
+        
+        // create the new user (save to db) with hashed password
         that.create({
           email: email,
           passwordDigest: hash
@@ -148,35 +161,29 @@ TODO: Explain static and instance methods
     });
   };
 
-  UserSchema.statics.encryptPassword = function (password) {
-    var hash = bcrypt.hashSync(password, salt);
-    return hash;
-  };
-
+  // authenticate user (when user logs in)
   UserSchema.statics.authenticate = function (email, password, callback) {
+    // find user by email entered at log in
     this.findOne({email: email}, function (err, user) {
       console.log(user);
+      
+      // throw error if can't find user
       if (user === null) {
         throw new Error('Can\'t find user with email ' + email);
+      
+      // if found user, check if password is correct
       } else if (user.checkPassword(password)) {
         callback(null, user);
       }
     });
   };
 
+  // compare password user enters with hashed password (`passwordDigest`)
   UserSchema.methods.checkPassword = function (password) {
+    // run hashing algorithm (with salt) on password user enters
+    // in order to compare with `passwordDigest`
     return bcrypt.compareSync(password, this.passwordDigest);
   };
-  ```
-
-2. In the terminal, start up the node REPL, and create a user with our new `createSecure` method.
-
-  TODO: Maybe take this out? Potential bugs/confusion
-
-  ```js
-  $ node
-  > var User = require('./models/user');
-  > User.createSecure('test@example.com', 'secretpass', function (err, user) { console.log('success!', user); });
   ```
 
 ## Challenges: Part 4
@@ -408,7 +415,7 @@ Goal: Refactor the `POST /login` route to set the session and redirect to a user
 
   **Note:** We use the `name` HTML attribute to send form data to the server. Setting the names `user[email]` and `user[password]` allows us to use `req.body.user` on the server-side, which gives us a user object with `email` and `password` keys.
 
-  ```html
+  ```
   <!DOCTYPE html>
   <html lang="en">
   <head>
