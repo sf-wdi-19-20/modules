@@ -439,7 +439,7 @@ Goal: Refactor the `POST /login` route to set the session and redirect to a user
 
 2. In Sublime, open `login.ejs` and add this login form boilerplate. Writing ejs is no different from HTML, but the file must have the `.ejs` extension.
 
-  ```
+  ```html
   <!DOCTYPE html>
   <html lang="en">
   <head>
