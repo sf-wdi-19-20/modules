@@ -19,7 +19,7 @@ To give users the ability to sign up and log in to our site, we'll need:
 * **Express:** for building our application and handling requests
 * **Middleware:**
   * `body-parser`: for handling incoming form data
-  * `cookie-parser`: for handling incoming cookie data
+  * `express-session`: for setting sessions and cookies
 * **Mongoose Models:** for CRUD-ing users and setting up authentication methods
 * <a href="https://github.com/ncb000gt/node.bcrypt.js" target="_blank">**bcrypt:**</a> for hashing users' passwords
 
@@ -224,8 +224,8 @@ Goal: Write a `UserSchema` and define a `User` model.
     var newUser = req.body.user;
 
     // create new user with secure password
-    User.createSecure(newUser.email, newUser.password, function (err, createdUser) {
-      res.send(createdUser);
+    User.createSecure(newUser.email, newUser.password, function (err, user) {
+      res.send(user);
     });
   });
   ```
@@ -264,8 +264,8 @@ Goal: Write a `UserSchema` and define a `User` model.
     var newUser = req.body.user;
 
     // create new user with secure password
-    User.createSecure(newUser.email, newUser.password, function () {
-      res.send('signed up!!!');
+    User.createSecure(newUser.email, newUser.password, function (err, user) {
+      res.send(user);
     });
   });
 
@@ -283,41 +283,41 @@ Goal: Write a `UserSchema` and define a `User` model.
 
 ## Challenges: Part 5
 
-**Goal:** Add routes for user login.
+**Goal:** Add a route to log in users.
 
 1. In `server.js`, add a `POST /login` route to authenticate a user.
 
   ```js
   // server.js
 
+  // user submits the login form
   app.post('/login', function (req, res) {
-    var user = req.body.user;
+  
+    // grab user data from params (req.body)
+    var userData = req.body.user;
 
-    User.authenticate(user.email, user.password, function (err, user) {
+    // call authenticate function to check if password user entered is correct
+    User.authenticate(userData.email, userData.password, function (err, user) {
       res.send(user);
     });
   });
   ```
 
-2. Test your `POST /login` route with Postman. Check that it sends the authenticated user as a response.
+2. Test your `POST /login` route with Postman by trying to log in the user you created in Part 5. Check that it sends the authenticated user as a response. Again, your parameters should be `user[email]` and `user[password]`.
 
-  TODO: Add image with sample Postman request/response
+  ![POST /users](screenshots/post_login.png)
 
 ## Challenges: Part 6
 
-**Goal:** Set up sessions and cookies to keep track of logged-in user throughout our app.
+**Goal:** Set up sessions and cookies to keep track of logged-in users throughout your app.
 
-1. In the terminal, install the `express-session` middleware.
-
-  TODO: Also add cookie-parser
+1. In the terminal, install `express-session`.
 
   ```
   $ npm install --save express-session
   ```
 
-2. In `server.js`, require `express-session` and set up the middleware.
-
-  TODO: app.use(session) consistent with Tues afternoon lesson
+2. In `server.js`, require `express-session` and set the session options. <a href="https://github.com/expressjs/session#options" target="_blank">Read more about the session options.</a>
 
   ```js
   // server.js
@@ -332,27 +332,30 @@ Goal: Write a `UserSchema` and define a `User` model.
       session = require('express-session');
 
   // middleware (new addition)
+  // set session options
   app.use(session({
-    secret: 'super secret',
-    resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    resave: true,
+    secret: 'SuperSecretCookie',
+    cookie: { maxAge: 60000 }
   }));
   ```
 
-  TODO: What are all these keys?
+3. Now that you have `express-session` set up, define the middleware `req.login`, `req.currentUser`, and `req.logout` in `server.js` to manage sessions.
 
-3. Now that you have `express-session` set up, add the below methods in `server.js` to save a user's data in the session:
-
-  TODO: Comment this code
+  **Note:** `app.use` allows us to define our own middleware and the base path to exectue that middleware. Since our base path is `/`, this middleware will be executed with every request. You can think of this "session" middleware as helper functions that we have access to in every request to our server.
 
   ```js
   // server.js
 
+  // middleware to manage sessions
   app.use('/', function (req, res, next) {
+    // saves userId in session for logged-in user
     req.login = function (user) {
       req.session.userId = user.id;
     };
 
+    // finds user currently logged in based on `session.userId`
     req.currentUser = function (callback) {
       User.findOne({_id: req.session.userId}, function (err, user) {
         req.user = user;
@@ -360,6 +363,7 @@ Goal: Write a `UserSchema` and define a `User` model.
       });
     };
 
+    // destroy `session.userId` to log out user
     req.logout = function () {
       req.session.userId = null;
       req.user = null;
@@ -373,40 +377,53 @@ Goal: Write a `UserSchema` and define a `User` model.
 
 Goal: Refactor the `POST /login` route to set the session and redirect to a user profile page.
 
-1. After authenticating a user, log them in (by calling `req.login(user)`, which sets the session data), and redirect the user to their profile page. In `server.js`, your `POST /login` route should now look like this:
+1. After authenticating a user, log them in by calling `req.login(user)`, and redirect to the user's profile page. In `server.js`, your `POST /login` route should now look like this:
 
   ```js
   // server.js
 
+  // user submits the login form
   app.post('/login', function (req, res) {
-    var user = req.body.user;
 
-    User.authenticate(user.email, user.password, function (err, user) {
-      // call login function (sets session data)
+    // grab user data from params (req.body)
+    var userData = req.body.user;
+
+    // call authenticate function to check if password user entered is correct
+    User.authenticate(userData.email, userData.password, function (err, user) {
+      // saves user id to session
       req.login(user);
+
       // redirect to user profile
       res.redirect('/profile');
     });
   });
   ```
 
-2. In the step above, we're redirecting the user to a route called `/profile`, which we don't have yet, so go ahead and set it up in `server.js`. For now, our profile route will respond with a welcome message.
+2. In the step above, we're redirecting to a route called `/profile`, which we don't have yet, so go ahead and set it up in `server.js`. For now, our profile route will respond with a welcome message.
 
   ```js
+  // server.js
+  
+  // user profile page
   app.get('/profile', function (req, res) {
+    // finds user currently logged in
     req.currentUser(function (err, user) {
       res.send('Welcome ' + user.email);
     });
   });
   ```
 
+3. Test `POST /login` again with Postman, this time making sure you see the welcome message response from the redirect to `/profile`.
+
+  ![POST /users](screenshots/post_login_profile.png)
+
 ## Challenges: Part 8
 
-**Goal:** Set up a login view to test our login functionality in the browser.
+**Goal:** Set up a login view to test your login functionality in the browser.
 
 1. In the terminal, make a `views` directory and a view called `login.ejs`.
 
-  **Note:** We're using the <a href="https://github.com/mde/ejs" target="_blank">ejs</a> view engine to easily render files from our server. No more `res.sendFile`!
+  **Note:** We're using the <a href="https://github.com/mde/ejs" target="_blank">ejs</a> view engine to easily render files from our server. This means no more `res.sendFile`!
 
   ```
   $ mkdir views
@@ -414,8 +431,6 @@ Goal: Refactor the `POST /login` route to set the session and redirect to a user
   ```
 
 2. In Sublime, open `login.ejs` and add this login form boilerplate. Writing ejs is no different from HTML, but the file must have the `.ejs` extension.
-
-  **Note:** We use the `name` HTML attribute to send form data to the server. Setting the names `user[email]` and `user[password]` allows us to use `req.body.user` on the server-side, which gives us a user object with `email` and `password` keys.
 
   ```
   <!DOCTYPE html>
@@ -435,8 +450,13 @@ Goal: Refactor the `POST /login` route to set the session and redirect to a user
         <div class="col-md-6 col-md-offset-3">
           <h1>Log In</h1>
           <hr>
+          
+          <!-- note: method and action refer to the request type (post) and request url (/login) -->
           <form method="post" action="/login">
             <div class="form-group">
+            
+              <!-- note: the `name` HTML attribute sends form data to the server -->
+              <!-- setting the names `user[email]` and `user[password]` allows us to use `req.body.user` on the server-side, which gives us a user object with `email` and `password` keys -->
               <input type="text" name="user[email]" class="form-control" placeholder="Email" autofocus>
             </div>
             <div class="form-group">
@@ -458,16 +478,25 @@ Goal: Refactor the `POST /login` route to set the session and redirect to a user
   ```js
   // server.js
 
+  // login route (renders login view)
   app.get('/login', function (req, res) {
     res.render('login');
   });
   ```
 
-4. Test that you can go to `localhost:3000/login` and successfully log in your user that you created via Postman (Challenges: Part 4, #5). After logging in, you should be redirected to `/profile` with the welcome message response.
+4. Test that you can go to `localhost:3000/login` and successfully log in your user that you created via Postman. After logging in, you should be redirected to `/profile` with the welcome message response.
+
+  ![POST /users](screenshots/get_login.png)
+
 
 ## Stretch Challenges
 
-1. Add a `GET /signup` route and view. Hint: The `signup` view will have a form similar to the `login` view.
+1. Right now, the `GET /signup` route has a placeholder response. Refactor the route to render a `signup` view. **Hint:** The `signup` view will have a form similar to the `login` view.
+
 2. Test that a new user can sign up via the form on the `signup` page.
-3. After a new user signs up, redirect them to `/login`. Test the user-flow of signing up, then logging in. After logging in, you should still be redirected to `/profile` with the welcome message response.
-4. Create a route `GET /logout` that calls your `req.logout` method to destroy the session. Add a link to your site that logs out the user.
+
+3. After a new user signs up, redirect them to `/login`. Test the user-flow of signing up, then logging in. After logging in, the user should still be redirected to `/profile` with the welcome message response.
+
+4. Create a route `GET /logout` that uses the `req.logout` middleware to destroy the session. Add a link on your site that logs out the user.
+
+5. The `req.currentUser` middleware finds the user who is currently logged in. User `req.currentUser` to *authorize* parts of your site. For example, logged-in users shouldn't be able to see the `/signup` or `/login` pages. In contrast, users should only be able to see `/profile` when logged in. **Hint:** You'll need to add some logic related to the `err` parameter in the callback function you pass into `req.currentUser`. You'll also need to use `res.redirect` if a user tries to perform an unauthorized action.
