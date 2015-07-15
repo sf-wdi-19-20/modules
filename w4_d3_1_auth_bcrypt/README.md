@@ -439,7 +439,7 @@ Goal: Refactor the `POST /login` route to set the session and redirect to a user
 
 2. In Sublime, open `login.ejs` and add this login form boilerplate. Writing ejs is no different from HTML, but the file must have the `.ejs` extension.
 
-  ```
+  ```html
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -510,4 +510,4 @@ Goal: Refactor the `POST /login` route to set the session and redirect to a user
   * Logged-in users should NOT be able to see the `/signup` or `/login` pages.
   * Users should only be able to see `/profile` when logged in.
   
-  **Hint:** You'll need to add some logic related to the `err` parameter in the callback function you pass into `req.currentUser`. You'll also need to use `res.redirect` if a user tries to perform an unauthorized action.
+  **Hint:** You'll need to add some logic when calling `req.currentUser` to check if a logged-in user was found. You'll want to use `res.redirect` if a user tries to perform an unauthorized action.
