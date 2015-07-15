@@ -48,9 +48,16 @@ app.use('/', function (req, res, next) {
   next();
 });
 
-// signup route with placeholder response
+// signup route (renders signup view)
 app.get('/signup', function (req, res) {
-  res.send('coming soon');
+  req.currentUser(function (err, user) {
+    // redirect if current user
+    if (user) {
+      res.redirect('/profile');
+    } else {
+      res.render('signup');
+    }
+  });
 });
 
 // user submits the signup form
@@ -61,13 +68,20 @@ app.post('/users', function (req, res) {
 
   // create new user with secure password
   User.createSecure(newUser.email, newUser.password, function (err, user) {
-    res.send(user);
+    res.redirect('/login');
   });
 });
 
 // login route (renders login view)
 app.get('/login', function (req, res) {
-  res.render('login');
+  req.currentUser(function (err, user) {
+    // redirect if current user
+    if (user) {
+      res.redirect('/profile');
+    } else {
+      res.render('login');
+    }
+  });
 });
 
 // user submits the login form
@@ -90,8 +104,19 @@ app.post('/login', function (req, res) {
 app.get('/profile', function (req, res) {
   // finds user currently logged in
   req.currentUser(function (err, user) {
-    res.send('Welcome ' + user.email);
+    if (user) {
+      res.send('Welcome ' + user.email);
+    // redirect if there is no current user
+    } else {
+      res.redirect('/login');
+    }
   });
+});
+
+// logout route (destroys session)
+app.get('/logout', function (req, res) {
+  req.logout();
+  res.redirect('/login');
 });
 
 // listen on port 3000
