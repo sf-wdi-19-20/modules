@@ -180,17 +180,16 @@ Goal: Write a `UserSchema` and define a `User` model.
 
   // compare password user enters with hashed password (`passwordDigest`)
   UserSchema.methods.checkPassword = function (password) {
-    // run hashing algorithm (with salt) on password user enters
-    // in order to compare with `passwordDigest`
+    // run hashing algorithm (with salt) on password user enters in order to compare with `passwordDigest`
     return bcrypt.compareSync(password, this.passwordDigest);
   };
   ```
-
+  
 ## Challenges: Part 4
 
 **Goal:** Add a route to create users with secure (hashed) passwords.
 
-1. In `server.js`, require `mongoose` and our `User` model.
+1. In `server.js`, require `mongoose` and your `User` model.
 
   ```js
   // server.js
@@ -209,10 +208,11 @@ Goal: Write a `UserSchema` and define a `User` model.
   ```js
   // server.js
 
+  // connect to mongodb
   mongoose.connect('mongodb://localhost/test');
   ```
 
-3. Continuing in `server.js` add a `POST /users` route to accept user signup requests.
+3. Continuing in `server.js` add a `POST /users` route to accept user sign up requests.
 
   ```js
   // server.js
@@ -223,9 +223,9 @@ Goal: Write a `UserSchema` and define a `User` model.
     // grab user data from params (req.body)
     var newUser = req.body.user;
 
-    // create the new user
-    User.createSecure(newUser.email, newUser.password, function () {
-      res.send('signed up!!!');
+    // create new user with secure password
+    User.createSecure(newUser.email, newUser.password, function (err, createdUser) {
+      res.send(createdUser);
     });
   });
   ```
@@ -243,7 +243,7 @@ Goal: Write a `UserSchema` and define a `User` model.
     mongoose = require('mongoose'),
     User = require('./models/user');
 
-  // connect to mongodb test database
+  // connect to mongodb
   mongoose.connect('mongodb://localhost/test');
 
   // set view engine for server-side templating
@@ -263,7 +263,7 @@ Goal: Write a `UserSchema` and define a `User` model.
     // grab user data from params (req.body)
     var newUser = req.body.user;
 
-    // create the new user
+    // create new user with secure password
     User.createSecure(newUser.email, newUser.password, function () {
       res.send('signed up!!!');
     });
@@ -277,7 +277,9 @@ Goal: Write a `UserSchema` and define a `User` model.
 
 5. Test your `POST /users` route with Postman. Check that it creates a new user with a secure (hashed) password.
 
-  TODO: Add image with sample Postman request/response
+  **Note:** Make sure you have `nodemon` and `mongod` running. Double-check the params you enter into Postman. They should be `user[email]` and `user[password]`.
+
+  ![POST /users](screenshots/post_users.png)
 
 ## Challenges: Part 5
 
