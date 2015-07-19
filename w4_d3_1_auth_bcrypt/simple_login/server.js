@@ -1,7 +1,6 @@
 // require express framework and additional modules
 var express = require('express'),
   app = express(),
-  ejs = require('ejs'),
   bodyParser = require('body-parser'),
   mongoose = require('mongoose'),
   User = require('./models/user'),
@@ -9,9 +8,6 @@ var express = require('express'),
 
 // connect to mongodb
 mongoose.connect('mongodb://localhost/test');
-
-// set view engine for server-side templating
-app.set('view engine', 'ejs');
 
 // middleware
 app.use(bodyParser.urlencoded({extended: true}));
@@ -55,7 +51,7 @@ app.get('/signup', function (req, res) {
     if (user) {
       res.redirect('/profile');
     } else {
-      res.render('signup');
+      res.sendFile(__dirname + '/public/views/signup.html');
     }
   });
 });
@@ -79,7 +75,7 @@ app.get('/login', function (req, res) {
     if (user) {
       res.redirect('/profile');
     } else {
-      res.render('login');
+      res.sendFile(__dirname + '/public/views/login.html');
     }
   });
 });
