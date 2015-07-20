@@ -44,74 +44,74 @@
 2. Also in the terminal, from your project's root directory, run:
 
   ```
-  $ echo "web: npm start" >> Procfile
+  $ echo 'web: npm start' >> Procfile
   ```
 
 3. Open your project in Sublime. In your `server.js` file, where you get your server started, change the `port` argument in your `app.listen` function so that it looks for a `proccess.env.PORT` environment variable first.
 
   ```js
-  app.listen(process.env.PORT || 3000)
+  // server.js
+
+  app.listen(process.env.PORT || 3000);
   ```
 
-### Heroku MongoLab
+## Heroku MongoLab
 
-In bash we want to add the following to get a Mongo database added to our Heroku project.
+1. In the terminal, from your project's root directory, add a Mongo database to your Heroku app:
 
-```bash
- heroku addons:create mongolab
-```
-At this point, the command line may ask you to enter a credit card number. Heroku charges for some services, or if you go over some data limits. With the tools we're using and the size of our projects' data, everything should be free.  If you had to enter in a credit card, run the `heroku addons:create mongolab` command again.
+  ```
+   $ heroku addons:create mongolab
+  ```
 
+  **Note:** At this point, the terminal may ask you to enter a credit card number. Heroku charges for some services or if you go over certain data limits. With the tools you're using and the size of your project's database, everything should be free. If you had to enter in a credit card, run the `heroku addons:create mongolab` command again.
 
+2. Back in Sublime, add the following to the `mongoose.connect` method in `server.js`:
 
-Then we want to go to our `models/index.js` file and add the following to the `mongoose.connect` method.
+  ```js
+  // server.js
 
-```javascript
-mongoose.connect( process.env.MONGOLAB_URI ||
-			   process.env.MONGOHQ_URL ||
-			   "YOUR OWN LOCAL URL HERE")
-```
+  mongoose.connect(
+    process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://localhost/YOUR_LOCAL_DATABASE_NAME'
+  );
+  ```
 
-And we are ready to integrate mongolab.
+## Dependencies (Node Modules)
 
+1. In Sublime, check your `package.json` to make sure all your dependencies are present. If something is missing, install it. For example, run the following if you're using `express` and `body-parser` but don't have them listed under `"dependencies"`:
 
-## Dependencies and Bower Integration
+  ```
+  $ npm install --save express body-parser
+  ```
 
-Check your `package.json` to make sure that all your depenedencies are present. If something is missing install it. For example, run the following if you're using Bower.io but don't have it listed in `dependencies`:
+2. Now add a `start` script for your application in your `package.json`:
 
-```bash
-npm install --save bower
-```
+  ```js
+  // package.json
 
-
-You should now add a `start` script for your application in your `package.json`.
-
-`package.json`
-
-```javascript
-...
+  ...
   "scripts": {
-    "start": "node index.js",
-    "postinstall": "bower install"   // <---- only need this line if you're using Bower
-   }
-...
-```
+    "start": "node server.js"
+  }
+  ...
+  ```
 
-This is assuming your main application file is called `index.js`. If your main file is called something else, adjust the script to use your file name.
+  **Note:** This is assuming your main application file is called `server.js`. If your main file is called something else, adjust the script to use your file name.
 
 ## Deploying
 
-Now that you're potentially all setup then you just need to `git add` and `commit`.
+1. You should be all set up now, so do one more `git add` and `git commit` before pushing to Heroku:
 
+  ```
+  $ git status
+  $ git add -A
+  $ git commit -m "ready for first deploy"
+  $ git push heroku master
+  ```
 
-```bash
-git add . -A
-git commit -m "deploy attempt number"
-git push heroku master
-```
+2. If all went well, you should be able to visit your live application by running:
 
-If you missed a step just ask for help. Otherwise you should be able to visit your application by saying the following:
-
-```bash
-heroku open
-```
+  ```
+  $ heroku open
+  ```
