@@ -247,7 +247,7 @@ Note: there are more stretch challenges after the white space!
   * Hint: only check possible divisors up to the square root of the original number
  
 
-1. Write a method to `reverse` a string *in-place* (without creating a new string). Do not use iterators; use only a while loop and indices.
+1. Write a method to `reverse` a string *in-place* (without recreating the string). You can only use a little extra space - think one extra character's worth.  Do not use iterators; use only a while loop and indices. 
 
 
 1. If you used recursion for `factorial`, rewrite it without recursion. If you wrote `factorial` in an interative style, rewrite it *with* recursion. 
