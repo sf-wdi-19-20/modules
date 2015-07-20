@@ -28,7 +28,8 @@
     * Anonymous: `function (param1, [..param2, [...]]){...}`,
     * Named: `function Name(param1, [..param2, [...]]){...}`
     * Use *lexical scope* (look up variables in outer scopes)
-    * Used as values
+    * Captures scope (think of closures)
+    * Used as values, passed around like other variables
     * Require explicit return
     * All `params` are optional
 
