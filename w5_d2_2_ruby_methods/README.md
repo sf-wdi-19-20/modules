@@ -50,7 +50,7 @@
     end
 
     ```
-    * captures scope
+    * Captures scope
 
 ##Ruby Methods
 
@@ -192,51 +192,61 @@ end
 
 puts do_stuff2(foo)
 ```
-## Exercises
+##Basic Challenges
 
 You may create a separate file for each of the exercises to avoid cluttering a file.
 
-1. Write a method called `get_contact` that
-
-  * takes a `contacts` hash,
-  * prompts the terminal for a **new** `name` and a `phone` number,
-  * and then adds the `name` and `phone` as a key value pair respectively **if** `name` is not already a contact,
-  * and `return`s the `contacts` hash.
-
-**Stretch Challenge**: Using Array#inject, *write a method called `partial_sums` that pushes the partial sums of an array to a new list*
-
-```
-partial_sums([])
-#=> [0]
-partial_sums([5])
-#=> [0, 5]
-partial_sums([5,4,8])
-#=> [0, 5, 9, 17]
-```
-
-
-
-Write a method for each exercise below that uses `Array#map`:
-
-1. Using `Array#map`, write a method called `get_responses` that takes an array of questions (strings) and returns an array of responses input from the console for each question. (Hint: you will need to use `gets.chomp` and `puts` ).
-
+1. Write a method to compute the *factorial* of a number. Recall, the factorial of a number just multiplies all lower positive numbers. For example,  `6!` (six factorial) is  `6*5*4*3*2*1`, which equals `720`.
+  
 1. Write an `isPrime?` method to check if a number is prime. A prime number is:
   * greater than 1
   * evenly divisible by 1
   * evenly divisible by itself
   * not evenly divisible by any other numbers between 1 and itself
 
-1. Stretch Challenge: Make your `isPrime?` method more efficient.  Before implementing each optimization, check whether/when and why it's valid.
-  * if the number isn't 2, only check whether the number is divisible by odd numbers
-  * only check possible divisors up to half the original number
-  * <span style="color:white">only check possible divisors up to the square root of the original number</span>
-
-1. Write a method to compute the `factorial` of a number.
-
-1. Write an `isPalindrome?` method to check if a number is a `palindrome`.
-
-1. Write a method to `reverse` a word *in-place* (without creating a new string). Do not use iterators; use only a while loop and indices.
-
-1. Write a method to `merge` to two sorted Arrays.
-
 1. Write a method that takes in a number and returns a list of **all** prime numbers less than the given number.
+
+1. Write a method called `get_contact` that
+
+  * takes a `contacts` hash,
+  * prompts the terminal for a **new** `name` and a `phone` number,
+  * and then adds the `name` and `phone` as a key value pair respectively **if** `name` is not already a contact,
+  * and `return`s the updated `contacts` hash.
+  
+1. Using `Array#map`, write a method called `get_responses` that takes an array of questions (strings) and returns an array of responses input from the console for each question. (Hint: you will need to use `gets.chomp` and `puts` ).
+
+1. Write an `isPalindrome?` method to check if a string is a *palindrome* (the same forwards and backwards).
+
+
+
+###Stretch Challenges
+
+Note: there are more stretch challenges after the white space!
+
+
+1. Using Array#inject, write a method called `partial_sums` that pushes the *partial sums* of an array to a new list. The partial sums of an array are the sums of the first 0 elements, the first 1 elements, the first 2 elements, etc.
+   
+   ```
+   partial_sums([])
+   #=> [0]
+   partial_sums([5])
+   #=> [0, 5]
+   partial_sums([5,4,8])
+   #=> [0, 5, 9, 17]
+   ```
+
+
+1. Make your `isPrime?` method more efficient. Three hints on how to proceed are spaced out below. Before implementing each hint, develop a short argument to convince yourself that it works.
+
+   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  * Hint: if the number isn't 2, only check whether the number is divisible by odd numbers
+   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  * Hint: only check possible divisors up to half the original number
+   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  * Hint: only check possible divisors up to the square root of the original number
+ 
+
+1. Write a method to `reverse` a string *in-place* (without creating a new string). Do not use iterators; use only a while loop and indices.
+
+
+1. If you used recursion for `factorial`, rewrite it without recursion. If you wrote `factorial` in an interative style, rewrite it *with* recursion. 
