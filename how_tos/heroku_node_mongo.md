@@ -35,18 +35,23 @@
 
 ## To Start
 
-* Create a `Procfile`
-	- In terminal, run `touch Procfile`. Must be named with a capital P.
-	- make sure it is named "Procfile" (with no extension)
-	- make sure your Procfile is in the same folder as your main server file (usually `index.js`)
-	- in terminal type `echo "web: npm start" >> Procfile`
+1. In the terminal, from your project's root directory, create a `Procfile`. "Procfile" should have a capital "P", it should not have an extension, and it should be in the same folder as your main server file (usually `server.js`).
 
+  ```
+  $ touch Procfile
+  ```
 
-* In your `index.js` file, where you get your server started, change up the `port` argument in your `app.listen` function so that it looks for a `proccess.env.PORT` environment variable first.  Example:
+2. Also in the terminal, from your project's root directory, run:
 
-```javascript
-app.listen(process.env.PORT || 3000)
-```
+  ```
+  $ echo "web: npm start" >> Procfile
+  ```
+
+3. Open your project in Sublime. In your `server.js` file, where you get your server started, change the `port` argument in your `app.listen` function so that it looks for a `proccess.env.PORT` environment variable first.
+
+  ```js
+  app.listen(process.env.PORT || 3000)
+  ```
 
 ### Heroku MongoLab
 
