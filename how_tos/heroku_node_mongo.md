@@ -63,7 +63,7 @@
    $ heroku addons:create mongolab
   ```
 
-  **Note:** At this point, the terminal may ask you to enter a credit card number. Heroku charges for some services or if you go over certain data limits. With the tools you're using and the size of your project's database, everything should be free. If you had to enter in a credit card, run the `heroku addons:create mongolab` command again.
+  **Note:** At this point, the terminal may ask you to enter a credit card number. Heroku charges for some services or if you go over certain data limits. With the tools you're using and the size of your project's database, everything should be free. Heroku requires you to add a card when you first set up your MongoLab link *just in case* you eventually go over the free plan limits. If you had to enter in a credit card, run the `heroku addons:create mongolab` command again.
 
 2. Back in Sublime, add the following to the `mongoose.connect` method in `server.js`:
 
@@ -73,7 +73,7 @@
   mongoose.connect(
     process.env.MONGOLAB_URI ||
     process.env.MONGOHQ_URL ||
-    'mongodb://localhost/YOUR_LOCAL_DATABASE_NAME'
+    'mongodb://localhost/YOUR_LOCAL_DATABASE_NAME' // plug in the db name you've been using
   );
   ```
 
