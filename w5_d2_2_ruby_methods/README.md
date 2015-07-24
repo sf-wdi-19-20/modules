@@ -145,9 +145,8 @@ recurse(5)
 recurse 5
 ```
 
-## The biggest difference from javascript: Scoping!
 
-### Functions have locally scoped variables
+### Functions have locally scoped variables (biggest difference from javascript!)
 The following code won't change `foo`. Why?
 ```ruby
 foo = 1
@@ -193,11 +192,25 @@ end
 
 puts do_stuff2(foo)
 ```
+
+
+A common interview question example: computes the *factorial* of a number. (Recall, the factorial of a number just multiplies all lower positive numbers. For example,  `6!` (six factorial) is  `6*5*4*3*2*1`, which equals `720`.)
+
+
+```ruby
+def factorial(num)
+   if num > 1
+      num * factorial(num-1)
+   elif num > -1
+      1
+   else
+      puts "can't do factorial of a negative number!"
+      nil
+```
+
 ##Basic Challenges
 
 You may create a separate file for each of the exercises to avoid cluttering a file.
-
-1. Write a method to compute the *factorial* of a number. Recall, the factorial of a number just multiplies all lower positive numbers. For example,  `6!` (six factorial) is  `6*5*4*3*2*1`, which equals `720`.
   
 1. Write an `isPrime?` method to check if a number is prime. A prime number is:
   * greater than 1
