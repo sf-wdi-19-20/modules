@@ -6,13 +6,6 @@
 | Compare and contrast functions in Ruby and JavaScript. |
 | Write methods in ruby to solve problems. |
 
-### Types of Knowledge
-
-* Imperative knowledge
-> your "how to" knowledge, i.e. describing how to do something
-* Declarative knowledge
-> your "what is" knowledge. i.e. describing what something is
-
 ### Parts of A Language
 
 * Primitives
