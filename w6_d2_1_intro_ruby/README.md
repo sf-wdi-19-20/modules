@@ -79,7 +79,7 @@ As we learn Ruby, it's important to revisit how we learned our first language an
 
 2. Write a program that maps an array of words to the reverse of each word. (**Hint:** Look up `.reverse`)
 
-3. Write a program that maps an array of questions (strings) to an array of responses to each question inputted from the console. (**Hint:** you will need to use `puts` and `gets.chomp`)
+3. Write a program that maps an array of questions (strings) to an array of responses to each question inputted from the console. (**Hint:** You will need to use `puts` and `gets.chomp`)
 
 ## Stretch Challenges
 
