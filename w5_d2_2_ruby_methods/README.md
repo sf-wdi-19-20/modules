@@ -23,15 +23,15 @@
     * Use *lexical scope* (look up variables in outer scopes)
     * Captures scope (think of closures)
     * Used as values, passed around like other variables
-    * Require explicit return
-    * All `params` are optional
+    * Require explicit `return`
+    * All parameters are optional
 
 #### Ruby
 
  * Function
     * Uses `def`
     * Does not capture scope
-    * Not used as values
+    * Not used as values or passed around
     * Optional parameters must be specified
     * Implicitly returns last evaluation
 
