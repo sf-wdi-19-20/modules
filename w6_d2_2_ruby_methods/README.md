@@ -157,7 +157,7 @@ puts foo
 puts bar
 ```
 
-The problem is the ruby is *entirely* locally scoped -- code within a function only has access to the function's parameters and any variables defined inside of the function.
+The problem is that ruby is *entirely* locally scoped -- code within a function only has access to the function's parameters and any variables defined inside of the function.
 
 ```ruby
 foo = 1
