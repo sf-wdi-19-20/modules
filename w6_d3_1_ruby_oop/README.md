@@ -52,7 +52,7 @@ Goal: Let's create a Monster that goes "Rawr" when it's first initialized
 
 *Refresher: Classes are data types used to create more data. They are analogous to constructors in JavaScript.*
 
-##Attributes (10m)
+##Attributes
 
 What should we do if we want to set attributes on the monster, such as threat and habitat?
 
@@ -68,8 +68,7 @@ dracula.habitat
 
 *Hint: Use the method `attr_accessor`*
 
-##Methods (10m)
-
+##Methods
 **Challenge:**
 How would we create an instance method for Monster named `habitat?`, which tests whether the habitat matches what is passed in?
 
@@ -84,7 +83,7 @@ yeti.habitat?("tundra")
 
 *Hint: use the `def` keyword to define a new method inside the class*
 
-##Self & Instance Variables (10m)
+##The `self` Keyword & Instance Variables
 
 **Challenge:**
 What If I want to set the habitat of the monster at the moment I'm creating it? How could I enable code like this?
@@ -97,7 +96,7 @@ goblinKing.habitat
 
 *Hint: Create an instance variable with `@`*
 
-##Class Variables (10m)
+##Class Variables
 
 What if I wanted a running counter for all the monsters I've ever created?
 
@@ -105,7 +104,7 @@ What if I wanted a running counter for all the monsters I've ever created?
 
 *FYI: Class variables are used much less often than instance variables*
 
-## Quick Review (15m)
+## Quick Review
 
   * What is a class?
     - What is an attribute?
@@ -116,7 +115,7 @@ What if I wanted a running counter for all the monsters I've ever created?
   * Why do we use classes?
   * What is inheritance?
   
-## Inheritance (25m)
+## Inheritance
 
 Given an `Monster` class that contains the method `increaseDanger` & attribute `threat`...
 
