@@ -186,7 +186,6 @@ end
 puts do_stuff2(foo)
 ```
 
-
 ###Example: Factorial
 
 A simple, common interview question asks candidates to compute the *factorial* of a number. (The factorial of a number just multiplies it by all lower positive numbers. For example, `6` factorial (written `6!`) is  `6*5*4*3*2*1`, which equals `720`.)
@@ -223,6 +222,8 @@ You may create a separate file for each set of challenges to avoid cluttering a 
 
    **Challenge Set 2: Command Line Interaction**
    
+   *Hint: use `puts` and `gets.chomp`.*
+   
 1. Write a method called `get_contact` that
 
   * takes a `contacts` hash,
@@ -230,7 +231,7 @@ You may create a separate file for each set of challenges to avoid cluttering a 
   * and then adds the `name` and `phone` as a key value pair respectively **only if** `name` is not already a contact name,
   * and `return`s the updated `contacts` hash.
   
-1. Using `Array#map`, write a method called `get_responses` that takes an array of questions (strings) and returns an array of responses input from the console for each question. (Hint: you will need to use `gets.chomp` and `puts` ).
+1. Using `Array#map`, write a method called `get_responses` that takes an array of questions (strings) and returns an array of responses input from the console for each question. 
 
 
 ###Stretch Challenges
