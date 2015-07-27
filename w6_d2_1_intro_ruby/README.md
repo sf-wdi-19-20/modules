@@ -29,7 +29,7 @@ irb(main):001:0> 2 + 2
 
 ## JavaScript vs. Ruby
 
-#### Data Types
+### Data Types
 
 | JavaScript | Ruby |
 | :--- | :--- |
@@ -38,11 +38,10 @@ irb(main):001:0> 2 + 2
 | Numbers `45`, `100.199` | Integers (Fixnum or Bignum) `45`, Floats `100.199` |
 | Booleans `true`, `false` | Booleans `true`, `false` |
 | Arrays `[1, 2, 3]` | Arrays `[1, 2, 3]` |
-| Objects `{city: "San Francisco", state: "CA"}` | Hashes `{city: "San Francisco", state: "CA"}` |
-|  | Hashes (alternate syntax) `{:city => "San Francisco", :state => "CA"}` |
+| Objects `{city: "San Francisco", state: "CA"}` | Hashes `{city: "San Francisco", state: "CA"}` or `{:city => "San Francisco", :state => "CA"}` |
 | `null`, `undefined` | `nil` |
 
-#### Conventions & Data Manipulation
+### Conventions & Data Manipulation
 
 | JavaScript | Ruby |
 | :--- | :--- |
@@ -54,7 +53,7 @@ irb(main):001:0> 2 + 2
 | `.toString()` | `.to_s` |
 | `parseInt()` | `.to_i`, `to_f` |
 
-#### Console Methods
+### Console Methods
 
 | JavaScript | Ruby |
 | :--- | :--- |
@@ -62,7 +61,7 @@ irb(main):001:0> 2 + 2
 | `console.log()` | `puts`, `p` |
 | `prompt()` | `gets`, `gets.chomp` |
 
-#### Operators
+### Operators
 
 | JavaScript | Ruby |
 | :--- | :--- |
@@ -73,9 +72,9 @@ irb(main):001:0> 2 + 2
 
 ## JavaScript vs. Ruby: Control Flow
 
-#### Conditionals
+### Conditionals
 
-JavaScript
+**JavaScript**
 
 ```js
 if (x > y) {
@@ -87,7 +86,7 @@ if (x > y) {
 }
 ```
 
-Ruby
+**Ruby**
 
 ```ruby
 if x > y
@@ -99,9 +98,9 @@ else
 end
 ```
 
-#### While Loop
+### While Loop
 
-JavaScript
+**JavaScript**
 
 ```js
 while (i < 100) {
@@ -110,7 +109,7 @@ while (i < 100) {
 }
 ```
 
-Ruby
+**Ruby**
 
 ```ruby
 while i < 100
@@ -119,9 +118,9 @@ while i < 100
 end
 ```
 
-#### For Loop
+### For Loop
 
-JavaScript
+**JavaScript**
 
 ```js
 var names = ["Sonja", "Jared", "Alexis"];
@@ -131,7 +130,7 @@ for (i = 0; i < names.length; i++) {
 }
 ```
 
-Ruby
+**Ruby**
 
 ```ruby
 names = ["Sonja", "Jared", "Alexis"]
@@ -141,9 +140,9 @@ for i in names
 end
 ```
 
-#### Each Iterator
+### Each Iterator
 
-JavaScript (Using Underscore)
+**JavaScript** (Using Underscore)
 
 ```js
 var pets = ["Fluffy", "Sprinkles", "Toto"];
@@ -153,7 +152,7 @@ _.each(pets, function(pet, index) {
 })
 ```
 
-Ruby (Built-In Methods)
+**Ruby** (Built-In Methods)
 
 ```ruby
 pets = ["Fluffy", "Sprinkles", "Toto"]
@@ -169,9 +168,9 @@ pets.each_with_index do |pet, index|
 end
 ```
 
-#### Map Iterator
+### Map Iterator
 
-JavaScript (Using Underscore)
+**JavaScript** (Using Underscore)
 
 ```js
 var nums = [1, 2, 3];
@@ -181,7 +180,7 @@ var numsSquared = _.map(nums, function(num, index) {
 });
 ```
 
-Ruby (Built-In Methods)
+**Ruby** (Built-In Methods)
 
 ```ruby
 nums = [1, 2, 3]
@@ -195,7 +194,7 @@ end
 nums_squared = nums.map {|num| num * num}
 ```
 
-#### More Ruby Methods
+### More Ruby Methods
 
 Ruby has some methods that JavaScript doesn't, for example `.any?` and `.empty?`, which both return `true` or `false`.
 
