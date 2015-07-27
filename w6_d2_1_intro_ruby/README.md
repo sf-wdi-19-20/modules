@@ -38,7 +38,8 @@ irb(main):001:0> 2 + 2
 | Numbers `45`, `100.199` | Integers (Fixnum or Bignum) `45`, Floats `100.199` |
 | Booleans `true`, `false` | Booleans `true`, `false` |
 | Arrays `[1, 2, 3]` | Arrays `[1, 2, 3]` |
-| Objects `{city: "San Francisco", state: "CA"}` | Hashes `{city: "San Francisco", state: "CA"}` or `{:city => "San Francisco", :state => "CA"}` |
+| Objects `{city: "San Francisco", state: "CA"}` | Hashes `{city: "San Francisco", state: "CA"}` |
+|  | Hashes (alternate syntax) `{:city => "San Francisco", :state => "CA"}` |
 | `null`, `undefined` | `nil` |
 
 #### Conventions & Data Manipulation
