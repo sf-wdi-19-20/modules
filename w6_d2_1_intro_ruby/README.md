@@ -30,71 +30,81 @@ As we learn Ruby, it's important to revisit how we learned our first language an
 
 ## Base Challenges
 
-*Use `irb` in your terminal for these challenges.*
+*Use `irb` in your terminal for these challenges. Feel free to copy your solutions into a file in Sublime so you can reference them later.*
 
 ### Data Types
 
 1. Store your `first_name` in a variable and your `last_name` in another variable.
+
 2. Concatenate your `first_name` and `last_name` variables, and store the output in a new variable called `full_name`.
+
 3. Use <a href="http://ruby-doc.org/core-2.2.0/String.html#method-i-split" target="_blank">`.split`</a> to turn your `full_name` variable into an array.
 
 ### Loops
 
 1. Print (`puts`) "Ruby is awesome!" 50 times. Implement this 3 different ways, using:
-  1. <a href="http://www.tutorialspoint.com/ruby/ruby_loops.htm" target="_blank">`while`</a>
-  2. <a href="http://www.tutorialspoint.com/ruby/ruby_loops.htm" target="_blank">`for`</a>
-  3. <a href="http://ruby-doc.org/core-2.0.0/Integer.html#method-i-times" target="_blank">`.times`</a>
-2. Save any string to a variable, and reverse it using `while`, `for`, or `.times`.
-3. Save any string to a variable, then create an empty hash called count (`count = {}`). Count occurences of each letter in the string, and save them in your `count` hash.
-  * **Example:** For the string `apple`, `count` would look like this: `{a: 1, p: 2, l: 1, e: 1}`.
-4. Write a program that gets user input from the terminal and `puts` it until the input is the word `"quit"` or `"q"`.
+  * <a href="http://www.tutorialspoint.com/ruby/ruby_loops.htm" target="_blank">`while`</a>
+  * <a href="http://www.tutorialspoint.com/ruby/ruby_loops.htm" target="_blank">`for`</a>
+  * <a href="http://ruby-doc.org/core-2.0.0/Integer.html#method-i-times" target="_blank">`.times`</a>
+
+2. Save any string to a variable, then create an empty hash called count (`count = {}`). Loop through the string, and count occurrences of each letter. Store the counts in your has like this example:
+  * For the string `apple`, your `count` hash would look like this: `{a: 1, p: 2, l: 1, e: 1}`.
+
+3. Write a program that gets user input from the terminal and `puts` it until the input is the word `"quit"` or `"q"`.
   * **Hint:** Use `gets.chomp` instead of `gets` to remove trailing `\n`.
-5. Write a program that prints the "Bottles of beer on the wall" song:
+
+4. Write a program that prints the "bottles of beer on the wall" song:
 
   ```
   5 bottles of beer on the wall,
   5 bottles of beer!
   Take one down and pass it around,
   4 bottles of beer on the wall!
+  ...
   ```
 
   * Use `gets.chomp` to ask the user how many verses they want to hear.
   * Make sure your song prints "1 **bottle** of beer".
-  * When the song gets to `0 bottles of beer on the wall`, it should print `No more bottles of beer on the wall` instead.
+  * When the song gets to "0 bottles of beer on the wall", it should print "No more bottles of beer on the wall" instead.
 
-### Iterators
+### Iterators: Each
 
-1. Define an array of 4 phrases: `"Hello, world"`, `"OMG"`, `"Ruby"`, and `"Pair Programming"`. Use `.each` to iterate over the array, and `puts` each phrase.
-2. Iterate over your array of phrase again, but this time, only `puts` the phrase if its length 5 letters or longer. Otherwise, print a message that the phrase is too short, and include the phrase's index in the message (Hint: Look up `.each_with_index`).
+1. Define an array of 4 phrases: `"Hello, world"`, `"OMG"`, `"Ruby"`, and `"Pair Programming"`. Use <a href="http://www.tutorialspoint.com/ruby/ruby_iterators.htm" target="_blank">`.each`</a> to iterate over the array and `puts` each phrase.
 
-### Array#map
+2. Iterate over your array of phrases again, but this time, only `puts` the phrase if its length 5 letters or longer. Otherwise, print a message that the phrase is too short, and include the phrase's index in the message (**Hint:** Look up `.each_with_index`).
 
-1. Write a program that maps an array of numbers to double each number.
-2. Write a program that maps an array of words to the reverse of each word. (Hint: look up `.reverse()`)
-3. Write a program that maps an array of questions (strings) to an array of responses inputted from the console for each question. (Hint: you will need to use puts and gets.chomp)
+### Iterators: Map
+
+1. Write a program that <a href="http://ruby-doc.org/core-2.2.0/Array.html#method-i-map" target="_blank">maps</a> an array of numbers to double each number.
+
+2. Write a program that maps an array of words to the reverse of each word. (**Hint:** Look up `.reverse`)
+
+3. Write a program that maps an array of questions (strings) to an array of responses to each question inputted from the console. (**Hint:** you will need to use `puts` and `gets.chomp`)
 
 ## Stretch Challenges
 
-1. **Temperature Converter:** Create a simple temperature convertor. It should function like the example below:
+1. Reverse a string in place. In other words, do not create a new string or use any methods on the string such as `.reverse`. The goal of the problem is to use a loop and the string accessors to figure out which values to swap for other values.
+
+2. Create a simple temperature convertor. It should function like the example below:
 
   ```
-  Type '1' to convert from Celsius to Fahrenheit OR type '2' to convert from Fahrenheit to Celsius
+  Type '1' to convert from Celsius to Fahrenheit or '2' to convert from Fahrenheit to Celsius
   1
-  Enter Celsius Temperature:
+  Enter Celsius temperature:
   24
   24 degrees Celsius is equal to 75.2 degrees Fahrenheit
   ```
 
-2. **Calculator:** Create a simple calculator that first asks the user what method they would like to use (addition, subtraction, multiplication, division) and then asks the user for two numbers, returning the result of the method with the two numbers. Here is a sample prompt:
+3. Create a simple calculator that first asks the user what method they would like to use (addition, subtraction, multiplication, or division), then asks the user for two numbers, printing the result of the method with the two numbers. Here is a sample prompt:
 
   ```
   What calculation would you like to do? (add, sub, mult, div)
   add
-  What is number 1?
+  What is the first number?
   3
-  What is number 2?
+  What is the second number?
   6
-  Your result is 9
+  The result is 9
   ```
 
 ## Docs & Resources
