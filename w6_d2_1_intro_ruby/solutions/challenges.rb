@@ -99,3 +99,80 @@ phrases.each_with_index do |phrase, index|
     puts "Phrase at index #{index} is too short."
   end
 end
+
+## Iterators: Map
+
+# 1. Write a program that maps an array of numbers to double each number.
+arr = [1, 2, 3]
+mapped_arr = arr.map {|num| num * 2}
+
+# 2. Write a program that maps an array of words to the reverse of each
+# word. (Hint: Look up `.reverse`)
+words = ["San Francisco", "General Assembly", "web development"]
+mapped_words = words.map {|word| word.reverse}
+
+### Stretch Challenges
+
+# 1. Create a simple temperature convertor.
+puts "Type '1' to convert from Celsius to Fahrenheit or '2' to convert from Fahrenheit to Celsius"
+response = gets.chomp
+
+if response == "1"
+  puts "Enter Celsius temperature:"
+  temp = (gets.chomp).to_i
+  f_temp = (temp * 9/5) + 32
+  puts "#{temp} degrees Celsius is equal to #{f_temp} degrees Fahrenheit"
+
+elsif response == "2"
+  puts "Enter Fahrenheit temperature:"
+  temp = (gets.chomp).to_i
+  c_temp = (temp - 32) * (5/9)
+  puts "#{temp} degrees Fahrenheit is equal to #{c_temp} degrees Celsius"
+end
+
+# 2. Create a simple calculator that first asks the user what method
+# they would like to use (addition, subtraction, multiplication, or
+# division), then asks the user for two numbers, printing the result
+# of the method with the two numbers.
+puts "What calculation would you like to do? (add, sub, mult, div)"
+response = gets.chomp
+
+puts "What is the first number?"
+num1 = (gets.chomp).to_f
+
+puts "What is the second number?"
+num2 = (gets.chomp).to_f
+
+if response == "add"
+  result = num1 + num2
+
+elsif response == "sub"
+  result = num1 - num2
+
+elsif response == "mult"
+  result = num1 * num2
+
+elsif response == "div"
+  result = num1 / num2
+end
+
+puts "The result is #{result}"
+
+# alternate solution (using case)
+puts "What calculation would you like to do? (add, sub, mult, div)"
+response = gets.chomp
+
+puts "What is the first number?"
+num1 = (gets.chomp).to_f
+
+puts "What is the second number?"
+num2 = (gets.chomp).to_f
+
+case response
+  when "add" then result = num1 + num2
+  when "sub" then result = num1 - num2
+  when "mult" then result = num1 * num2
+  when "div" then result = num1 / num2
+end
+
+puts "The result is #{result}"
