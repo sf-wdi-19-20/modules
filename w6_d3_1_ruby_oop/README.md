@@ -1,4 +1,6 @@
-#Theme: Ruby <3's OOP
+#Class-based Object Oriented Programming with Ruby
+
+Ruby <img alt="heart" src="https://em.wattpad.com/6d0355863f6ca950858ed30d2b8b9b1fe982b54c/687474703a2f2f727562792e7a69677a6f2e636f6d2f77702d636f6e74656e742f75706c6f6164732f73697465732f322f323031332f30312f7370696b655f616e645f7261726974795f5f735f68656172745f7368617065645f666972655f727562795f62795f65647761726474656e2e706e67" width="10px">'s Object Oriented Programming
 
 ##Learning Objectives
 
@@ -9,8 +11,7 @@
 * Define attributes & methods for instances
 * Leverage the keyword `self`
 * Distinguish between instance and class variables
-* Practice inheritance in Ruby and implement it in an exercise modeling an Animal Kingdom
-* Synthesize knowledge from today by building a Race simulation for HW
+* Explain the class-based inheritance pattern with Ruby as an example.
 
 ##Hashes
 
