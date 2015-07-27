@@ -4,12 +4,14 @@ Ruby <img alt="heart" src="https://em.wattpad.com/6d0355863f6ca950858ed30d2b8b9b
 
 ##Learning Objectives
 
-* Distinguish between an object & a class in Ruby
-* Create your own class and leverage the `initialize` method
-* Define attributes & methods for instances
-* Leverage the keyword `self`
-* Distinguish between instance and class variables
-* Explain the class-based inheritance pattern with Ruby as an example.
+| Objectives: Students will be able to... |
+|:--- |
+| Distinguish between objects in JS, hashes and objects in Ruby, and classes in Ruby. |
+| Create your own class and use the `initialize` method to set up initial behavior. |
+| Distinguish between instance and class variables. |
+| Define attributes and methods for instances. |
+| Define attributes and methods for whole classes. |
+| Explain the class-based inheritance pattern with Ruby as an example. |
 
 ##Hashes
 
