@@ -5,216 +5,100 @@
 | Identify data types, operators, and control flow patterns in JavaScript and utilize them in Ruby |
 | Apply Ruby control flow to create command line applications |
 
-## What is Ruby?
+## Framing for the Week
 
-> <a href="http://www.techotopia.com/index.php/What_is_Ruby%3F" target="_blank">Techtopia</a>
+As we learn Ruby, it's important to revisit how we learned our first language and use that to organize the study of our new language. Learning our second programming language is a process of translating concepts, expressions, and patterns from our familiar language into our new language. Learning our first language involved more identification and comprehension of the knowledge required to implement our first programs. We should begin by organizing this knowledge to build a better understanding as we transition to Ruby.
 
-Ruby is an object-oriented interpreted scripting language. When we say it is interpreted we mean to say that the Ruby source code is compiled by an interpreter at the point of execution (similar in this regard to JavaScript and PHP). This contrasts with compiled languages such as Java, Objective C, C, or C++ where the code is pre-compiled into a binary format targeted to run on a specific brand of microprocessor.
+## Types of Knowledge
 
-## History of Ruby
+* **Declarative Knowledge** > your "what is" knowledge, i.e. describing what something is
+* **Imperative knowledge** > your "how to" knowledge, i.e. describing how to do something
 
-> <a href="http://www.techotopia.com/index.php/What_is_Ruby%3F" target="_blank">Techtopia</a>
+## Parts of A Language
 
-Ruby was created by Yukihiro Matsumoto (more affectionately known as Matz) in Japan starting in 1993. Matz essentially kept Ruby to himself until 1995 when he released it to the public. Ruby quickly gained a following in Matz's home country of Japan in the following years, and finally gained recognition in the rest of the programming world beginning in the year 2000. From that point on Ruby has grown in popularity, particularly because of the popularity of the Ruby on Rails web application development framework.
+* `Primitives`
+* `Combinations`
+* `Abstractions`
 
-## Ruby Console
-Every Mac comes with Ruby inside! Just go into your terminal, and type `irb` to enter the Ruby console.
+## Think-Pair-Share
 
-```
-$ irb
+* What is JavaScript? What does it look like?
+* What are some of the primitives in JavaScript?
+  * Think data types, variable declarations, conditionals, functions, etc.
+* How did we use JavaScript to build things? How did we build up from the fundamentals of the language?
+* What could possibly be different in another language? How could we change the syntax, but keep the semantics?
 
-irb(main):001:0> 2 + 2
-=> 4
+## Base Challenges
 
-irb(main):001:0> exit
-$
-```
-
-## JavaScript vs. Ruby
+*Use `irb` in your terminal for these challenges.*
 
 ### Data Types
 
-| JavaScript | Ruby |
-| :--- | :--- |
-| Strings: `"JavaScript"` or `'JavaScript'` | Strings `"Ruby"` or `'Ruby'` |
-|  | Symbols `:title` |
-| Numbers `45`, `100.199` | Integers (Fixnum or Bignum) `45`, Floats `100.199` |
-| Booleans `true`, `false` | Booleans `true`, `false` |
-| Arrays `[1, 2, 3]` | Arrays `[1, 2, 3]` |
-| Objects `{city: "San Francisco", state: "CA"}` | Hashes `{city: "San Francisco", state: "CA"}` or `{:city => "San Francisco", :state => "CA"}` |
-| `null`, `undefined` | `nil` |
+1. Store your `first_name` in a variable and your `last_name` in another variable.
+2. Concatenate your `first_name` and `last_name` variables, and store the output in a new variable called `full_name`.
+3. Use <a href="http://ruby-doc.org/core-2.2.0/String.html#method-i-split" target="_blank">`.split`</a> to turn your `full_name` variable into an array.
 
-### Conventions & Data Manipulation
+### Loops
 
-| JavaScript | Ruby |
-| :--- | :--- |
-| `camelCase` | `snake_case` |
-| `var name = "Bob"` | `name = "Bob"` |
-| `"Hello, " + name` | `"Hello, #{name}"` |
-| `object.key`, `object['key']` | `hash[:key]` |
-| `typeof()` | `.class` |
-| `.toString()` | `.to_s` |
-| `parseInt()` | `.to_i`, `to_f` |
+1. Print (`puts`) "Ruby is awesome!" 50 times. Implement this 3 different ways, using:
+  1. <a href="http://www.tutorialspoint.com/ruby/ruby_loops.htm" target="_blank">`while`</a>
+  2. <a href="http://www.tutorialspoint.com/ruby/ruby_loops.htm" target="_blank">`for`</a>
+  3. <a href="http://ruby-doc.org/core-2.0.0/Integer.html#method-i-times" target="_blank">`.times`</a>
+2. Save any string to a variable, and reverse it using `while`, `for`, or `.times`.
+3. Save any string to a variable, then create an empty hash called count (`count = {}`). Count occurences of each letter in the string, and save them in your `count` hash.
+  * **Example:** For the string `apple`, `count` would look like this: `{a: 1, p: 2, l: 1, e: 1}`.
+4. Write a program that gets user input from the terminal and `puts` it until the input is the word `"quit"` or `"q"`.
+  * **Hint:** Use `gets.chomp` instead of `gets` to remove trailing `\n`.
+5. Write a program that prints the "Bottles of beer on the wall" song:
 
-### Console Methods
+  ```
+  5 bottles of beer on the wall,
+  5 bottles of beer!
+  Take one down and pass it around,
+  4 bottles of beer on the wall!
+  ```
 
-| JavaScript | Ruby |
-| :--- | :--- |
-| Console in Browser | Console in Terminal (`$ irb`) |
-| `console.log()` | `puts`, `p` |
-| `prompt()` | `gets`, `gets.chomp` |
+  * Use `gets.chomp` to ask the user how many verses they want to hear.
+  * Make sure your song prints "1 **bottle** of beer".
+  * When the song gets to `0 bottles of beer on the wall`, it should print `No more bottles of beer on the wall` instead.
 
-### Operators
+### Iterators
 
-| JavaScript | Ruby |
-| :--- | :--- |
-| Arithmetic `+`, `-`, `*`, `/`, `%` | Arithmetic `+`, `-`, `*`, `/`, `%`, `**` |
-| Comparison `==`, `===`, `>`, `>=`, `<`, `<=` | Comparison `==`, `>`, `>=`, `<`, `<=`, `.eql?`, `.equal?` |
-| Assignment `=`, `+=`, `++`, `-=`, `--`, `*=`, `/=`, `%=` | Assignment `=`, `+=`, `-=`, `*=`, `/=`, `%=`, `**=` |
-| Logical `!`, `||`, `&&` | Logical `!`, `not`, `||`, `or`, `&&`, `and` |
+1. Define an array of 4 phrases: `"Hello, world"`, `"OMG"`, `"Ruby"`, and `"Pair Programming"`. Use `.each` to iterate over the array, and `puts` each phrase.
+2. Iterate over your array of phrase again, but this time, only `puts` the phrase if its length 5 letters or longer. Otherwise, print a message that the phrase is too short, and include the phrase's index in the message (Hint: Look up `.each_with_index`).
 
-## JavaScript vs. Ruby: Control Flow
+### Array#map
 
-### Conditionals
+1. Write a program that maps an array of numbers to double each number.
+2. Write a program that maps an array of words to the reverse of each word. (Hint: look up `.reverse()`)
+3. Write a program that maps an array of questions (strings) to an array of responses inputted from the console for each question. (Hint: you will need to use puts and gets.chomp)
 
-**JavaScript**
+## Stretch Challenges
 
-```js
-if (x > y) {
-  console.log("x is greater than y");
-} else if (x < y) {
-  console.log("x is less than y");
-} else {
-  console.log("x equals y");
-}
-```
+1. **Temperature Converter:** Create a simple temperature convertor. It should function like the example below:
 
-**Ruby**
+  ```
+  Type '1' to convert from Celsius to Fahrenheit OR type '2' to convert from Fahrenheit to Celsius
+  1
+  Enter Celsius Temperature:
+  24
+  24 degrees Celsius is equal to 75.2 degrees Fahrenheit
+  ```
 
-```ruby
-if x > y
-  puts "x is greater than y"
-elsif x < y
-  puts "x is less than y"
-else
-  puts "x equals y"
-end
-```
+2. **Calculator:** Create a simple calculator that first asks the user what method they would like to use (addition, subtraction, multiplication, division) and then asks the user for two numbers, returning the result of the method with the two numbers. Here is a sample prompt:
 
-### While Loop
-
-**JavaScript**
-
-```js
-while (i < 100) {
-  console.log(i);
-  i++;
-}
-```
-
-**Ruby**
-
-```ruby
-while i < 100
-  puts i
-  i += 1
-end
-```
-
-### For Loop
-
-**JavaScript**
-
-```js
-var names = ["Sonja", "Jared", "Alexis"];
-
-for (i = 0; i < names.length; i++) {
-  console.log("Hello, " + names[i]);
-}
-```
-
-**Ruby**
-
-```ruby
-names = ["Sonja", "Jared", "Alexis"]
-
-for i in names
-   puts "Hello, #{i}"
-end
-```
-
-### Each Iterator
-
-**JavaScript** (Using Underscore)
-
-```js
-var pets = ["Fluffy", "Sprinkles", "Toto"];
-
-_.each(pets, function(pet, index) {
-  console.log(pet + " is at index " + index);
-})
-```
-
-**Ruby** (Built-In Methods)
-
-```ruby
-pets = ["Fluffy", "Sprinkles", "Toto"]
-
-# each
-pets.each do |pet|
-  puts pet
-end
-
-# each_with_index
-pets.each_with_index do |pet, index|
-  puts "#{pet} is at index #{index}"
-end
-```
-
-**Note:** Ruby gives us even more options for iterating through a set of values. We can use a <a href="http://ruby-doc.org/core-2.2.0/Range.html" target="_blank">range</a> (`(1..100)` or `(1...100)`) or the <a href="http://ruby-doc.org/core-2.2.2/Integer.html#method-i-times" target="_blank">times method</a> (`100.times`).
-
-### Map Iterator
-
-**JavaScript** (Using Underscore)
-
-```js
-var nums = [1, 2, 3];
-
-var numsSquared = _.map(nums, function(num, index) {
-  num * num;
-});
-```
-
-**Ruby** (Built-In Methods)
-
-```ruby
-nums = [1, 2, 3]
-
-nums_squared = nums.map do |num|
-  num * num
-end
-
-# OR
-
-nums_squared = nums.map {|num| num * num}
-```
-
-### More Ruby Methods
-
-Ruby has some methods that JavaScript doesn't, for example `.any?` and `.empty?`, which both return `true` or `false`.
-
-```ruby
-my_friends = ["Andrew", "Sally", "Bill"]
-
-# checks if there are any values in array
-my_friends.any? # => true
-
-# checks if array is empty
-my_friends.empty? # => false
-```
+  ```
+  What calculation would you like to do? (add, sub, mult, div)
+  add
+  What is number 1?
+  3
+  What is number 2?
+  6
+  Your result is 9
+  ```
 
 ## Docs & Resources
 
-* <a href="http://ruby-doc.org/core-2.2.0/Array.html" target="_blank">Ruby Array Docs</a>
-* <a href="http://ruby-doc.org/core-2.2.0/Hash.html" target="_blank">Ruby Hash Docs</a>
+* <a href="http://ruby-doc.org/core-2.2.0/Array.html" target="_blank">Ruby Docs: Array</a>
+* <a href="http://ruby-doc.org/core-2.2.0/Hash.html" target="_blank">Ruby Docs: Hash</a>
 * <a href="https://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Control_Structures" target="_blank">Ruby Control Flow Structures</a>
