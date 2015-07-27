@@ -1,10 +1,8 @@
 #Class-based Object Oriented Programming with Ruby
 
-Ruby <img alt="heart" src="https://em.wattpad.com/6d0355863f6ca950858ed30d2b8b9b1fe982b54c/687474703a2f2f727562792e7a69677a6f2e636f6d2f77702d636f6e74656e742f75706c6f6164732f73697465732f322f323031332f30312f7370696b655f616e645f7261726974795f5f735f68656172745f7368617065645f666972655f727562795f62795f65647761726474656e2e706e67" width="10px">'s Object Oriented Programming
+Ruby <img alt="heart" src="https://em.wattpad.com/6d0355863f6ca950858ed30d2b8b9b1fe982b54c/687474703a2f2f727562792e7a69677a6f2e636f6d2f77702d636f6e74656e742f75706c6f6164732f73697465732f322f323031332f30312f7370696b655f616e645f7261726974795f5f735f68656172745f7368617065645f666972655f727562795f62795f65647761726474656e2e706e67" width="16px">'s Object Oriented Programming
 
 ##Learning Objectives
-
-**Morning**
 
 * Distinguish between an object & a class in Ruby
 * Create your own class and leverage the `initialize` method
@@ -26,7 +24,7 @@ ourhash = {:name=>"Napoleon", :fav_food=>"steak", :skills=>["archery", "combat",
 
 Notice that ruby marks the association between a key and a value with a "fat arrow", `=>`.
 
-##Objects (10m)
+##Objects
 
 * Ruby also has Objects.
 
@@ -35,41 +33,53 @@ Notice that ruby marks the association between a key and a value with a "fat arr
 **Example:**
 How can we prove that the Hash we just created inherited from `Basic Object`?
 
+
+**Class Inheritance Tree**
+
+![Class inheritance](http://i.stack.imgur.com/rvcEi.png)
+
+
 ```ruby 
 ourhash.is_a? Hash  # true
 Hash < Object       # true
 ```
 
-###Class Inheritance Tree
-
-![Class inheritance](http://i.stack.imgur.com/rvcEi.png)
-
 ##Classes 
 
-**Example:**
+*Classes are data types used to create more data. They are similar to constructors in JavaScript.*
+
 Ruby uses classes for object-oriented programming. How can we create a class in Ruby? 
 
-Goal: Let's create a Monster that goes "Rawr" when it's first initialized
+Challenge: create a `Monster` class and an instance of `Monster`.
 
-*Refresher: Classes are data types used to create more data. They are analogous to constructors in JavaScript.*
+Hint: Classes include three basic components: the reserved word `class`, a name for the class, and the reserved word `end`. By convention, Ruby class names always start with a capital letter.
+
+Hint: check out `new`.
+
+
+## `initialize` 
+
+Update the `Monster` class so that a monster goes "Rawr" when it's first initialized.
+
 
 ##Attributes
 
-What should we do if we want to set attributes on the monster, such as threat and habitat?
+What should we do if we want to set attributes on the monster, such as `threat` and `habitat`?
 
 **Challenge:**
 Enable this code...
 
 ```ruby
-dracula = Monster.new
-dracula.habitat = "Transylvania"
-dracula.habitat
-=> "Dracula"
+rabbitOfCaerbannog = Monster.new
+rabbitOfCaerbannog.habitat = "Cave of Caerbannog"
+rabbitOfCaerbannog.habitat
+=> "Cave of Caerbannog"
 ```
 
 *Hint: Use the method `attr_accessor`*
 
 ##Methods
+
 **Challenge:**
 How would we create an instance method for Monster named `habitat?`, which tests whether the habitat matches what is passed in?
 
@@ -84,7 +94,7 @@ yeti.habitat?("tundra")
 
 *Hint: use the `def` keyword to define a new method inside the class*
 
-##The `self` Keyword & Instance Variables
+##Class Methods and Instance Variables
 
 **Challenge:**
 What If I want to set the habitat of the monster at the moment I'm creating it? How could I enable code like this?
@@ -95,7 +105,7 @@ goblinKing.habitat
 => "cave"
 ```
 
-*Hint: Create an instance variable with `@`*
+*Hint: Create an instance variable with `@`, and use the `self` keyword.*
 
 ##Class Variables
 
@@ -118,7 +128,7 @@ What if I wanted a running counter for all the monsters I've ever created?
   
 ## Inheritance
 
-Given an `Monster` class that contains the method `increaseDanger` & attribute `threat`...
+**Challenge:** Given a `Monster` class that contains the method `increaseDanger` & attribute `threat`...
 
 ```ruby
 class Monster
@@ -132,8 +142,9 @@ class Monster
 end
 ```
 
-**Challenge:**
-How can I create both `Monster` and `Zombie` classes while being DRY and not duplicating the method `increaseDanger` in each?
+... how can I create both `Warewolf` and `Zombie` classes while being DRY and not duplicating the method `increaseDanger` in each?  
+
+The default threat of zombies and warewolves seems a little off.  
 
 ## Exercise: The Animal Kingdom
 
