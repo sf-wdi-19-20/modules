@@ -40,7 +40,6 @@ full_name.split
 # of each letter. Store the counts in your hash like this example:
   # For the string `apple`, your `count` hash would look like this:
   # `{a: 1, p: 2, l: 1, e: 1}`.
-  
   str = "banana"
   count = {}
   i = 0
