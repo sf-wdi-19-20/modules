@@ -20,7 +20,7 @@ As we learn Ruby, it's important to revisit how we learned our first language an
 * `Combinations`
 * `Abstractions`
 
-## Think-Pair-Share
+## Discussion Questions
 
 * What is JavaScript? What does it look like?
 * What are some of the primitives in JavaScript?
@@ -47,7 +47,7 @@ As we learn Ruby, it's important to revisit how we learned our first language an
   * <a href="http://www.tutorialspoint.com/ruby/ruby_loops.htm" target="_blank">`for`</a>
   * <a href="http://ruby-doc.org/core-2.0.0/Integer.html#method-i-times" target="_blank">`.times`</a>
 
-2. Save any string to a variable, then create an empty hash called count (`count = {}`). Loop through the string, and count occurrences of each letter. Store the counts in your has like this example:
+2. Save any string to a variable, then create an empty hash called count (`count = {}`). Loop through the string, and count occurrences of each letter. Store the counts in your hash like this example:
   * For the string `apple`, your `count` hash would look like this: `{a: 1, p: 2, l: 1, e: 1}`.
 
 3. Write a program that gets user input from the terminal and `puts` it until the input is the word `"quit"` or `"q"`.
@@ -79,13 +79,9 @@ As we learn Ruby, it's important to revisit how we learned our first language an
 
 2. Write a program that maps an array of words to the reverse of each word. (**Hint:** Look up `.reverse`)
 
-3. Write a program that maps an array of questions (strings) to an array of responses to each question inputted from the console. (**Hint:** You will need to use `puts` and `gets.chomp`)
-
 ## Stretch Challenges
 
-1. Reverse a string in place. In other words, do not create a new string or use any methods on the string such as `.reverse`. The goal of the problem is to use a loop and the string accessors to figure out which values to swap for other values.
-
-2. Create a simple temperature convertor. It should function like the example below:
+1. Create a simple temperature convertor. It should function like the example below:
 
   ```
   Type '1' to convert from Celsius to Fahrenheit or '2' to convert from Fahrenheit to Celsius
@@ -95,7 +91,7 @@ As we learn Ruby, it's important to revisit how we learned our first language an
   24 degrees Celsius is equal to 75.2 degrees Fahrenheit
   ```
 
-3. Create a simple calculator that first asks the user what method they would like to use (addition, subtraction, multiplication, or division), then asks the user for two numbers, printing the result of the method with the two numbers. Here is a sample prompt:
+2. Create a simple calculator that first asks the user what method they would like to use (addition, subtraction, multiplication, or division), then asks the user for two numbers, printing the result of the method with the two numbers. Here is a sample prompt:
 
   ```
   What calculation would you like to do? (add, sub, mult, div)
