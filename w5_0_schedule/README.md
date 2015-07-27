@@ -2,7 +2,7 @@
 | :----------: | :----------: | :----------: | :----------: | :----------: | :----------: |
 | **Interview Prep** | Project 1 | Project 1 | Project 1 | Project 1 | Project 1 Presentations |
 | **Module 1** | Project 1 | Project 1  | Project 1  | Project 1  | Project 1 Presentations |
-| **Module 2** | <a href="https://github.com/sf-wdi-19-20/modules/blob/master/how_tos/heroku_node_mongo.md" target="_blank">Pushing to Heroku</a> | Project 1 | Hiding ENV Variables | Project 1 | Project 1 Presentations |
+| **Module 2** | <a href="https://github.com/sf-wdi-19-20/modules/blob/master/how_tos/heroku_node_mongo.md" target="_blank">Pushing to Heroku</a> | Project 1 | <a href="https://github.com/sf-wdi-19-20/modules/tree/master/w5_d3_2_hidding_api_keys" target="_blank">Hiding ENV Variables</a> | Project 1 | Project 1 Presentations |
 | **Homework** | Project 1 | Project 1 | Project 1 | Project 1 |  |
 | **Evening Readings** |  |  |  |  |  |
 
