@@ -15,7 +15,7 @@ $ git clone <<your fork url>> <<new project name (optional)>>
 ```
 6. **1 min** Make a new branch named after the issue you're solving.
 ```
-$ git checkout -branch adding_comments
+$ git checkout -b adding_comments
 ```
 7. Pair and solve the issue, with frequent commits on the new branch.
 7. Push the branch up to Github
