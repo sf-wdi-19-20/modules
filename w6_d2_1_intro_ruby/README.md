@@ -25,6 +25,9 @@ $ irb
 
 irb(main):001:0> 2 + 2
 => 4
+
+irb(main):001:0> exit
+$
 ```
 
 ## JavaScript vs. Ruby
@@ -168,6 +171,8 @@ pets.each_with_index do |pet, index|
 end
 ```
 
+**Note:** Ruby gives us even more options for iterating through a set of values. We can use a <a href="http://ruby-doc.org/core-2.2.0/Range.html" target="_blank">range</a> (`(1..100)` or `(1...100)`) or the <a href="http://ruby-doc.org/core-2.2.2/Integer.html#method-i-times" target="_blank">times method</a> (`100.times`).
+
 ### Map Iterator
 
 **JavaScript** (Using Underscore)
@@ -207,12 +212,6 @@ my_friends.any? # => true
 # checks if array is empty
 my_friends.empty? # => false
 ```
-
-* conditionals
-  * unless
-* iterators
-  * Ranges `[1..100]`, `[1...100]`
-  * Times `100.times do |i| ... end`
 
 ## Docs & Resources
 
