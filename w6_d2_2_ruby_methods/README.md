@@ -157,7 +157,7 @@ puts foo
 puts bar
 ```
 
-The problem is the ruby is *entirely* locally scoped -- code within a function only has access to the function's parameters and any variables defined inside of the function.
+The problem is that ruby is *entirely* locally scoped -- code within a function only has access to the function's parameters and any variables defined inside of the function.
 
 ```ruby
 foo = 1
@@ -186,7 +186,6 @@ end
 puts do_stuff2(foo)
 ```
 
-
 ###Example: Factorial
 
 A simple, common interview question asks candidates to compute the *factorial* of a number. (The factorial of a number just multiplies it by all lower positive numbers. For example, `6` factorial (written `6!`) is  `6*5*4*3*2*1`, which equals `720`.)
@@ -209,19 +208,21 @@ You may create a separate file for each set of challenges to avoid cluttering a 
   
   **Challenge Set 1: Primes**
 
-1. Write an `isPrime?` method to check if a number is prime. A prime number is:
+1. Write an `is_prime?` method to check if a number is prime. A prime number is:
   * greater than 1
   * evenly divisible by 1
   * evenly divisible by itself
   * not evenly divisible by any other numbers between 1 and itself
   
    ```ruby
-   isPrime? 
+   is_prime? 
    ```
 
 1. Write a method that takes in a number and returns a list of **all** prime numbers less than the given number.
 
    **Challenge Set 2: Command Line Interaction**
+   
+   *Hint: use `puts` and `gets.chomp`.*
    
 1. Write a method called `get_contact` that
 
@@ -230,7 +231,7 @@ You may create a separate file for each set of challenges to avoid cluttering a 
   * and then adds the `name` and `phone` as a key value pair respectively **only if** `name` is not already a contact name,
   * and `return`s the updated `contacts` hash.
   
-1. Using `Array#map`, write a method called `get_responses` that takes an array of questions (strings) and returns an array of responses input from the console for each question. (Hint: you will need to use `gets.chomp` and `puts` ).
+1. Using `Array#map`, write a method called `get_responses` that takes an array of questions (strings) and returns an array of responses input from the console for each question. 
 
 
 ###Stretch Challenges
@@ -247,7 +248,7 @@ You may create a separate file for each set of challenges to avoid cluttering a 
    ```
    
 
-1. Make your `isPrime?` method more efficient. Three hints on how to proceed are spaced out below. Before implementing each hint, develop a short argument to convince yourself that it works.  **Note: There are more challenges after the white space!**
+1. Make your `is_prime?` method more efficient. Three hints on how to proceed are spaced out below. Before implementing each hint, develop a short argument to convince yourself that it works.  **Note: There are more challenges after the white space!**
 
    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   * Hint: if the number isn't 2, only check whether the number is divisible by odd numbers
@@ -263,22 +264,22 @@ You may create a separate file for each set of challenges to avoid cluttering a 
    ```
    Guess a number between 1 and 100
    50
-   The number is lower than 50.  Guess again
+   The number is lower than 50.  Guess again!
    25
-   The number is lower than 25.  Guess again
+   The number is lower than 25.  Guess again!
    13
-   The number is higher than 13.  Guess again
+   The number is higher than 13.  Guess again!
    20
-   The number is lower than 20.  Guess again
+   The number is lower than 20.  Guess again!
    17
-   The number is higher than 17.  Guess again
+   The number is higher than 17.  Guess again!
    18
-   The number is higher than 18.  Guess again
+   The number is higher than 18.  Guess again!
    19
    You got 19 in 7 tries!
    ```
 
-1. Write a method to `reverse` a string *in-place* (without creating a new string of the same length). You can only use a little extra space - think one extra character's worth.  Do not use iterators; use only a `while` loop and indices. 
+1. Write a `reverse!` method to reverse a string *in-place* (without creating a new string of the same length). You can only use a little extra space - think one extra character's worth.  Do not use iterators; use only a `while` loop and indices. 
 
 
 1. Rewrite `factorial` without recursion.
