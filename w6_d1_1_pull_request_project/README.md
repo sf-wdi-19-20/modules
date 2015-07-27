@@ -3,14 +3,15 @@
 ## Basic Challenge
 
 1. **10 min** - Go to your project 1 Github and add 1 issue to your project. Make it an issue a small addition that could be solved relatively quickly with the tools we already have - jQuery, express, etc. Be descriptive of what is wrong and how you'd like it fixed. Maybe give some rough steps you'd take to solve it.
-<div style='width:300px;'>![issues](issues.png)</div>
+<div style='width:300px;'>![issues](issue.png)</div>
 2. **2 min** Next, pair up (A & B)
 3. **3 min** Find another pair (so you're in groups of 4) (A & B + C & D)
 > C & D follow the same instructions as for A & B
 4. **10 min** Now, A & B, read C's issue they added to their project.
-5. **10 min** Clone and fire up C's project on one of your computers.
+5. **5 min** Fork C's project, clone your forked repo to your local, and fire up the fork.
+<div width="300px">![fork](fork.png)</div>
 ```
-$ git clone <<url>>
+$ git clone <<your fork url>> <<new project name (optional)>>
 ```
 6. **1 min** Make a new branch named after the issue you're solving.
 ```
