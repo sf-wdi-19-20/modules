@@ -22,9 +22,8 @@ $ git checkout -b adding_comments
 ```
 $ git push origin adding_comments
 ```
-8. Navigate to the repo on Github.com and submit the branch adding_comments as a pull request.
-<div style='width:300px'>![pull-request](pull_request.png)</div>
-9. C should code review and merge the pull request.
+8. Navigate to your repo on Github.com and submit the branch adding_comments as a pull request.
+9. C should code review and merge the pull request. C can code review small changes in Github itself, or they can fetch the pull request and view it locally.
 10. Do the same for D's issue.
 
 By the end everyone's issue should have a pull request for it.
