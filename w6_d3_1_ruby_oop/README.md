@@ -18,19 +18,19 @@ Ruby <img alt="heart" src="https://em.wattpad.com/6d0355863f6ca950858ed30d2b8b9b
 * Recall: Hashes are simple key value stores. They look a lot like JavaScript's objects.
 
 **Hash Example**
+
 How can I organize my data using key/value pairs in Ruby? Like so:
 
 ```ruby
  ourhash = {name: "Napoleon", fav_food: "steak", skills: ["archery", "combat", "egg farming"]}
+ 
  # => {:name=>"Napoleon", :fav_food=>"steak", :skills=>["archery", "combat", "egg farming"]}
 ```
 
 
 ##Objects
 
-* Ruby also has Objects.
-
-* Everything in Ruby is an Object; however, we almost never use plain vanilla Objects because there are more sophisticated, specialized implementations such a `String`, `Integer`, and `Hash`.
+Ruby also has Objects. In fact, everything in Ruby is an Object. However, we almost never use plain vanilla Objects because there are more sophisticated, specialized implementations such a `String`, `Integer`, and `Hash`.
 
 **Example:**
 How can we prove that the Hash we just created inherited from `Basic Object`?
@@ -46,6 +46,9 @@ ourhash.is_a? Hash
 # => true
 
 Hash < Object       
+# => true
+
+Object < BasicObject 
 # => true
 ```
 
@@ -75,9 +78,9 @@ What should we do if we want to set attributes on the monster, such as `threat` 
 Enable this code...
 
 ```ruby
-rabbitOfCaerbannog = Monster.new
-rabbitOfCaerbannog.habitat = "Cave of Caerbannog"
-rabbitOfCaerbannog.habitat
+rabbit = Monster.new
+rabbit.habitat = "Cave of Caerbannog"
+rabbit.habitat
 => "Cave of Caerbannog"
 ```
 
@@ -105,8 +108,8 @@ yeti.habitat?("tundra")
 What If I want to set the habitat of the monster at the moment I'm creating it? How could I enable code like this?
 
 ```ruby
-goblinKing = Monster.new("cave")
-goblinKing.habitat
+goblin_king = Monster.new("cave")
+goblin_king.habitat
 => "cave"
 ```
 
@@ -133,7 +136,7 @@ What if I wanted a running counter for all the monsters I've ever created?
   
 ## Inheritance
 
-**Challenge:** Given a `Monster` class that contains the method `increaseDanger` & attribute `threat`...
+**Challenge:** Given a `Monster` class that contains the method `increase_danger` & attribute `threat`...
 
 ```ruby
 class Monster
@@ -141,15 +144,15 @@ class Monster
   def initialize
   	@threat = 0
   end
-  def increaseDanger(moreThreat)
-  	@threat += moreThreat
+  def increase_danger(more_threat)
+  	@threat += more_threat
   end
 end
 ```
 
-... how can I create both `Warewolf` and `Zombie` classes while being DRY and not duplicating the method `increaseDanger` in each?  
+... how can I create both `Warewolf` and `Zombie` classes while being DRY and not duplicating the method `increase_danger` in each?  
 
-The default threat of zombies and warewolves seems a little off.  
+**Challenge:** The threat of warewolves seems a little off.  Write a method that calculates warewolves' threat based on a boolean parameter that says whether the moon is full. 
 
 ## Exercise: The Animal Kingdom
 
