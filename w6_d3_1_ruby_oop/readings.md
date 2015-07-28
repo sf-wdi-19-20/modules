@@ -301,7 +301,7 @@ Inheritance lets us reuse code from one class as we create subtypes of that clas
 
 ### Base Class
 
-We'll use our `Car` class as a base class and make a new `Pickup` class that inherits from `Car`.  Another way to say this is that `Pickup` will be a *subclass* of `Car`.
+We'll use our `Car` class as a base class and make a new `Pickup` class that inherits from `Car`.  Another way to say this is that `Pickup` will be a *subclass* of `Car`.  You can also think of `Car` as `Pickup`'s parent and `Pickup` as `Car`'s child (as in a class inheritance tree).
 
 Notice that this `Car` class is spruced up with a new `@speed` instance variable and an `accelerate` instance method.
 
@@ -326,7 +326,11 @@ class Car
 	end
 end
 ```
-Our pickup trucks will have another property that cars don't: the capacity of their truck beds (`@bed_capacity`). They'll also have a behavior that allows for riding in the back (`ride_in_back`).
+
+
+### Subclass 
+
+The syntax for inheritance uses `<` in the class definition.  Our pickup trucks will have another property that cars don't: the capacity of their truck beds (`@bed_capacity`). They'll also have a behavior that allows for riding in the back (`ride_in_back`).
 
 ```ruby
 class Pickup < Car
@@ -364,11 +368,27 @@ focus = Car.new("green", "Ford")
 focus.ride_in_back
 ```
 
-###Think Break!
+### Inheritance and Class Variables
 
-Thinking about what you already know about inheritance from JavaScript, and some new information from Ruby, answer the following questions (you're welcome to use Google together to research and gather information):
+Class variables  in Ruby don't interact with inheritance in the way many people would expect.  All subclasses share the same class variable, so changing a class variable within a subclass changes the class variable for the base class and all other subclasses.  This can be good when, for instance, we want to update the total `Car` count whenever a new `Pickup` is created. However, `Pickup`'s `@@count` will always be equal to the total `Car` count.  
 
-* What is inheritance?
-* What do we mean when we say 'classical inheritance?'
-* How does classical inheritance differ from prototypical inheritance?
-* How do we know when to use inheritance in our applications?
+This connection can cause lots of issues if it's not intended. For example, a `Polygon` class might have an `@@sides` variable that stores a "default" number of sides for a polygon, say 4.  If `Triangle` is later created as a subclass of `Polygon`, and `Triangle`'s `@@sides` is set to 3, then all polygons will now have their sides set to 3, even `Octagons`, `Hexagons`, and any other instances of `Polygon` subclasses. 
+
+A better pattern that fits the polygon scenario uses "class instance variables". That is, just make regular instance variables for shared data and create class getter methods to access them.
+
+```
+class Parent
+  @class_var = "Parent's"
+  def self.class_var
+    @class_var
+  end
+end
+
+class Child1 < Parent
+  @class_var = "Child1's"
+end
+
+class Child2 < Parent
+  @class_var = "Child2's"
+end
+```
