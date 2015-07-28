@@ -159,7 +159,7 @@ How could I make a `Warewolf` class and `Zombie` classes while being DRY and not
 
 **Challenge:** Create a `Warewolf` class that inherits from the base `Monster` class.
 
-**Challenge:** The threat of warewolves changes a lot.  Write a method that calculates a warewolf's threat based on a boolean parameter that says whether the moon is full.
+**Challenge:** The threat of warewolves changes a lot.  Write a custom `threat_level` getter for `Warewolf` that calculates a warewolf's threat based on a boolean parameter that says whether the moon is full.
 
 ## Exercise: The Animal Kingdom
 
