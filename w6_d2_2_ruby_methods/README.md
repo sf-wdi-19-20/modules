@@ -48,7 +48,11 @@
 
 ##Ruby Methods
 
-### Define a method
+### Syntax 
+
+#### Define a method
+
+Ruby uses the `def` reserved word to create a method. The method definition must finish with the word `end`.
 
 ```ruby
 def say_hello
@@ -56,9 +60,11 @@ def say_hello
 end
 
 say_hello
+# Hello
+# => nil
 ```
 
-### Define a method with a parameter
+#### Define a method with a parameter
 
 ```ruby
 def say(something)
@@ -66,30 +72,75 @@ def say(something)
 end
 
 say('hello')
+# hello
+# => nil
+
 say 'gello'
+# gello
+# => nil
 ```
 
+Note: You don't have to use parentheses when listing a method's parameters (or calling a method), but it can make it easier to read. The following would also work for the first line of the snippet above: `def say something`
+
+
 #### Define a method that operates on two parameters
+
 ```ruby
 def add_numbers(first, second)
   puts first + second
 end
 
 add_numbers(1,2)
-add_numbers 1, 2
+# 3
+# => nil
 ```
 
-#### Printing and returning are different
+### Conventions
+
+#### Define a method that returns true or false
+
+If a function returns true or false, we add a ```?``` to the end as a convention. The ```?``` doesn't "do" anything. Its just a convention.
+
 ```ruby
-def add_numbers_quietly(first, second)
-  first + second
+def is_my_friend?(food)
+  if food.is_delicious?
+    return true
+  else
+    return false
+  end
 end
-
-add_numbers_quietly(1,2)
-add_numbers_quietly 1, 2
 ```
+
+#### Define a method that changes the input
+
+Another important convention is  adding a `!` to the name of methods that directly change the input. The `!` doesn't do anything, it just lets later developers know what's up.
+
+```ruby
+scores = [9, 3, 7, 8, 4, 6, 6, 5]
+
+scores.sort
+# => [3, 4, 5, 6, 6, 7, 8, 9]
+
+p scores
+# [9, 3, 7, 8, 4, 6, 6, 5]  # original array stays the same
+
+scores.sort!
+# => [3, 4, 5, 6, 6, 7, 8, 9]
+
+p scores
+# [3, 4, 5, 6, 6, 7, 8, 9]  # now the sort! method has changed the original array
+
+```
+
+### Rules
 
 #### Methods in Ruby always return the value of the last evaluated expression
+
+Why aren't we `return`ing anything from most of these methods?  Well, methods in Ruby automatically return the value of the last expression evaluated, so we almost never actually have to use the word `return`.
+
+In the console (and in these notes), the value returned by a function will have `=>` in front of it.  If you look at the last example, the `add_numbers` function returned `nil`.  
+
+
 ```ruby
 def implicitly_return_5
   if true
@@ -98,49 +149,110 @@ def implicitly_return_5
 end
 
 implicitly_return_5
+# => 5
 ```
 
-* What was the value of the if statement?
-* What will the status of the world be?
-  ```ruby
-  status_of_world = if 1 == 2 then "messed up" else "a-o-k" end
-  ```
+Sometimes, we do have to use the reserved word `return`. The best example is if we might to break out of a loop early. This next example simulates a kid taking 3 swings at a pinata. It returns the number of swings remaining at the end of the kid's turn (usually 0). But! each swing might burst the pinata. We use random chance to determine if the pinata bursts. If it does, the method shows a message that the pinata burst and returns early. 
 
-* What will the value of `result` be?
-  ```ruby
-  result = 1 == 2 ? "wuh oh" : "phew"
-  ```
+```ruby
+def pinata  
+   remaining_swings = 3
+   rand_gen = Random.new            # this will generate our random numbers
+   while remaining_swings > 0
+      if rand_gen.rand(0..4) == 4   # random number out of 0, 1, 2, 3, or 4
+         puts "You burst the pinata!"
+         return remaining_swings
+      end
+      remaining_swings = remaining_swings - 1
+      puts "#{remaining_swings} swings left!"
+   end
+   remaining_swings
+end
 
-### Parameters can have default values
+# one possible output is:
+# 2 swings left!
+# 1 swings left!
+# You burst the pinata!
+# => 1
+
+```
+
+
+
+#### Printing/logging and returning are different
+
+Why did we get a `nil` return value when we `puts` (above)?
+
+The `puts` and `print` methods in Ruby are like `console.log` in JS: they print out a value, but they don't return anything. If they're the last expression evaluated, we get the default `nil`.  The only difference between *those* two methods is that `puts` adds a new line character ('\n') to the end of the string it prints out.  
+
+Another method, called `p`, prints a thing out in a more carefully formatted way based on the thing's `.inspect` method, and it also returns the value.  Programmers can customize `.inspect` to give complex objects a better format for printing.  
+
+```ruby
+def list_numbers_quietly(first, second)
+  [first, second]
+end
+
+list_numbers_quietly(1,2)
+# => [1, 2]
+
+puts list_numbers_quietly(3,4)
+# 3
+# 4
+# => nil
+
+p list_numbers_quietly(5,6)
+# [5,6]
+# => [5, 6]
+```
+
+ The `puts` method is the most commonly used one for printing/logging.
+
+
+#### Parameters can have default values
 
 ```ruby
 def say(something = "Hello")
   puts something
 end
 
-say # prints "Hello"
-say "Goodbye" # prints "Goodbye"
+say
+# Hello
+# => nil
+
+say "Goodbye"
+# Goodbye
+# => nil
 ```
-### Recursion: methods can call themselves
+#### Recursion: methods can call themselves
 
 ```ruby
 def recurse(depth)
   if depth > 0
-    puts "Spiraling down..."
+    puts "#{depth} spiraling down..."
     recurse(depth - 1)
-    puts "Spiraling up..."
+    puts "#{depth} spiraling up..."
   else
     puts "Bottom of the rabbit hole"
   end
 end
 
-recurse(5)
-recurse 5
+recurse 3
+
+# 3 spiraling down...
+# 2 spiraling down...
+# 1 spiraling down...
+# Bottom of the rabbit hole
+# 1 spiraling up...
+# 2 spiraling up...
+# 3 spiraling up...
+# => nil
 ```
 
 
-### Functions have locally scoped variables (biggest difference from javascript!)
+#### Functions have locally scoped variables (biggest difference from javascript!)
+
 The following code won't change `foo`. Why?
+
 ```ruby
 foo = 1
 
@@ -152,9 +264,14 @@ def do_stuff
 end
 
 do_stuff
+# undefined method `+' for nil:NilClass
 
 puts foo
+# 1
+# => nil
+
 puts bar
+# undefined local variable or method `bar' for main:Object
 ```
 
 The problem is that ruby is *entirely* locally scoped -- code within a function only has access to the function's parameters and any variables defined inside of the function.
@@ -171,11 +288,18 @@ def do_stuff
 end
 
 do_stuff
+# 2
+# 1
+# => nil
 
 puts foo
-puts bar
+# 1
+# => nil
 
-def do_stuff2(x)
+puts bar
+# undefined local variable or method `bar' for main:Object
+
+def do_other_stuff(x)
   foo = x
   foo += 1
   bar = 1
@@ -183,7 +307,14 @@ def do_stuff2(x)
   puts bar
 end
 
-puts do_stuff2(foo)
+puts do_other_stuff(foo)
+# 2
+# 1
+# => nil
+
+puts foo
+# 1
+# => nil
 ```
 
 ###Example: Factorial
@@ -195,17 +326,47 @@ A simple, common interview question asks candidates to compute the *factorial* o
 def factorial(num)
    if num > 1
       num * factorial(num-1)
-   elif num > -1
+   elsif num == 1 or num == 0
       1
    else
       puts "can't do factorial of a negative number!"
-      nil
+   end
+end
+
+factorial(6)
+# => 720
+
+factorial(-1)
+# can't do factorial of a negative number!
+# => nil
 ```
+
+## How to run a ruby script inside a file
+1. ```$ touch script.rb```
+2. ```$ sublime script.rb```
+3. ```$ ruby script.rb```
+4. THAT'S IT!
+5. From irb you can run a ruby file by loading it ```$ load './filename.rb'```
+
+## How to use gems in irb
+
+Gems in Ruby are a lot like node modules. Say you want to use a gem like "Awesome Print" to make your printing of objects and strings colorized and indented?
+
+1. First install the gem on your computer: ```$ gem install awesome_print```
+2. Now just require it at the top of your file or in irb and then use it according to its documentation.
+  ```ruby
+  require 'awesome_print'
+  a = ["value1", "value2", "value3"]
+  ap a
+  ```
+[Ruby Toolbox](https://www.ruby-toolbox.com/)
+
 
 ##Basic Challenges
 
-You may create a separate file for each set of challenges to avoid cluttering a file.
-  
+1. Make a folder called ruby-methods to keep all these ruby scripts we're about to write!
+2. In a new file, write a method called ```full_name``` that takes in two arguments ```first``` and ```last``` and returns a concatenated full name string.
+
   **Challenge Set 1: Primes**
 
 1. Write an `is_prime?` method to check if a number is prime. A prime number is:
@@ -213,54 +374,52 @@ You may create a separate file for each set of challenges to avoid cluttering a 
   * evenly divisible by 1
   * evenly divisible by itself
   * not evenly divisible by any other numbers between 1 and itself
-  
-   ```ruby
-   is_prime? 
-   ```
 
 1. Write a method that takes in a number and returns a list of **all** prime numbers less than the given number.
 
    **Challenge Set 2: Command Line Interaction**
-   
-   *Hint: use `puts` and `gets.chomp`.*
-   
+
 1. Write a method called `get_contact` that
 
   * takes a `contacts` hash,
   * prompts the terminal for a **new** `name` and a `phone` number,
   * and then adds the `name` and `phone` as a key value pair respectively **only if** `name` is not already a contact name,
   * and `return`s the updated `contacts` hash.
-  
-1. Using `Array#map`, write a method called `get_responses` that takes an array of questions (strings) and returns an array of responses input from the console for each question. 
+ 
+1. Using `Array#map`, write a method called `get_responses` that takes an array of questions (strings) and returns an array of responses input from the console for each question. (Hint: you will need to use `gets.chomp` and `puts` ).
 
+  **Challenge Set 3: Let's have a HTTParty!**
+  
+4. Let's have an [HTTParty](https://github.com/jnunemaker/httparty)!
+
+5. Install the httparty gem ```$ gem install httparty```.
+
+6. Now require it in a new ruby script file, and use it to call an album search on the word "White" to the spotify API.
+
+7. Can you require both ```httparty``` and ```awesome_print``` to have the output look nice? (remember just require awesome_print and then use ```ap``` instead of ```p```)
+
+5. In the same file, can you write a loop that returns an array of the album names from your search?
+
+6. Can you write a loop that makes an array containing a string for each album that says "The `<<artist name>>` made the album: `<<album name>>` in `<<album year>>`"
 
 ###Stretch Challenges
 
-1. Using Array#inject, write a method called `partial_sums` that pushes the *partial sums* of an array to a new list. The partial sums of an array are the sums of the first 0 elements, the first 1 elements, the first 2 elements, etc.
-   
-   ```
-   partial_sums([])
-   #=> [0]
-   partial_sums([5])
-   #=> [0, 5]
-   partial_sums([5,4,8])
-   #=> [0, 5, 9, 17]
-   ```
-   
-
 1. Make your `is_prime?` method more efficient. Three hints on how to proceed are spaced out below. Before implementing each hint, develop a short argument to convince yourself that it works.  **Note: There are more challenges after the white space!**
 
-   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  * Hint: if the number isn't 2, only check whether the number is divisible by odd numbers
-   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   <br><br><br><br><br>
   * Hint: only check possible divisors up to half the original number
-   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  * Hint: only check possible divisors up to the square root of the original number
-  
+   <br><br><br><br><br>
+  * Hint: only check possible divisors up to the square root of the original number   
+    <br><br><br><br><br>
+  * Hint: if the number isn't 2, only check whether the number is divisible by odd numbers
+
+
+1. Find 3 gems you think are cool and try to use them in your own scripts. ([Ruby Toolbox](https://www.ruby-toolbox.com/)) has a lot of great gems listed, though you might have to hold off on incorporating Rails gems.
+
 1. Guessing Game
 
    Create a program that asks the user to guess a number between 1 and 100.  Once the user guesses a number, the program should say higher or lower, or report that the number was correct.  The user should continue to make guesses until the correct number is found.  Also, once the user guesses correctly, the program should print the number of guesses needed to arrive at the correct answer. Below is sample output:
-   
+
    ```
    Guess a number between 1 and 100
    50
@@ -279,7 +438,10 @@ You may create a separate file for each set of challenges to avoid cluttering a 
    You got 19 in 7 tries!
    ```
 
-1. Write a `reverse!` method to reverse a string *in-place* (without creating a new string of the same length). You can only use a little extra space - think one extra character's worth.  Do not use iterators; use only a `while` loop and indices. 
+1. Rewrite `factorial` without recursion. For an extra challenge, write a recursive *and* an iterative version of a method that takes in a number `num` and calculate the `num`th [Fibionacci number](https://en.wikipedia.org/wiki/Fibonacci_number). 
+  ```ruby
+  fibb(3)
+  => 2
+  ```
 
-
-1. Rewrite `factorial` without recursion.
+1. Write a method to `reverse` a string [*in-place*](https://en.wikipedia.org/wiki/In-place_algorithm). You can only use a little extra space - think one extra character's worth.  Do not use iterators; use only a `while` loop and indices. 
