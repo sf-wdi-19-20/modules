@@ -350,7 +350,7 @@ factorial(-1)
 
 ## How to use gems in irb
 
-Gems in Ruby are a lot like node modules.  Say you want to use a gem like "Awesome Print" to make your printing of objects and strings colorized and indented?
+Gems in Ruby are a lot like node modules. Say you want to use a gem like "Awesome Print" to make your printing of objects and strings colorized and indented?
 
 1. First install the gem on your computer: ```$ gem install awesome_print```
 2. Now just require it at the top of your file or in irb and then use it according to its documentation.
@@ -404,17 +404,13 @@ Gems in Ruby are a lot like node modules.  Say you want to use a gem like "Aweso
 
 ###Stretch Challenges
 
-1. Rewrite `factorial` without recursion.
-
-1. Write a method to `reverse` a string [*in-place*](https://en.wikipedia.org/wiki/In-place_algorithm). You can only use a little extra space - think one extra character's worth.  Do not use iterators; use only a `while` loop and indices.
-
 1. Make your `is_prime?` method more efficient. Three hints on how to proceed are spaced out below. Before implementing each hint, develop a short argument to convince yourself that it works.  **Note: There are more challenges after the white space!**
 
-   <br><br><br>
+   <br><br><br><br><br>
   * Hint: only check possible divisors up to half the original number
-   <br><br><br>
+   <br><br><br><br><br>
   * Hint: only check possible divisors up to the square root of the original number   
-    <br><br><br>
+    <br><br><br><br><br>
   * Hint: if the number isn't 2, only check whether the number is divisible by odd numbers
 
 
@@ -442,3 +438,10 @@ Gems in Ruby are a lot like node modules.  Say you want to use a gem like "Aweso
    You got 19 in 7 tries!
    ```
 
+1. Rewrite `factorial` without recursion. For an extra challenge, write a recursive *and* an iterative version of a method that takes in a number `num` and calculate the `num`th [Fibionacci number](https://en.wikipedia.org/wiki/Fibonacci_number). 
+  ```ruby
+  fibb(3)
+  => 2
+  ```
+
+1. Write a method to `reverse` a string [*in-place*](https://en.wikipedia.org/wiki/In-place_algorithm). You can only use a little extra space - think one extra character's worth.  Do not use iterators; use only a `while` loop and indices. 
