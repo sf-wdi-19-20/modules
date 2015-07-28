@@ -15,25 +15,20 @@ Ruby <img alt="heart" src="https://em.wattpad.com/6d0355863f6ca950858ed30d2b8b9b
 
 ##Hashes
 
-* Recall: Hashes are simple key value stores. They look a lot like JavaScript's objects.
+Recall: Hashes are simple key value stores. They look a lot like JavaScript's objects.
 
 **Hash Example**
 
-How can I organize my data using key/value pairs in Ruby? Like so:
-
 ```ruby
  ourhash = {name: "Napoleon", fav_food: "steak", skills: ["archery", "combat", "egg farming"]}
- 
+
  # => {:name=>"Napoleon", :fav_food=>"steak", :skills=>["archery", "combat", "egg farming"]}
 ```
 
 
 ##Objects
 
-Ruby also has Objects. In fact, everything in Ruby is an Object. However, we almost never use plain vanilla Objects because there are more sophisticated, specialized implementations such a `String`, `Integer`, and `Hash`.
-
-**Example:**
-How can we prove that the Hash we just created inherited from `Basic Object`?
+Ruby also has Objects. In fact, everything in Ruby is an Object. However, we almost never use plain vanilla Objects because there are more sophisticated, specialized object types such a `String`, `Integer`, and `Hash`.
 
 
 **Class Inheritance Tree**
@@ -41,31 +36,35 @@ How can we prove that the Hash we just created inherited from `Basic Object`?
 ![Class inheritance](http://i.stack.imgur.com/rvcEi.png)
 
 
-```ruby 
+**Example:**
+How can we prove that the Hash we just created inherited from `BasicObject`?
+
+
+```ruby
 ourhash.is_a? Hash  
 # => true
 
-Hash < Object       
+Hash < Object
 # => true
 
-Object < BasicObject 
+Object < BasicObject
 # => true
 ```
 
-##Classes 
+##Classes
 
-*Classes are data types used to create more data. They are similar to the object types we manipulated with constructors and prototypes in JavaScript.*
+Classes are data types used to create more data. They are similar to the object types we manipulated with constructors and prototypes in JavaScript.
 
-Ruby uses classes for object-oriented programming. How can we create a class in Ruby? 
+Ruby uses **classes** for object-oriented programming.
 
-Challenge: create a `Monster` class and an instance of `Monster`.
+**Challenge:** create a `Monster` class and an instance of `Monster`.
 
-Hint: you'll have to use the Ruby reserved words `class` and `new`.
+*Hint: you'll have to use the Ruby reserved words `class` and `new`.*
 
 
-## `initialize` 
+## `initialize`
 
-Update the `Monster` class so that a monster goes "Rawr" when it's first initialized.
+Update the `Monster` class so that a monster goes "Rawr!" when it's first initialized.
 
 
 ##Attributes
@@ -84,6 +83,14 @@ rabbit.habitat
 
 *Hint: Use the method `attr_accessor`*
 
+**Challenge:** Add a `threat_level` symbol as an instance variable to the Monster class. Allow the user to specify a threat level when the monster is created.
+
+```ruby
+dalek = Monster.new(:super_danger)
+dalek.threat_level
+=> :super_danger
+```
+
 ##Methods
 
 **Challenge:**
@@ -98,24 +105,24 @@ yeti.habitat?("tundra")
 => true
 ```
 
-*Hint: use the `def` keyword to define a new method inside the class*
+*Hint: use `def` to define a new method inside the class*
 
-##Class Methods and Instance Variables
-
-**Challenge:**
-What If I want to set the habitat of the monster at the moment I'm creating it? How could I enable code like this?
-
-```ruby
-goblin_king = Monster.new("cave")
-goblin_king.habitat
-=> "cave"
-```
-
-*Hint: Create an instance variable with `@`, and use the `self` keyword.*
 
 ##Class Variables
 
-What if I wanted a running counter for all the monsters I've ever created?
+What if I wanted a running counter for all the monsters I've ever created?  Let's print a monster count message each time a new monster spawns.
+
+**Challenge:** Enable this code...
+
+```ruby
+predator = Monster.new(:dangerous)
+# Rawr!
+# 2 monsters now roam the world!
+
+alien = Monster.new(:dangerous)
+# Rawr!
+# 3 monsters now roam the world!
+```
 
 *Hint: Create a class variable with `@@`*
 
@@ -131,26 +138,26 @@ What if I wanted a running counter for all the monsters I've ever created?
     - a class variable
   * Why do we use classes?
   * What is inheritance?
-  
+
 ## Inheritance
 
-**Challenge:** Given a `Monster` class that contains the method `increase_danger` & attribute `threat`...
+**Challenge:** Given a `Monster` class that contains the method `lets_get_dangerous` & attribute `threat_level`...
 
 ```ruby
 class Monster
-  attr_accessor :threat
-  def initialize
-  	@threat = 0
+  attr_accessor :threat_level
+  def initialize(threat_level)
+  	@threat_level = threat_level
   end
-  def increase_danger(more_threat)
-  	@threat += more_threat
+  def lets_get_dangerous(new_threat)
+  	@threat_level = new_threat
   end
 end
 ```
 
-... how can I create both `Warewolf` and `Zombie` classes while being DRY and not duplicating the method `increase_danger` in each?  
+... how can I create both `Warewolf` and `Zombie` classes while being DRY and not duplicating the method `lets_get_dangerous` in each?  
 
-**Challenge:** The threat of warewolves seems a little off.  Write a method that calculates warewolves' threat based on a boolean parameter that says whether the moon is full. 
+**Challenge:** The threat of warewolves changes a lot.  Write a method that calculates warewolves' threat based on a boolean parameter that says whether the moon is full.
 
 ## Exercise: The Animal Kingdom
 
@@ -165,7 +172,7 @@ Humans are still animals after all. In this exercise, you'll define:
 
   2. A `Person` class, with the following characteristics:
     * Inherits from `Animal`
-    * Automatically sets `@type` to `"person"` 
+    * Automatically sets `@type` to `"person"`
     * Adds 3 new instance vars:
       * age
       * gender
