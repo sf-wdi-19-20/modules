@@ -325,23 +325,13 @@ Say you want to use a gem like "Awesome Print" to make your printing of objects 
   a = ["value1", "value2", "value3"]
   ap a
   ```
+[Ruby Toolbox](https://www.ruby-toolbox.com/)
 
 
 ##Basic Challenges
 
 1. Make a folder called ruby-methods to keep all these ruby scripts we're about to write!
 2. In a new file, write a method called ```full_name``` that takes in two arguments ```first``` and ```last``` and returns a concatenated full name string.
-3. Use the ```.map``` iterator to iterate over the following hash and return an array of the reverse the make string. Hint: ```"string".reverse #=> "gnirts"```
-```ruby
-[
-  { make: "Toyota", model: "Matrix", sold_on: Time.now },
-  { make: "Ford", model: "Focus", sold_on: Time.now },
-  { make: "Tesla", model: "Roadster", sold_on: Time.now }
-]
-```
-4. New file: Let's have a party . . . an [HTTParty](https://github.com/jnunemaker/httparty)! Install the httparty gem ```$ gem install httparty```. Now require it and then use it to call an album search on the word "White" to the spotify API. Can you require both ```httparty``` and ```awesome_print``` to have the output look nice? (remember just ```ap``` instead of ```p```)
-5. In the same file, can you write a loop that returns an array of the album names from your search?
-6. Can you write a loop that makes an array for each album that says "The <<artist name>> made the album: <<album name>> in <<album year>>"
 
   **Challenge Set 1: Primes**
 
@@ -363,6 +353,13 @@ Say you want to use a gem like "Awesome Print" to make your printing of objects 
   * and `return`s the updated `contacts` hash.
 1. Using `Array#map`, write a method called `get_responses` that takes an array of questions (strings) and returns an array of responses input from the console for each question. (Hint: you will need to use `gets.chomp` and `puts` ).
 
+  **Challenge Set 3: Let's have a HTTParty!**
+4. Let's have an [HTTParty](https://github.com/jnunemaker/httparty)!
+5. Install the httparty gem ```$ gem install httparty```.
+6. Now require it in a new ruby script file, and use it to call an album search on the word "White" to the spotify API.
+7. Can you require both ```httparty``` and ```awesome_print``` to have the output look nice? (remember just require awesome_print and then use ```ap``` instead of ```p```)
+5. In the same file, can you write a loop that returns an array of the album names from your search?
+6. Can you write a loop that makes an array for each album that says "The <<artist name>> made the album: <<album name>> in <<album year>>"
 
 ###Stretch Challenges
 
@@ -375,6 +372,7 @@ Say you want to use a gem like "Awesome Print" to make your printing of objects 
    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   * Hint: only check possible divisors up to the square root of the original number
 
+1. Find 3 gems you think are cool and try to use them in your own scripts. ([Ruby Toolbox](https://www.ruby-toolbox.com/))
 1. Guessing Game
 
    Create a program that asks the user to guess a number between 1 and 100.  Once the user guesses a number, the program should say higher or lower, or report that the number was correct.  The user should continue to make guesses until the correct number is found.  Also, once the user guesses correctly, the program should print the number of guesses needed to arrive at the correct answer. Below is sample output:
