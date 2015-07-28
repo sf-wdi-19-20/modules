@@ -301,7 +301,7 @@ Inheritance lets us reuse code from one class as we create subtypes of that clas
 
 ### Base Class
 
-We'll use our `Car` class as a base class and make a new `Pickup` class that inherits from `Car`.
+We'll use our `Car` class as a base class and make a new `Pickup` class that inherits from `Car`.  Another way to say this is that `Pickup` will be a *subclass* of `Car`.
 
 Notice that this `Car` class is spruced up with a new `@speed` instance variable and an `accelerate` instance method.
 
@@ -330,7 +330,7 @@ Our pickup trucks will have another property that cars don't: the capacity of th
 
 ```ruby
 class Pickup < Car
-	attr_accessor :make, :color, :bed_capacity
+  attr_accessor :make, :color, :bed_capacity
 
   def initialize(color, make, bed_capacity)
     @speed = 0
@@ -340,23 +340,33 @@ class Pickup < Car
     @@count = @@count + 1
   end
 
-  def self.count
-    @@count
-  end
-
-  def accelerate(change)
-    @speed += change
-  end
-
   def ride_in_back
     puts "Bumpy but breezy!"
   end
 end
 ```
 
+Even though we didn't define the `accelerate` method again, a pickup truck will inherit the behavior from the `Car` class.
+
+```ruby
+truck_one = Pickup.new("red", "Ford", 100)
+truck_one.speed
+=> 0
+truck_one.accelerate(40)
+truck_one.speed
+=> 40
+```
+
+Inheritance doesn't go the other way, though -- new cars don't know how to use the `ride_in_back` behavior.
+
+```ruby
+focus = Car.new("green", "Ford")
+focus.ride_in_back
+```
+
 ###Think Break!
 
-Thinking about what you already know about inheritance from JavaScript, and this new information from Ruby, answer the following questions (you're welcome to use Google together to research and gather information):
+Thinking about what you already know about inheritance from JavaScript, and some new information from Ruby, answer the following questions (you're welcome to use Google together to research and gather information):
 
 * What is inheritance?
 * What do we mean when we say 'classical inheritance?'
