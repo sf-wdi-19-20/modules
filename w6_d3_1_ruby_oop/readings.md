@@ -353,3 +353,12 @@ class Pickup < Car
   end
 end
 ```
+
+###Think Break!
+
+Thinking about what you already know about inheritance from JavaScript, and this new information from Ruby, answer the following questions (you're welcome to use Google together to research and gather information):
+
+* What is inheritance?
+* What do we mean when we say 'classical inheritance?'
+* How does classical inheritance differ from prototypical inheritance?
+* How do we know when to use inheritance in our applications?
