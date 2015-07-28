@@ -50,12 +50,15 @@
 
 ### Define a method
 
+Ruby uses the `def` reserved word to create a method. The method definition must finish with the word `end`. 
+
 ```ruby
 def say_hello
   puts "Hello"
 end
 
 say_hello
+# Hello
 ```
 
 ### Define a method with a parameter
@@ -66,8 +69,12 @@ def say(something)
 end
 
 say('hello')
+# hello
 say 'gello'
+# gello
 ```
+
+You don't have to use parentheses when listing a method's parameters (or calling a method), but it can make it easier to read. The following would also work for the first line of the snippet above: `def say something`
 
 #### Define a method that operates on two parameters
 ```ruby
@@ -76,20 +83,17 @@ def add_numbers(first, second)
 end
 
 add_numbers(1,2)
-add_numbers 1, 2
-```
-
-#### Printing and returning are different
-```ruby
-def add_numbers_quietly(first, second)
-  first + second
-end
-
-add_numbers_quietly(1,2)
-add_numbers_quietly 1, 2
+# 3
+# => nil
 ```
 
 #### Methods in Ruby always return the value of the last evaluated expression
+
+Why aren't we returning anything from these functions?  Well, methods in Ruby return the value of the last expression evaluated, so we almost never actually have to use the word `return`.   
+
+In the console (and in these notes), the value returned by a function will have `=>` in front of it.  If you look at the last example, the `add_numbers` function returned `nil`.  
+
+
 ```ruby
 def implicitly_return_5
   if true
@@ -98,18 +102,58 @@ def implicitly_return_5
 end
 
 implicitly_return_5
+# => 5
 ```
 
-* What was the value of the if statement?
-* What will the status of the world be?
-  ```ruby
-  status_of_world = if 1 == 2 then "messed up" else "a-o-k" end
-  ```
+Sometimes, we do have to use the reserved word `return`. The best example is if we might to break out of a loop early:
 
-* What will the value of `result` be?
-  ```ruby
-  result = 1 == 2 ? "wuh oh" : "phew"
-  ```
+```ruby
+def is_burst?
+   num_swings = 3
+   rand_gen = Random.new  # this will generate random numbers for us
+   while num_swings > 0
+      if rand_gen.rand(0..4) == 4 # random number out of 0, 1, 2, 3, or 4
+         puts "You burst the pinata!"
+         return true
+      end
+      num_swings = num_swings - 1
+      puts "#{num_swings} swings left!"
+   end
+   false
+end
+  
+```
+
+
+
+#### Printing/logging and returning are different
+
+Why did we get a `nil` return value when we `puts` (above)?
+
+The `puts` and `print` methods in Ruby are like `console.log` in JS: they print out a value, but they don't return anything.  The only difference between *those* two methods is that `puts` adds a new line character ('\n') to the end of the string it prints out.  
+
+Another method, called `p`, prints things out in a more carefully formatted way based on the things' `.inspect` method, and it also returns the value.  Programmers can customize `.inspect` to give complex objects a better format for printing.  
+
+```ruby
+def list_numbers_quietly(first, second)
+  [first, second]
+end
+
+list_numbers_quietly(1,2)
+# => [1, 2]
+
+puts list_numbers_quietly(3,4)
+# 3
+# 4
+# => nil
+
+p list_numbers_quietly(5,6)
+# [5,6]
+# => [5, 6]
+```
+
+ The `puts` method is the most commonly used one for printing/logging.
+
 
 ### Parameters can have default values
 
