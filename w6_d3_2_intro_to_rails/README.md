@@ -1,7 +1,7 @@
 # Intro to Rails
 
 Objective:
-* To be able to start a rails project with no database and static templates.
+* To be able to start a rails project with no database and create routes to static templates.
 
 ## Route-side In Development
 
@@ -14,9 +14,10 @@ Start with the routes and follow the directions the errors give you.
 
 ### Basic Challenges
 
-1. Create a new rails project called ```rails-blog``` in your dev folder.
+1. Create a new rails project called ```rails-blog``` in your dev folder. Run ```rails server```. go to ```http://localhost:3000``` in your browser.
   ```ruby
   $ rails new rails-blog
+  $ rails s
   ```
 2. Check your routes
   ```bash
@@ -31,8 +32,7 @@ Start with the routes and follow the directions the errors give you.
   root 'pages#splash'
   ```
 5. Check your routes again. What's new?
-4. Run ```$ rails server``` or ```$ rails s```
-5. Navigate to ```http://localhost:3000```. What error do you recieve? What is the next step?
+5. Reload ```http://localhost:3000```. What error do you recieve? What is the next step?
 6. Add the proper controller to the proper folder. Refresh your browser. New error? What next?
   ```
   | app
@@ -62,13 +62,17 @@ Start with the routes and follow the directions the errors give you.
     | views
       | layouts
       | pages
-      - splash.html.erb
+        - splash.html.erb
   | bin
   ...
   ```
+  *splash.html.erb*
   ```html
   <h1>Hello world</h1>
   ```
+9. Reload localhost. See "Hello world"? Nice work that is your root route and template! Otherwise known as your "woot" route.
+![woot](amazing.gif)
+## NEXT CHALLENGE! Add Resource Routes
 8. Add a route to posts#index:
   ```ruby
   #
@@ -98,6 +102,9 @@ Start with the routes and follow the directions the errors give you.
   ```
 14. Use a rails generator to create a users controller with a new, create, show, and destroy methods.
 15. Run ```$ rake routes```. What routes were added? Comment out the extra routes the generator added. We already got the routes using the ```resources``` method in ```routes.rb```.
+
+**How very Wii-sourceful**
+![wiisource](wisource.gif) 
 
 ### Stretch
 
