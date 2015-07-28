@@ -59,6 +59,7 @@ end
 
 say_hello
 # Hello
+# => nil
 ```
 
 ### Define a method with a parameter
@@ -70,13 +71,17 @@ end
 
 say('hello')
 # hello
+# => nil
+
 say 'gello'
 # gello
+# => nil
 ```
 
 You don't have to use parentheses when listing a method's parameters (or calling a method), but it can make it easier to read. The following would also work for the first line of the snippet above: `def say something`
 
 #### Define a method that operates on two parameters
+
 ```ruby
 def add_numbers(first, second)
   puts first + second
@@ -130,7 +135,7 @@ end
 
 Why did we get a `nil` return value when we `puts` (above)?
 
-The `puts` and `print` methods in Ruby are like `console.log` in JS: they print out a value, but they don't return anything.  The only difference between *those* two methods is that `puts` adds a new line character ('\n') to the end of the string it prints out.  
+The `puts` and `print` methods in Ruby are like `console.log` in JS: they print out a value, but they don't return anything. If they're the last expression evaluated, we get the default `nil`.  The only difference between *those* two methods is that `puts` adds a new line character ('\n') to the end of the string it prints out.  
 
 Another method, called `p`, prints things out in a more carefully formatted way based on the things' `.inspect` method, and it also returns the value.  Programmers can customize `.inspect` to give complex objects a better format for printing.  
 
@@ -162,24 +167,37 @@ def say(something = "Hello")
   puts something
 end
 
-say # prints "Hello"
-say "Goodbye" # prints "Goodbye"
+say 
+# Hello
+# => nil
+
+say "Goodbye" 
+# Goodbye
+# => nil
 ```
 ### Recursion: methods can call themselves
 
 ```ruby
 def recurse(depth)
   if depth > 0
-    puts "Spiraling down..."
+    puts "#{depth} spiraling down..."
     recurse(depth - 1)
-    puts "Spiraling up..."
+    puts "#{depth} spiraling up..."
   else
     puts "Bottom of the rabbit hole"
   end
 end
 
-recurse(5)
-recurse 5
+recurse 3
+
+# 3 spiraling down...
+# 2 spiraling down...
+# 1 spiraling down...
+# Bottom of the rabbit hole
+# 1 spiraling up...
+# 2 spiraling up...
+# 3 spiraling up...
+# => nil
 ```
 
 
@@ -196,9 +214,14 @@ def do_stuff
 end
 
 do_stuff
+# undefined method `+' for nil:NilClass
 
 puts foo
+# 1
+# => nil
+
 puts bar
+# undefined local variable or method `bar' for main:Object
 ```
 
 The problem is that ruby is *entirely* locally scoped -- code within a function only has access to the function's parameters and any variables defined inside of the function.
@@ -215,11 +238,18 @@ def do_stuff
 end
 
 do_stuff
+# 2
+# 1
+# => nil
 
 puts foo
-puts bar
+# 1
+# => nil
 
-def do_stuff2(x)
+puts bar
+# undefined local variable or method `bar' for main:Object
+
+def do_other_stuff(x)
   foo = x
   foo += 1
   bar = 1
@@ -227,7 +257,14 @@ def do_stuff2(x)
   puts bar
 end
 
-puts do_stuff2(foo)
+puts do_other_stuff(foo)
+# 2
+# 1
+# => nil
+
+puts foo
+# 1
+# => nil
 ```
 
 ###Example: Factorial
@@ -239,11 +276,19 @@ A simple, common interview question asks candidates to compute the *factorial* o
 def factorial(num)
    if num > 1
       num * factorial(num-1)
-   elif num > -1
+   elsif num == 1 or num == 0
       1
    else
       puts "can't do factorial of a negative number!"
-      nil
+   end
+end
+
+factorial(6)
+# => 720
+
+factorial(-1)
+# can't do factorial of a negative number!
+# => nil
 ```
 
 ##Basic Challenges
@@ -257,10 +302,7 @@ You may create a separate file for each set of challenges to avoid cluttering a 
   * evenly divisible by 1
   * evenly divisible by itself
   * not evenly divisible by any other numbers between 1 and itself
-  
-   ```ruby
-   is_prime? 
-   ```
+
 
 1. Write a method that takes in a number and returns a list of **all** prime numbers less than the given number.
 
@@ -280,17 +322,6 @@ You may create a separate file for each set of challenges to avoid cluttering a 
 
 ###Stretch Challenges
 
-1. Using Array#inject, write a method called `partial_sums` that pushes the *partial sums* of an array to a new list. The partial sums of an array are the sums of the first 0 elements, the first 1 elements, the first 2 elements, etc.
-   
-   ```
-   partial_sums([])
-   #=> [0]
-   partial_sums([5])
-   #=> [0, 5]
-   partial_sums([5,4,8])
-   #=> [0, 5, 9, 17]
-   ```
-   
 
 1. Make your `is_prime?` method more efficient. Three hints on how to proceed are spaced out below. Before implementing each hint, develop a short argument to convince yourself that it works.  **Note: There are more challenges after the white space!**
 
