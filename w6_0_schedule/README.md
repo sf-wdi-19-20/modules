@@ -1,6 +1,6 @@
 |  | Monday | Tuesday | Wednesday | Thursday | Friday |
 | :----------: | :----------: | :----------: | :----------: | :----------: | :----------: |
-| **Interview Prep** | Find Most Common Word in String | Regex | Stacks & Queues Conceptually | Stacks | Queues |
+| **Interview Prep** | Find Most Common Word in String | <a href="https://github.com/sf-wdi-19-20/modules/tree/master/w6_d2_0_regex" target="_blank">Regex</a> | Stacks & Queues Conceptually | Stacks | Queues |
 | **Module 1** | <a href="https://github.com/sf-wdi-19-20/modules/tree/master/w6_d1_1_pull_request_project" target="_blank">Project Pairing</a> | Ruby Fundamentals | Ruby OOP | Intro Rails Resources | Review |
 | **Module 2** | <a href="https://github.com/sf-wdi-19-20/modules/tree/master/w6_d1_1_pull_request_project" target="_blank">Project Pairing Continued</a> | Ruby Fundamentals Continued | Intro Rails | Rails Resources Continued |  |
 | **Homework** |  |  |  |  |  |
