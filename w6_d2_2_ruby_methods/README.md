@@ -48,7 +48,9 @@
 
 ##Ruby Methods
 
-### Define a method
+### Syntax 
+
+#### Define a method
 
 Ruby uses the `def` reserved word to create a method. The method definition must finish with the word `end`.
 
@@ -62,7 +64,7 @@ say_hello
 # => nil
 ```
 
-### Define a method with a parameter
+#### Define a method with a parameter
 
 ```ruby
 def say(something)
@@ -78,23 +80,8 @@ say 'gello'
 # => nil
 ```
 
-<<<<<<< HEAD:w5_d2_2_ruby_methods/README.md
-### Define a method returns true or false
+Note: You don't have to use parentheses when listing a method's parameters (or calling a method), but it can make it easier to read. The following would also work for the first line of the snippet above: `def say something`
 
-If a function returns true or false, we add a ```?``` to the end as a convention. The ```?``` doesn't "do" anything. Its just a convention.
-
-```ruby
-def is_my_friend?(food)
-  if food.is_delicious?
-    return true
-  else
-    return false
-  end
-end
-```
-=======
-You don't have to use parentheses when listing a method's parameters (or calling a method), but it can make it easier to read. The following would also work for the first line of the snippet above: `def say something`
->>>>>>> 01af21e4f2d204e0a286bbba8051dcb9eb0ccfcf:w6_d2_2_ruby_methods/README.md
 
 #### Define a method that operates on two parameters
 
@@ -108,9 +95,48 @@ add_numbers(1,2)
 # => nil
 ```
 
+### Conventions
+
+#### Define a method that returns true or false
+
+If a function returns true or false, we add a ```?``` to the end as a convention. The ```?``` doesn't "do" anything. Its just a convention.
+
+```ruby
+def is_my_friend?(food)
+  if food.is_delicious?
+    return true
+  else
+    return false
+  end
+end
+```
+
+#### Define a method that changes the input
+
+Another important convention is  adding a `!` to the name of methods that directly change the input. The `!` doesn't do anything, it just lets later developers know what's up.
+
+```ruby
+scores = [9, 3, 7, 8, 4, 6, 6, 5]
+
+scores.sort
+# => [3, 4, 5, 6, 6, 7, 8, 9]
+
+p scores
+# [9, 3, 7, 8, 4, 6, 6, 5]  # original array stays the same
+
+scores.sort!
+# => [3, 4, 5, 6, 6, 7, 8, 9]
+
+p scores
+# [3, 4, 5, 6, 6, 7, 8, 9]  # now the sort! method has changed the original array
+
+```
+
+### Rules
+
 #### Methods in Ruby always return the value of the last evaluated expression
 
-Why aren't we returning anything from these functions?  Well, methods in Ruby return the value of the last expression evaluated, so we almost never actually have to use the word `return`.
+Why aren't we `return`ing anything from most of these methods?  Well, methods in Ruby automatically return the value of the last expression evaluated, so we almost never actually have to use the word `return`.
 
 In the console (and in these notes), the value returned by a function will have `=>` in front of it.  If you look at the last example, the `add_numbers` function returned `nil`.  
 
@@ -126,22 +152,28 @@ implicitly_return_5
 # => 5
 ```
 
-Sometimes, we do have to use the reserved word `return`. The best example is if we might to break out of a loop early:
+Sometimes, we do have to use the reserved word `return`. The best example is if we might to break out of a loop early. This next example simulates a kid taking 3 swings at a pinata. It returns the number of swings remaining at the end of the kid's turn (usually 0). But! each swing might burst the pinata. We use random chance to determine if the pinata bursts. If it does, the method shows a message that the pinata burst and returns early. 
 
 ```ruby
-def is_burst?
-   num_swings = 3
-   rand_gen = Random.new  # this will generate random numbers for us
-   while num_swings > 0
-      if rand_gen.rand(0..4) == 4 # random number out of 0, 1, 2, 3, or 4
+def pinata  
+   remaining_swings = 3
+   rand_gen = Random.new            # this will generate our random numbers
+   while remaining_swings > 0
+      if rand_gen.rand(0..4) == 4   # random number out of 0, 1, 2, 3, or 4
          puts "You burst the pinata!"
-         return true
+         return remaining_swings
       end
-      num_swings = num_swings - 1
-      puts "#{num_swings} swings left!"
+      remaining_swings = remaining_swings - 1
+      puts "#{remaining_swings} swings left!"
    end
-   false
+   remaining_swings
 end
+
+# one possible output is:
+# 2 swings left!
+# 1 swings left!
+# You burst the pinata!
+# => 1
 
 ```
 
@@ -153,7 +185,7 @@ Why did we get a `nil` return value when we `puts` (above)?
 
 The `puts` and `print` methods in Ruby are like `console.log` in JS: they print out a value, but they don't return anything. If they're the last expression evaluated, we get the default `nil`.  The only difference between *those* two methods is that `puts` adds a new line character ('\n') to the end of the string it prints out.  
 
-Another method, called `p`, prints things out in a more carefully formatted way based on the things' `.inspect` method, and it also returns the value.  Programmers can customize `.inspect` to give complex objects a better format for printing.  
+Another method, called `p`, prints a thing out in a more carefully formatted way based on the thing's `.inspect` method, and it also returns the value.  Programmers can customize `.inspect` to give complex objects a better format for printing.  
 
 ```ruby
 def list_numbers_quietly(first, second)
@@ -176,7 +208,7 @@ p list_numbers_quietly(5,6)
  The `puts` method is the most commonly used one for printing/logging.
 
 
-### Parameters can have default values
+#### Parameters can have default values
 
 ```ruby
 def say(something = "Hello")
@@ -191,7 +223,7 @@ say "Goodbye"
 # Goodbye
 # => nil
 ```
-### Recursion: methods can call themselves
+#### Recursion: methods can call themselves
 
 ```ruby
 def recurse(depth)
@@ -217,8 +249,10 @@ recurse 3
 ```
 
 
-### Functions have locally scoped variables (biggest difference from javascript!)
+#### Functions have locally scoped variables (biggest difference from javascript!)
+
 The following code won't change `foo`. Why?
+
 ```ruby
 foo = 1
 
@@ -316,7 +350,7 @@ factorial(-1)
 
 ## How to use gems in irb
 
-Say you want to use a gem like "Awesome Print" to make your printing of objects and strings colorized and indented?
+Gems in Ruby are a lot like node modules.  Say you want to use a gem like "Awesome Print" to make your printing of objects and strings colorized and indented?
 
 1. First install the gem on your computer: ```$ gem install awesome_print```
 2. Now just require it at the top of your file or in irb and then use it according to its documentation.
@@ -351,28 +385,41 @@ Say you want to use a gem like "Awesome Print" to make your printing of objects 
   * prompts the terminal for a **new** `name` and a `phone` number,
   * and then adds the `name` and `phone` as a key value pair respectively **only if** `name` is not already a contact name,
   * and `return`s the updated `contacts` hash.
+ 
 1. Using `Array#map`, write a method called `get_responses` that takes an array of questions (strings) and returns an array of responses input from the console for each question. (Hint: you will need to use `gets.chomp` and `puts` ).
 
   **Challenge Set 3: Let's have a HTTParty!**
+  
 4. Let's have an [HTTParty](https://github.com/jnunemaker/httparty)!
+
 5. Install the httparty gem ```$ gem install httparty```.
+
 6. Now require it in a new ruby script file, and use it to call an album search on the word "White" to the spotify API.
+
 7. Can you require both ```httparty``` and ```awesome_print``` to have the output look nice? (remember just require awesome_print and then use ```ap``` instead of ```p```)
+
 5. In the same file, can you write a loop that returns an array of the album names from your search?
-6. Can you write a loop that makes an array for each album that says "The <<artist name>> made the album: <<album name>> in <<album year>>"
+
+6. Can you write a loop that makes an array containing a string for each album that says "The `<<artist name>>` made the album: `<<album name>>` in `<<album year>>`"
 
 ###Stretch Challenges
 
+1. Rewrite `factorial` without recursion.
+
+1. Write a method to `reverse` a string [*in-place*](https://en.wikipedia.org/wiki/In-place_algorithm). You can only use a little extra space - think one extra character's worth.  Do not use iterators; use only a `while` loop and indices.
+
 1. Make your `is_prime?` method more efficient. Three hints on how to proceed are spaced out below. Before implementing each hint, develop a short argument to convince yourself that it works.  **Note: There are more challenges after the white space!**
 
-   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  * Hint: if the number isn't 2, only check whether the number is divisible by odd numbers
-   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   <br><br><br>
   * Hint: only check possible divisors up to half the original number
-   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  * Hint: only check possible divisors up to the square root of the original number
+   <br><br><br>
+  * Hint: only check possible divisors up to the square root of the original number   
+    <br><br><br>
+  * Hint: if the number isn't 2, only check whether the number is divisible by odd numbers
 
-1. Find 3 gems you think are cool and try to use them in your own scripts. ([Ruby Toolbox](https://www.ruby-toolbox.com/))
+
+1. Find 3 gems you think are cool and try to use them in your own scripts. ([Ruby Toolbox](https://www.ruby-toolbox.com/)) has a lot of great gems listed, though you might have to hold off on incorporating Rails gems.
+
 1. Guessing Game
 
    Create a program that asks the user to guess a number between 1 and 100.  Once the user guesses a number, the program should say higher or lower, or report that the number was correct.  The user should continue to make guesses until the correct number is found.  Also, once the user guesses correctly, the program should print the number of guesses needed to arrive at the correct answer. Below is sample output:
@@ -395,6 +442,3 @@ Say you want to use a gem like "Awesome Print" to make your printing of objects 
    You got 19 in 7 tries!
    ```
 
-1. Write a method to `reverse` a string *in-place* (without creating a new string of the same length). You can only use a little extra space - think one extra character's worth.  Do not use iterators; use only a `while` loop and indices.
-
-1. Rewrite `factorial` without recursion.
