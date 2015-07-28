@@ -1,4 +1,4 @@
-#Class-based Object Oriented Programming with Ruby
+#Class-based Object Oriented Programming
 
 Ruby <img alt="heart" src="https://em.wattpad.com/6d0355863f6ca950858ed30d2b8b9b1fe982b54c/687474703a2f2f727562792e7a69677a6f2e636f6d2f77702d636f6e74656e742f75706c6f6164732f73697465732f322f323031332f30312f7370696b655f616e645f7261726974795f5f735f68656172745f7368617065645f666972655f727562795f62795f65647761726474656e2e706e67" width="16px">'s Object Oriented Programming
 
@@ -21,10 +21,10 @@ Ruby <img alt="heart" src="https://em.wattpad.com/6d0355863f6ca950858ed30d2b8b9b
 How can I organize my data using key/value pairs in Ruby? Like so:
 
 ```ruby
-ourhash = {:name=>"Napoleon", :fav_food=>"steak", :skills=>["archery", "combat", "egg farming"]}
+ ourhash = {name: "Napoleon", fav_food: "steak", skills: ["archery", "combat", "egg farming"]}
+ # => {:name=>"Napoleon", :fav_food=>"steak", :skills=>["archery", "combat", "egg farming"]}
 ```
 
-Notice that ruby marks the association between a key and a value with a "fat arrow", `=>`.
 
 ##Objects
 
@@ -42,8 +42,11 @@ How can we prove that the Hash we just created inherited from `Basic Object`?
 
 
 ```ruby 
-ourhash.is_a? Hash  # true
-Hash < Object       # true
+ourhash.is_a? Hash  
+# => true
+
+Hash < Object       
+# => true
 ```
 
 ##Classes 
@@ -171,5 +174,5 @@ Humans are still animals after all. In this exercise, you'll define:
 **BONUS:**
 
 * People can speak, and it's good to be polite. Add an instance method called `greet` that:
-* Print out a person's name, age, and gender in the following format: "Hi, I'm Teddy. I'm a person, and I'm 156 years old." (Hint: look up how to interpolate strings in Ruby)
- * Add a `class variable` that keeps track of all the people you create.
+* Print out a person's name, age, and gender in the following format: "Hi, I'm Teddy. I'm a person, and I'm 156 years old."
+ * Add a class variable that keeps track of `all` the people you create.
