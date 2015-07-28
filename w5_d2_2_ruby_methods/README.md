@@ -69,6 +69,20 @@ say('hello')
 say 'gello'
 ```
 
+### Define a method returns true or false
+
+If a function returns true or false, we add a ```?``` to the end as a convention. The ```?``` doesn't "do" anything. Its just a convention.
+
+```ruby
+def is_my_friend?(food)
+  if food.is_delicious?
+    return true
+  else
+    return false
+  end
+end
+```
+
 #### Define a method that operates on two parameters
 ```ruby
 def add_numbers(first, second)
@@ -203,10 +217,42 @@ def factorial(num)
       nil
 ```
 
+## How to run a ruby script inside a file
+1. ```$ touch script.rb```
+2. ```$ sublime script.rb```
+3. ```$ ruby script.rb```
+4. THAT'S IT!
+5. From irb you can run a ruby file by loading it ```$ load './filename.rb'```
+
+## How to use gems in irb
+
+Say you want to use a gem like "Awesome Print" to make your printing of objects and strings colorized and indented?
+
+1. First install the gem on your computer: ```$ gem install awesome_print```
+2. Now just require it at the top of your file or in irb and then use it according to its documentation.
+  ```ruby
+  require 'awesome_print'
+  a = ["value1", "value2", "value3"]
+  ap a
+  ```
+
+
 ##Basic Challenges
 
-You may create a separate file for each set of challenges to avoid cluttering a file.
-  
+1. Make a folder called ruby-methods to keep all these ruby scripts we're about to write!
+2. In a new file, write a method called ```full_name``` that takes in two arguments ```first``` and ```last``` and returns a concatenated full name string.
+3. Use the ```.map``` iterator to iterate over the following hash and return an array of the reverse the make string. Hint: ```"string".reverse #=> "gnirts"```
+```ruby
+[
+  { make: "Toyota", model: "Matrix", sold_on: Time.now },
+  { make: "Ford", model: "Focus", sold_on: Time.now },
+  { make: "Tesla", model: "Roadster", sold_on: Time.now }
+]
+```
+4. New file: Let's have a party . . . an [HTTParty](https://github.com/jnunemaker/httparty)! Install the httparty gem ```$ gem install httparty```. Now require it and then use it to call an album search on the word "White" to the spotify API. Can you require both ```httparty``` and ```awesome_print``` to have the output look nice? (remember just ```ap``` instead of ```p```)
+5. In the same file, can you write a loop that returns an array of the album names from your search?
+6. Can you write a loop that makes an array for each album that says "The <<artist name>> made the album: <<album name>> in <<album year>>"
+
   **Challenge Set 1: Primes**
 
 1. Write an `isPrime?` method to check if a number is prime. A prime number is:
@@ -214,29 +260,29 @@ You may create a separate file for each set of challenges to avoid cluttering a 
   * evenly divisible by 1
   * evenly divisible by itself
   * not evenly divisible by any other numbers between 1 and itself
-  
+
    ```ruby
-   isPrime? 
+   isPrime?
    ```
 
 1. Write a method that takes in a number and returns a list of **all** prime numbers less than the given number.
 
    **Challenge Set 2: Command Line Interaction**
-   
+
 1. Write a method called `get_contact` that
 
   * takes a `contacts` hash,
   * prompts the terminal for a **new** `name` and a `phone` number,
   * and then adds the `name` and `phone` as a key value pair respectively **only if** `name` is not already a contact name,
   * and `return`s the updated `contacts` hash.
-  
+
 1. Using `Array#map`, write a method called `get_responses` that takes an array of questions (strings) and returns an array of responses input from the console for each question. (Hint: you will need to use `gets.chomp` and `puts` ).
 
 
 ###Stretch Challenges
 
 1. Using Array#inject, write a method called `partial_sums` that pushes the *partial sums* of an array to a new list. The partial sums of an array are the sums of the first 0 elements, the first 1 elements, the first 2 elements, etc.
-   
+
    ```
    partial_sums([])
    #=> [0]
@@ -245,7 +291,7 @@ You may create a separate file for each set of challenges to avoid cluttering a 
    partial_sums([5,4,8])
    #=> [0, 5, 9, 17]
    ```
-   
+
 
 1. Make your `isPrime?` method more efficient. Three hints on how to proceed are spaced out below. Before implementing each hint, develop a short argument to convince yourself that it works.  **Note: There are more challenges after the white space!**
 
@@ -255,11 +301,11 @@ You may create a separate file for each set of challenges to avoid cluttering a 
   * Hint: only check possible divisors up to half the original number
    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   * Hint: only check possible divisors up to the square root of the original number
-  
+
 1. Guessing Game
 
    Create a program that asks the user to guess a number between 1 and 100.  Once the user guesses a number, the program should say higher or lower, or report that the number was correct.  The user should continue to make guesses until the correct number is found.  Also, once the user guesses correctly, the program should print the number of guesses needed to arrive at the correct answer. Below is sample output:
-   
+
    ```
    Guess a number between 1 and 100
    50
@@ -278,7 +324,7 @@ You may create a separate file for each set of challenges to avoid cluttering a 
    You got 19 in 7 tries!
    ```
 
-1. Write a method to `reverse` a string *in-place* (without creating a new string of the same length). You can only use a little extra space - think one extra character's worth.  Do not use iterators; use only a `while` loop and indices. 
+1. Write a method to `reverse` a string *in-place* (without creating a new string of the same length). You can only use a little extra space - think one extra character's worth.  Do not use iterators; use only a `while` loop and indices.
 
 
 1. Rewrite `factorial` without recursion.
