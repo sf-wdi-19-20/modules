@@ -57,12 +57,20 @@ Use <a href="http://rubular.com" target="_blank">Rubular</a> for all challenges 
 
 3. With the same test string (text above), write a regexp to match instances of "regex", "regexp", or "regular expression".
 
-4. Edit the regexp you just wrote to make sure it's case-insensitive (i.e. it should match "Regular Expression" as well as "regular expression").
+4. Edit the regexp you just wrote to make sure it's case-insensitive (i.e. it should match "Regular Expression" as well as "regular expression"). **Hint:** Look up `/i`.
 
 ### Stretch Challenges
 
-1. Again using the same text, write a regexp to match all html tags (`<p></p> or <span></span>`). **Hint:** You must escape all forward-slashes (`/`) with a back-slash (`\`), like this `\/`.
+You're encouraged to #GTS for these challenges, but instead of looking for pre-written regex patterns that solve the challenges (you will have no trouble finding them!), logically break down the string patterns, search for the individual pieces, and put them together.
 
-2. Write a regexp to validate a phone number.
+1. Again using the same text, write a regexp to match the HTML tags (`<p></p>` and `<span></span>`). **Hint:** You must escape all forward-slashes (`/`) with a back-slash (`\`), like this `\/`.
 
-3. Write a regexp to validate an email address.
+2. Write a regexp to validate a phone number. Think about the following formats:
+  * `(555) 555-5555`
+  * `555-555-5555`
+
+3. Write a regexp to validate an email address. You can assume the format `test123@example.com`.
+
+### Extra Bonus Stretch Challenge
+
+* <a href="https://github.com/sf-wdi-19-20/w6_regex_craigslist_app" target="_blank">Fun web-scraping app involving puppies!</a>
