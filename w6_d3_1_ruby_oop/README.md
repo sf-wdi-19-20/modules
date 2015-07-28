@@ -54,15 +54,13 @@ Object < BasicObject
 
 ##Classes 
 
-*Classes are data types used to create more data. They are similar to constructors in JavaScript.*
+*Classes are data types used to create more data. They are similar to the object types we manipulated with constructors and prototypes in JavaScript.*
 
 Ruby uses classes for object-oriented programming. How can we create a class in Ruby? 
 
 Challenge: create a `Monster` class and an instance of `Monster`.
 
-Hint: Classes include three basic components: the reserved word `class`, a name for the class, and the reserved word `end`. By convention, Ruby class names always start with a capital letter.
-
-Hint: check out `new`.
+Hint: you'll have to use the Ruby reserved words `class` and `new`.
 
 
 ## `initialize` 
