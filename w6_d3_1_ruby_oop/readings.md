@@ -155,7 +155,7 @@ end
 
 Every getter has a method with a name (`make` and `color`) that is included in the instance variable (`@make` and `@color`). The same is true for setters.  
 
-Ruby provides a syntax to shorten this common pattern: attributes. Attributes allow for the introduction of a different syntax for creating getters and setters. Let's demonstrate this with creating a getter for `make`.
+Ruby provides a syntax to shorten this common pattern: attributes. Attributes allow for the introduction of a different syntax for creating getters and setters. Let's demonstrate this by using Ruby's attributes to create a getter for `make`.
 
 
 ```ruby
@@ -191,7 +191,7 @@ class Car
   attr_reader :make  # getter
   attr_writer :make  # setter
 
-  def initialize(make)
+  def initialize(color, make)
     @color = color
     @make = make
   end
@@ -212,7 +212,8 @@ Finally, if we want both a getter (reader) and setter (writer), we can use attr_
 class Car
   attr_accessor :make, :color  # getters and setters!
 
-  def initialize(make)
+  def initialize(color, make)
+    @color = color
     @make = make
   end
 end
@@ -304,6 +305,7 @@ We'll use our `Car` class as a base class and make a new `Pickup` class that inh
 
 Notice that this `Car` class is spruced up with a new `@speed` instance variable and an `accelerate` instance method.
 
+```ruby
 class Car
   attr_accessor :make, :color
   @@count = 0
@@ -327,7 +329,7 @@ end
 Our pickup trucks will have another property that cars don't: the capacity of their truck beds (`@bed_capacity`). They'll also have a behavior that allows for riding in the back (`ride_in_back`).
 
 ```ruby
-class Car < MotorVehicle
+class Pickup < Car
 	attr_accessor :make, :color, :bed_capacity
 
   def initialize(color, make, bed_capacity)
@@ -346,8 +348,8 @@ class Car < MotorVehicle
     @speed += change
   end
 
-	def ride_in_back
-		puts "Bumpy but breezy!"
-	end
+  def ride_in_back
+    puts "Bumpy but breezy!"
+  end
 end
 ```
