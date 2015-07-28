@@ -381,10 +381,12 @@ Gems in Ruby are a lot like node modules. Say you want to use a gem like "Awesom
 
 1. Write a method called `get_contact` that
 
-  * takes a `contacts` hash,
+  * takes in a `contacts` hash as a parameter, where the keys in `contacts` are names and the values are phone numbers,
   * prompts the terminal for a **new** `name` and a `phone` number,
   * and then adds the `name` and `phone` as a key value pair respectively **only if** `name` is not already a contact name,
   * and `return`s the updated `contacts` hash.
+  
+   A sample contacts hash you could use to test would be `sample = {Bob: 4152890045, Emergency: 911, Jenny: 8675309}`.
 
 1. Using `Array#map`, write a method called `get_responses` that takes an array of questions (strings) and returns an array of responses input from the console for each question. (Hint: you will need to use `gets.chomp` and `puts` ).
 
