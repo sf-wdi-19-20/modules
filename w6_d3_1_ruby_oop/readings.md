@@ -292,3 +292,62 @@ audi = Car.new('audi')
 Car.count
 # =>
 ```
+
+## Inheritance
+
+Inheritance lets us reuse code from one class as we create subtypes of that class.
+
+
+### Base Class
+
+We'll use our `Car` class as a base class and make a new `Pickup` class that inherits from `Car`.
+
+Notice that this `Car` class is spruced up with a new `@speed` instance variable and an `accelerate` instance method.
+
+class Car
+  attr_accessor :make, :color
+  @@count = 0
+
+  def initialize(color, make)
+    @speed = 0
+    @color = color
+    @make = make
+    @@count = @@count + 1
+  end
+
+  def self.count
+    @@count
+  end
+
+  def accelerate(change)
+		@speed += change
+	end
+end
+```
+Our pickup trucks will have another property that cars don't: the capacity of their truck beds (`@bed_capacity`). They'll also have a behavior that allows for riding in the back (`ride_in_back`).
+
+```ruby
+class Car < MotorVehicle
+	attr_accessor :make, :color, :bed_capacity
+
+  def initialize(color, make, bed_capacity)
+    @speed = 0
+    @color = color
+    @make = make
+    @bed_capacity = bed_capacity
+    @@count = @@count + 1
+  end
+
+  def self.count
+    @@count
+  end
+
+  def accelerate(change)
+    @speed += change
+  end
+
+	def ride_in_back
+		puts "Bumpy but breezy!"
+	end
+end
+```

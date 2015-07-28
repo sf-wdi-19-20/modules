@@ -155,9 +155,11 @@ class Monster
 end
 ```
 
-... how can I create both `Warewolf` and `Zombie` classes while being DRY and not duplicating the method `lets_get_dangerous` in each?  
+How could I make a `Warewolf` class and `Zombie` classes while being DRY and not duplicating the method `lets_get_dangerous` in each?  
 
-**Challenge:** The threat of warewolves changes a lot.  Write a method that calculates warewolves' threat based on a boolean parameter that says whether the moon is full.
+**Challenge:** Create a `Warewolf` class that inherits from the base `Monster` class.
+
+**Challenge:** The threat of warewolves changes a lot.  Write a method that calculates a warewolf's threat based on a boolean parameter that says whether the moon is full.
 
 ## Exercise: The Animal Kingdom
 
