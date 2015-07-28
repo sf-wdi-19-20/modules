@@ -1,3 +1,11 @@
+#Full name
+
+def full_name(first, last)
+	first + " " + last
+end
+
+# full_name("WDI", "19/20")
+
 #Challenge Set 1: Primes
 
 def is_prime?(num)
@@ -12,13 +20,7 @@ def is_prime?(num)
 		false
 	end
 end
-
 # puts is_prime?(19)
-
-
-# Write a method that takes in a number 
-# and returns a list of all prime numbers 
-# up to the given number.
 
 def primes_up_to(num)
 	primes = []
@@ -31,17 +33,9 @@ def primes_up_to(num)
 	end
 	primes
 end
-
 # p primes_up_to(17)
 
 # Challenge Set 2: Command Line Interaction
-
-# Write a method called get_contact that
-# takes a contacts hash,
-# prompts the terminal for a new name and a phone number,
-# and then adds the name and phone as a key value pair respectively
-# only if name is not already a contact name,
-# and returns the updated contacts hash.
 
 def get_contact(contacts)
 	puts "What is your name?"
@@ -53,10 +47,12 @@ def get_contact(contacts)
 	end
 	contacts
 end
-
-# since I want the keys to be strings, have to use =>
-# otherwise ruby will convert these names to symbols
 # puts get_contact({"Bill"=>4, "Jenny"=>8675309})
+
+# @NOTE since I want the keys to be strings (above), 
+# I have to use "hash rocket" (=>) notation.
+# Otherwise ruby will convert these names to symbols.
+
  
 
 # Using Array#map, write a method called get_responses 
@@ -65,21 +61,27 @@ end
 # for each question.
 
 def get_responses(questions)
-	responses = []
-	for question in questions
+	questions.map{ |question| 
 		puts question
-		response = gets.chomp
-		responses.push(response)
-	end
-	responses
+		gets.chomp
+		} 
 end
+# puts get_responses(["Who's a good dog?", "What's that you're eating!?"])
 
-# puts get_responses(["Who's a good dog?", "WHAT HAVE YOU DONE!?"])
+# without Array#map
+# def get_responses(questions)
+# 	responses = []
+# 	for question in questions
+# 		puts question
+# 		response = gets.chomp
+# 		responses.push(response)
+# 	end
+# 	responses
+# end
 
 
 
 # Stretch Challenges
-
 
 # Make your is_prime? method more efficient. 
 
@@ -127,7 +129,7 @@ end
 # Write a method to reverse a string in-place.
 # Use only a while loop and indices.
 
-def reverse(str)
+def reverse!(str)
 	i = 0
 	while i < str.length / 2
 		tmp = str[i]
@@ -139,11 +141,10 @@ def reverse(str)
 end
 
 # a = "kittens"
-# puts reverse(a)
+# puts reverse!(a)
 # puts a
 
 # Rewrite factorial without recursion.
-
 def iterative_factorial(num)
 	if num < 0
 		return Float::NAN  # a constant meaning "Not a Number"
@@ -156,5 +157,6 @@ def iterative_factorial(num)
 end
 
 puts iterative_factorial(0)
+
 
 
