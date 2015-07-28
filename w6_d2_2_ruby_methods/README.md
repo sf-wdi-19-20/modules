@@ -48,7 +48,7 @@
 
 ##Ruby Methods
 
-### Syntax 
+### Syntax
 
 #### Define a method
 
@@ -152,7 +152,7 @@ implicitly_return_5
 # => 5
 ```
 
-Sometimes, we do have to use the reserved word `return`. The best example is if we might to break out of a loop early. This next example simulates a kid taking 3 swings at a pinata. It returns the number of swings remaining at the end of the kid's turn (usually 0). But! each swing might burst the pinata. We use random chance to determine if the pinata bursts. If it does, the method shows a message that the pinata burst and returns early. 
+Sometimes, we do have to use the reserved word `return`. The best example is if we might to break out of a loop early. This next example simulates a kid taking 3 swings at a pinata. It returns the number of swings remaining at the end of the kid's turn (usually 0). But! each swing might burst the pinata. We use random chance to determine if the pinata bursts. If it does, the method shows a message that the pinata burst and returns early.
 
 ```ruby
 def pinata  
@@ -385,11 +385,11 @@ Gems in Ruby are a lot like node modules. Say you want to use a gem like "Awesom
   * prompts the terminal for a **new** `name` and a `phone` number,
   * and then adds the `name` and `phone` as a key value pair respectively **only if** `name` is not already a contact name,
   * and `return`s the updated `contacts` hash.
- 
+
 1. Using `Array#map`, write a method called `get_responses` that takes an array of questions (strings) and returns an array of responses input from the console for each question. (Hint: you will need to use `gets.chomp` and `puts` ).
 
   **Challenge Set 3: Let's have a HTTParty!**
-  
+
 4. Let's have an [HTTParty](https://github.com/jnunemaker/httparty)!
 
 5. Install the httparty gem ```$ gem install httparty```.
@@ -400,8 +400,6 @@ Gems in Ruby are a lot like node modules. Say you want to use a gem like "Awesom
 
 5. In the same file, can you write a loop that returns an array of the album names from your search?
 
-6. Can you write a loop that makes an array containing a string for each album that says "The `<<artist name>>` made the album: `<<album name>>` in `<<album year>>`"
-
 ###Stretch Challenges
 
 1. Make your `is_prime?` method more efficient. Three hints on how to proceed are spaced out below. Before implementing each hint, develop a short argument to convince yourself that it works.  **Note: There are more challenges after the white space!**
@@ -409,7 +407,7 @@ Gems in Ruby are a lot like node modules. Say you want to use a gem like "Awesom
    <br><br><br><br><br>
   * Hint: only check possible divisors up to half the original number
    <br><br><br><br><br>
-  * Hint: only check possible divisors up to the square root of the original number   
+  * Hint: only check possible divisors up to the square root of the original number
     <br><br><br><br><br>
   * Hint: if the number isn't 2, only check whether the number is divisible by odd numbers
 
@@ -438,10 +436,10 @@ Gems in Ruby are a lot like node modules. Say you want to use a gem like "Awesom
    You got 19 in 7 tries!
    ```
 
-1. Rewrite `factorial` without recursion. For an extra challenge, write a recursive *and* an iterative version of a method that takes in a number `num` and calculate the `num`th [Fibionacci number](https://en.wikipedia.org/wiki/Fibonacci_number). 
+1. Rewrite `factorial` without recursion. For an extra challenge, write a recursive *and* an iterative version of a method that takes in a number `num` and calculate the `num`th [Fibionacci number](https://en.wikipedia.org/wiki/Fibonacci_number).
   ```ruby
   fibb(3)
   => 2
   ```
 
-1. Write a method to `reverse` a string [*in-place*](https://en.wikipedia.org/wiki/In-place_algorithm). You can only use a little extra space - think one extra character's worth.  Do not use iterators; use only a `while` loop and indices. 
+1. Write a method to `reverse` a string [*in-place*](https://en.wikipedia.org/wiki/In-place_algorithm). You can only use a little extra space - think one extra character's worth.  Do not use iterators; use only a `while` loop and indices.
