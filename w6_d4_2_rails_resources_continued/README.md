@@ -105,99 +105,70 @@ Right now, our app redirects to `index` after creating a new plane, which isn't 
 
   Recall that the `show` method has a path `/planes/:id`, which means we need to specify the `id` of the plane we want to show. To do this, we used string interpolation to attach the id of the newly created plane to the URL.
 
-## Editing
+## Challenges Part 2: Editing a Plane
 
-Editing a plane model requires two seperate methods. One to display the model information to be edited by the client, and another to handle updates submitted by the client.
+Editing a `plane` requires two separate methods. One to display the `plane` information to be edited by the client and another to handle the update request.
 
-If look back at how we handled the getting of our `new` form we see the following pattern.
+If we look back at how we handled the getting of our `new` form we see the following pattern.
 
 * Make a route first
 * Define a controller method
-* render view
+* Render the view
 
-The only difference is that now we need to use the `id` of the object to be edited. We get the following battle plan.
+The only difference is that now we need to use the `id` of the object to be edited. We get the following battle plan:
 
 * Make a route first
   * Make sure it specifies the `id` of the thing to be edited
 * Define a controller method
   * Retrieve the `id` of the model to be edited from `params`
-  * use the `id` to find the model
-* render view
-  * use model to display in the form
+  * Use the `id` to find the specific plane we want to edit
+* Render the view
+  * Display the `plane` data in the form
 
-### Getting to an Edit
+1. Verify that you have an `edit` route by running `rake routes`. You should see: `GET  /planes/:id/edit(.:format) planes#edit`
 
-We begin with handling the request from a client for an edit page.
+2. Make a controller method to find the plane you want to edit and render the `edit` view (you can use your `show` method as inspiration).
 
-* We can easily define a **RESTful** route to handle getting the edit page as follows
+  ```ruby
+  #
+  # app/controllers/planes_controller.rb
+  #
 
-  `/config/routes.rb`
+  PlanesController < ApplicationController
 
-    RouteApp::Application.routes.draw do
-      root to: 'planes#index'
+    # GET /planes/:id/edit
+    def edit
+      # set id from url params
 
-      get '/planes', to: 'planes#index'
+      # find plane in db by its id
 
-      get '/planes/new', to: 'planes#new'
-
-      get '/planes/:id', to: 'planes#show'
-
-      # The Edit path
-      get '/planes/:id/edit, to: 'planes#edit'
-
-      post '/planes', to: 'planes#create'
-
+      # render edit view
     end
 
-* Similarly, using our `#show` method as inspiration we write an `#edit` method
+  end
+  ```
 
+3. Create an `edit` view in `app/views/planes`. Our edit form looks almost identical to our new form. Adding `value="<%= @plane.attr_name %>"` to each form field displays the existing plane data in the form (good UX!).
 
-  `app/controllers/planes_controller.rb`
+  ```html
+  <!-- app/views/planes/edit.html.erb -->
+  <form action="/planes/<%= @plane.id %>" method="post">
+    <%= token_tag form_authenticity_token %>
+    <input type="text" name="plane[name]" placeholder="Name" value="<%= @plane.name %>">
+    <input type="text" name="plane[design]" placeholder="Design" value="<%= @plane.design %>">
+    <textarea name="plane[description]" placeholder="Description"><%= @plane.description %></textarea>
+    <input type="submit" value="Update Plane">
+  </form>
+  ```
 
-    PlanesController < ApplicationController
+4. Next we have to modify the `action` and `method`, but we can't explicitly change the method in the `<form>` tag, because the browser still needs to send a `POST` request. Instead we add a hidden field that contains the method we actually want to make, `put`.
 
-      ...
-
-      def edit
-        plane_id = params[:id]
-        @plane = Plane.find(plane_id)
-        render :edit
-      end
-
-    end
-
-
-* Let's quickly begin the setup of an `edit` form using our `new.html.erb` from earlier, by just adding  `...value="<%= @plane.attr_name %>"...` to each respect field.
-
-
-  `app/views/planes/edit.html.erb`
-
-    <form action="/planes/<%= @plane.id %>" method="post">
-      <input type="text" name="plane[name]" value="<%= @plane.name %>">
-      <input type="text" name="plane[design]" value="<%= @plane.design %>">
-      <textarea name="plane[description]" value="<%= @plane.description %>"></textarea>
-      <%= token_tag form_authenticity_token %>
-
-      <button> Update Plane </button>
-    </form>
-
-* Next we have to modify the `action` and `method`, but we can't explicitly change the method at the top of the form, because the browser still needs to send a `POST` request. Instead we add field that contains the method we actually want to make, `PUT`.  Using something as follows
-
-
-    <input name="_method" type="hidden" value="put" />
-
-  Combined with the change we make to the `action` we get the following.
-
-  `app/views/planes/edit.html.erb`
-
-    <form action="/planes/<%= @plane.id %>" method="post">
-      <input name="_method" type="hidden" value="put" />
-      ....
-    </form>
-
-
-That's pretty much the whole-shebang when comes to getting an edit page. Our previous knowledge has really come to help us understand what we need to do. We'll see this also true for the update that still needs to be handled witht the submission of the form above.
-
+  ```html
+  <!-- app/views/planes/edit.html.erb -->
+  <form action="/planes/<%= @plane.id %>" method="post">
+    <input name="_method" type="hidden" value="put">
+    ...
+  ```
 
 ### Putting updated form data
 
