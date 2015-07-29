@@ -168,3 +168,7 @@ $ rails c
 irb(main):001:0> Photo.create({title: "Golden Gate Bridge", description: "Black & White", image_url: "gg_bridge.png"})
 => #<Photo id: 1, title: "Golden Gate Bridge", description: "Black & White", image_url: "gg_bridge.png", created_at: "2015-07-29 17:27:06", updated_at: "2015-07-29 17:27:06">
 ```
+
+## Submission
+
+Submit the [reading response form](https://docs.google.com/forms/d/1zSklHtCYKg_NhkLdjlQaCXFrHJQ4Io266cKUs9_Dg8I/viewform) when you're done reading!
