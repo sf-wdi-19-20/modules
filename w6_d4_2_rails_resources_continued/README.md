@@ -109,18 +109,18 @@ Right now, our app redirects to `index` after creating a new plane, which isn't 
 
 Editing a `plane` requires two separate methods. One to display the `plane` information to be edited by the client and another to handle the update request.
 
-If we look back at how we handled the getting of our `new` form we see the following pattern.
+If we look back at how we handled displaying our `new` form we see the following pattern:
 
 * Make a route first
 * Define a controller method
 * Render the view
 
-The only difference is that now we need to use the `id` of the object to be edited. We get the following battle plan:
+The only difference is that now we need to use the `id` of the object being edited. We get the following plan:
 
 * Make a route first
-  * Make sure it specifies the `id` of the thing to be edited
+  * Make sure it specifies the `id` of the thing to be **edited**
 * Define a controller method
-  * Retrieve the `id` of the model to be edited from `params`
+  * Retrieve the `id` of the plane to be **edited** from `params`
   * Use the `id` to find the specific plane we want to edit
 * Render the view
   * Display the `plane` data in the form
@@ -170,69 +170,51 @@ The only difference is that now we need to use the `id` of the object to be edit
     ...
   ```
 
-### Putting updated form data
+## Challenges Part 3: Updating a Plane in the Database
 
-If look back at how we handled the submission of our `new` form we see the following pattern.
+If look back at how we handled submitting our `new` form we see the following pattern:
 
 * Make a route first
 * Define a controller method
-* redirect to something
+* Redirect to something
 
-The only difference now is that we will need to use the `id` of the object being updated.
+The only difference is that now we need to use the `id` of the object being updated. We get the following plan:
 
 * Make a route first
   * Make sure it specifies the `id` of the thing to be **updated**
 * Define a controller method
-  * Retrieve the `id` of the model to be **updated** from `params`
-  * use the `id` to find the model
-  * retrieve the updated info sent from the form in `params`
-  * update the model
-* redirect to show
-  * use `id` to redirect to `#show`
+  * Retrieve the `id` of the plane to be **updated** from `params`
+  * Use the `id` to find the specific plane we want to update
+  * Retrieve the updated info sent from the form `params`
+  * Update the plane in the database
+* Redirect to the plane's `show` page
+  * Use the plane's `id` to redirect to `show`
 
-### Putting it into action
+1. Back to routing! Run `rake routes` and make sure you see: `PUT  /planes/:id(.:format) planes#update`
 
-* **Make a route** that uses the `id` of the object to be updated
-    `/config/routes.rb`
+2. In `PlanesController`, create the `update` method
 
-    RouteApp::Application.routes.draw do
-      root to: 'planes#index'
+  ```ruby
+  #
+  # app/controllers/planes_controller.rb
+  #
 
-      get '/planes', to: 'planes#index'
+  PlanesController < ApplicationController
 
-      get '/planes/new', to: 'planes#new'
+    # PUT /planes/:id
+    def update
+      # set id from url params
 
-      get '/planes/:id', to: 'planes#show'
+      # find plane in db by its id
 
-      get '/planes/:id/edit, to: 'planes#edit'
+      # updated plane data from form
+      plane_params = params.require(:plane).permit(:name, :design, :description)
 
-      post '/planes', to: 'planes#create'
+      # update the plane in db
+      plane.update_attributes(plane_params)
 
-      # Route the incoming update using the id
-      put '/planes/:id', to: 'planes#update'
-
+      # redirect to plane's show page
     end
 
-  Note the method we now need to create is called `#update`
-* In the `PlanesController` we will create the `#update` method mentioned above
-
-  `app/controllers/planes_controller.rb`
-
-    PlanesController < ApplicationController
-
-      ...
-
-      def update
-        plane_id = params[:id]
-        plane = Plane.find(plane_id)
-
-        # get updated data
-        updated_attributes = params.require(:plane).permit(:name, :design, :description)
-        # update the plane
-        plane.update_attributes(updated_attributes)
-
-        #redirect to show
-        redirect_to "/planes/#{plane_id}"
-      end
-
-    end
+  end
+  ```
