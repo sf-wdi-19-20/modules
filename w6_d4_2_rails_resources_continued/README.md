@@ -178,7 +178,7 @@ If look back at how we handled the submission of our `new` form we see the follo
 * Define a controller method
 * redirect to something
 
-The only difference now is that we will need to use the `id` of the object being update.
+The only difference now is that we will need to use the `id` of the object being updated.
 
 * Make a route first
   * Make sure it specifies the `id` of the thing to be **updated**
