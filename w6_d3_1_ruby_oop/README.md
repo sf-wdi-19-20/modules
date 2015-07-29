@@ -136,9 +136,9 @@ alien = Monster.new(:semi_danger)
 
 **Stretch Challenge:** Create a `fight` class method for `Monster` that takes in two monster instances and compares their  `threat_level`s. The `fight` method should return the monster that has the higher threat level. Remember, the threat levels to consider are `:meh`, `:semi_danger`, `:super_danger`, and `:threat_level_midnight`.
 
-*Hint: One way to do this is to create a hash with keys that are threat level symbols and values that are easier to compare. Another idea is to look into ruby's version of "enums".*
+*Hint: One way to do this is to create a hash with keys that are threat level symbols and values that are easier to compare. Another idea is to look into ruby's version(s) of "enums".*
 
-**Stretch Challenge:** Include the Comparable module in your `Monster` class and create a custom `<=>` method to compare monsters based on their threat levels. Refactor `fight` to use these comparisons.
+**Stretch Challenge:** Include the `Comparable` module in your `Monster` class and create a custom `<=>` method to compare monsters based on their threat levels. Refactor `fight` to use this comparison.
 
 ## Quick Review
 
