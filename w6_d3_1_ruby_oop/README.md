@@ -61,6 +61,8 @@ Ruby uses **classes** for object-oriented programming.
 
 **Challenge:** create a `Monster` class and an instance of `Monster`.
 
+<img alt="monster" src="http://blog.spoongraphics.co.uk/wp-content/uploads/2009/furry-monster/monster.jpg" width=300px>
+
 *Hint: you'll have to use the Ruby reserved words `class` and `new`.*
 
 
