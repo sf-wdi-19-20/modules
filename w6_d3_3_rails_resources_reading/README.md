@@ -156,7 +156,7 @@ Now our application has access to a model called `Photo` that is persistent. Don
 
 ### Rails Console
 
-Rails gives us a very useful way of interacting with our development database from our terminal. Typing `rails console` or `rails c` in the terminal puts you in the Rails console. The Rails console is much like `irb`, but with access the data models in your application.
+Rails gives us a very useful way of interacting with our development database from our terminal. Typing `rails console` or `rails c` in the terminal puts you in the Rails console. The Rails console is much like `irb`, but with access the data models in your application. Remember you must be in the root directory of your Rails app to enter the Rails console.
 
 Whenever setting up a model, you should *always* use the Rails console to make a test data item before doing anything else. This is a good check to make sure the model was set up correctly, and you can debug any issues before continuing coding. It's also nice to have some initial "seed" data in your database to work with :)
 
