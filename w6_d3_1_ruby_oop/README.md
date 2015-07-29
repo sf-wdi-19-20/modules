@@ -61,7 +61,6 @@ Ruby uses **classes** for object-oriented programming.
 
 **Challenge:** create a `Monster` class and an instance of `Monster`.
 
-<img alt="monster" src="http://blog.spoongraphics.co.uk/wp-content/uploads/2009/furry-monster/monster.jpg" width=300px>
 
 *Hint: you'll have to use the Ruby reserved words `class` and `new`.*
 
@@ -69,6 +68,8 @@ Ruby uses **classes** for object-oriented programming.
 ## `initialize`
 
 Update the `Monster` class so that a monster goes "Rawr!" when it's first initialized.
+
+![monster rawr gif](https://s-media-cache-ak0.pinimg.com/originals/8e/dd/5d/8edd5de39a2c832745df9f8dfca15547.jpg)
 
 
 ## Instance Variables 
@@ -141,6 +142,11 @@ alien = Monster.new(:semi_danger)
 *Hint: One way to do this is to create a hash with keys that are threat level symbols and values that are easier to compare. Another idea is to look into ruby's version(s) of "enums".*
 
 **Stretch Challenge:** Include the `Comparable` module in your `Monster` class and create a custom `<=>` method to compare monsters based on their threat levels. Refactor `fight` to use this comparison.
+
+**Compassion Challenge:** Give your `Monster` class a `name` instance variable!
+
+
+<img alt="monster" src="http://blog.spoongraphics.co.uk/wp-content/uploads/2009/furry-monster/monster.jpg" width=300px>
 
 ## Quick Review
 
