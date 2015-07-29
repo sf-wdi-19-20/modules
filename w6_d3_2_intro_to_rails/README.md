@@ -103,8 +103,8 @@ Start with the routes and follow the directions the errors give you.
   # routes.rb
   #
 
-  root: pages#splash
-  resources: :posts, only: [:index]
+  root "pages#splash"
+  resources :posts, only: [:index]
   ```
 
 9. Check your routes (`$ rake routes`)
