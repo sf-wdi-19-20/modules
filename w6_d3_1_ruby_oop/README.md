@@ -71,7 +71,7 @@ Update the `Monster` class so that a monster goes "Rawr!" when it's first initia
 
 ## Instance Variables 
 
-What should we do if we want to set attributes on the monster, such as `threat` and `habitat`?
+What should we do if we want to set attributes on the monster, such as its `habitat`?
 
 **Challenge:**
 Enable this code...
@@ -85,7 +85,7 @@ rabbit.habitat
 
 *Hint: Use the method `attr_accessor`*
 
-**Challenge:** Add a `threat_level` symbol as an instance variable to the Monster class. Allow the user to specify a threat level when the monster is created.
+**Challenge:** Add a `threat_level` instance variable to the Monster class. Allow the user to specify a threat level when the monster is created.  (The threat levels used in later challenges will be `:meh`, `:semi_danger`, `:super_danger`, and `:threat_level_midnight`.)
 
 ```ruby
 dalek = Monster.new(:super_danger)
@@ -134,6 +134,12 @@ alien = Monster.new(:semi_danger)
 
 **Note** Class variables are used much less often than instance variables!
 
+**Stretch Challenge:** Create a `fight` class method for `Monster` that takes in two monster instances and compares their  `threat_level`s. The `fight` method should return the monster that has the higher threat level. Remember, the threat levels to consider are `:meh`, `:semi_danger`, `:super_danger`, and `:threat_level_midnight`.
+
+*Hint: One way to do this is to create a hash with keys that are threat level symbols and values that are easier to compare. Another idea is to look into ruby's version of "enums".*
+
+**Stretch Challenge:** Include the Comparable module in your `Monster` class and create a custom `<=>` method to compare monsters based on their threat levels. Refactor `fight` to use these comparisons.
+
 ## Quick Review
 
   * What is a class?
@@ -147,7 +153,7 @@ alien = Monster.new(:semi_danger)
 
 ## Inheritance
 
-**Challenge:** Given a `Monster` class that contains the method `lets_get_dangerous` & attribute `threat_level`...
+**Challenge:** Given a `Monster` class that contains a method `lets_get_dangerous` & attribute `threat_level`...
 
 ```ruby
 class Monster
@@ -168,7 +174,7 @@ class Monster
 end
 ```
 
-How could we make a `Warewolf` class and `Zombie` classes while being DRY and not duplicating the method `lets_get_dangerous` in each? 
+... how could we make a `Warewolf` class and `Zombie` classes while being DRY and not duplicating the method `lets_get_dangerous` in each? 
 
 **Challenge:** Create a `Zombie` class that inherits from the base `Monster` class. Set it up so that all zombies (instances) start with a habitat of `"graveyard"`.
 
@@ -176,26 +182,28 @@ How could we make a `Warewolf` class and `Zombie` classes while being DRY and no
 
 ## Stretch Challenges: The Animal Kingdom
 
-Humans are still animals after all. In this exercise, you'll define:
+People are animals too! In this exercise, you'll define:
 
   1. An `Animal` class, with the following:
-    * Properties:
+    * Instance Variables:
       * `kind`: A string that holds the type of animal
+      * `state`: Used to track whether the animal is awake or sleeping (see `sleep` and `wake` below).
     * Instance Methods:
       * `eat`: Takes a parameter `food` to eat and prints out a message that the animal is eating `food`
       * `sleep` & `wake`: These two methods should NOT be passed any arguments. Instead, they will set an instance variable `@state` to the string `"asleep"` or `"awake"` respectively.
 
   2. A `Person` class, with the following characteristics:
     * Inherits from `Animal`
-    * Automatically sets `@type` to `"person"`
+    * Automatically sets `kind` to `"person"`
     * Adds 3 new instance vars:
       * age
       * gender
       * name
     - Also, people aren't cannibals! Make sure your `Person` class *overrides* the existing `eat` method (in `Animal`) so that a `Person` cannot eat a `"person"`
 
-**BONUS:**
+**Bored? More!**
 
 * People can speak, and it's good to be polite. Add an instance method called `greet` that:
 * Print out a person's name, age, and gender in the following format: "Hi, I'm Teddy. I'm a person, and I'm 156 years old."
  * Add a class variable that keeps track of `all` the people you create.
+ * Add a class method to print out the names of existing people.
