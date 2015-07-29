@@ -8,9 +8,7 @@ Ruby <img alt="heart" src="https://em.wattpad.com/6d0355863f6ca950858ed30d2b8b9b
 |:--- |
 | Distinguish between objects in JS, hashes and objects in Ruby, and classes in Ruby. |
 | Create your own class and use the `initialize` method to set up initial behavior. |
-| Distinguish between instance and class variables. |
-| Define attributes and methods for instances. |
-| Define attributes and methods for whole classes. |
+| Define attributes and methods for instances, and for the class as a whole. |
 | Explain the class-based inheritance pattern with Ruby as an example. |
 
 ##Hashes
@@ -25,6 +23,7 @@ Recall: Hashes are simple key value stores. They look a lot like JavaScript's ob
  # => {:name=>"Napoleon", :fav_food=>"steak", :skills=>["archery", "combat", "egg farming"]}
 ```
 
+Recall that there are 2 notations for hashes, a colon (`:`) notation and a hash rocket (`=>`) notation.  The colon notation always results in your keys being symbols. The hash rocket notation gives you more control over the types of your keys. 
 
 ##Objects
 
@@ -47,7 +46,10 @@ ourhash.is_a? Hash
 Hash < Object
 # => true
 
-Object < BasicObject
+Object < BaseObject
+# => true
+
+Hash < BasicObject
 # => true
 ```
 
@@ -67,7 +69,7 @@ Ruby uses **classes** for object-oriented programming.
 Update the `Monster` class so that a monster goes "Rawr!" when it's first initialized.
 
 
-##Attributes
+## Instance Variables 
 
 What should we do if we want to set attributes on the monster, such as `threat` and `habitat`?
 
@@ -91,10 +93,11 @@ dalek.threat_level
 => :super_danger
 ```
 
-##Methods
+**Challenge:** Allow the user to create an instance of `Monster` without specifying a threat level. The default threat level for a new monster should be `:meh`.
 
-**Challenge:**
-How would we create an instance method for Monster named `habitat?`, which tests whether the habitat matches what is passed in?
+##Instance Methods
+
+**Challenge:** Create a `habitat?` instance method for `Monster` that tests whether the monster's habitat matches what is passed in?
 
 ```ruby
 yeti = Monster.new
@@ -107,26 +110,29 @@ yeti.habitat?("tundra")
 
 *Hint: use `def` to define a new method inside the class*
 
+##Class Variables and Class Methods
 
-##Class Variables
-
-What if I wanted a running counter for all the monsters I've ever created?  Let's print a monster count message each time a new monster spawns.
+What if I wanted a running counter for all the monsters I've ever created?  Let's keep track and print a monster `count` message each time a new monster spawns.
 
 **Challenge:** Enable this code...
 
 ```ruby
-predator = Monster.new(:dangerous)
+predator = Monster.new(:semi_danger)
 # Rawr!
 # 2 monsters now roam the world!
 
-alien = Monster.new(:dangerous)
+alien = Monster.new(:semi_danger)
 # Rawr!
 # 3 monsters now roam the world!
 ```
 
 *Hint: Create a class variable with `@@`*
 
-*FYI: Class variables are used much less often than instance variables*
+**Challenge:** Create a class method to get the current value of the monster count.
+
+*Hint: Use the reserved word `self`*
+
+**Note** Class variables are used much less often than instance variables!
 
 ## Quick Review
 
@@ -149,19 +155,26 @@ class Monster
   def initialize(threat_level)
   	@threat_level = threat_level
   end
-  def lets_get_dangerous(new_threat)
-  	@threat_level = new_threat
+  
+  def lets_get_dangerous()
+  	if @threat_level == :meh
+  	  @threat_level = :semi_danger
+  	elsif @threat_level == :semi_danger
+  	  @threat_level = :super_danger
+  	else
+  	  @threat_level = :threat_level_midnight
+  	end
   end
 end
 ```
 
-How could I make a `Warewolf` class and `Zombie` classes while being DRY and not duplicating the method `lets_get_dangerous` in each?  
+How could we make a `Warewolf` class and `Zombie` classes while being DRY and not duplicating the method `lets_get_dangerous` in each? 
 
-**Challenge:** Create a `Warewolf` class that inherits from the base `Monster` class.
+**Challenge:** Create a `Zombie` class that inherits from the base `Monster` class. Set it up so that all zombies (instances) start with a habitat of `"graveyard"`.
 
-**Challenge:** The threat of warewolves changes a lot.  Write a custom `threat_level` getter for `Warewolf` that calculates a warewolf's threat based on a boolean parameter that says whether the moon is full.
+**Challenge:** Create a `Warewolf` class that inherits from the base `Monster` class.  The threat of warewolves changes a lot.  Write a custom `check_threat_level` method for `Warewolf` that calculates a warewolf's threat level based on a boolean parameter that says whether the moon is full. The `check_threat_level` method should update the warewolf's `@threat_level` and return its new value.
 
-## Exercise: The Animal Kingdom
+## Stretch Challenges: The Animal Kingdom
 
 Humans are still animals after all. In this exercise, you'll define:
 
