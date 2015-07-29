@@ -1,0 +1,14 @@
+<!-- iterate through all planes -->
+<% @planes.each do |plane| %>
+  <div>
+    <strong>Name:</strong> <%= plane.name %><br>
+    <strong>Type:</strong> <%= plane.design %><br>
+    <strong>Description:</strong> <%= plane.description %>
+    
+    <div class="pull-right">
+      <!-- link to plane's show page -->
+      <a href="/planes/<%= plane.id %>" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plane"></span> View</a>
+    </div>
+  </div>
+  <hr>
+<% end %>
