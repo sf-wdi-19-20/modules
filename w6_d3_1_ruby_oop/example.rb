@@ -13,6 +13,10 @@ class Pet
 		@@count
 	end
 
+
+	# class instance variable
+	@num_legs = 4
+	# class method getter
 	def self.num_legs
 		@num_legs
 	end
@@ -22,16 +26,12 @@ class Pet
 	# Pet.print_all_pet_names
 
 
-
 	# initialize with a name
 	def initialize (name)
 		@name = name
 		@poos_how_often = "regularly"
 		puts @@new_pet_message
 		@@count = @@count + 1
-		# class instance variable
-		@num_legs = 4
-
 	end
 
 	#  custom setter
@@ -61,29 +61,41 @@ end
 morocco = Pet.new("Morocco")
 p morocco
 
-puts Pet.count
+puts "There are now #{Pet.count} pets!"
 
 mrh = Pet.new("Mr. Hernandez")
 p mrh
 
-puts Pet.count
+puts "There are now #{Pet.count} pets!"
 
 
 class Fish < Pet
 	# overrides Pet initalize 
+	# to add a line about blurbling
 	def initialize(name)
 		@name = name
 		@poos_how_often = "regularly"
 		puts @@new_pet_message
+		puts "...it says blurble" # this is what fish say
 		@@count = @@count + 1
-		@num_legs = 0
 	end
+	
+	@num_legs = 0
+
 end
 
 bubbles = Fish.new("Bubbles")
 p bubbles
 
-puts Fish.count  #uh-oh!
-puts Pet.count
+puts "There are #{Pet.count} pets."
+puts "There are NOT #{Fish.count} fish."  #uh-oh!
+
+
+
+# puts morocco.num_legs # gives an error
+puts "Pets have #{Pet.num_legs} legs."
+
+# puts bubbles.num_legs  # gives an error
+puts "Fish have #{Fish.num_legs} legs."
 
 
