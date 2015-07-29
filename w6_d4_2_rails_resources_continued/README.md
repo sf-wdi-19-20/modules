@@ -218,3 +218,12 @@ The only difference is that now we need to use the `id` of the object being upda
 
   end
   ```
+
+## Stretch Challenges
+
+1. Implement `delete` for your `planes` resource following the example of `edit` and `update`. Think about what you'll need:
+  * a `delete` route (check `rake routes`)
+  * a form on the client-side to make the `delete` request (**Hint:** This form doesn't need its own view. It may make sense to have a `delete` "form", which will essentially be a button, on the planes show page.)
+  * a controller method to handle the `delete` request
+
+2. Implement full CRUD for another resource in your application. Pilots or passengers might make sense :)
