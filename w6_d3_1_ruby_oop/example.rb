@@ -21,7 +21,11 @@ class Pet
 		@num_legs
 	end
 
+
 	def self.print_all_pet_names
+		# we're not really set up for this
+		# so skipping for now
+		nil
 	end
 	# Pet.print_all_pet_names
 
@@ -34,7 +38,7 @@ class Pet
 		@@count = @@count + 1
 	end
 
-	#  custom setter
+	#  custom setter that doesn't actually allow user to change value
 	def poos_how_often=(new_poo_schedule)
 		puts "You don't even know."
 	end
