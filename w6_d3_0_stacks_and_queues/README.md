@@ -64,8 +64,7 @@ Queues are "First In, First Out" -- the first item enqueued will be the first to
   *Hint: keep track of 2 indices*<br><br><br>*Hint phrase: "circular array"*
   
 
-
-## Challenge: Design Decisions
+## Basic Challenge: Design Decisions
 
 Would you use a stack or a queue to...
 
@@ -78,8 +77,9 @@ Would you use a stack or a queue to...
 1. ... display *only* the 10 most recent messages a user posted, in the order they were posted?
 
 
-  
-## Challenge: The Call Stack
+## Stretch Challenges
+
+### The Call Stack
 
 Most programming languages rely on something called the "call stack," especially for recursion. The call stack keeps track of function calls that are in the process of executing.  When a function is called, it's `push`ed onto the call stack. When the function returns, it's `pop`ed off of the stack.
 
@@ -101,6 +101,30 @@ factorial(3)
 ```
 
 Write out the full call stack for `factorial(3)` at each step in the function's execution. 
+
+### Message Queues
+
+Queues are often used to create "buffers" that temporarily store data from one part of a program until another part of a program can process the data. This is common with asynchronous data transfer, or mismatches between how often data is sent and how often it can be processed. 
+
+We'll think of a scenario where students submit homework more quickly than one instructor can review it -- the instructor ends up with a queue of homework to reveiw.  
+
+**Challenge**
+
+Describe how you would use a queue help the instructor keep track of homework to review.  What should the teacher do when the queue is empty?
+
+**Super Stretch Challenge**
+Two students, Alice and Bob, suggest different solutions to get homework reviewed faster. Both solutions rely on the fact that three instructors are currently available to review homework. 
+
+Alice suggests that homework assignments should be given to each instructor in a 'round robin' fashion, repeating every third assignment:
+  * the first instructor gets the first assignment 
+  * the second instructor gets the second assignment
+  * the third (and final) instructor gets the third assignment
+  * the first instructor gets the fourth assignment
+  * ...
+
+Bob suggests that homework assignments should be always be given to the first instructor unless that instructor already has 10 lined up to grade.  If the first instructor's queue is full , assignments should be given to the second instructor, unless they already have 10 assignments lined up to grade. Finally, if the second instructor's queue is full, assignments should be given to the third instructor, unless the third instructor already has 10 assignments lined up to grade.  
+
+Which solution do you prefer and why?
 
 
 
