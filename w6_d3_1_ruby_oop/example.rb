@@ -22,12 +22,13 @@ class Pet
 	end
 
 
+	# another custom class method (not a getter or setter)
 	def self.print_all_pet_names
 		# we're not really set up for this
 		# so skipping for now
 		nil
 	end
-	# Pet.print_all_pet_names
+	# we would call it later by saying Pet.print_all_pet_names
 
 
 	# initialize with a name
