@@ -196,7 +196,7 @@ We begin with handling the request from a client for an edit page.
     </form>
 
 
-That's pretty much the whole-shebang when comes to getting an edit page. Our previous knowledge has really come to help us understand what we need to do. We'll see this also true for the update that still needs to be handled witht the submission of the form above.
+That's pretty much the whole-shebang when comes to getting an edit page. Our previous knowledge has really come to help us understand what we need to do. We'll see this also true for the update that still needs to be handled with the submission of the form above.
 
 
 ### Putting updated form data
@@ -207,7 +207,7 @@ If look back at how we handled the submission of our `new` form we see the follo
 * Define a controller method
 * redirect to something
 
-The only difference now is that we will need to use the `id` of the object being update.
+The only difference now is that we will need to use the `id` of the object being updated.
 
 * Make a route first
   * Make sure it specifies the `id` of the thing to be **updated**
