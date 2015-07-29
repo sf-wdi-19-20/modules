@@ -107,7 +107,7 @@ Right now, our app redirects to `index` after creating a new plane, which isn't 
 
 ## Challenges Part 2: Editing a Plane
 
-Editing a `plane` requires two separate methods. One to display the `plane` information to be edited by the client and another to handle the update request.
+Editing a `plane` requires two separate methods. One will display the `plane` information to be edited by the client, and the other will handle the update request.
 
 If we look back at how we handled displaying our `new` form we see the following pattern:
 
