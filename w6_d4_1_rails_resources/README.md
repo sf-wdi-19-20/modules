@@ -44,7 +44,7 @@ Typically we associate **CRUD** with the following **HTTP** methods
 | :---  |	:--- | :-- |
 | Create | POST | `POST "/puppies?name=spot"` (create a puppy named spot) |
 | Read   | GET  | `GET "/puppies"` (Shows all puppies) |
-| Update | PUT or UPDATE | `PUT "/puppies/1?name=lassy"` (change puppy number 1 to have name lassy) |
+| Update | PUT or PATCH | `PUT "/puppies/1?name=lassy"` (change puppy number 1 to have name lassy) |
 | Delete | DELETE | `Delete "/puppies/1"` (destroy the first puppy, yikes!!!!) |
 
 REST stands for **REpresentational State Transfer**. We will demonstrate these practices throughout this lesson, but for now preparing don't worry too much about it yet.
