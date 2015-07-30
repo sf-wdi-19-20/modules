@@ -41,7 +41,7 @@ Imagine our parentheses are soldiers in a battle, but this is a non-violent war.
 
 * Your method should take in an array of "soldiers" and return the winning side
 * Your method should iterate through the soldiers and use a stack to keep track of soldiers on the left vs. soldiers on the right
-* **Hint:** soldiers on the left should be pushed onto the stack, and soldiers on the right should be popped off the stack. Figure out who's left standing... This will involve checking if the stack is <a href="http://ruby-doc.org/core-2.2.0/Array.html#method-i-empty-3F" target="_blank">empty</a> at certain points.
+* **Hint:** soldiers on the left should be pushed onto the stack, and when a soldier on the right comes along, you should pop from the stack. Figure out who's left standing... This will involve checking if the stack is <a href="http://ruby-doc.org/core-2.2.0/Array.html#method-i-empty-3F" target="_blank">empty</a> at certain points.
 
 ### How to Get Started
 
