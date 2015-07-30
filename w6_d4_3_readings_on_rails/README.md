@@ -8,4 +8,4 @@ Homework for tonight has 3 parts:
 
 1. Continue with your own experimentation/practice/review.
 
-When you have finished the reading, submit the [Reading Homework Form](https://docs.google.com/forms/d/1zSklHtCYKg_NhkLdjlQaCXFrHJQ4Io266cKUs9_Dg8I/viewform).
+When you have finished the reading, submit the [Reading Homework Form](https://docs.google.com/forms/d/1zSklHtCYKg_NhkLdjlQaCXFrHJQ4Io266cKUs9_Dg8I/viewform). We'd love to hear about something you wish you'd known/realized about Rails earlier.
