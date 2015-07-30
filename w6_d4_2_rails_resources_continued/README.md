@@ -36,11 +36,13 @@ Right now, our app redirects to `index` after creating a new plane, which isn't 
 
   Rails.application.routes.draw do
     root to: "planes#index"
-    resources :planes
+    resources :planes, only: [:index, :new, :create]
   end
   ```
+  
+  Let's switch `resources :planes, only: [:index, :new, :create]` to just `resources :planes` and check out the full set of routes that Rails can make for us. We won't cover `DELETE` or `PATCH` routes in class today, so for now let's modify the resources line to say `resources :planes, except[:patch, :delete]`.
 
-  In the terminal, run `rake routes`, and verify you have a `show` route that looks like this: `GET  /planes/:id(.:format)  planes#show`
+  Finally, in the terminal, run `rake routes`, and verify you still have a `show` route that looks like this: `GET  /planes/:id(.:format)  planes#show`.
 
 2. Make a controller method to find the plane you want to show and render the `show` view.
 
@@ -223,7 +225,7 @@ The only difference is that now we need to use the `id` of the object being upda
 
 1. Implement `delete` for your `planes` resource following the example of `edit` and `update`. Think about what you'll need:
   * a `delete` route (check `rake routes`)
-  * a form on the client-side to make the `delete` request (**Hint:** This form doesn't need its own view. It may make sense to have a `delete` "form", which will essentially be a button, on the planes show page.)
+  * a form on the client-side to make the `delete` request (**Hint:** This form doesn't need its own view. It may make sense to have a `delete` "form", which will essentially be a button, on the plane's show page.)
   * a controller method to handle the `delete` request
 
 2. Implement full CRUD for another resource in your application. Pilots or passengers might make sense :)
