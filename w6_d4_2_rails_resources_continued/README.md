@@ -220,6 +220,62 @@ The only difference is that now we need to use the `id` of the object being upda
 
   end
   ```
+  
+## Refactor: `form_for`
+
+Let's look back our edit form:
+
+```html
+<!--airplane_app/app/views/planes/edit.html.erb-->
+ <!-- form to update plane -->
+ <form action="/planes/<%= @plane.id %>" method="post">
+   <%= token_tag form_authenticity_token %>
+   <input type="hidden" name="_method" value="put">
+   <div class="form-group">
+     <input type="text" name="plane[name]" placeholder="Name" value="<%= @plane.name %>" class="form-control" autofocus>
+   </div>
+   <div class="form-group">
+     <input type="text" name="plane[design]" placeholder="Design" value="<%= @plane.design %>" class="form-control">
+   </div>
+   <div class="form-group">
+     <textarea name="plane[description]" placeholder="Description" class="form-control"><%= @plane.description %></textarea>
+   </div>
+   <input type="submit" value="Update Plane" class="btn btn-default">
+ </form>
+```
+
+
+  
+There's a lot going on here! We:
+* specified a `method` and `action`
+* used the `token_tag` form helper to help keep our form secure
+* used an html trick to change the method to `put`
+* used `name` attributes to name the parts of our request
+* used `value` attributes to fill in the plane's stored information from the db
+* created the basic form structure
+* added bootstrap cdns to `airplane_app/app/views/layouts/application.html.erb` and used bootstrap classes in our form elements
+
+
+Other than creating the form structure and adding bootstrap, Rails has a shortcut to help us do all of this: `form_for`. You specify the form structure using erb (ruby syntax). Rails looks at the form you write, plus the file name, and translates it into html. Here's our edit form refactored with `form_for`, minus the bootstrap styling:
+
+```html
+<!--airplane_app/app/views/planes/edit.html.erb-->
+ <!-- form to update plane -->
+<%= form_for @plane do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br />
+ 
+  <%= f.label :design %>
+  <%= f.text_field :design %><br />
+  
+  <%= f.label :description %>
+  <%= f.textarea :description %><br />
+  
+  <%= f.submit "Update Plane" %>
+<% end %>
+```
+
+
 
 ## Stretch Challenges
 
@@ -228,4 +284,6 @@ The only difference is that now we need to use the `id` of the object being upda
   * a form on the client-side to make the `delete` request (**Hint:** This form doesn't need its own view. It may make sense to have a `delete` "form", which will essentially be a button, on the plane's show page.)
   * a controller method to handle the `delete` request
 
-2. Implement full CRUD for another resource in your application. Pilots or passengers might make sense :)
+1. Refactor your `new` and `edit` forms to use `form_for`.
+
+1. Implement full CRUD for another resource in your application. Pilots or passengers might make sense :)
