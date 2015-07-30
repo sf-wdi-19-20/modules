@@ -189,7 +189,7 @@ We go straight into terminal to enter *rails console*.
 	$ rails console
 The command above enters the rails console to play with your application. 
 
-To create our first plane model in our database we use our reference the `Plane` class and call the `Plane#create` method to write our plane to our database.
+To create our first plane model in our database we use our reference to the `Plane` class and call the `Plane#create` method to write our plane to our database.
 
 	> Plane.create({name: "x-wing", design: "unknown", description: "top secret"}) 
 	=> #<Plane ....>
