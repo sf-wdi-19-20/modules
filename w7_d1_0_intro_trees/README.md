@@ -20,16 +20,17 @@ Let's go into the terminology a little more with some diagrams.
 
 ## Terminology
 
-[@TODO vertices(nodes)/edge]
 Graphs have vertices (aka "nodes") that usually represent data, or the current "state" (configuration) of something.  Edges connect the vertices and usually represent a relationship between data objects, or a transistion from one state to another.  A sequence of edges is called a "path".
 
-[@TODO parent/child]
+
+<img src="images/paths.jpg" width="300px">
 
 Tree data structures adopt language from family trees. If an edge in a tree connects two vertices, the source vertex is called the "parent", and the target vertex is called the "child".  From the perspective of a single node, some other nodes will be on the path between that node and the root. These are the node's "ancestors." Other nodes might be children of the  node, or children of the node's children. These are called the node's "descendants."  Nodes that share the same "parent" are known as "siblings."
 
-[@TODO root/branch/leaf]
 
 Trees start with a unique "root" node at the top of the tree.  The edges in a tree are sometimes referred to as "branches".  Nodes of the tree that do not have any children are called "leaves" because no branches lead away from them. The length of the longest path from the root to a leaf is called the tree's "height".
+
+<img src="images/tree_terms.jpg" width="300px">
 
 ## Trees to Know for Interviews
 
@@ -40,6 +41,9 @@ The most common types of trees for interviews are "binary trees," which allow ea
 ### Binary Search Trees
 
 Binary search trees add on an extra restriction to binary trees: each node's left child (if it has one) will have a lesser value than the node itself.  Each node's right child (if it has one) must have a greater value than the node itself.
+
+
+<img src="images/bst.jpg" width="300px">
 
 ### Balanced Binary Trees
 
@@ -88,9 +92,15 @@ Also assume a `trie` data structure that allows you to:
 
 1. Which of the following is a tree? (There may be more than one.)
 
+  <img src="images/which_tree.jpg" width="300px">
+
 1. Which of the following is a balanced tree? (There may be more than one.)
 
+  <img src="images/which_balanced.jpg" width="300px">
+
 1. Which of the following is a binary search tree? (There may be more than one.)
+
+  <img src="images/which_bst.jpg" width="300px">
 
 
 ## Basic Challenges 
@@ -119,7 +129,7 @@ Also assume a `trie` data structure that allows you to:
 
 ### Stretch Challenges 
 
-1. How could you print out all the numbers in a binary search tree in order from least to greatest?  *Hint*: This problem is probably easiest using recursion.  @INTERVIEW
+1. How could you print out all the numbers in a binary search tree in order from least to greatest?  *Hint*: This problem is probably easiest using recursion. 
 
 1. Design an algorithm to find a path from one node in a binary tree to another.
 
@@ -130,9 +140,8 @@ Also assume a `trie` data structure that allows you to:
 1. You have to write a program that recognizes common words typed in on a 10-digit phone keypad (see the image below). Assume the user input comes to you as a sequence of letters.  Also assume you get a list of all the words you should include ahead of time. How would you structure your data?  Could you preprocess the list of words to make your program run faster?
 
 
-![phone keypad with letters 2:abc](https://parentsof10.files.wordpress.com/2013/03/phone-keypad-picture-application.png)
+  ![phone keypad with letters 2:abc](https://parentsof10.files.wordpress.com/2013/03/phone-keypad-picture-application.png)
 
-@TODO image
 
 1. A naieve insert algorithm can easily result in an unbalanced binary search tree, as you'll probably see if you insert the following numbers into an empty binary search tree one at a time: [1,2,3,4,5].  Look up algorithms that are used to insert into and delete from "self-balancing" binary search trees. The algorithms you find will probably 
 
