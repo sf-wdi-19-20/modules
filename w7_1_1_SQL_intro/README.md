@@ -331,7 +331,7 @@ ORDER BY lowest_avaialable-price;
 | To explain relationship concepts like `foriegn_key` and `join_table` using simple ERD |
 
 
-![Joins](images/join.png)
+![Joins](https://raw.githubusercontent.com/sf-wdi-18/notes/master/lectures/week-07/day-1-intro-sql/dawn-simple-queries/images/join.png)
 
 ## Why Are Joins Important
 
@@ -346,7 +346,7 @@ JOINS are our means of implementing queries that join together data and show res
 
 * Foreign Key: a foreign key is a field (or collection of fields) in one table that uniquely identifies a row of another table.[1][2][3] **In other words, a foreign key is a column or a combination of columns that is used to establish and enforce a link between the data in two tables.**
 
-![primary_foreign_key.png](images/primary_foreign_key.png)
+![primary and foreign key diagram](https://raw.githubusercontent.com/sf-wdi-18/notes/master/lectures/week-07/day-1-intro-sql/dawn-simple-queries/images/primary_foreign_key.png)
 
 
 ## Example
