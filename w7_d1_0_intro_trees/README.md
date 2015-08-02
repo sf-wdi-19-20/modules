@@ -8,7 +8,7 @@ In computer science, graphs are just collections of **vertices** (also known as 
 
 ## Trees 
 
-Trees are a kind of "directed acyclic graph".
+In computer science, trees are a kind of "directed acyclic graph".
 
 In "directed" graphs, the edges are all like one-way roads. You can only move on an edge (called "traversing" the edge) in one direction. The word "acyclic" describes graphs without any cycles; that is, there's no cycle of edges that will lead you back to a node if you leave it. 
 
@@ -23,7 +23,7 @@ Let's go into the terminology a little more with some diagrams.
 [@TODO vertices(nodes)/edge]
 Graphs have vertices (aka "nodes") that usually represent data, or the current "state" (configuration) of something.  Edges connect the vertices and usually represent a relationship between data objects, or a transistion from one state to another.  A sequence of edges is called a "path".
 
-[@TODO parent/child]() 
+[@TODO parent/child]
 
 Tree data structures adopt language from family trees. If an edge in a tree connects two vertices, the source vertex is called the "parent", and the target vertex is called the "child".  From the perspective of a single node, some other nodes will be on the path between that node and the root. These are the node's "ancestors." Other nodes might be children of the  node, or children of the node's children. These are called the node's "descendants."  Nodes that share the same "parent" are known as "siblings."
 
@@ -51,7 +51,7 @@ Balanced binary search trees combine the balanced structure requirement with the
 
 ### Tries
 
-Tries aren't usually binary trees at all.  They allow each node to have as many children as needed. The special thing about tries is how they store data. Tries' data builds up over the path of a node.  Here's an example:
+Tries, also called prefix trees, aren't usually binary.  They allow each node to have as many children as needed. The special thing about tries is how they store data. Tries' data builds up over the path from the root to each node.  Here's an example:
 
 ![wikipedia trie image](https://upload.wikimedia.org/wikipedia/commons/b/be/Trie_example.svg)
 
@@ -64,13 +64,12 @@ Assume for the following challenges that you have a `binary_tree` data structure
 * access the root node with `.root`.
 * given any node, find the left child of that node with `.left_child`
 * given any node, find the right child of that node with `.right_child`
-* given any node, 
-find the parent of that node with `.parent`
+* given any node, find the parent of that node with `.parent`
 
 Also assume a `trie` data structure that allows you to:
 
 * find the root with `.root`
-* given any node, get an array of the node's children with `.children`
+* given any node, get a list of the node's children with `.children`
 * given any node, find the node's parent with `.parent`
  
  ### Vocab Practice 
@@ -122,10 +121,11 @@ Also assume a `trie` data structure that allows you to:
 
 1. How could you print out all the numbers in a binary search tree in order from least to greatest?  *Hint*: This problem is probably easiest using recursion.  @INTERVIEW
 
+1. Design an algorithm to find a path from one node in a binary tree to another.
+
 1. Given access to one node in a binary search tree, how can you find the next largest node?
 
-
-### Interview Questions
+1. You're tasked with setting up a quiz that adapts to the user by displaying different questions based on the percent of questions the user has gotten right so far. If the user has above 70% right, the next question should be slightly harder. If the user has below 70% right, the next set question should be slightly easier.  Question difficulty is rated on a scale from 1 to 10. Describe the algorithm you would use to run the quiz. 
 
 1. You have to write a program that recognizes common words typed in on a 10-digit phone keypad (see the image below). Assume the user input comes to you as a sequence of letters.  Also assume you get a list of all the words you should include ahead of time. How would you structure your data?  Could you preprocess the list of words to make your program run faster?
 
