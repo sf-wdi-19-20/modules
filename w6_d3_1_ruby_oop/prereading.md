@@ -372,23 +372,23 @@ focus.ride_in_back
 
 Class variables  in Ruby don't interact with inheritance in the way many people would expect.  All subclasses share the same class variable, so changing a class variable within a subclass changes the class variable for the base class and all other subclasses.  This can be good when, for instance, we want to update the total `Car` count whenever a new `Pickup` is created. However, `Pickup`'s `@@count` will always be equal to the total `Car` count.  
 
-This connection can cause lots of issues if it's not intended. For example, a `Polygon` class might have an `@@sides` variable that stores a "default" number of sides for a polygon, say 4.  If `Triangle` is later created as a subclass of `Polygon`, and `Triangle`'s `@@sides` is set to 3, then all polygons will now have their sides set to 3, even `Octagons`, `Hexagons`, and any other instances of `Polygon` subclasses. 
+This connection can cause lots of issues if it's not intended. For example, a `Vehicle` class might have an `@@num_wheels` variable that stores a "default" number of wheels for a vehicle, say 4.  If `Boat` is later created as a subclass of `Vehicle`, and `Boat`'s `@@num_wheels` is set to 0, then all vehicles will now have their number of legs set to 0, even `Motorcylces`, `Cars`, `EighteenWheelers` and any other instances of `Vehicle` subclasses. 
 
-A better pattern that fits the polygon scenario uses "class instance variables". That is, just make regular instance variables for shared data and create class getter methods to access them.
+A better pattern that fits this scenario uses "class instance variables". For the "class instance variable pattern", we create an instance variable for the shared data within the parent class itself (outside of a method definition). Then, we create a class getter method using within the parent class to access the class instance variable. Finally, we create a new version of the class instance variable for each subclass.  The data is no longer shared among multiple classes when we use this pattern. Let's see an example.
 
 ```
-class Parent
-  @class_var = "Parent's"
-  def self.class_var
-    @class_var
+class Vehicle
+  @num_wheels = 4
+  def self.num_wheels
+    @num_wheels
   end
 end
 
-class Child1 < Parent
-  @class_var = "Child1's"
+class Boat < Vehicle
+  @num_wheels = 0
 end
 
-class Child2 < Parent
-  @class_var = "Child2's"
+class EighteenWheeler < Vehicle
+  @num_wheels = 18
 end
 ```
