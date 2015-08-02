@@ -75,12 +75,12 @@ Also assume a `trie` data structure that allows you to:
  ### Vocab Practice 
 
 1. Use the diagram below to fill in the following table:
-
-| Node  | parent | left child | right child |
-| :---- | :-- | :-- | :-- | 
-| A | | | | 
-| B | | | | 
-| C | | | |
+	
+	| Node  | parent | left child | right child |
+	| :---- | :-- | :-- | :-- | 
+	| A | | | | 
+	| B | | | | 
+	| C | | | |
 
 1. In the same diagram (above), which node is the root?  Which are leaves?
 
