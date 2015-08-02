@@ -36,14 +36,15 @@ Trees start with a unique "root" node at the top of the tree.  The edges in a tr
 
 ### Binary Trees
 
-The most common types of trees for interviews are "binary trees," which allow each node to have up to 2 children. We say each node can have a "left child" and a "right child."
+The most common types of trees for interviews are "binary trees," which allow each node to have up to 2 children. We say each node can have a "left child" and a "right child."  The left child can be considered the root of a "left subtree", and the right child can be considered the root of a "right subtree".
 
 ### Binary Search Trees
 
-Binary search trees add on an extra restriction to binary trees: each node's left child (if it has one) will have a lesser value than the node itself.  Each node's right child (if it has one) must have a greater value than the node itself.
+Binary search trees add on an extra restriction to binary trees: each node's left child subtree (if it has one) will  contain only nodes whose values are lower than the original node's value.  In each node's right child subtree (if it has one), all nodes must have a greater value than the original node itself.
 
 
 <img src="images/bst.jpg" width="300px">
+
 
 ### Balanced Binary Trees
 
@@ -53,11 +54,14 @@ Balanced binary trees are another basic variant of binary trees. A "balanced" tr
 
 Balanced binary search trees combine the balanced structure requirement with the node value requirement of binary search trees.  If an interview question asks about a tree, try to clarify whether the tree is balanced and whether it is a binary search tree. 
 
+
+
+
 ### Tries
 
-Tries, also called prefix trees, aren't usually binary.  They allow each node to have as many children as needed. The special thing about tries is how they store data. Tries' data builds up over the path from the root to each node.  Here's an example:
+Tries, also called prefix trees, aren't usually binary.  They allow each node to have as many children as needed. The special thing about tries is how they store data. The data builds up over the path from the root to each node.  Here's an example:
 
-![wikipedia trie image](https://upload.wikimedia.org/wikipedia/commons/b/be/Trie_example.svg)
+<img src="images/trie.jpg" width="300px">
 
 ## Challenges
 
@@ -76,7 +80,7 @@ Also assume a `trie` data structure that allows you to:
 * given any node, get a list of the node's children with `.children`
 * given any node, find the node's parent with `.parent`
  
- ### Vocab Practice 
+ ### Vocab Practice (skip)
 
 1. Use the diagram below to fill in the following table:
 	
@@ -86,9 +90,13 @@ Also assume a `trie` data structure that allows you to:
 	| B | | | | 
 	| C | | | |
 
+
+  <img src="images/labels.jpg" width="300px">
+
 1. In the same diagram (above), which node is the root?  Which are leaves?
 
-1. What is the height of the tree?
+1. Finally, in that same diagram, what is the height of the tree?
+<br><br>
 
 1. Which of the following is a tree? (There may be more than one.)
 
@@ -103,46 +111,41 @@ Also assume a `trie` data structure that allows you to:
   <img src="images/which_bst.jpg" width="300px">
 
 
-## Basic Challenges 
+### Basic Challenges - Binary Search Trees
 
-1. Create a balanced binary search tree from the following array: [0,1,2,3,4,5,6].
+1. Create a binary search tree from the following array: [0,1,2,3,4,5,6].
 
-1. Describe an algorithm to check if a particular number is inside a binary search tree.  *Hint: start by checking if it's the value of the root.*
-
-1. Given a binary search tree, how can you insert a new node into it? Note: the tree does not need to be balanced, but you must maintain the binary search tree property.
+1. Describe an algorithm to check if a particular number value is inside a binary search tree.  *Hint: start by checking if it's the value of the root.*
 
 1. In a binary search tree, how can you find the minimum element? The maximum? 
+
+
+### Basic Challenges - Tries
 
 1. Create a trie for the following word list: ["hey", "hello", "howdy", "g'day"].
 
 1. Add the phrase "hello, govnuh" to your trie from above.  
 
-1. What determines the height of a trie?
+1. In a normal tree, the number of nodes determines the tree's minimum possible height. What determines the minimum possible height of a trie?
 
-1. How many paths are there in a tree and a trie from the root node to:
 
-	* the root node?
-	* a particular leaf?
-	* a particular node that is not a leaf?
+### Stretch Challenges
 
 1. A "min heap" is another abstract data structure often thought of as a type of binary tree. It has an additional restriction called the "min heap property:" every node's value is less than the values of its children. What is special about the root of a min heap?  
 
-### Stretch Challenges 
-
 1. How could you print out all the numbers in a binary search tree in order from least to greatest?  *Hint*: This problem is probably easiest using recursion. 
 
-1. Design an algorithm to find a path from one node in a binary tree to another.
 
-1. Given access to one node in a binary search tree, how can you find the next largest node?
+### Actual Interview Questions
 
-1. You're tasked with setting up a quiz that adapts to the user by displaying different questions based on the percent of questions the user has gotten right so far. If the user has above 70% right, the next question should be slightly harder. If the user has below 70% right, the next set question should be slightly easier.  Question difficulty is rated on a scale from 1 to 10. Describe the algorithm you would use to run the quiz. 
+<!--1. You have a series of tasks that you need to schedule. Let's say you're getting dressed, so you need to put on your: shoes, underwear, shirt, pants, and socks. Some of these things have to happen in a certain order (like socks before shoes). How can you use a tree to plan the order of your tasks?-->
 
-1. You have to write a program that recognizes common words typed in on a 10-digit phone keypad (see the image below). Assume the user input comes to you as a sequence of letters.  Also assume you get a list of all the words you should include ahead of time. How would you structure your data?  Could you preprocess the list of words to make your program run faster?
+1. You're tasked with setting up a quiz that adapts to the user by displaying different questions based on the percent of questions the user has gotten right so far. If the user has above 70% right so far, the next question should be slightly harder. If the user has below 70% right, the next set question should be slightly easier.  Question difficulty is rated on a scale from 1 to 10. Describe how you could use a tree to run this quiz.
+
+1. Your job is to write a program that recognizes common words typed in on a 10-digit phone keypad (see the image below). Assume the user input comes to you as a sequence of numbers types into the phone.  Also assume you get a list of all the words you should include ahead of time. How would you structure your data?  
+
+  ![phone keypad with letters](https://parentsof10.files.wordpress.com/2013/03/phone-keypad-picture-application.png)
 
 
-  ![phone keypad with letters 2:abc](https://parentsof10.files.wordpress.com/2013/03/phone-keypad-picture-application.png)
-
-
-1. A naieve insert algorithm can easily result in an unbalanced binary search tree, as you'll probably see if you insert the following numbers into an empty binary search tree one at a time: [1,2,3,4,5].  Look up algorithms that are used to insert into and delete from "self-balancing" binary search trees. The algorithms you find will probably 
 
 
