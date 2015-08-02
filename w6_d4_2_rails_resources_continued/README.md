@@ -36,11 +36,13 @@ Right now, our app redirects to `index` after creating a new plane, which isn't 
 
   Rails.application.routes.draw do
     root to: "planes#index"
-    resources :planes
+    resources :planes, only: [:index, :new, :create]
   end
   ```
+  
+  Let's switch `resources :planes, only: [:index, :new, :create]` to just `resources :planes` and check out the full set of routes that Rails can make for us. We won't cover `DELETE` or `PATCH` routes in class today, so for now let's modify the resources line to say `resources :planes, except[:patch, :delete]`.
 
-  In the terminal, run `rake routes`, and verify you have a `show` route that looks like this: `GET  /planes/:id(.:format)  planes#show`
+  Finally, in the terminal, run `rake routes`, and verify you still have a `show` route that looks like this: `GET  /planes/:id(.:format)  planes#show`.
 
 2. Make a controller method to find the plane you want to show and render the `show` view.
 
@@ -107,7 +109,7 @@ Right now, our app redirects to `index` after creating a new plane, which isn't 
 
 ## Challenges Part 2: Editing a Plane
 
-Editing a `plane` requires two separate methods. One to display the `plane` information to be edited by the client and another to handle the update request.
+Editing a `plane` requires two separate methods. One will display the `plane` information to be edited by the client, and the other will handle the update request.
 
 If we look back at how we handled displaying our `new` form we see the following pattern:
 
@@ -218,12 +220,70 @@ The only difference is that now we need to use the `id` of the object being upda
 
   end
   ```
+  
+## Refactor: `form_for`
+
+Let's look back our edit form:
+
+```html
+<!--airplane_app/app/views/planes/edit.html.erb-->
+ <!-- form to update plane -->
+ <form action="/planes/<%= @plane.id %>" method="post">
+   <%= token_tag form_authenticity_token %>
+   <input type="hidden" name="_method" value="put">
+   <div class="form-group">
+     <input type="text" name="plane[name]" placeholder="Name" value="<%= @plane.name %>" class="form-control" autofocus>
+   </div>
+   <div class="form-group">
+     <input type="text" name="plane[design]" placeholder="Design" value="<%= @plane.design %>" class="form-control">
+   </div>
+   <div class="form-group">
+     <textarea name="plane[description]" placeholder="Description" class="form-control"><%= @plane.description %></textarea>
+   </div>
+   <input type="submit" value="Update Plane" class="btn btn-default">
+ </form>
+```
+
+
+  
+There's a lot going on here! We:
+* specified a `method` and `action`
+* used the `token_tag` form helper to help keep our form secure
+* used an html trick to change the method to `put`
+* used `name` attributes to name the parts of our request
+* used `value` attributes to fill in the plane's stored information from the db
+* created the basic form structure
+* added bootstrap cdns to `airplane_app/app/views/layouts/application.html.erb` and used bootstrap classes in our form elements
+
+
+Other than creating the form structure and adding bootstrap, Rails has a shortcut to help us do all of this: `form_for`. You specify the form structure using erb (ruby syntax). Rails looks at the form you write, plus the file name, and translates it into html. Here's our edit form refactored with `form_for`, minus the bootstrap styling:
+
+```html
+<!--airplane_app/app/views/planes/edit.html.erb-->
+ <!-- form to update plane -->
+<%= form_for @plane do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br />
+ 
+  <%= f.label :design %>
+  <%= f.text_field :design %><br />
+  
+  <%= f.label :description %>
+  <%= f.textarea :description %><br />
+  
+  <%= f.submit "Update Plane" %>
+<% end %>
+```
+
+
 
 ## Stretch Challenges
 
 1. Implement `delete` for your `planes` resource following the example of `edit` and `update`. Think about what you'll need:
   * a `delete` route (check `rake routes`)
-  * a form on the client-side to make the `delete` request (**Hint:** This form doesn't need its own view. It may make sense to have a `delete` "form", which will essentially be a button, on the planes show page.)
+  * a form on the client-side to make the `delete` request (**Hint:** This form doesn't need its own view. It may make sense to have a `delete` "form", which will essentially be a button, on the plane's show page.)
   * a controller method to handle the `delete` request
 
-2. Implement full CRUD for another resource in your application. Pilots or passengers might make sense :)
+1. Refactor your `new` and `edit` forms to use `form_for`.
+
+1. Implement full CRUD for another resource in your application. Pilots or passengers might make sense :)
