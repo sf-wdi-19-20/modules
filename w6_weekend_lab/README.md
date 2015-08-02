@@ -22,6 +22,6 @@ Khan Academy's intro to SQL videos will help you prepare for our advanced databa
 
 Level up your Rails knowledge like your life depends on it!  This interactive tutorial will help you practice CRUDing with Rails.
 
-## Submission
+##[Submission](https://docs.google.com/forms/d/1zSklHtCYKg_NhkLdjlQaCXFrHJQ4Io266cKUs9_Dg8I/viewform)
 
-Please submit [this form](https://docs.google.com/forms/d/1zSklHtCYKg_NhkLdjlQaCXFrHJQ4Io266cKUs9_Dg8I/viewform) over the weekend!
+Please submit the [reading homework form](https://docs.google.com/forms/d/1zSklHtCYKg_NhkLdjlQaCXFrHJQ4Io266cKUs9_Dg8I/viewform) over the weekend!
