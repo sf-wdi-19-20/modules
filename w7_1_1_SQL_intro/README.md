@@ -8,46 +8,47 @@
 
 ## Setup
 
-* Go and download [Postgres.app](http://postgresapp.com/)
-* Finish install and drag it into your applications folder.
-* Then add Postgres.app to your `$PATH`
+1. Download [Postgres.app](http://postgresapp.com/).
+2. Follow Postgres.app's directions to install (move Postgres into your Applications folder).
+    
+3. Follow Postgres.app's [instructions to install command line tools](http://postgresapp.com/documentation/cli-tools.html): 
+  * add Postgres.app to your `$PATH`
 
-  ```bash
-    echo 'PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin' >> ~/.bash_profile
-  ```
-* Then source your `~/.bash_profile`
+      ```bash
+        echo 'PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin' >> ~/.bash_profile
+      ```
+  * source your `~/.bash_profile`
 
-  ```bash
-  source ~/.bash_profile
-  ```
-* Check that your install worked
-
-  ```bash
-  which psql
-  ```
-
-## Outline
-
-* What is SQL?
-  * tables, rows, and columns
-* ORDBMS and RDBMS
-  * Postgres, MySQL, SQLite, Microsoft SQL Server
-* Data Definition Language
-  * `CREATE`, `ALTER`, `RENAME`, `DROP`, `TRUNCATE`
-  * Data Types
-  * Constraints
-* Queries
-  * `SELECT`, `INSERT`, `UPDATE`, `DELETE`    * `MERGE` or `UPSERT` coming to **Postgres** 9.5
-* DUMP-ing
+      ```bash
+      source ~/.bash_profile
+      ```
+  * check that your install worked
+    
+      ```bash
+      which psql
+      ```
 
 
 ## What Are Relational Databases?
 
-Relational databases were invented at IBM in the 1970's as a way to structure data so that it can be queried by a relational algebra.  The idea of relational model was to use collections of data, **Tables**, where each database manages **Relations** among the data in various tables. Tables are organized like a spreadsheet with a  **Row** (also known as 'record') for each data item and with attributes of those items arranged in  **Columns***.
+Relational databases were invented the 1970's as a way to structure data so that it can be queried by a relational algebra.  The idea of relational model was to use collections of data, **Tables**, where each database manages **Relations** among the data in various tables. Tables are organized like a spreadsheet with a **Row** (also known as "record") for each data item and with attributes of those items arranged in  **Columns***.
 
 ## What is SQL?
 
 SQL, a Structured Query Language, is a specialized language used to create, manipulate, and query tables in relational databases.
+
+  * Data Definition Language
+    * Define and update database's structure
+    * `CREATE`, `ALTER`, `RENAME`, `DROP`, `TRUNCATE` 
+    * Data Types
+    * Constraints
+  * Data Manipulation Language 
+    * CRUD data within the database
+    * `SELECT`, `INSERT`, `UPDATE`, `DELETE`    
+    * `UPSERT` (attempts an UPDATE, or on failure, INSERT) is part of SQL 3 but not yet in Postgres
+    * Queries
+  * Data Control Language (beyond our scope)
+    * `GRANT` access to parts of the table 
 
 #### Authors Table
 
