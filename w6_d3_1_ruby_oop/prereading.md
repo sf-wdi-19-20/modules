@@ -376,7 +376,7 @@ This connection can cause lots of issues if it's not intended. For example, a `V
 
 A better pattern that fits this scenario uses "class instance variables". For the "class instance variable pattern", we create an instance variable for the shared data within the parent class itself (outside of a method definition). Then, we create a class getter method using within the parent class to access the class instance variable. Finally, we create a new version of the class instance variable for each subclass.  The data is no longer shared among multiple classes when we use this pattern. Let's see an example.
 
-```
+```ruby
 class Vehicle
   @num_wheels = 4
   def self.num_wheels
