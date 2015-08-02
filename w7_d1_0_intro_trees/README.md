@@ -4,11 +4,13 @@ This week we'll add trees to our collection of abstract data structures.
 
 ## Graphs 
 
-In computer science, graphs are just collections of **vertices** (also known as nodes) and **edges**. Each edge connects two vertices together.  You can think of vertices as cities on a map and think of edges as the roads between them.  Graphs are widely used in computer science and algorithms, but we won't go into them in much depth in this class.
+In computer science, graphs are just collections of **vertices** (also known as nodes) and **edges**. Each edge connects two vertices together.  You can think of vertices as cities on a map and think of edges as the roads between them.  Graphs are widely used in computer science and algorithms, but we today we'll focus on a particular kind of graph.
 
 ## Trees 
 
-Trees are a kind of "directed acyclic graphs".  In "directed" graphs, the edges are all like one-way roads. You can only move on an edge (called "traversing" the edge) in one direction. The word "acyclic" describes graphs without any cycles; that is, there's no cycle of edges that will lead you back to a node if you leave it. 
+Trees are a kind of "directed acyclic graph".
+
+In "directed" graphs, the edges are all like one-way roads. You can only move on an edge (called "traversing" the edge) in one direction. The word "acyclic" describes graphs without any cycles; that is, there's no cycle of edges that will lead you back to a node if you leave it. 
 
 Trees have a few additional rules. First, every tree has a unique, special start node called the "root" node. And second, the nodes in trees can only ever have one "parent".
 
@@ -29,7 +31,7 @@ Tree data structures adopt language from family trees. If an edge in a tree conn
 
 Trees start with a unique "root" node at the top of the tree.  The edges in a tree are sometimes referred to as "branches".  Nodes of the tree that do not have any children are called "leaves" because no branches lead away from them. The length of the longest path from the root to a leaf is called the tree's "height".
 
-## Trees for Interviews
+## Trees to Know for Interviews
 
 ### Binary Trees
 
@@ -51,7 +53,7 @@ Balanced binary search trees combine the balanced structure requirement with the
 
 Tries aren't usually binary trees at all.  They allow each node to have as many children as needed. The special thing about tries is how they store data. Tries' data builds up over the path of a node.  Here's an example:
 
-@TODO trie
+![wikipedia trie image](https://upload.wikimedia.org/wikipedia/commons/b/be/Trie_example.svg)
 
 ## Challenges
 
@@ -71,7 +73,7 @@ Also assume a `trie` data structure that allows you to:
 * given any node, get an array of the node's children with `.children`
 * given any node, find the node's parent with `.parent`
  
- ### Basic Challenges
+ ### Vocab Practice 
 
 1. Use the diagram below to fill in the following table:
 
@@ -85,43 +87,50 @@ Also assume a `trie` data structure that allows you to:
 
 1. What is the height of the tree?
 
-1. Which of the following is a binary search tree? (There may be more than one.)
+1. Which of the following is a tree? (There may be more than one.)
 
 1. Which of the following is a balanced tree? (There may be more than one.)
 
+1. Which of the following is a binary search tree? (There may be more than one.)
+
+
+## Basic Challenges 
+
 1. Create a balanced binary search tree from the following array: [0,1,2,3,4,5,6].
 
-1. How can you check if a particular number is inside a binary search tree?  *Hint*: Remember you have to start at the root.
+1. Describe an algorithm to check if a particular number is inside a binary search tree.  *Hint: start by checking if it's the value of the root.*
 
-1. Given a binary search tree, how would you insert a new node into it?
+1. Given a binary search tree, how can you insert a new node into it? Note: the tree does not need to be balanced, but you must maintain the binary search tree property.
 
 1. In a binary search tree, how can you find the minimum element? The maximum? 
 
-1. Given access to one node in a binary search tree, how can you find the next largest node?
+1. Create a trie for the following word list: ["hey", "hello", "howdy", "g'day"].
 
-1. How could you print out all the numbers in a binary search tree in order from least to greatest?  *Hint*: This problem is probably easiest using recursion.  @INTERVIEW
-
-
-1. Create a trie for the following word list: ["hi", "him", "hey", "her", "g'day", "guy", "howdy", "hun"].
-
-1. Add the phrase "'ello, govnuh" to your trie from above.  
+1. Add the phrase "hello, govnuh" to your trie from above.  
 
 1. What determines the height of a trie?
 
-1. How many paths are there in a tree or trie from the root node to:
+1. How many paths are there in a tree and a trie from the root node to:
 
 	* the root node?
 	* a particular leaf?
 	* a particular node that is not a leaf?
 
-	Can you justify your answers based on the definition of a tree?
-
 1. A "min heap" is another abstract data structure often thought of as a type of binary tree. It has an additional restriction called the "min heap property:" every node's value is less than the values of its children. What is special about the root of a min heap?  
+
+### Stretch Challenges 
+
+1. How could you print out all the numbers in a binary search tree in order from least to greatest?  *Hint*: This problem is probably easiest using recursion.  @INTERVIEW
+
+1. Given access to one node in a binary search tree, how can you find the next largest node?
+
 
 ### Interview Questions
 
 1. You have to write a program that recognizes common words typed in on a 10-digit phone keypad (see the image below). Assume the user input comes to you as a sequence of letters.  Also assume you get a list of all the words you should include ahead of time. How would you structure your data?  Could you preprocess the list of words to make your program run faster?
 
+
+![phone keypad with letters 2:abc](https://parentsof10.files.wordpress.com/2013/03/phone-keypad-picture-application.png)
 
 @TODO image
 
