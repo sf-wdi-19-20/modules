@@ -43,13 +43,13 @@ Also assume a `trie` data structure that allows you to:
 
   <img src="images/which_tree.jpg" width="300px">
   
-  *B, D, E are trees.
+  *B, D, E are trees.*
   
-  A is not a tree because one node has 2 parents. 
+  *A is not a tree because one node has 2 parents.* 
   
-  C is not a tree because there is a cycle.
+  *C is not a tree because there is a cycle.*
   
-  F is not a tree because it's 2 trees! This is called a "forest".*
+  *F is not a tree because it's 2 trees! This is called a "forest".*
   
   
 
@@ -93,7 +93,8 @@ Also assume a `trie` data structure that allows you to:
   
 1. Describe an algorithm to check if a particular number value is inside a binary search tree.  *Hint: start by checking if it's the value of the root.*
 
-  * start at root
+  *algorithm*:
+  *start at root
   * for each node we look at
     * check the node's value against the value we're looking for
     * if they're equal, we've found the number inside the tree! we're done
@@ -103,13 +104,13 @@ Also assume a `trie` data structure that allows you to:
 
 1. In a binary search tree, how can you find the minimum element? The maximum? 
 
-  min: relies on the insight that the minimum will be the leftmost node in the tree (convince yourself!)
+  *min algorithm: relies on the insight that the minimum will be the leftmost node in the tree (convince yourself!)*
     * start at root
     * for each node we look at
       * move to its left child 
     * when we can't move anymore, we're at the minimum element in the tree
 
-  max: relies on the insight that the max is the rightmost node (convince yourself!)
+  *max algorithm: relies on the insight that the max is the rightmost node (convince yourself!)*
     * start at root
     * for each node we look at
       * move to its right child 
@@ -119,22 +120,26 @@ Also assume a `trie` data structure that allows you to:
 
 1. Create a trie for the following word list: ["hey", "hello", "howdy", "g'day"].
 
+  *solution is left out for space; see trie example*
+
 1. Add the phrase "hello, govnuh" to your trie from above.  
+
+  *solution is left out for space*
 
 1. In a normal tree, the number of nodes determines the tree's minimum possible height. What determines the minimum possible height of a trie?
 
-  The height of a trie is determined by the length of the longest word.
+  *The height of a trie is determined by the length of the longest word.*
 
 
 ### Stretch Challenges
 
 1. A "min heap" is another abstract data structure often thought of as a type of binary tree. It has an additional restriction called the "min heap property:" every node's value is less than the values of its children. What is special about the root of a min heap?  
 
-  The root node of a min heap is the minimum element!  There's a similar data structure called a "max heap".
+  *The root node of a min heap is the minimum element!  There's a similar data structure called a "max heap".*
 
 1. How could you print out all the numbers in a binary search tree in order from least to greatest?  *Hint*: This problem is probably easiest using recursion. 
 
-  Stay tuned! 
+  *Stay tuned for the rest of tree week!*
   
 
 
@@ -142,13 +147,13 @@ Also assume a `trie` data structure that allows you to:
 
 1. You're tasked with setting up a quiz that adapts to the user by displaying different questions based on the percent of questions the user has gotten right so far. If the user has above 70% right so far, the next question should be slightly harder. If the user has below 70% right, the next set question should be slightly easier.  Question difficulty is rated on a scale from 1 to 10. Describe how you could use a tree to run this quiz.
 
-  Stay tuned!
+  *Stay tuned for the rest of tree week!*
 
 1. Your job is to write a program that recognizes common words typed in on a 10-digit phone keypad (see the image below). Assume the user input comes to you as a sequence of numbers types into the phone.  Also assume you get a list of all the words you should include ahead of time. How would you structure your data?  
 
   ![phone keypad with letters](https://parentsof10.files.wordpress.com/2013/03/phone-keypad-picture-application.png)
   
-  Stay tuned!
+  *Stay tuned for the rest of tree week!*
 
 
 
