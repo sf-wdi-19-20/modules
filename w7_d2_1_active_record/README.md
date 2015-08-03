@@ -9,17 +9,17 @@
 ## Think, Pair, Share
 Convert these English statements into queries. Consult the [Rails docs]('http://guides.rubyonrails.org/active_record_querying.html') as needed.
 
-1) Give me the all users with the last name "Hendrickson".
+1. Give me the all users with the last name "Hendrickson".
 
-2) Give me all the articles that have more than 200 words. HINT: There is an attribute called `wordcount`
+2. Give me all the articles that have more than 200 words. HINT: There is an attribute called `wordcount`
 
-3) Give me all the answers with more than 100 upvotes.
+3. Give me all the answers with more than 100 upvotes.
 
-4) Give me all the articles without duplicates. HINT: `uniq`
-
+4. Give me all the articles without duplicates. HINT: `uniq`
 
 
 ## Challenges
+### Queries
 1. Create a new rails project called database_queries and then create a Post MVC with title and body attributes.
 
 2. Migrate the posts table to the database.
@@ -53,3 +53,6 @@ Convert these English statements into queries. Consult the [Rails docs]('http://
 16. Select the first 25 posts starting at the 500th post.
 
 17. Sort the posts by the number of comments each post has. HINT: `group`
+
+### Validations
+1. Open an existing project and add a validation to an attribute in a model. HINT: consult [last night's reading](http://ajbraus.gitbooks.io/wdi-homework/content/active-record.html)
