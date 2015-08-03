@@ -95,7 +95,7 @@ Also assume a `trie` data structure that allows you to:
 
   *algorithm*:
   
-  *start at root
+  * start at root
   * for each node we look at
     * check the node's value against the value we're looking for
     * if they're equal, we've found the number inside the tree! we're done
