@@ -51,6 +51,8 @@ Relational databases were invented in the 1970's as a way to structure data so t
 | 4 | Through the Looking-Glass | 1871 | 9781489500182 | 2 |
 | 5 | The Time Machine |  1895  | 9781423794417 | 3 |
 
+Primary Key: The primary key of a relational table uniquely identifies each record in the table. This column is automatically assigned a btree index in postgres.
+
 ## What is SQL?
 
 SQL, Structured Query Language, is a specialized language used to create, manipulate, and query tables in relational databases.
@@ -356,17 +358,23 @@ ORDER BY lowest_avaialable_price;
 1. Find the inventory value of the books by Lewis Caroll.
 
 
+## Coming soon... Joins
+
+Those last few challenges were super awkward SELECTs.  Soon, we'll see how to use JOINs to combine data from different tables!
 
 
 <!--## Joins-->
-
-<!--![Joins](https://raw.githubusercontent.com/sf-wdi-18/notes/master/lectures/week-07/day-1-intro-sql/dawn-simple-queries/images/join.png)-->
 
 <!--### Joins Are Important-->
 
 <!--Each table in a relational database is considered a relation. All of the table's data is naturally related by single set of attributes defined for it. However, in order to be relational we need to be able to make queries between relations or tables of data.-->
 
-<!--JOINS are our means of implementing queries that join together data and show results from multiple tables.-->
+<!--JOINs are our means of implementing queries that join together data and show results from multiple tables.-->
+
+<!--There are lots of kinds of joins, based on how you want to combine data.-->
+
+
+<!--![Joins](https://raw.githubusercontent.com/sf-wdi-18/notes/master/lectures/week-07/day-1-intro-sql/dawn-simple-queries/images/join.png)-->
 
 
 <!--## Keys-->
@@ -377,10 +385,13 @@ ORDER BY lowest_avaialable_price;
 
 <!--![primary and foreign key diagram](https://raw.githubusercontent.com/sf-wdi-18/notes/master/lectures/week-07/day-1-intro-sql/dawn-simple-queries/images/primary_foreign_key.png)-->
 
+<!--![Joins](https://raw.githubusercontent.com/sf-wdi-18/notes/master/lectures/week-07/day-1-intro-sql/dawn-simple-queries/images/join.png)-->
+
+
 
 <!--## Example-->
 
-<!--Let's set up a relationship between a `people` table and a `pets` table.-->
+<!--Let's set up a relationship between a `people` table and a `pets` table. Note that you don't have to capitalize most SQL commands. -->
 
 
 <!--```sql-->
