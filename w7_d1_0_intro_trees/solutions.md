@@ -94,6 +94,7 @@ Also assume a `trie` data structure that allows you to:
 1. Describe an algorithm to check if a particular number value is inside a binary search tree.  *Hint: start by checking if it's the value of the root.*
 
   *algorithm*:
+  
   *start at root
   * for each node we look at
     * check the node's value against the value we're looking for
