@@ -2,7 +2,7 @@
 
 | Objectives |
 | :--- |
-| Determine which table to put foreign key |
+| Add a foreign key to associate two SQL tables |
 | Use JOINS to combine data between SQL tables |
 
 ## Joins
@@ -69,7 +69,7 @@ INSERT INTO pets (name, breed, age, person_id)
   VALUES ('Gigantor', 'Robot', 25, 1);
 
 INSERT INTO pets (name, breed, age, person_id)
-  VALUES ('Goldy', 'Fish', 1);
+  VALUES ('Goldy', 'Fish', 1, null);
 ```
 
 #### Inner JOIN
@@ -119,10 +119,14 @@ WHERE pets.breed = 'Unicorn';
 
 #### Cross JOIN
 
-**Note:** A cross JOIN shows all possible combinations of data between the two tables.
+A cross JOIN shows all possible combinations of data between the two tables.
 
 ```sql
 SELECT * FROM people
 CROSS JOIN pets
 WHERE people.id = 1;
 ```
+
+## Challenges
+
+Head over to the <a href="https://github.com/sf-wdi-19-20/w7_apartment_lab_sql" target="_blank">apartment lab</a> for the challenges! Fork and clone the repo to get started.
