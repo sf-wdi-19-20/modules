@@ -8,8 +8,8 @@ Continue the continue [Apartment Lab](https://github.com/sf-wdi-19-20/w7_apartme
 
 References:
 
-* [RDBs &  SQL intro](https://github.com/sf-wdi-19-20/modules/tree/master/w7_d1_1_SQL_intro) 
-* [SQL continued: Joins](https://github.com/sf-wdi-19-20/modules/tree/master/w7_d1_2_sql_continued) 
+* [RDBs &  SQL intro](https://github.com/sf-wdi-19-20/modules/tree/master/w7_d1_1_SQL_intro) (morning module)
+* [SQL continued: Joins](https://github.com/sf-wdi-19-20/modules/tree/master/w7_d1_2_sql_continued) (afternoon module)
 
 
 ## Prereading/Tutorial
