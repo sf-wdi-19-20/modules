@@ -1,5 +1,81 @@
 # Rails Asset Pipeline (Challenges)
 
+## Adding CSS & JS Files
+
+1. Add a scripts file called `scripts.js` to the `app/assets/javascripts` folder of a rails project. Add just ```console.log('I live to serve')```. Does it work in your app? Do you have to restart your server?
+1. Add a style sheet called `styles.css.scss` to your `app/assets/stylesheets` folder. Are the styles available in the client? The `scss` means 'sass-enabled style sheets' and it gives your css [superpowers](http://sass-lang.com/). Try making your own use of these sassy superpowers:
+
+Nested Selectors
+```scss
+a {
+  text-decoration: none !important;
+  color: black;
+  &:hover {
+    color:darkgrey;
+  }
+}
+```
+
+Nested Properties
+```scss
+#footer {
+  border: {
+    width: 1px;
+    color: #ccc;
+    style: solid;
+  }
+}
+```
+
+Mixins
+```scss
+@mixin rounded($amount) {
+  -moz-border-radius: $amount;
+  -webkit-border-radius: $amount;
+  border-radius: $amount;
+}
+
+.box {
+  border: 3px solid #777;
+  @include rounded(0.5em);
+}
+```
+
+@import
+> @import lets you break up your css into partials and include them only where they're needed.
+
+```scss
+// _reset.scss
+
+html,
+body,
+ul,
+ol {
+   margin: 0;
+  padding: 0;
+}
+```
+
+```scss
+/* base.scss */
+
+@import 'reset';
+
+body {
+  font: 100% Helvetica, sans-serif;
+  background-color: #efefef;
+}
+```
+
+## Displaying Images
+
+1. Add an image to your `app/assets/images` folder
+2. Add that image to your view by calling the file name in an `image_tag` erb view helper.
+
+```
+  <%= image_tag 'rails.png' %>
+```
+
 ## Adding Bootstrap
 
 Here are three ways to add bootstrap to a project.
@@ -68,13 +144,3 @@ Here are three ways to add bootstrap to a project.
   *= require bootstrap/dist/css/bootstrap
   ```
 7. And now bootstrap is available in our views.
-
-
-## Displaying Images
-
-1. Add an image to your `app/assets/images` folder
-2. Add that image to your view by calling the file name in an `image_tag` erb view helper.
-
-```
-  <%= image_tag 'rails.png' %>
-```
