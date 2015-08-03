@@ -1,0 +1,15 @@
+<!-- form to update plane -->
+<form action="/planes/<%= @plane.id %>" method="post">
+  <%= token_tag form_authenticity_token %>
+  <input type="hidden" name="_method" value="put">
+  <div class="form-group">
+    <input type="text" name="plane[name]" placeholder="Name" value="<%= @plane.name %>" class="form-control" autofocus>
+  </div>
+  <div class="form-group">
+    <input type="text" name="plane[design]" placeholder="Design" value="<%= @plane.design %>" class="form-control">
+  </div>
+  <div class="form-group">
+    <textarea name="plane[description]" placeholder="Description" class="form-control"><%= @plane.description %></textarea>
+  </div>
+  <input type="submit" value="Update Plane" class="btn btn-default">
+</form>
