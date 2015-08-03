@@ -3,13 +3,14 @@
 | Objectives |
 | :---- |
 | Discuss SQL database structure and components |
-| Discuss and create tables, columns, types, and constraints in Postgres |
-| Discuss and implement simple queries for resources in Postgres |
+| Create tables with columns, types, and constraints in Postgres |
+| Implement simple and aggregation queries for resources in Postgres |
 
 ## Setup
 
 1. Download [Postgres.app](http://postgresapp.com/).
-2. Follow Postgres.app's directions to install (move Postgres into your Applications folder).
+
+2. Follow Postgress.app's install instructions (move Postgres into your Applications folder).
     
 3. Follow Postgres.app's [instructions to install command line tools](http://postgresapp.com/documentation/cli-tools.html): 
   * add Postgres.app to your `$PATH`
@@ -28,83 +29,94 @@
       which psql
       ```
 
-
 ## What Are Relational Databases?
 
-Relational databases were invented the 1970's as a way to structure data so that it can be queried by a relational algebra.  The idea of relational model was to use collections of data, **Tables**, where each database manages **Relations** among the data in various tables. Tables are organized like a spreadsheet with a **Row** (also known as "record") for each data item and with attributes of those items arranged in  **Columns***.
+Relational databases were invented the 1970's as a way to structure data so that it can be queried by a "relational algebra."  The basic idea of relational model, though, was to use collections of data, **Tables**, where each database manages **Relations** among the data in various tables. Each table is organized like a spreadsheet with a **Row** (also known as "record") for each data item and with attributes of those items arranged in  **Columns***.
 
-## What is SQL?
+**Authors Table**
 
-SQL, a Structured Query Language, is a specialized language used to create, manipulate, and query tables in relational databases.
-
-  * Data Definition Language
-    * Define and update database's structure
-    * `CREATE`, `ALTER`, `RENAME`, `DROP`, `TRUNCATE` 
-    * Data Types
-    * Constraints
-  * Data Manipulation Language 
-    * CRUD data within the database
-    * `SELECT`, `INSERT`, `UPDATE`, `DELETE`    
-    * `UPSERT` (attempts an UPDATE, or on failure, INSERT) is part of SQL 3 but not yet in Postgres
-    * Queries
-  * Data Control Language (beyond our scope)
-    * `GRANT` access to parts of the table 
-
-#### Authors Table
-
-| `id` | `first_name` | `last_name` | `y_o_b` | `y_o_d` |
+| `id` | `first_name` | `last_name` | `year_of_birth` | `year_of_death` |
 | :---  | :---  | :---  | :---  | :---  |
 | 1 | Rudyard | Kipling | 1865 | 1936 |
 | 2 | Lewis | Carroll | 1832 | 1892 |
 | 3 | H.G.  | Wells |  1866 | 1946  |
 
+**Books Table**
+
+| `id` | `title` | `publication_year` | `isbn` | `author_id` |
+| :---  | :---  | :---  | :---  | :---  |
+| 1 | The Jungle Book | 1894 | 9788497896696 | 1 |
+| 2 | Alice's Adventures in Wonderland | 1865 | 9781552465707 | 2 |
+| 3 | Rikki-Tikki-Tavi | 1894 | 1484123689 | 1 |
+| 4 | Through the Looking-Glass | 1871 | 9781489500182 | 2 |
+| 5 | The Time Machine |  1895  | 9781423794417 | 3 |
+
+## What is SQL?
+
+SQL, Structured Query Language, is a specialized language used to create, manipulate, and query tables in relational databases.
+
+  * Data **Definition** Language
+    * Define and update database's structure
+    * `CREATE`, `ALTER`, `RENAME`, `DROP`, `TRUNCATE` 
+    * Data Types
+    * Constraints
+  * Data **Manipulation** Language 
+    * CRUD data within the database
+    * `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `ORDER BY`    
+    * `UPSERT` (attempts an UPDATE, or on failure, INSERT) is part of SQL 3 but not yet in Postgres
+    * Queries
+    * Aggregation: `GROUP BY`, `SUM`, `AVG`, `MIN`
+  * Data **Control** Language (beyond our scope)
+    * `GRANT` access to parts of the table 
 
 
-#### Books Table
+## Creating and Modifying RDB Structure
 
-| `id` | `title` | `description` | `publication_year` | `isbn` | `author_id` |
-| :---  | :---  | :---  | :---  | :---  | :---  |
-|1 | The Jungle Book | The Jungle Book is a collection of stories by English author Rudyard Kipling. The stories were first published in magazines in 1893–94. The original publications contain illustrations, some by Rudyard's father, John Lockwood Kipling. | 1894 | 9788497896696 | 1 |
-| 2 | Alice's Adventures in Wonderland | Alice's Adventures in Wonderland is an 1865 novel written by English author Charles Lutwidge Dodgson under the pseudonym Lewis Carroll. | 1865 | 9781552465707 | 2 |
-| 3 | Rikki-Tikki-Tavi |"Rikki-Tikki-Tavi" is a short story in The Jungle Book by Rudyard Kipling about the adventures of a valiant young mongoose. The story has often been anthologized, and has been published more than once as a short book in its own right. | 1894 | 1484123689 | 1 |
-| 4 | Through the Looking-Glass | Through the Looking-Glass, and What Alice Found There is a novel by Lewis Carroll, the sequel to Alice's Adventures in Wonderland. It is based on his meeting with another Alice, Alice Raikes | 1871 | 9781489500182 | 2 |
-| 5 | The Time Machine | The Time Machine is a science fiction novel by H. G. Wells, published in 1895. Wells is generally credited with the popularisation of the concept of time travel by using a vehicle that allows an operator to travel purposefully and selectively | 1895  | 9781423794417 | 3 |
+### Database Setup
 
+Let's create our first relational database using the Terminal.
+    
+    ```bash
+    createdb practice
+    ```
 
-
-## ORDBMS and RDBMS
-
-[Services](http://en.wikipedia.org/wiki/List_of_relational_database_management_systems#List_of_Software)
-
-
-## Data Definition Language
-
-The **DDL** is the language we use to create and manage **Relations** in our database.
-
-* Let's first create our first database
-
-```bash
-createdb practice
-```
-
-  * Then let's connect to it so we can practice more SQL
+Then let's connect to it by name so we can practice our SQL.
 
   ```bash
   psql practice
   ```
 
-  * You should see a prompt like the following:
+In your Terminal, you should see a prompt like the following:
 
   ```sql
   practice=#
   ```
+  
+### Workflow Setup
 
-* Now let's try to create our first Table
+To save your progress on the in-class examples and the challenges, I suggest creating files that store your SQL commands. To run a `.sql` file, use the following command in your terminal:
+
+    ```bash
+    psql -f <file_name>
+    ```
+    
+You can also create (and destroy) tables from within a SQL file. At the top of your SQL file, I suggest you write the following:
+
+    ```sql
+    DROP DATABASE IF EXISTS database_name;
+    CREATE DATABASE database_name;
+    ```
+
+### Our First Table
+
+Now let's try to create our first Table within the new database.  Note: please feel free to shorten attribute names so they're easier to type.
 
   ```sql
   CREATE TABLE author (
     id SERIAL primary key,
     firstName VARCHAR(255),
+    year_of_birth INTEGER, -- also known as yob
+    year_of_death INTEGER DEFAULT 'NaN',
     description TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT now()
   );
@@ -114,55 +126,65 @@ createdb practice
   * [`Primary Key`](http://www.postgresql.org/docs/9.4/interactive/ddl-constraints.html#DDL-CONSTRAINTS-PRIMARY-KEYS)
   * [MORE DATA TYPES](http://www.postgresql.org/docs/9.4/interactive/datatype.html)
 
+### Altering Tables and Columns
 
-* Let's learn how to `ALTER` this table after is created.
+Let's learn how to `ALTER` this table after is created.
 
   ```sql
   ALTER TABLE author ADD COLUMN last_name varchar(255);
   ```
-* Now an author doesn't need a `description` column so let's remove it.
+  
+An author doesn't need a `description` column, so let's remove it.
 
   ```sql
   ALTER TABLE author DROP COLUMN description;
   ```
-* Oops, **Table** names should always be plural.
+Oops, **Table names should always be plural.** We'll fix the author table name.
 
   ```sql
   ALTER TABLE author RENAME TO authors;
   ```
-* Oops, it looks like our `firstName` column is `camelCased` all column names should be `snake_case`.
+Oops, it looks like our `firstName` column is `camelCased`. **All column names should be `snake_case`.** We can also rename columns.
 
   ```sql
   ALTER TABLE authors RENAME COLUMN firstName TO first_name;
   ```
 
-* This was a great table and you should try doing all this again sometime, so let's `DROP` our table.
+Make sure your SQL statements are saved, and let's `DROP` our table! 
 
   ```sql
   DROP TABLE authors;
   ```
+  
+### Basic Challenges
 
-## Querying
+1. Create a Books table based on the printed table above. It should have attributes for `id`, `title`, `pub_year`, `isbn`, and `author_id`.  For now, just make the `author_id` an `INTEGER`. 
+ 
 
-Let's begin by creating a `products` table
+## Creating, Reading, Updating, and Deleting data in our RDB
+
+
+
+  <!--price numeric NOT NULL DEFAULT 'NaN',-->
+  <!--quantity integer NOT NULL DEFAULT 0-->
+
+How do we get data into a table? With `INSERT`!
 
 ```sql
-CREATE TABLE products (
-  id serial primary key,
-  name text,
-  price numeric NOT NULL DEFAULT 'NaN',
-  quantity integer NOT NULL DEFAULT 0
-);
-```
-
-How do we get data into the table. Let's try an example using `INSERT`.
-
-```sql
-INSERT INTO products
-  (name, price, quantity)
+INSERT INTO books
+  (title, isbn, price, quantity)
   VALUES
   ('blue jeans', 50.00, 20);
 ```
+
+
+| `id` | `title` | `publication_year` | `isbn` | `author_id` |
+| :---  | :---  | :---  | :---  | :---  |
+| 1 | The Jungle Book | 1894 | 9788497896696 | 1 |
+| 2 | Alice's Adventures in Wonderland | 1865 | 9781552465707 | 2 |
+| 3 | Rikki-Tikki-Tavi | 1894 | 1484123689 | 1 |
+| 4 | Through the Looking-Glass | 1871 | 9781489500182 | 2 |
+| 5 | The Time Machine |  1895  | 9781423794417 | 3 |
 
 Let's add a few more items to our products
 
@@ -190,14 +212,14 @@ How would we view them all sorted by price?
 SELECT name FROM products ORDER BY price;
 ```
 
-How would would we grab just `plain T-Shirts`
+How would would we grab just `plain T-Shirts`? 
 
 ```sql
 SELECT * FROM products
   WHERE name = 'plain T-Shirts';
 ```
 
-This is the first time we have seen the `WHERE` clause, and it's nifty.
+How about only the more expensive products?
 
 
 ```sql
@@ -223,7 +245,7 @@ UPDATE products
   WHERE name = 'plain T-Shirts';
 ```
 
-You might wondering why you don't see anything change after you update an entry. This is not standard behavior, but you can tell postgres to return the modified record.
+You might wonder why you don't see anything change after you update an entry. If you'd like, you can tell postgres to return the modified record.  It just isn't the standard behavior.
 
 ```sql
 UPDATE products
@@ -240,7 +262,7 @@ DELETE FROM products
   RETURNING *;
 ```
 
-You can also `DELETE` a everything but the `blue slacks`
+You can also `DELETE` everything but the `blue slacks` with the less than or greater than (not equal) operator.
 
 
 ```sql
@@ -254,18 +276,10 @@ You can `DELETE` everything from a table using
 DELETE FROM products;
 ```
 
-### Exercises
+### Challenge
 
-* Re-insert into  the table the four items we started with.
+* Insert four items into the table.
 
-
-## Running A File
-
-To run a `.sql` file. Use the following:
-
-```bash
-psql -f <file_name>
-```
 
 
 
@@ -280,17 +294,17 @@ SELECT * FROM products
   WHERE prod.name = 'long shorts';
 ```
 
-
 ```sql
 SELECT name, price AS cost, quantity  -- alias for the price column
   FROM products
   WHERE prod.name = 'long shorts';
 ```
 
+Note also that `--` starts a SQL comment.
+
 ## DISTINCT
 
-We can also filter out rows that aren't distinct when we do our selection.
-
+We can use selection to filter out rows that aren't distinct.
 
 ```sql
 INSERT INTO products
@@ -306,9 +320,10 @@ SELECT DISTINCT ON (name) *
   FROM products;
 ```
 
-## Research
+## Aggregation
 
-* Aggregate
+### Aggregation methods
+
 
 ```sql
 SELECT SUM(price*quantity) AS total_inventory_value from products;
@@ -318,18 +333,8 @@ SELECT SUM(price*quantity) AS total_inventory_value from products;
 SELECT name, MIN(price) AS lowest_avaialable_price
 FROM products
 GROUP BY name
-ORDER BY lowest_avaialable-price;
+ORDER BY lowest_avaialable_price;
 ```
-
-
-
-## JOINS
-
-| Objectives |
-|:---|
-| To discuss and explain different types of table relations in SQL |
-| To discuss and implement ways to query using relationships from two tables |
-| To explain relationship concepts like `foriegn_key` and `join_table` using simple ERD |
 
 
 ![Joins](https://raw.githubusercontent.com/sf-wdi-18/notes/master/lectures/week-07/day-1-intro-sql/dawn-simple-queries/images/join.png)
