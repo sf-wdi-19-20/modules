@@ -1,0 +1,19 @@
+<!-- show details for one plane -->
+<div>
+  <strong>Name:</strong> <%= @plane.name %><br>
+  <strong>Type:</strong> <%= @plane.design %><br>
+  <strong>Description:</strong> <%= @plane.description %>
+  
+  <div class="pull-right">
+    <!-- link to plane's edit page -->
+    <a href="/planes/<%= @plane.id %>/edit" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+    
+    <!-- form to delete plane -->
+    <form action="/planes/<%= @plane.id %>" method="post" style="display:inline-block">
+      <%= token_tag form_authenticity_token %>
+      <input type="hidden" name="_method" value="delete">
+      <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+    </form>
+
+  </div>
+</div>
