@@ -128,7 +128,7 @@ Now let's try to create our first Table within the new database.  Note: please f
 
 ### Altering Tables and Columns
 
-Let's learn how to `ALTER` this table after is created.
+We can `ALTER` this table after is created.
 
   ```sql
   ALTER TABLE author ADD COLUMN last_name varchar(255);
@@ -150,7 +150,7 @@ Oops, it looks like our `firstName` column is `camelCased`. **All column names s
   ALTER TABLE authors RENAME COLUMN firstName TO first_name;
   ```
 
-Make sure your SQL statements are saved, and let's `DROP` our table! 
+Let's `DROP` our table! 
 
   ```sql
   DROP TABLE authors;
@@ -160,114 +160,122 @@ Make sure your SQL statements are saved, and let's `DROP` our table!
 
 1. Create a Books table based on the printed table above. It should have attributes for `id`, `title`, `pub_year`, `isbn`, and `author_id`.  For now, just make the `author_id` an `INTEGER`. 
  
-
 ## Creating, Reading, Updating, and Deleting data in our RDB
 
+The library's having a fundraiser! Here's another table we might have in the database:
 
+CREATE TABLE products (
+    id SERIAL primary key,
+    name VARCHAR(255),
+    price numeric NOT NULL DEFAULT 'NaN',
+    quantity integer NOT NULL DEFAULT 0
+)
 
-  <!--price numeric NOT NULL DEFAULT 'NaN',-->
-  <!--quantity integer NOT NULL DEFAULT 0-->
+### Inserting Data into RDB
 
 How do we get data into a table? With `INSERT`!
 
 ```sql
-INSERT INTO books
-  (title, isbn, price, quantity)
+INSERT INTO products
+  (name, price, quantity)
   VALUES
-  ('blue jeans', 50.00, 20);
+  ('bookmark', 0.50, 200);
 ```
 
-
-| `id` | `title` | `publication_year` | `isbn` | `author_id` |
-| :---  | :---  | :---  | :---  | :---  |
-| 1 | The Jungle Book | 1894 | 9788497896696 | 1 |
-| 2 | Alice's Adventures in Wonderland | 1865 | 9781552465707 | 2 |
-| 3 | Rikki-Tikki-Tavi | 1894 | 1484123689 | 1 |
-| 4 | Through the Looking-Glass | 1871 | 9781489500182 | 2 |
-| 5 | The Time Machine |  1895  | 9781423794417 | 3 |
 
 Let's add a few more items to our products
 
 ```sql
-'blue slacks', 62.00, 15
-'plain T-Shirts', 10.00, 75
-'long shorts', 25.00, 10
+'book cover', 2.00, 75
+'book bag', 60.00, 15
+'reading light', 25.00, 10
 ```
 
-That seems great, but how do we see all this data?
+
+### Reading Data from RDB
+
+To retrieve data from inside our database, we use the command `SELECT`.
 
 ```sql
 SELECT * FROM products;
 ```
 
-How would we view only the names of products?
+Let's look at only some attributes of each product.
 
 ```sql
-SELECT name FROM products;
+SELECT name, price FROM products;
 ```
 
-How would we view them all sorted by price?
+We can use `ORDER BY` to sort the selected items.
 
 ```sql
 SELECT name FROM products ORDER BY price;
 ```
 
-How would would we grab just `plain T-Shirts`? 
+The `WHERE` keyword allows us to narrow down our query results. We can grab just the `bookmark` record. 
 
 ```sql
 SELECT * FROM products
-  WHERE name = 'plain T-Shirts';
+  WHERE name = 'bookmark';
 ```
 
-How about only the more expensive products?
-
+We can grab the more expensive items only.
 
 ```sql
 SELECT * FROM products
-  WHERE price > 18.00
+  WHERE price > 20.00
   ORDER BY price;
 ```
 
-So far we've had a great time trying to `SELECT` data from our TABLE.
+We can even use regular expressions to find products with "book" at the start of their `name`s. 
+
+```sql 
+SELECT * FROM products
+  WHERE name LIKE 'book%';
+```
+
+### Updating Simple Data in the RDB
+
+So far we've had a great time using `SELECT` to read data from our TABLE. We can also change data. Here comes our first sale, a bookmark!
 
 ```sql
 UPDATE products
   SET quantity = quantity - 1
-  WHERE name = 'long shorts';
+  WHERE name = 'bookmark';
 ```
 
-We can also change `plain T-Shirts` to `plain T-shirts`
-
+Let's also correct the spelling of `book bag` to `bookbag`.
 
 ```sql
 UPDATE products
-  SET name = 'plain T-shirts'
-  WHERE name = 'plain T-Shirts';
+  SET name = 'bookbag'
+  WHERE name = 'book bag';
 ```
 
-You might wonder why you don't see anything change after you update an entry. If you'd like, you can tell postgres to return the modified record.  It just isn't the standard behavior.
+You might wonder why you don't see anything change after you update an entry. If you'd like, you can tell Postgres to return the modified record.  It just isn't the standard behavior.
 
 ```sql
 UPDATE products
   SET quantity = quantity - 1
-  WHERE name = 'long shorts'
+  WHERE name = 'bookmark'
   RETURNING *;
 ```
 
-Let's remove some of these rows in our `products` table.
+### Deleting Simple Data from an RDB
+
+Let's remove a row in our `products` table. Book covers don't sell that well.
 
 ```sql
 DELETE FROM products
-  WHERE name = 'long shorts'
+  WHERE name = 'book cover'
   RETURNING *;
 ```
 
-You can also `DELETE` everything but the `blue slacks` with the less than or greater than (not equal) operator.
-
+We could also `DELETE` everything but the `bookmark`s with the `<>` (not equal) operator.
 
 ```sql
 DELETE FROM products
-  WHERE name <> 'blue slacks';
+  WHERE name <> 'bookmark';
 ```
 
 You can `DELETE` everything from a table using
@@ -276,14 +284,9 @@ You can `DELETE` everything from a table using
 DELETE FROM products;
 ```
 
-### Challenge
+**Challenge**: Insert four items into the products table.
 
-* Insert four items into the table.
-
-
-
-
-## ALIAS
+### ALIAS
 
 You can make your queries easier to read using an alias. Aliases in SQL use the keyword `AS`.
 
@@ -291,38 +294,36 @@ You can make your queries easier to read using an alias. Aliases in SQL use the 
 ```sql
 SELECT * FROM products
   AS prod  -- alias for the products table
-  WHERE prod.name = 'long shorts';
+  WHERE prod.name = 'bookmarks';
 ```
 
 ```sql
-SELECT name, price AS cost, quantity  -- alias for the price column
+SELECT name, price AS cost, quantity  -- alias for the price column only
   FROM products
-  WHERE prod.name = 'long shorts';
+  WHERE prod.name = 'bookmarks';
 ```
 
 Note also that `--` starts a SQL comment.
 
-## DISTINCT
+### DISTINCT
 
-We can use selection to filter out rows that aren't distinct.
+We can use selection to filter out rows that aren't distinct. First let's add a duplicate bookbag record.
 
 ```sql
 INSERT INTO products
   (name, price, quantity)
   VALUES
-  ('blue jeans', 50.00, 20);
+  ('bookbag', 50.00, 20);
 ```
 
-Try to remove duplicates from selection
+Then we'll select, looking for records with distinct names.  Which of the bookbag records do you think will be selected?
 
 ```sql
 SELECT DISTINCT ON (name) *
   FROM products;
 ```
 
-## Aggregation
-
-### Aggregation methods
+### Aggregation
 
 
 ```sql
@@ -337,206 +338,208 @@ ORDER BY lowest_avaialable_price;
 ```
 
 
-![Joins](https://raw.githubusercontent.com/sf-wdi-18/notes/master/lectures/week-07/day-1-intro-sql/dawn-simple-queries/images/join.png)
+<!--## Joins-->
 
-## Why Are Joins Important
+<!--![Joins](https://raw.githubusercontent.com/sf-wdi-18/notes/master/lectures/week-07/day-1-intro-sql/dawn-simple-queries/images/join.png)-->
 
-Each table in a relational database is considered a relation. All of the table's data is naturally related by single set of attributes defined for it. However, in order to be relational we need to be able to make queries between relations or tables of data.
+<!--### Joins Are Important-->
 
-JOINS are our means of implementing queries that join together data and show results from multiple tables.
+<!--Each table in a relational database is considered a relation. All of the table's data is naturally related by single set of attributes defined for it. However, in order to be relational we need to be able to make queries between relations or tables of data.-->
 
+<!--JOINS are our means of implementing queries that join together data and show results from multiple tables.-->
 
-## Keys
 
-* Primary Key: The primary key of a relational table uniquely identifies each record in the table. This column is automatically assigned a btree index in postgres.
+<!--## Keys-->
 
-* Foreign Key: a foreign key is a field (or collection of fields) in one table that uniquely identifies a row of another table.[1][2][3] **In other words, a foreign key is a column or a combination of columns that is used to establish and enforce a link between the data in two tables.**
+<!--* Primary Key: The primary key of a relational table uniquely identifies each record in the table. This column is automatically assigned a btree index in postgres.-->
 
-![primary and foreign key diagram](https://raw.githubusercontent.com/sf-wdi-18/notes/master/lectures/week-07/day-1-intro-sql/dawn-simple-queries/images/primary_foreign_key.png)
+<!--* Foreign Key: a foreign key is a field (or collection of fields) in one table that uniquely identifies a row of another table.[1][2][3] **In other words, a foreign key is a column or a combination of columns that is used to establish and enforce a link between the data in two tables.**-->
 
+<!--![primary and foreign key diagram](https://raw.githubusercontent.com/sf-wdi-18/notes/master/lectures/week-07/day-1-intro-sql/dawn-simple-queries/images/primary_foreign_key.png)-->
 
-## Example
 
-Let's use a simple foreign key relationship as follows between `people` and `petss` tables.
+<!--## Example-->
 
+<!--Let's set up a relationship between a `people` table and a `pets` table.-->
 
-```sql
-create table people (
-  id serial primary key,
-  name text,
-  age integer
-);
 
-create table pets (
-  id serial primary key,
-  name text,
-  age integer,
-  breed text,
-  people_id integer
-);
+<!--```sql-->
+<!--create table authors (-->
+<!--  id SERIAL primary key,-->
+<!--  name TEXT,-->
+<!--  age integer-->
+<!--);-->
 
-INSERT INTO people ( name, age)
-      VALUES ('Zed', 37);
+<!--create table pets (-->
+<!--  id serial primary key,-->
+<!--  name text,-->
+<!--  age integer,-->
+<!--  breed text,-->
+<!--  people_id integer-->
+<!--);-->
 
-INSERT INTO people ( name, age)
-    VALUES ('Bobby', 7);
+<!--INSERT INTO people ( name, age)-->
+<!--      VALUES ('Zed', 37);-->
 
-INSERT INTO pets (name, breed, age, people_id)
-      VALUES ( 'Fluffy', 'Unicorn', 1000, 1);
+<!--INSERT INTO people ( name, age)-->
+<!--    VALUES ('Bobby', 7);-->
 
-INSERT INTO pets (name, breed, age, people_id)
-      VALUES ('Rocko', 'Dog', 4, 2);
+<!--INSERT INTO pets (name, breed, age, people_id)-->
+<!--      VALUES ( 'Fluffy', 'Unicorn', 1000, 1);-->
 
-INSERT INTO pets (name, breed, age, people_id)
-     VALUES ('Gigantor', 'Robot', 25, 1);
+<!--INSERT INTO pets (name, breed, age, people_id)-->
+<!--      VALUES ('Rocko', 'Dog', 4, 2);-->
 
-INSERT INTO pets (name, breed, age, people_id)
-     VALUES ('Goldy', 'Fish', 1, 2);
-```
+<!--INSERT INTO pets (name, breed, age, people_id)-->
+<!--     VALUES ('Gigantor', 'Robot', 25, 1);-->
 
+<!--INSERT INTO pets (name, breed, age, people_id)-->
+<!--     VALUES ('Goldy', 'Fish', 1, 2);-->
+<!--```-->
 
-Let's try our first joins
 
-```sql
-  SELECT * FROM people
-  INNER JOIN pets
-  ON people.id = pets.people_id;
+<!--Let's try our first joins-->
 
-  SELECT people.name, pets.name from people
-  INNER JOIN pets
-  ON people.id = pets.people_id;
+<!--```sql-->
+<!--  SELECT * FROM people-->
+<!--  INNER JOIN pets-->
+<!--  ON people.id = pets.people_id;-->
 
-```
+<!--  SELECT people.name, pets.name from people-->
+<!--  INNER JOIN pets-->
+<!--  ON people.id = pets.people_id;-->
 
-**Other Types of Joins**  
+<!--```-->
 
+<!--**Other Types of Joins**  -->
 
-Full Outer Join  
 
-```sql
-SELECT * FROM people
-  FULL OUTER JOIN pets
-  ON people.id = pets.people_id;
-```
+<!--Full Outer Join  -->
 
-Left Outer Join  
+<!--```sql-->
+<!--SELECT * FROM people-->
+<!--  FULL OUTER JOIN pets-->
+<!--  ON people.id = pets.people_id;-->
+<!--```-->
 
-```sql
+<!--Left Outer Join  -->
 
-SELECT * FROM people
-  LEFT OUTER JOIN pets
-  ON people.id = pets.people_id;
+<!--```sql-->
 
-```
+<!--SELECT * FROM people-->
+<!--  LEFT OUTER JOIN pets-->
+<!--  ON people.id = pets.people_id;-->
 
-Right Outer Join  
+<!--```-->
 
-```sql
+<!--Right Outer Join  -->
 
-SELECT * FROM people
-  RIGHT OUTER JOIN pets
-  ON people.id = pets.people_id;
+<!--```sql-->
 
-```  
+<!--SELECT * FROM people-->
+<!--  RIGHT OUTER JOIN pets-->
+<!--  ON people.id = pets.people_id;-->
 
-Left Outer Join with Where  
+<!--```  -->
 
-```sql
-SELECT * FROM people
-  LEFT OUTER JOIN pets
-  ON people.id = pets.people_id
-  WHERE pets.breed = 'Unicorn';
-```
+<!--Left Outer Join with Where  -->
 
-Cross Join  
+<!--```sql-->
+<!--SELECT * FROM people-->
+<!--  LEFT OUTER JOIN pets-->
+<!--  ON people.id = pets.people_id-->
+<!--  WHERE pets.breed = 'Unicorn';-->
+<!--```-->
 
-```sql
-SELECT * FROM people
-  CROSS JOIN pets
-  WHERE people.id = 1;
-```
+<!--Cross Join  -->
 
-# Intro SQL
-## Exercises With PG
+<!--```sql-->
+<!--SELECT * FROM people-->
+<!--  CROSS JOIN pets-->
+<!--  WHERE people.id = 1;-->
+<!--```-->
 
-So far you've been interacting directly with your database using `psql`. However, we want to gain understanding to how Ruby libraries can manipulate and model SQL interactions at the application level. Thus we will continue exploring SQL using the `pg` gem.
+<!--# Intro SQL-->
+<!--## Exercises With PG-->
 
-```bash
-gem install pg
-```
+<!--So far you've been interacting directly with your database using `psql`. However, we want to gain understanding to how Ruby libraries can manipulate and model SQL interactions at the application level. Thus we will continue exploring SQL using the `pg` gem.-->
 
-Then create a `shopper_app` using the `createdb` command from earlier.
+<!--```bash-->
+<!--gem install pg-->
+<!--```-->
 
-## Exercise 1: Simple Connection
+<!--Then create a `shopper_app` using the `createdb` command from earlier.-->
 
-Try the following, copy it into an `example_1.rb`
+<!--## Exercise 1: Simple Connection-->
 
-```ruby
-require 'pg'
+<!--Try the following, copy it into an `example_1.rb`-->
 
-conn = PG.connect(dbname: "shopper_app")
+<!--```ruby-->
+<!--require 'pg'-->
 
-conn.exec("CREATE TABLE shopper (
-              id serial primary key,
-              first_name varchar(255),
-              last_name varchar(255),
-              email text,
-              address text)")
+<!--conn = PG.connect(dbname: "shopper_app")-->
 
-```
+<!--conn.exec("CREATE TABLE shopper (-->
+<!--              id serial primary key,-->
+<!--              first_name varchar(255),-->
+<!--              last_name varchar(255),-->
+<!--              email text,-->
+<!--              address text)")-->
 
-* Run the file.
-* Run `psql shopper_app` and verify the table exists
+<!--```-->
 
-```
-select * from shopper;
-```
+<!--* Run the file.-->
+<!--* Run `psql shopper_app` and verify the table exists-->
 
-* What happens when you try to run the second time?
+<!--```-->
+<!--select * from shopper;-->
+<!--```-->
 
-## Exercise 2: Alter Table
+<!--* What happens when you try to run the second time?-->
 
-What's wrong with above table name? Let's alter it to be correct. Copy the code from the above exercise into a new file `example_2.rb` and erase the exec query and write a query to `ALTER` and `RENAME` the table to `shoppers`.
+<!--## Exercise 2: Alter Table-->
 
-## Exercise 3: Inserting
+<!--What's wrong with above table name? Let's alter it to be correct. Copy the code from the above exercise into a new file `example_2.rb` and erase the exec query and write a query to `ALTER` and `RENAME` the table to `shoppers`.-->
 
-Create file called `example_3.rb` and use `pg` to insert three new people into the `shoppers` table.
+<!--## Exercise 3: Inserting-->
 
-Try doing it the way we did in class and then try it using the following format.
+<!--Create file called `example_3.rb` and use `pg` to insert three new people into the `shoppers` table.-->
 
-```ruby
-conn.exec("INSERT INTO shoppers
-            (first_name, last_name, email, address)
-            VALUES
-            ($1, $2, $3, $4)",
-            ["zoe", "doe", "zoe@gmail.com", "1234 st"]);
+<!--Try doing it the way we did in class and then try it using the following format.-->
 
-```
+<!--```ruby-->
+<!--conn.exec("INSERT INTO shoppers-->
+<!--            (first_name, last_name, email, address)-->
+<!--            VALUES-->
+<!--            ($1, $2, $3, $4)",-->
+<!--            ["zoe", "doe", "zoe@gmail.com", "1234 st"]);-->
 
-The `($1, $2, $3, $4)` in the insertion represents the first, second, third, and fourth items in the array passed to `exec`.
+<!--```-->
 
-Use `psql` to verify they exist.
+<!--The `($1, $2, $3, $4)` in the insertion represents the first, second, third, and fourth items in the array passed to `exec`.-->
 
-## Exercise 4: Fake Data
+<!--Use `psql` to verify they exist.-->
 
-Writing a bunch of fake data is tedious and time consuming. Let's use a gem to help use create fake data.
+<!--## Exercise 4: Fake Data-->
 
-```ruby
-gem install ffaker
-```
+<!--Writing a bunch of fake data is tedious and time consuming. Let's use a gem to help use create fake data.-->
 
-Then let's try using it in the REPL before we go writing code with it.
+<!--```ruby-->
+<!--gem install ffaker-->
+<!--```-->
 
-```
-> require "ffaker"
-> FFaker::Name.first_name
-# => 'Zoe'
-> FFaker::Name.last_name
-# => 'Doe'
-> FFaker::Internet.email
-# => 'ethyl@roberts.us'
-```
+<!--Then let's try using it in the REPL before we go writing code with it.-->
 
-## Exercise 5: Fake Create
+<!--```-->
+<!--> require "ffaker"-->
+<!--> FFaker::Name.first_name-->
+<!--# => 'Zoe'-->
+<!--> FFaker::Name.last_name-->
+<!--# => 'Doe'-->
+<!--> FFaker::Internet.email-->
+<!--# => 'ethyl@roberts.us'-->
+<!--```-->
 
-Use the `ffaker` gem to insert three new entries into the db.
+<!--## Exercise 5: Fake Create-->
+
+<!--Use the `ffaker` gem to insert three new entries into the db.-->
