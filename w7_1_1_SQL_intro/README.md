@@ -76,9 +76,9 @@ SQL, Structured Query Language, is a specialized language used to create, manipu
 
 Let's create our first relational database using the Terminal.
     
-    ```bash
-    createdb practice
-    ```
+  ```bash
+  createdb practice
+  ```
 
 Then let's connect to it by name so we can practice our SQL.
 
@@ -96,16 +96,16 @@ In your Terminal, you should see a prompt like the following:
 
 To save your progress on the in-class examples and the challenges, I suggest creating files that store your SQL commands. To run a `.sql` file, use the following command in your terminal:
 
-    ```bash
-    psql -f <file_name>
-    ```
+  ```bash
+  psql -f <file_name>
+  ```
     
 You can also create (and destroy) tables from within a SQL file. At the top of your SQL file, I suggest you write the following:
 
-    ```sql
-    DROP DATABASE IF EXISTS database_name;
-    CREATE DATABASE database_name;
-    ```
+  ```sql
+  DROP DATABASE IF EXISTS database_name;
+  CREATE DATABASE database_name;
+  ```
 
 ### Our First Table
 
@@ -156,20 +156,19 @@ Let's `DROP` our table!
   DROP TABLE authors;
   ```
   
-### Basic Challenges
-
-1. Create a Books table based on the printed table above. It should have attributes for `id`, `title`, `pub_year`, `isbn`, and `author_id`.  For now, just make the `author_id` an `INTEGER`. 
  
 ## Creating, Reading, Updating, and Deleting data in our RDB
 
 The library's having a fundraiser! Here's another table we might have in the database:
 
+```sql
 CREATE TABLE products (
     id SERIAL primary key,
     name VARCHAR(255),
     price numeric NOT NULL DEFAULT 'NaN',
     quantity integer NOT NULL DEFAULT 0
 )
+```
 
 ### Inserting Data into RDB
 
@@ -183,14 +182,13 @@ INSERT INTO products
 ```
 
 
-Let's add a few more items to our products
+Let's add a few more items to our products table
 
 ```sql
 'book cover', 2.00, 75
 'book bag', 60.00, 15
 'reading light', 25.00, 10
 ```
-
 
 ### Reading Data from RDB
 
@@ -307,13 +305,14 @@ Note also that `--` starts a SQL comment.
 
 ### DISTINCT
 
-We can use selection to filter out rows that aren't distinct. First let's add a duplicate bookbag record.
+We can use selection to filter out rows that aren't distinct. First, let's add  duplicate bookbag records.
 
 ```sql
 INSERT INTO products
   (name, price, quantity)
   VALUES
-  ('bookbag', 50.00, 20);
+  ('bookbag', 50.00, 20),
+  ('bookbag', 65.00, 10);
 ```
 
 Then we'll select, looking for records with distinct names.  Which of the bookbag records do you think will be selected?
@@ -327,7 +326,7 @@ SELECT DISTINCT ON (name) *
 
 
 ```sql
-SELECT SUM(price*quantity) AS total_inventory_value from products;
+SELECT SUM(quantity) AS total_inventory_count from products;
 ```
 
 ```sql
@@ -336,6 +335,26 @@ FROM products
 GROUP BY name
 ORDER BY lowest_avaialable_price;
 ```
+
+
+### Basic Challenges
+
+1. Use SQL aggregators to get the total value of the inventory, calculated as the sum of the price*quantity for each item.
+
+1. Create a books table based on the printed table above. It should have attributes for `id`, `title`, `pub_year`, `isbn`, and `author_id`.  For now, just make the `author_id` an `INTEGER`. 
+
+1. Add the classic children's books from earlier in this readme into your books table.
+
+1. The library wants to start selling off old books.  Add a `book_id` attribute to the products table so that the library can store books as inventory.
+
+1. Insert the books from your books table into your products table. Make up a price and quantity for them.
+
+### Stretch Challenges
+
+1. Find the inventory value of the books by Lewis Caroll.
+
+1. Find the inventory value of the books for each author, and sort the records by inventory value, in descending order.
+
 
 
 <!--## Joins-->
