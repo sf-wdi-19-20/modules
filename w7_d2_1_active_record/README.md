@@ -1,15 +1,13 @@
 # Active Record
 | Objective                                                                     |  
 | :-------------------                                                          |  
-| Create one-to-many and many-to-many relationships in rails. |  
-| Modify migrations to add foreign keys to tables             |  
-| Create a join table                                         |  
-| Create model instances when they have associations.         |  
+| Write kick ass queries |  
+| Modify migrations to add columns to tables|  
 
 ---
 
 ## Think, Pair, Share
-Convert these Engligh statements into queries. Consult the [Rails docs]('http://guides.rubyonrails.org/active_record_querying.html') as needed.
+Convert these English statements into queries. Consult the [Rails docs]('http://guides.rubyonrails.org/active_record_querying.html') as needed.
 
 1) Give me the all users with the last name "Hendrickson".
 
@@ -38,10 +36,12 @@ Find the posts with ids from 100 to 105.
 
 Add a comments column to the posts table that will display the number of comments on a given post and update the database. HINT: `rails g migration AddCommentsToPosts comments:integer`
 
-Use the console to iterate over all the posts, and update the number of comments to be a random number between 1 and 100. HINT: `random(1..100)` HINT2: Use the `find_each` method because it will retrieve 1000 records at a time and will not overwhelm memory. 
+Use the console to iterate over all the posts, and update the number of comments to be a random number between 1 and 100. HINT: `random(1..100)` HINT2: Use the `find_each` method because it will retrieve 1000 records at a time and will not overwhelm memory.
 
 Select all posts with more than 97 comments.
 
 Order the posts from the posts with the least comments to the posts with the most comments.
 
 Select the first 25 posts starting at the 500th post.
+
+Sort the posts by the number of comments each post has. HINT: `group`
