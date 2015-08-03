@@ -17,31 +17,41 @@ Convert these English statements into queries. Consult the [Rails docs]('http://
 
 4) Give me all the articles without duplicates. HINT: `uniq`
 
+
+
 ## Challenges
-Create a new rails project called database_queries and then create a Post MVC with title and body attributes using scaffolding.
+1. Create a new rails project called database_queries and then create a Post MVC with title and body attributes using scaffolding.
 
-Create the posts table in the database.
+2. Migrate the posts table to the database.
 
-Create 3,000 posts and indicate the post number in the title and body (i.e. "this is the title for post 567" and "this is the body for post 567"). HINT: `times` method
+3. Open your rails console. Create 3,000 posts and indicate the post number in the title and body (i.e. "this is the title for post 567" and "this is the body for post 567"). HINT: `times` method
 
-Use Rails console to find the post with id = 489.
+4. Run `rake db:seed` to populate posts.
 
-Find the last post.
+5. Use Rails console to find the post with id = 489.
 
-Find the first post.
+6. Find the last post.
 
-Find the posts with ids of 478 and 1134.
+7. Find the first post.
 
-Find the posts with ids from 100 to 105.
+8. Find the posts with ids of 478 and 1134.
 
-Add a comments column to the posts table that will display the number of comments on a given post and update the database. HINT: `rails g migration AddCommentsToPosts comments:integer`
+9. Find the posts with ids from 100 to 105.
 
-Use the console to iterate over all the posts, and update the number of comments to be a random number between 1 and 100. HINT: `random(1..100)` HINT2: Use the `find_each` method because it will retrieve 1000 records at a time and will not overwhelm memory.
+10. Add a comments column to the posts table that will display the number of comments on a given post and update the database. HINT: `rails g migration AddCommentsToPosts comments:integer`
 
-Select all posts with more than 97 comments.
+11. Check your `schema.rb` file to make sure `comments` was added to the table.
 
-Order the posts from the posts with the least comments to the posts with the most comments.
+12. Use the console to iterate over all the posts, and update the number of comments to be a random number between 1 and 100. HINT: `random(1..100)` HINT2: Use the `find_each` method because it will retrieve 1000 records at a time and will not overwhelm memory.
 
-Select the first 25 posts starting at the 500th post.
+13. Select all posts with more than 97 comments.
 
-Sort the posts by the number of comments each post has. HINT: `group`
+14. Select all posts with 45 comments.
+
+15. Order the posts with the oldest posts on top.
+
+16. Order the posts from the posts with the least comments to the posts with the most comments.
+
+17. Select the first 25 posts starting at the 500th post.
+
+18. Sort the posts by the number of comments each post has. HINT: `group`
