@@ -351,9 +351,10 @@ ORDER BY lowest_avaialable_price;
 
 ### Stretch Challenges
 
+1. Find the inventory value of each book, and sort the records by inventory value, in descending order.
+
 1. Find the inventory value of the books by Lewis Caroll.
 
-1. Find the inventory value of the books for each author, and sort the records by inventory value, in descending order.
 
 
 
