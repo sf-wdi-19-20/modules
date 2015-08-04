@@ -8,7 +8,7 @@
 ---
 
 ## Think, Pair, Share
-Convert these English statements into queries. Consult the [Rails docs]('http://guides.rubyonrails.org/active_record_querying.html') as needed.
+Convert these English statements into queries. Consult the [Rails docs](http://guides.rubyonrails.org/active_record_querying.html) as needed.
 
 1. Give me the all users with the last name "Hendrickson".
 
