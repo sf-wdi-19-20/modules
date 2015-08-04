@@ -10,11 +10,12 @@
 ## Challenges
 ### Queries
 1. =>
-  ```
-  $ rails new database_queries
-  $ cd database_queries
-  $ rails g model Post title:string body:text
-  ```
+
+    ```
+    $ rails new database_queries
+    $ cd database_queries
+    $ rails g model Post title:string body:text
+    ```
 2. `$ rake db:migrate`
 3. rails c
     ```ruby
