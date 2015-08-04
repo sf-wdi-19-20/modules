@@ -10,12 +10,12 @@
 ## Challenges
 ### Queries
 1. =>
-  ```console
+  ```ruby
   $ rails new database_queries
   $ cd database_queries
   $ rails g model Post title:string body:text
   ```
-2. `rake db:migrate`
+2. `$ rake db:migrate`
 3. =>
   ```ruby
   3000.times do |counter|
