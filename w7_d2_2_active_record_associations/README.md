@@ -325,6 +325,7 @@ rails g migration AddAgeToOwner age:integer
 
 # never try to create a migration file yourself through the file system! it's really hard to get the name right!
 
+# -- EITHER WAY --
 ### whether we're creating a new model or updating an existing one, we can manually edit our models and migrations in sublime
 # update associations in model --> this affects model interface
 # update foreign keys in migrations --> this affects database tables
