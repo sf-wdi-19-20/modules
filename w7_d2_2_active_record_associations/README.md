@@ -33,7 +33,7 @@
 
   ```ruby
   #
-  # owner.rb
+  # app/models/owner.rb
   #
   class Owner < ActiveRecord::Base
     has_many :pets
@@ -42,7 +42,7 @@
 
   ```ruby
   #
-  # pet.rb
+  # app/models/pet.rb
   #
   class Pet < ActiveRecord::Base
     belongs_to :owner
@@ -56,76 +56,100 @@
     * "One owner has many pets"
     * "A pet belongs to one owner"
 
-Now, as mentioned, we have to add a foreign key in our migration, so in our pets migration file we should add:
+3. Add a foreign key to our pets migration:
 
-`t.integer :owner_id`
+  ```ruby
+  #
+  # db/migrate/20150804001429_create_pets.rb
+  #
+  class CreatePets < ActiveRecord::Migration
 
-But wait, we could also do something more _rail-sy_ and say  
+    def change
+      create_table :pets do |t|
+        t.string :name
+        t.timestamps
 
-`t.references :owner`
+        # add this line
+        t.integer :owner_id
 
-This makes the association a bit more semantic and readable and has a few bonuses:
+        # OR this line
+        t.references :owner
 
-  1. It defines the name of the foreign key column (in this case, `owner_id`) for us.
-  2. It adds a **foreign key constraint** which ensures **referential data integrity**  in our Postgresql database.
+        # OR... this line
+        t.belongs_to :owner
 
-**But wait, there's more...**
+        # but NOT all three!
+      end
+    end
 
-We can actually get even more semantic and _rail-sy_ and say:
+  end
+  ```
 
-`t.belongs_to :owner`
+  **Options for adding a foreign key:**
+  * `t.integer`: adds an integer column to the table for the foreign key
+  * `t.references`: more *rails-y* and semantic with a few benefits:
+    * Defines the name of the foreign key column (in this case, `owner_id`) for us
+    * Adds a **foreign key constraint** which ensures **referential data integrity**  in our Postgres database
+  * `t.belongs_to`: even more *rails-y* and semantic, with the same functionality as `t.references`
 
-This will do the same thing as `t.references`, but it has the added benefit of being super semantic for anyone reading your migrations later on.
+### Using Our Associations
 
-### Wading in Deeper: Using our Associations
+1. Create our database tables by running our migrations from the terminal. (**Note:** Before migrating, crete your database if you haven't already by running `rake db:create`)
 
-Before we can use our associations, we have to set up our database tables. Let's all run:
+  ```
+  $ rake db:migrate
+  ```
 
-```console
-rake db:migrate
+2. Still in the terminal, enter the rails console (`rails c`) to create and associate data!
+
+  ```ruby
+  Pet.count
+  Owner.count
+  fido = Pet.create(name: "Fido")
+  lassie = Pet.create(name: "Lassie")
+  nathan = Owner.create(name: "Nathan")
+  nathan.pets
+  fido.owner
+  nathan.pets << fido # makes Fido one of Nathan's pets
+  nathan.pets << lassie # makes Lassie another one of Nathan's pets
+  nathan.pets.size
+  nathan.pets.map(&:name)
+  nathan.pets.each do |pet| puts "My pet is named #{pet.name}!" end
+  fido.owner
+
+  # What will be returned when we do this?
+  fido.owner.name
+  ```
+
+  **Note:** We just saw that in Rails, we can associate two model **instances** together using the `<<` operator.
+
+#### Wait!!! What if I forget to add a foreign key before running `rake db:migrate`?
+
+If you accidentally run `rake db:migrate` before adding a foreign key to the table's migration, it's ok. There's no need to panic. You can always fix this by creating a new migration:
+
+```
+$ rails g migration AddOwnerIdToPets
 ```
 
-Now, let's jump into our rails console by typing `rails c` at a command prompt, and check out how these new associations can help us define relationships between models:
+Then modify the migration to include the following:
 
 ```ruby
-Pet.count
-Owner.count
-fido = Pet.create(name: "Fido")
-lassie = Pet.create(name: "Lassie")
-nathan = Owner.create(name: "nathan")
-nathan.pets
-fido.owner
-nathan.pets << fido # Makes "fido" one of my pets
-nathan.pets << lassie # Makes "lassie" another one of my pets
-nathan.pets.size
-nathan.pets.map(&:name)
-nathan.pets.each {|x| puts "My pet is named #{x.name}!"}
-fido.owner
+#
+# db/migrate/20150804010921_add_owner_id_to_pets.rb
+#
+class AddOwnerIdToPets < ActiveRecord::Migration
 
-# What's going to be returned when we do this?
-fido.owner.name
-```
+  change_table :pets do |t|
+    # only add ONE OF THESE THREE to your new migration
+    t.integer :owner_id
 
-Remember: We just saw that in Rails, we can associate two model **instances** together using the `<<` operator.
+    # OR...
+    t.references :owner
 
-#### Wait!!!! What if I forget to add a foreign key before I first run `rake db:migrate`?
+    # OR...
+    t.belongs_to :owner
+  end
 
-If you were to make the mistake of running `rake db:migrate` before adding a foreign key to the table's migration, it's ok. There's no need to panic. You can always fix this by creating a new migration...
-
-```console
-rails generate migration NameOfMigrationHere
-```
-
-...and then modifying it to include the following:
-
-```ruby
-change_table :pets do |t|
-  # You ONLY need to add ONE OF THESE THREE to your new migration
-  t.integer :owner_id
-  # OR...
-  t.references :owner
-  # OR...
-  t.belongs_to :owner
 end
 ```
 
