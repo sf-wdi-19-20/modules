@@ -1,57 +1,60 @@
 # ActiveRecord Associations
-| Objective                                                                     |  
-| :-------------------                                                          |  
-| Understand how to create one-to-many and many-to-many relationships in rails. |  
-| Understand how to modify migrations to add foreign keys to tables             |  
-| Understand how to create a join table                                         |  
-| Understand how to create model instances when they have associations.         |  
+
+| Objectives |
+| :--- |
+| Create one-to-many and many-to-many relationships in Rails |
+|  Modify migrations to add foreign keys to tables |
+| Create a join table for a many-to-many relationship |
+| Create model instances with associations |
 
 ## Associations: Relationships between Models
 
-| Relationship type | Abbreviation            | Description                                                       | Example                                                                                        |
-| :---------------  | :---------------------- | ------------                                                      | ------------                                                                                   |
-| One-to-One        | 1:1                     | Parent model is associated with one child                         | One driver has one driver's license.                                                           |
-| One-to-Many       | 1:N                     | Parent model is associated with many children from another model  | One owner `has_many` pets.                                                                     |
-| Many-to-Many      | N:N                     | Two models. Both can be associated with many of the other.        | Libraries and books. One library can have many books, while one book can be in many libraries. |
-
-
-#### Active Learning:
-
-Before we move into the actual syntax, let's work together for 10 minutes to come up with some examples of both one-to-one and one-to-many relationships.
+| Relationship Type | Abbreviation | Description | Example |
+| :--- | :--- | :--- | :--- |
+| One-to-Many | 1:N | Parent model is associated with many children from another model | One author can have many books. |
+| Many-to-Many | N:N | Two models that can both be associated with many of the other. | Libraries and books. One library can have many books, while one book can be in many libraries. |
 
 ## One to many (1:N) Relationship
 
-__Example__:
-One owner `has_many` pets and...
-A pet `belongs_to` one owner (this model will have a foreign key [FK] `owner_id`)
+**Example:** One owner `has_many` pets and a pet `belongs_to` one owner (our `Pet` model will have a foreign key (FK) `owner_id`)
 
-**Always remember!** : Whenever there is a `belongs_to` in the model, there should be a _FK in the matching migration_!
+**Always remember!** Whenever there is a `belongs_to` in the model, there should be a *FK in the matching migration!*
 
-### So to set this up, we'll need two models:
+### Set Up
 
-```console
-rails generate model Pet name:string
-rails generate model Owner name:string
-```
+1. In the terminal, from the root of your Rails app, generate two models, `Owner` and `Pet`:
 
-**Then, we'll need to add the following to our models:**
+  ```
+  $ rails g model Owner name:string
+  $ rails g model Pet name:string
+  ```
 
-```ruby
-class Owner < ActiveRecord::Base
+2. Define the relationship in both models:
+
+  ```ruby
+  #
+  # owner.rb
+  #
+  class Owner < ActiveRecord::Base
     has_many :pets
-end
+  end
+  ```
 
-class Pet < ActiveRecord::Base
+  ```ruby
+  #
+  # pet.rb
+  #
+  class Pet < ActiveRecord::Base
     belongs_to :owner
-end
-```
+  end
+  ```
 
-Note that in this case, `belongs_to` uses the singular form of the class name (`:owner`), while `has_many` uses the pluralized form (`:pets`).
+  **Note:** `belongs_to` uses the singular form of the class name (`:owner`), while `has_many` uses the pluralized form (`:pets`).
 
-But if you think about it, this is exactly how you'd want to say this in plain English. For example, if we were just discussing the relationship between pets and owners, we'd say:
+  If you think about it, this is exactly how you'd want to describe the relationship in plain English. For example, if we were discussing the relationship between pets and owners, we'd say:
 
-  - "One owner has many pets"
-  - "A pet belongs to an owner"
+    * "One owner has many pets"
+    * "A pet belongs to one owner"
 
 Now, as mentioned, we have to add a foreign key in our migration, so in our pets migration file we should add:
 
