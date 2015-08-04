@@ -9,10 +9,12 @@
 
 ## Challenges
 ### Queries
-1. ```console
+1.
+```console
 $ rails new database_queries
 $ cd database_queries
-$ rails g model Post title:string body:text```
+$ rails g model Post title:string body:text
+```
 
 2. ```rake db:migrate```
 
