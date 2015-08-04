@@ -9,7 +9,7 @@
 
 ## Challenges
 ### Queries
-1.
+1. 
 ```console
 $ rails new database_queries
 $ cd database_queries
