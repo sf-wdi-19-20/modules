@@ -309,19 +309,24 @@ cd my_app
 # create the database
 rake db:create
 
-# <<< BEGIN LOOP >>>
+# REPEAT THESE TASKS FOR EVERY CHANGE TO YOUR DATABASE
+# <<< BEGIN WORKFLOW LOOP >>>
 
-# auto-generate a new model AND a new migration
+# -- IF YOU NEED A NEW MODEL --
+# auto-generate a new model (AND automatically creates a new migration)
 rails g model Pet name:string
 rails g model Owner name:string
 
-# --- OR ---
+# --- OTHERWISE ---
 
 # if you only need to change fields in an *existing* model,
 # you can just generate a new migration
 rails g migration AddAgeToOwner age:integer
 
-## either way, manually edit our models and migrations in sublime
+# never try to create a migration file yourself through the file system! it's really hard to get the name right!
+
+# -- EITHER WAY --
+### whether we're creating a new model or updating an existing one, we can manually edit our models and migrations in sublime
 # update associations in model --> this affects model interface
 # update foreign keys in migrations --> this affects database tables
 
