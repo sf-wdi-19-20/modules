@@ -1,32 +1,51 @@
-# In Class Exercise 1
-## One-to-Many Associations
+# One-to-Many Challenges
 
-Imagine we're creating an online order system for an e-commerce site. A customer loads up their shopping cart with _items_ and a new _order_ is created when they check out. So we know we'll have an `order` model and an `item` model (don't worry about the customer model for now).
+Imagine we're creating an online order system for an e-commerce site. A customer loads up their shopping cart with *items* and a new *order* is created when they check out. So we know we'll have an `Order` model and an `Item` model (don't worry about the customer model for now).
 
-Here's a start to what our models/attributes might look like:
-Order: placed_on date...
-Item: Name, description, price...
+Here's what our models' attributes might look like:
+  * `Order`: created_at
+  * `Item`: name, description, price
 
-Be sure to think about what the relationship between _Orders_ and _Items_ should be.
+Think about what the relationship between `orders` and `items` should be.
 
-If the relationship is modeled correctly, you'll be able to assign a variable `o = Order.create` and then type `o.items` without getting back an error. You should also be able ask an individual order item what order it belongs to using `item.order`.
+## Your Task
 
-Once you've finished creating the models:
-  1. Create 5 items
-  2. Create 2 Orders
-  3. Assign 3 items to the order with id = 1, and 2 items to order with id = 2.
-  4. Play around with some of the array methods you know (each, map, select, size) for each order
+Create models and migrations for `orders` and `items` and set up the proper relationship to associate data between the two tables.
 
-#### Exercise Bonus
+If the relationship is modeled correctly, you'll be able to test your models in the Rails console. You should be able to do the following without throwing an error:
 
-Try to select only the items in an order that are less than a certain price.
+```ruby
+# create new order
+o = Order.create
+
+# list order's items
+o.items
+
+# create new items
+i = Item.create()
+
+# return item's order
+i.order
+```
+
+**Once you've finished creating the models:**
+  1. Create five items
+  2. Create two orders
+  3. Assign three items to the order with id = 1 and two items to the order with id = 2
+  4. For one order, iterate through each of its items and print the item details to the console.
+  4. Map each item in your database to its name.
+
+## Stretch Challenge
+
+Select only the items in an order that are less than a certain price.
 
 You'll need to start with something like this:
-```ruby
-someorder.items.select { ... } # Your code to select goes between the brackets.
 
-# Note this could also be written like this
-someorder.items.select do
-    # Code to select specific items goes here
+```ruby
+some_order.items.select { ... } # your code to select goes between the brackets
+
+# your select query could also be written like this
+some_order.items.select do
+  # your code to select specific items goes here
 end
 ```
