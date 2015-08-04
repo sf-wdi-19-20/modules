@@ -351,5 +351,7 @@ These are for your references and are not used nearly as often as `has_many` and
 
 ## Useful Docs
 
-  * <a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_blank">Associations Docs</a>
+  * [Associations Rails Guide](http://guides.rubyonrails.org/association_basics.html)
+  * [Migrations Rails Guide](http://edgeguides.rubyonrails.org/active_record_migrations.html) 
+  * <a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_blank">Associations Documentation</a>
   * <a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html#method-i-column" target="_blank">Model Field Data Types</a>
