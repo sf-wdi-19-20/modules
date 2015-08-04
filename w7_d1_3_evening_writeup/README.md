@@ -4,7 +4,7 @@ Monday, August 3, 2015
 
 ## Lab
 
-Continue the continue [Apartment Lab](https://github.com/sf-wdi-19-20/w7_apartment_lab_sql) you began working on this afternoon.  
+Continue the [Apartment Lab](https://github.com/sf-wdi-19-20/w7_apartment_lab_sql) you began working on this afternoon.  
 
 References:
 
