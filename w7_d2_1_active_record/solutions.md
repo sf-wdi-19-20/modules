@@ -9,7 +9,7 @@
 
 ## Challenges
 ### Queries
-1. =>
+1.
 
     ```
     $ rails new database_queries
@@ -18,6 +18,7 @@
     ```
 2. `$ rake db:migrate`
 3. rails c
+
     ```ruby
     3000.times do |counter|
         Post.create(:title => "This is the title for post #{counter + 1}", :body => "This is the body for post #{counter + 1}")
