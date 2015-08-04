@@ -48,12 +48,13 @@
 
 12. `Post.where("comments > ?", 97)`
 
-13. =>
-  ```ruby
-  Post.where(:comments => 45)
-  # OR
-  Post.where("comments = ?", 45)
-  ```
+13.
+
+    ```ruby
+    Post.where(:comments => 45)
+    # OR
+    Post.where("comments = ?", 45)
+    ```
 
 14. `Post.order("created_at DESC")`
 
