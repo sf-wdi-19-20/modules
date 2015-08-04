@@ -4,16 +4,15 @@
 
 1. `User.where(last_name: "Hendrickson")`
 2. `Aritcle.where(id: 54..67)` <-- exclusive of 67, three dots (...) is inclusive
-3. Answer.where("upvotes > ?", 100)
-4. Article.all
+3. `Answer.where("upvotes > ?", 100)`
+4. `Article.all`
 
 ## Challenges
 ### Queries
 1. ```console
 $ rails new database_queries
 $ cd database_queries
-$ rails g model Post title:string body:text
-```
+$ rails g model Post title:string body:text```
 
 2. ```rake db:migrate```
 
