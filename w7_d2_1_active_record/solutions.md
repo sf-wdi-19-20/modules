@@ -27,7 +27,7 @@
 4. `Post.find(489)`
 5. `Post.last`
 6. `Post.first`
-7.
+7. 
 
     ```ruby
     Post.find(478, 1134)
