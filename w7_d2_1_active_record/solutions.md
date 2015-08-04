@@ -27,12 +27,13 @@
 4. `Post.find(489)`
 5. `Post.last`
 6. `Post.first`
-7. =>
-  ```ruby
-  Post.find(478, 1134)
-  # OR
-  Post.find([478, 1134])
-  ```
+7. 
+
+    ```ruby
+    Post.find(478, 1134)
+    # OR
+    Post.find([478, 1134])
+    ```
 8. `Post.find((100..105).to_a)`
 9. `rails g migration AddCommentsToPosts comments:integer`
 10. n/a
