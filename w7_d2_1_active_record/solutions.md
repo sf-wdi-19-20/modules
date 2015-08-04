@@ -10,7 +10,7 @@
 ## Challenges
 ### Queries
 1. =>
-  ```ruby
+  ```
   $ rails new database_queries
   $ cd database_queries
   $ rails g model Post title:string body:text
