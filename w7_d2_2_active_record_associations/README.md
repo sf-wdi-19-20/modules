@@ -7,14 +7,14 @@
 | Create a join table for a many-to-many relationship |
 | Create model instances with associations |
 
-## Associations: Relationships between Models
+## Associations: Relationships Between Models
 
 | Relationship Type | Abbreviation | Description | Example |
 | :--- | :--- | :--- | :--- |
 | One-to-Many | 1:N | Parent model is associated with many children from another model | One author can have many books. |
 | Many-to-Many | N:N | Two models that can both be associated with many of the other. | Libraries and books. One library can have many books, while one book can be in many libraries. |
 
-## One to many (1:N) Relationship
+## One-To-Many (1:N) Relationship
 
 **Example:** One owner `has_many` pets and a pet `belongs_to` one owner (our `Pet` model will have a foreign key (FK) `owner_id`)
 
@@ -56,7 +56,7 @@
     * "One owner has many pets"
     * "A pet belongs to one owner"
 
-3. Add a foreign key to our pets migration:
+3. Add a foreign key to the pets migration:
 
   ```ruby
   #
@@ -92,9 +92,9 @@
     * Adds a **foreign key constraint** which ensures **referential data integrity**  in our Postgres database
   * `t.belongs_to`: even more *rails-y* and semantic, with the same functionality as `t.references`
 
-### Using Our Associations
+### Using Your Associations
 
-1. Create our database tables by running our migrations from the terminal. (**Note:** Before migrating, crete your database if you haven't already by running `rake db:create`)
+1. Create your database tables by running your migrations from the terminal. (**Note:** Before migrating, crete your database if you haven't already by running `rake db:create`)
 
   ```
   $ rake db:migrate
@@ -153,217 +153,203 @@ class AddOwnerIdToPets < ActiveRecord::Migration
 end
 ```
 
-### Class Exercise 1
+## Challenges, Part 1: One-To-Many
 
-Let's jump over to [in-class exercise #1](associations_1toN_exercise.md) where you'll all work in groups on a solution.
+Jump over to the [One-To-Many Challenges](one_to_many_challenges.md) where you'll work in pairs on a solution.
 
-## Many to Many (N:N) with 'through'
+## Many-To-Many (N:N) with 'through'
 
-Let's think about the example of students and courses. A student can take many courses and a course will have many students. If you think back to our SQL discussions, you'll recall that we used a _join_ table to create this kind of association.
+**Example:** A student `has_many` courses and a course `has_many` students. Thinking back to our SQL discussions, recall that we used a *join* table to create this kind of association.
 
-### A Typical 'Join' Table
+A *join* table has two different foreign keys, one for each model it is associating. In the example below, 3 students have been associated with 4 different courses:
 
-Remember that a _join_ table has two different FKs, one for each model it is associating. In the example below, 3 students have been associated with 4 different courses.
+| student_id | course_id |
+| ---------- | --------- |
+| 1          | 1         |
+| 1          | 2         |
+| 1          | 3         |
+| 2          | 1         |
+| 2          | 4         |
+| 3          | 2         |
+| 3          | 3         |
 
-| student_id | course_id |  
-| ---------- | --------- |  
-| 1          | 1         |  
-| 1          | 2         |  
-| 1          | 3         |  
-| 2          | 1         |  
-| 2          | 4         |  
-| 3          | 2         |  
-| 3          | 3         |  
+### Set Up
 
-Let's make sure we understand how this _join table_ works before moving on.
+To create N:N relationships in Rails, we use this pattern: `has_many :related_model, through: :join_table_name`
 
-### So how do we create N:N associations in rails?
+1. In the terminal, create three models:
 
-We use the `has_many :relatedModel, :through => :joinTableName` method.
+  ```
+  rails g model Student name:string
+  rails g model Course name:string
+  rails g model Enrollment
+  ```
 
-We'll start by creating 3 models
+  `Enrollment` is the model for our *join* table. When naming your join table, you can either come up with a name that makes semantic sense (like "Enrollment"), or you can combine the names of the associated models (e.g. "PostComment").
 
-```console
-rails generate model Student name:string
-rails generate model Course name:string
-rails generate model Enrollment enrollment_date:date
-```
+2. Open up the models in Sublime, and edit them so they include the proper associations:
 
-Note that "Enrollment" is our __join__ table.
-
-After generating our models, we need to open them in sublime and edit them so they include the proper associations.
-
-Your models should look as follows once you've finished making the necessary changes:
-
-```ruby
-# models/course.rb
-class Course < ActiveRecord::Base
+  ```ruby
+  #
+  # app/models/course.rb
+  #
+  class Course < ActiveRecord::Base
     has_many :enrollments
-    has_many :students, :through => :enrollments
-end
-```
+    has_many :students, through: :enrollments
+  end
+  ```
 
-```ruby
-# models/student.rb
-class Student < ActiveRecord::Base
+  ```ruby
+  #
+  # app/models/student.rb
+  #
+  class Student < ActiveRecord::Base
     has_many :enrollments
-    has_many :courses, :through => :enrollments
-end
-```
+    has_many :courses, through: :enrollments
+  end
+  ```
 
-```ruby
-# models/enrollment.rb
-class Enrollment < ActiveRecord::Base
+  ```ruby
+  #
+  # app/models/enrollment.rb
+  #
+  class Enrollment < ActiveRecord::Base
     belongs_to :course
     belongs_to :student
-end
-```
+  end
+  ```
 
-We'll also want to modify the migration for the `enrollment` model before we run db:migrate. Make your enrollment model look like this:
+3. Add the foreign keys to the enrollments migration:
 
-```ruby
-class CreateEnrollments < ActiveRecord::Migration
-  def change
-    create_table :enrollments do |t|
-      t.date :enrollment_date
-      t.timestamps null: false
+  ```ruby
+  #
+  # db/migrate/20150804040426_create_enrollments.rb
+  #
+  class CreateEnrollments < ActiveRecord::Migration
+    def change
+      create_table :enrollments do |t|
+        t.timestamps
 
-      # The foreign keys for the associations are defined below
-      t.references :student
-      t.references :course
-
-      # or we can do this instead
-      t.belongs_to :student
-      t.belongs_to :course
+        # define foreign keys for associated models
+        t.belongs_to :student
+        t.belongs_to :course
+      end
     end
   end
-end
-```
+  ```
 
-Make sure your save the file before running `rake db:migrate`.
+### Using Your Associations
 
-(Also, just a reminder, if you're using postgresql, be sure to run `rake db:create` first!)
+1. In the terminal, run `rake db:migrate` to create the new tables.
 
-### Let's test out our models!
+2. Enter the rails console (`rails c`) to create and associate data!
 
-Open the rails console by running `rails c` in terminal.
+  ```ruby
+  # create some students
+  sally = Student.create(name: "Sally")
+  fred = Student.create(name: "Fred")
+  alice = Student.create(name: "Alice")
 
-At the command prompt, let's create some students:
+  # create some courses
+  algebra = Course.create(name: "Algebra")
+  english = Course.create(name: "English")
+  french = Course.create(name: "French")
+  science = Course.create(name: "Science")
 
-```ruby
-nathan = Student.create(name: "Nathan")
-ilias = Student.create(name: "Ilias")
-del = Student.create(name: "Delmer")
-```
+  # associate our model instances
+  sally.courses << algebra
+  sally.courses << french
 
-Now we can create some courses too:
-```ruby
-algebra = Course.create(name: "Algebra")
-science = Course.create(name: "Science")
-english = Course.create(name: "English")
-french = Course.create(name: "French")
-```
+  fred.courses << science
+  fred.courses << english
+  fred.courses << french
 
-#### Associate our model instances
+  # here's a little trick: use an array to associate multiple courses with a student in just one line of code
+  alice.courses << [english, algebra]
+  ```
 
-Now, because we've used `:through`, we can create our associations in the same way we do for a 1:N association. If you're the curious type, you can try just using `has_many` without `through` (outside of class time please!!) and then using the console to experiment and figure out how you'd associate, and then access various instances together.
+  **Note:** Because we've used `through`, we can create our associations in the same way we do for a 1:N association (`<<`).
 
-```ruby
-nathan.courses << algebra
-nathan.courses << french
+3. Still in the Rails console, test your data to make sure your associations worked:
 
-ilias.courses << science
-ilias.courses << english
-ilias.courses << french
+  ```ruby
+  sally.courses.map(&:name)
+  # => ["Algebra", "French"]
 
-# Here's a little trick: Use an array to associate multiple courses with a student in just one line of code.
-del.courses << [english, algebra]
-```
+  fred.courses.map(&:name)
+  # => ["Science", "English", "French"]
 
-#### Let's see if it worked
+  alice.courses.map(&:name)
+  # => ["English", "Algebra"]
+  ```
 
-Once you've done all of this, try the following and see if your output matches the below in _irb_.
+## Challenges, Part 2: Many-To-Many
 
-```ruby
-nathan.courses.map(&:name)
-# Outputs: => ["Algebra", "French"]
+Head over to the [Many-To-Many Challenges](many_to_many_challenges.md) and work together in pairs.
 
-ilias.courses.map(&:name)
-# Outputs: => ["Science", "English", "French"]
-
-del.courses.map(&:name)
-# Outputs: => ["Algebra", "English"]
-```
-
-Side note: Anyone know why we're passing `&:name` to `.map` here? (Hint, it has something to do with Blocks and Procs)
-
-### Many-to-Many Exercise
-
-To do this exercise, let's [head over to our many-to-many exercise file](associations_NtoN_exercise.md) and work together in groups of two.
-
-# Migration Workflow
+## Migration Workflow
 
 Getting your models and tables synced up is a bit tricky. Pay close attention to the following workflow, especially the rake tasks.
 
 ```
 # create a new rails app
-rails new my_app -T -d postgresql
+rails new my_app -Td postgresql
 cd my_app
 
-# setup the empty database
+# create the database
 rake db:create
 
 # <<< BEGIN LOOP >>>
 
-# Auto-generate a new model AND a new migration, e.g.:
-rails generate model Pet name:string
-rails generate model Owner name:string
+# auto-generate a new model AND a new migration
+rails g model Pet name:string
+rails g model Owner name:string
 
 # --- OR ---
 
-# If we only need to change fields in an *existing* model,
-# we can just generate a new migration:
-rails generate migration AddSomeNewFieldToOwner some_new_field:Integer
+# if you only need to change fields in an *existing* model,
+# you can just generate a new migration
+rails g migration AddAgeToOwner age:integer
 
-## Either way, we need to manually edit our models and migrations:
-# update the associations in our model --> this affects our model interface
-# update the foreign keys in our migrations --> this affects our database tables
+## either way, manually edit our models and migrations in sublime
+# update associations in model --> this affects model interface
+# update foreign keys in migrations --> this affects database tables
 
-# and then we need to generate the schema for our database tables
+# generate schema for database tables
 rake db:migrate
 
 # <<< END LOOP >>>
 
-# Finally, we need some data to play with!
-# For now we will seed it manually, from the rails console...
+# finally, we need some data to play with
+# for now, we'll seed it manually, from the rails console...
 rails c
 > Pet.create(name: "Wowzer")
 > Pet.create(name: "Rufus")
 
 # --- OR ---
 
-# but later we will run a seed task:
+# but later we will run a seed task
 rake db:seed
 ```
 
-## **H**opefully **H**elpful **H**ints
+## Helpful Hints
 
-When you are **creating associations** in Rails' ActiveRecord (or most any ORM, for that matter):
+When you're **creating associations** in Rails ActiveRecord (or most any ORM, for that matter):
 
-  - You'll define the relationships in your models (the blueprint for your objects)
-    + Don't forget to define all sides of the relationship (more on this in a moment)
-  - Remember to put the foreign key for a relationship in your migrations
-    + If you're not sure which side of the relationship has the foreign key, just use this simple rule: The model with `belongs_to` must include a foreign key.
+  * Define the relationships in your models (the blueprint for your objects)
+    * Don't forget to define all sides of the relationship (e.g. `has_many` and `belongs_to`)
+  * Remember to put the foreign key for a relationship in your migration
+    * If you're not sure which side of the relationship has the foreign key, just use this simple rule: the model with `belongs_to` must include a foreign key.
 
 ## Less Common Associations
 
-For your reference. If you'd like to experiment with these, go nuts! (after class please...)
+These are for your references and are not used nearly as often as `has_many` and `has_many through`.
 
-  - [has_one](http://guides.rubyonrails.org/association_basics.html#the-has-one-association)
-  - [has_one through](http://guides.rubyonrails.org/association_basics.html#the-has-one-through-association)
-  - [has_and_belongs_to_many](http://guides.rubyonrails.org/association_basics.html#has-and-belongs-to-many-association-reference)
+  * <a href="http://guides.rubyonrails.org/association_basics.html#the-has-one-association" target="_blank">has_one</a>
+  * <a href="http://guides.rubyonrails.org/association_basics.html#the-has-one-through-association" target="_blank">has_one through</a>
+  * <a href="http://guides.rubyonrails.org/association_basics.html#has-and-belongs-to-many-association-reference" target="_blank">has_and_belongs_to_many</a>
 
-## Other Useful Notes
+## Useful Docs
 
-  - [Associations Docs](http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html)
-  - [Model field data types](http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html#method-i-column)
+  * <a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_blank">Associations Docs</a>
+  * <a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html#method-i-column" target="_blank">Model Field Data Types</a>
