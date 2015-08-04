@@ -9,36 +9,37 @@
 
 ## Challenges
 ### Queries
-1.
-    ```console
-    $ rails new database_queries
-    $ cd database_queries
-    $ rails g model Post title:string body:text
-    ```
+1. =>
+  ```console
+  $ rails new database_queries
+  $ cd database_queries
+  $ rails g model Post title:string body:text
+  ```
 2. ```rake db:migrate```
-3.
-    ```ruby
-    3000.times do |counter|
-        Post.create(:title => "This is the title for post #{counter + 1}", :body => "This is the body for post #{counter + 1}")
-    end
-    ```
+3. =>
+  ```ruby
+  3000.times do |counter|
+      Post.create(:title => "This is the title for post #{counter + 1}", :body => "This is the body for post #{counter + 1}")
+  end
+  ```
 4. ```Post.find(489)```
 5. ```Post.last```
 6. ```Post.first```
-7.
-    ```ruby
-    Post.find(478, 1134)
-    # OR
-    Post.find([478, 1134])
-    ```
+7. =>
+  ```ruby
+  Post.find(478, 1134)
+  # OR
+  Post.find([478, 1134])
+  ```
 8. `Post.find((100..105).to_a)`
 9. `rails g migration AddCommentsToPosts comments:integer`
 10. n/a
 11. ```ruby
-Post.find_each do |post|
+    Post.find_each do |post|
       post.comments = rand(1..100)
       post.save!
-    end```
+    end
+    ```
 
 12. `Post.where("comments > ?", 97)`
 
