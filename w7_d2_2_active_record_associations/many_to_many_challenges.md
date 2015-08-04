@@ -1,35 +1,33 @@
 # Many-to-Many Challenges
 
-Continuing with our e-commerce example, let's build out the relationship between `customers` and `products`. Customers can purchase many products at one time by creating a shopping cart, and that cart becomes a `sale` once the customer completes checkout.
+Our goal is to build the relationship between `actors` and `movies`. An actor can appear in many movies, and a movie can have many actors. How would you set up this relationship? Is there an additional data table we need besides `actors` and `movies`? **Hint:** Think back to the relationship between students and courses.
+
+Here's what our models' attributes might look like for actors and movies:
+  * `Actor`: first_name, last_name
+  * `Movie`: title, description, year
+
+For these challenges, continue to work in your `practice` Rails app.
 
 ## Your Task
 
-1. Create models and migrations for three tables: `customers`, `products`, and `sales`. Implement a many-to-many relationship between `customers` and `products`, using `sales` as the *join* table.
-2. Use the Rails console to add `customers` and `products` to 2-3 `sales`.
-3. Use the Rails console to display all products and customers associated with each order (**Hint:** Look at ActiveRecord's <a href="http://guides.rubyonrails.org/active_record_querying.html#using-array-hash-of-named-associations" target="_blank">join</a> method).
+1. Create models and migrations for three tables: `actors`, `movies`, and a *join* table. Think about what you should name your join table and what columns it should have.
+2. Implement a many-to-many relationship between `actors` and `movies`.
+3. Use the Rails console to create at least three `actors` and two `movies`. Each movie should have at least two starring actors associated.
 
-## Stretch Challenge
+## Stretch Challenges
 
-It's important we have some sanity checks on our products. We definitely don't want to lose money if some yahoo decides to mark the price down to -100.00. There may be some edge-cases where it's useful to zero out the price, but we definitely don't want the price to go negative. How could we stop this?
+1. Add <a href="http://guides.rubyonrails.org/active_record_validations.html" target="_blank">validations</a> to your `Actor` and `Movie` models:
+  * All attributes for actors and movies should be required (**Hint:** `presence: true`)
+  * For movies, the year should not be in the future (**Hint:** Look at <a href="http://guides.rubyonrails.org/active_record_validations.html#numericality" target="_blank">numericality</a>)
 
-For starters...
+2. Test your validations in the Rails console:
 
-* How do you ensure that the price going into your database is valid?
-* Can you stop an item from saving if it doesn't meet a requirement?
-* Can you create an error during validation?
-  * `p = Product.create(name: "nail", description: "a very expensive nail", price: -100)` # what's the value of `p` now?
-* Can you create a custom error message for this scenario? e.g. "Price cannot be negative"
-  * Can you log it to the Rails console?
+  ```ruby
+  a = Actor.create
+  a.errors.messages
+  # => What does this return?
+  ```
 
 ## Super Stretch Challenge
 
-How would you include a total in your `Sale` model? It would need to change pretty frequently if we wanted it to reflect the current products in the shopping cart.
-
-For starters...
-
-* How would you store the total? What new field would you need and where?
-  * **Hint:** Create a new migration
-* How would you calculate the total?
-  * **Hint:** Try to figure it out in the Rails console, then turn it into a method.
-* When would the total need to change/update? How would you trigger it?
-  * **Hint:** Read the docs! Take a look at the ActiveRecord documentation.
+Set up routes and views for `actors` and `models`. Remember "route-side-in"! Start with reading and creating (`index`, `new`, `create`, `show`), then move onto update and delete if time permits.

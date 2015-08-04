@@ -16,27 +16,35 @@
 
 ## One-To-Many (1:N) Relationship
 
-**Example:** One owner `has_many` pets and a pet `belongs_to` one owner (our `Pet` model will have a foreign key (FK) `owner_id`)
+**Example:** One owner `has_many` pets and a pet `belongs_to` one owner (our `Pet` model will have a foreign key (FK) `owner_id`).
 
 **Always remember!** Whenever there is a `belongs_to` in the model, there should be a *FK in the matching migration!*
 
 ### Set Up
 
-1. In the terminal, from the root of your Rails app, generate two models, `Owner` and `Pet`:
+1. In the terminal, set up a new Rails app called `practice`:
+
+  ```
+  $ rails new practice -d postgresql
+  $ cd practice
+  $ rake db:create
+  ```
+
+2. Also in the terminal, from the root of your Rails app, generate two models, `Owner` and `Pet`:
 
   ```
   $ rails g model Owner name:string
   $ rails g model Pet name:string
   ```
 
-2. Define the relationship in both models:
+3. Open your app in Sublime, and define the relationship in both models:
 
   ```ruby
   #
   # app/models/owner.rb
   #
   class Owner < ActiveRecord::Base
-    has_many :pets
+    has_many :pets, dependent: :destroy
   end
   ```
 
@@ -49,14 +57,16 @@
   end
   ```
 
-  **Note:** `belongs_to` uses the singular form of the class name (`:owner`), while `has_many` uses the pluralized form (`:pets`).
+  **Note:** When setting up the `has_many` relationship, we use `dependent: :destroy` to maintain data integrity. This means that whenever an owner is deleted (destroyed), that owner's associated pets are also destroyed.
+
+  `belongs_to` uses the singular form of the class name (`:owner`), while `has_many` uses the pluralized form (`:pets`).
 
   If you think about it, this is exactly how you'd want to describe the relationship in plain English. For example, if we were discussing the relationship between pets and owners, we'd say:
 
     * "One owner has many pets"
     * "A pet belongs to one owner"
 
-3. Add a foreign key to the pets migration:
+4. Add a foreign key to the pets migration:
 
   ```ruby
   #
@@ -94,7 +104,7 @@
 
 ### Using Your Associations
 
-1. Create your database tables by running your migrations from the terminal. (**Note:** Before migrating, crete your database if you haven't already by running `rake db:create`)
+1. Create your database tables by running your migrations from the terminal:
 
   ```
   $ rake db:migrate
@@ -185,7 +195,7 @@ To create N:N relationships in Rails, we use this pattern: `has_many :related_mo
   rails g model Enrollment
   ```
 
-  `Enrollment` is the model for our *join* table. When naming your join table, you can either come up with a name that makes semantic sense (like "Enrollment"), or you can combine the names of the associated models (e.g. "PostComment").
+  `Enrollment` is the model for our *join* table. When naming your join table, you can either come up with a name that makes semantic sense (like "Enrollment"), or you can combine the names of the associated models (e.g. "StudentCourse").
 
 2. Open up the models in Sublime, and edit them so they include the proper associations:
 
@@ -194,7 +204,7 @@ To create N:N relationships in Rails, we use this pattern: `has_many :related_mo
   # app/models/course.rb
   #
   class Course < ActiveRecord::Base
-    has_many :enrollments
+    has_many :enrollments, dependent: :destroy
     has_many :students, through: :enrollments
   end
   ```
@@ -204,7 +214,7 @@ To create N:N relationships in Rails, we use this pattern: `has_many :related_mo
   # app/models/student.rb
   #
   class Student < ActiveRecord::Base
-    has_many :enrollments
+    has_many :enrollments, dependent: :destroy
     has_many :courses, through: :enrollments
   end
   ```
@@ -293,7 +303,7 @@ Getting your models and tables synced up is a bit tricky. Pay close attention to
 
 ```
 # create a new rails app
-rails new my_app -Td postgresql
+rails new my_app -d postgresql
 cd my_app
 
 # create the database
