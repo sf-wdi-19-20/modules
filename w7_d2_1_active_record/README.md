@@ -3,6 +3,7 @@
 | :-------------------                                                          |  
 | Write kick ass queries |  
 | Modify migrations to add columns to tables|  
+| Add a validation to an attribute in a model|
 
 ---
 
