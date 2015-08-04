@@ -12,7 +12,7 @@ Convert these English statements into queries. Consult the [Rails docs](http://g
 
 1. Give me the all users with the last name "Hendrickson".
 
-2. Give me all the articles that have more than 200 words. HINT: There is an attribute called `wordcount`
+2. Give me all the articles with ids from 54 to 67.
 
 3. Give me all the answers with more than 100 upvotes.
 
