@@ -122,7 +122,7 @@
   fido.owner
   nathan.pets << fido # makes Fido one of Nathan's pets
   nathan.pets << lassie # makes Lassie another one of Nathan's pets
-  nathan.pets.size
+  nathan.pets.count
   nathan.pets.map(&:name)
   nathan.pets.each do |pet| puts "My pet is named #{pet.name}!" end
   fido.owner
