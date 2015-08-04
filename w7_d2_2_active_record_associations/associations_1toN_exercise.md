@@ -1,7 +1,7 @@
 # In Class Exercise 1
 ## One-to-Many Associations
 
-Imagine we're creating an online order system for an e-commerce site. A customer loads up their shopping cart with _items_ and a new _order_ is created when they check out. So we know we'll have an `order` model and an `item` model (don't worry about the customer model for the now).
+Imagine we're creating an online order system for an e-commerce site. A customer loads up their shopping cart with _items_ and a new _order_ is created when they check out. So we know we'll have an `order` model and an `item` model (don't worry about the customer model for now).
 
 Here's a start to what our models/attributes might look like:
 Order: placed_on date...
