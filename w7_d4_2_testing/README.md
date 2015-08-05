@@ -85,9 +85,7 @@ Assuming we've already stubbed a user (`@user`) who has written some blog posts.
 
 #### Testing Controllers
 
-The most common thing to go stubbing is the `current_user`, which is something we will not care to test directly. Nevertheless you will still test the `current_user` method in a helper test for example.
-require 'rails_helper'
-
+The most common thing to stub for authentication testing is the `current_user`.   We might check a `current_user` method in a helper test, for example.
 
 ```
 require 'rails_helper'
@@ -152,44 +150,46 @@ end
 ```
 
 
-### Capybara
+<!--### Capybara-->
 
-We'll use [Capybara](https://github.com/jnicklas/capybara) to test client-side views and interactions (e.g. does clicking on "Logout" do what we expect)?
+<!--We'll use [Capybara](https://github.com/jnicklas/capybara) to test client-side views and interactions (e.g. does clicking on "Logout" do what we expect)?-->
 
-
-### Factory Girl
-
-Factory Girl lets us quickly generate test objects or instances.  
+<!--![capybara](https://s-media-cache-ak0.pinimg.com/736x/40/d3/03/40d3037541de89c4086bcb99f12a4b0a.jpg)-->
 
 
-### FFaker
+<!--### Factory Girl-->
 
-FFaker generates random seed data for us! We can use it in combination with Factory Girl. 
+<!--Factory Girl lets us quickly generate test objects or instances.  -->
 
-``` ruby
-    FactoryGirl.define do
-      factory :user do
-        first_name { Faker::Name.first_name }
-        last_name { Faker::Name.last_name }
-        email { Faker::Internet.email }
-        password 'foobar'
-        password_confirmation 'foobar'
-      end
-    end
-```
 
-Now we can use our "user factory" in tests:
+<!--### FFaker-->
 
-``` ruby
-    let(:user) { FactoryGirl.build(:user) }
+<!--FFaker generates random data for us! We can use it in combination with Factory Girl. -->
+
+<!--``` ruby-->
+<!--    FactoryGirl.define do-->
+<!--      factory :user do-->
+<!--        first_name { Faker::Name.first_name }-->
+<!--        last_name { Faker::Name.last_name }-->
+<!--        email { Faker::Internet.email }-->
+<!--        password 'foobar'-->
+<!--        password_confirmation 'foobar'-->
+<!--      end-->
+<!--    end-->
+<!--```-->
+
+<!--Now we can use our "user factory" in tests:-->
+
+<!--``` ruby-->
+<!--    let(:user) { FactoryGirl.build(:user) }-->
     
-    context "#fullname" do
-        it "joins first name and last name" do
-          expect( user.fullname ).to eq "#{user.first_name} #{user.last_name}"
-        end
-    end
+<!--    context "#fullname" do-->
+<!--        it "joins first name and last name" do-->
+<!--          expect( user.fullname ).to eq "#{user.first_name} #{user.last_name}"-->
+<!--        end-->
+<!--    end-->
     
-```
+<!--```-->
 
 ### Resources
 
