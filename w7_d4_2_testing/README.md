@@ -1,29 +1,51 @@
 | Objectives |
 | :---- |
 | Identify various aspects of Rails apps that we might want to test.|
-| Test model validations using `rspec`. |
+| Test model validations using rspec-rails. |
+| Test controllers using rspec-rails. |
+| Test the view with rspec-rails and capybara.
  
 
 ## Testing Rails Applications
 
-### Tools
+### Rspec-rails
 
-Rspec is a @TODO.
+Rspec is a testing gem for Ruby.  It helps us write tests that sound like user stories or planning comments ("This function should..."). Rspec-rails is a testing framework specifically for Rails.  We'll use rspec-rails alone for lower-level tests of our models and controllers. 
 
-### Rspec With Rails
+(It's always best to refer to offical documentation: [here are the rspec-rails docs](https://github.com/rspec/rspec-rails)!)
 
-(It's always best to refer to offical documentation: [here are the rspec docs](https://github.com/rspec/rspec-rails).)
 
-**Typical Spec Folders For a Rails Project:**
+#### Adding Rspec-rails to Your Project
 
-* spec/models/user_spec.rb
-* spec/controllers
-* spec/views/user/show.html.erb_spec.rb
+1. Add rspec-rails to your Gemfile in the development in the `development` and `test` groups:
 
-**To run specs:**
-`rspec` or `bundle exec rspec`
+  *Gemfile*
+  ```
+          group :development, :test do
+            gem 'rspec-rails', '~> 3.0.0'
+          end
+  ```
 
-To run specific specs
+1. Run `bundle install` in your Terminal so that rspec-rails is actually added to your project.
+
+1. Add tests to your rails project using the Terminal: `rails generate rspec:install`. This will create a `spec` directory. It also adds `spec/spec_helper.rb` and `.rspec` files that are used for configuration. See those files for more information.
+
+1. Configure your specs by going to the `.rspec` file and removing the line that says `--warnings`.    
+
+
+1. If you created models before adding rspec-rails, create a spec file for each of your models. (This is only necessary if you had a model created before you installed rspec-rails.)  In your Terminal, use the command `rails generate rspec:model article`.
+
+#### Running Rspec-rails Tests
+
+Typical Spec Folders For a Rails Project include:
+
+* `spec/models/user_spec.rb`
+* `spec/controllers`
+* `spec/views/user/show.html.erb_spec.rb`
+
+To run **all** test specs, go to the Terminal and type `rspec` or `bundle exec rspec`.
+
+To run only a specific set of tests, use `rspec` and the file path for the tests you want to run in the Terminal:
 
 ``` bash
     # Run only model specs
@@ -33,52 +55,10 @@ To run specific specs
     rspec spec/controllers/articles_controller_spec.rb
 ```
 
-BUT FIRST...
 
-#### Rspec Rails / SETUP
+### Rspec-rails Tests
 
-**Step 1:**  
-
-Add rspec rails to your Gemfile in the development, test group and bundle install  
-
-*Gemfile*
-
-        group :development, :test do
-          gem 'rspec-rails', '~> 3.0.0'
-        end
-
-*Terminal*  
-`bundle install`  
-
-**Step 2:**  
-
-Create spec directory, and necessary configurations  
-
-*Terminal*  
-`rails generate rspec:install`  
-
-and go to the `.rspec` file and remove the line that says
-
-```
---warnings
-```
-
-This adds `spec/spec_helper.rb` and `.rspec` files that are used for configuration. See those files for more information.  
-
-**Step 3:**  
-
-Create a spec file for our model.  
-This is only necessary if you had a model created before you installed rspec.  
-
-*Terminal*  
-`rails generate rspec:model article`  
-
-**Step 4:**  
-
-Run your rspec tests (they should all pass as you don't have any)  
-
-
-### Testing Models
+#### Testing Models
 
 Assuming we've already stubbed a user (`@user`)...
 
@@ -92,7 +72,7 @@ Assuming we've already stubbed a user (`@user`)...
 
 
 
-### Testing Views
+#### Testing Views
 Assuming we've already stubbed a user (`@user`) who has written some blog posts....
 
 ```
@@ -105,7 +85,7 @@ Assuming we've already stubbed a user (`@user`) who has written some blog posts.
   end
 ```
 
-### Testing Controllers
+#### Testing Controllers
 
 The most common thing to go stubbing is the `current_user`, which is something we will not care to test directly. Nevertheless you will still test the `current_user` method in a helper test for example.
 require 'rails_helper'
@@ -174,42 +154,19 @@ end
 ```
 
 
-### More Testing Tools
-**Shoulda-Matchers**
+### Capybara
 
-Convenience methods for commmon tests.
-    
-    ``` ruby
-      it { should validate_presence_of(:email) }
-      it { should have_many(:posts) }
-    ```
-    
-**Capybara / Jasmine / Selenium**
+We'll use Capybara to test client-side views and interactions (e.g. does clicking on "Logout" do what we expect)?
 
-How do you test client-side views and interactions (e.g. clicking on x does y)?
 
-    ``` Javascript
-        // Jasmine
-    
-        describe("Clicking on a tic-tac-toe cell that has been taken", function(){
-            
-            it("does nothing", function(){
-              var target_cell = document.body.querySelectorAll('td')[8]
-              target_cell.click()
-              var initial_cell_value = target_cell.innerHTML // "X"
-              target_cell.click()
-              var cell_value = target_cell.innerHTML // "X"
-              expect(cell_value).toEqual(initial_cell_value)
-            })
-        
-        })
-        
-    ```
-    
+### Factory Girl
 
-**Mocking Data**
-FFaker Gem -- A quick way to generate random seed data
-Factory Girl Gem -- A quick way to generate objects / instances.
+Factory Girl lets us quickly generate test objects or instances.  
+
+
+### FFaker
+
+FFaker generates random seed data for us! We can use it in combination with Factory Girl. 
 
 ``` ruby
     FactoryGirl.define do
