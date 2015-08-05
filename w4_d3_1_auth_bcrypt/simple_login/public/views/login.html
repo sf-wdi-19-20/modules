@@ -16,11 +16,11 @@
         <h1>Log In</h1>
         <hr>
         
-        <!-- note: method and action refer to the request type (post) and request url (/login) -->
+        <!-- method and action refer to the request type (post) and request url (/login) -->
         <form method="post" action="/login">
           <div class="form-group">
 
-            <!-- note: the `name` HTML attribute sends form data to the server -->
+            <!-- the `name` HTML attribute sends form data to the server -->
             <!-- setting the names `user[email]` and `user[password]` allows us to use `req.body.user` on the server-side, which gives us a user object with `email` and `password` keys -->
             <input type="text" name="user[email]" class="form-control" placeholder="Email" autofocus>
           </div>

@@ -34,17 +34,15 @@ To give users the ability to sign up and log in to our site, we'll need:
 
 **Goal:** Create a new Node/Express project.
 
-1. In the terminal, initialize a new Node project and install `express`, `body-parser`, and `ejs`.
+1. In the terminal, initialize a new Node project, and install `express` and `body-parser`.
 
   ```
   $ mkdir simple_login
   $ cd simple_login
   $ npm init
-  $ npm install --save express body-parser ejs
+  $ npm install --save express body-parser
   $ touch server.js
-  ```  
-
-  **Note:** <a href="https://github.com/mde/ejs" target="_blank">`ejs`</a> is a server-side templating engine that allows us to render views from our server with dynamic data. We won't worry about the dynamic data part too much in this project - we'll be using `ejs` to render the views in our application.
+  ```
 
 2. Open your project in Sublime, and set up your server in `server.js` with the following code snippet:
 
@@ -54,11 +52,7 @@ To give users the ability to sign up and log in to our site, we'll need:
   // require express framework and additional modules
   var express = require('express'),
     app = express(),
-    ejs = require('ejs'),
     bodyParser = require('body-parser');
-
-  // set view engine for server-side templating
-  app.set('view engine', 'ejs');
 
   // middleware
   app.use(bodyParser.urlencoded({extended: true}));
@@ -84,7 +78,7 @@ To give users the ability to sign up and log in to our site, we'll need:
 
 ## Challenges: Part 2
 
-Goal: Write a `UserSchema` and define a `User` model.
+**Goal:** Write a `UserSchema` and define a `User` model.
 
 1. In the terminal, create a new directory for `models` and create a file for your `User` model.
 
@@ -132,7 +126,7 @@ Goal: Write a `UserSchema` and define a `User` model.
 
   // define user model
   var User = mongoose.model('User', UserSchema);
-  
+
   // export user model
   module.exports = User;
   ```
@@ -147,18 +141,18 @@ Goal: Write a `UserSchema` and define a `User` model.
 
   ```js
   // user.js
-  
+
   // create a new user with secure (hashed) password
   UserSchema.statics.createSecure = function (email, password, callback) {
     // `this` references our schema
     // store it in variable `that` because `this` changes context in nested callbacks
     var that = this;
-    
+
     // hash password user enters at sign up
     bcrypt.genSalt(function (err, salt) {
       bcrypt.hash(password, salt, function (err, hash) {
         console.log(hash);
-        
+
         // create the new user (save to db) with hashed password
         that.create({
           email: email,
@@ -173,11 +167,11 @@ Goal: Write a `UserSchema` and define a `User` model.
     // find user by email entered at log in
     this.findOne({email: email}, function (err, user) {
       console.log(user);
-      
+
       // throw error if can't find user
       if (user === null) {
         throw new Error('Can\'t find user with email ' + email);
-      
+
       // if found user, check if password is correct
       } else if (user.checkPassword(password)) {
         callback(null, user);
@@ -191,7 +185,9 @@ Goal: Write a `UserSchema` and define a `User` model.
     return bcrypt.compareSync(password, this.passwordDigest);
   };
   ```
-  
+
+  **Note:** Make sure your static and instance methods come before defining and exporing the `User` model. Setting and exporting the `User` model should be the last pieces of logic in `user.js` to make sure the authentication methods get added to the model and exported.
+
 ## Challenges: Part 4
 
 **Goal:** Add a route to create users with secure (hashed) passwords.
@@ -203,7 +199,6 @@ Goal: Write a `UserSchema` and define a `User` model.
 
   var express = require('express'),
       app = express(),
-      ejs = require('ejs'),
       bodyParser = require('body-parser'),
       // new additions
       mongoose = require('mongoose'),
@@ -245,16 +240,12 @@ Goal: Write a `UserSchema` and define a `User` model.
   // require express framework and additional modules
   var express = require('express'),
     app = express(),
-    ejs = require('ejs'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     User = require('./models/user');
 
   // connect to mongodb
   mongoose.connect('mongodb://localhost/test');
-
-  // set view engine for server-side templating
-  app.set('view engine', 'ejs');
 
   // middleware
   app.use(bodyParser.urlencoded({extended: true}));
@@ -299,7 +290,7 @@ Goal: Write a `UserSchema` and define a `User` model.
 
   // user submits the login form
   app.post('/login', function (req, res) {
-  
+
     // grab user data from params (req.body)
     var userData = req.body.user;
 
@@ -331,7 +322,6 @@ Goal: Write a `UserSchema` and define a `User` model.
 
   var express = require('express'),
       app = express(),
-      ejs = require('ejs'),
       bodyParser = require('body-parser'),
       mongoose = require('mongoose'),
       User = require('./models/user'),
@@ -382,7 +372,7 @@ Goal: Write a `UserSchema` and define a `User` model.
 
 ## Challenges: Part 7
 
-Goal: Refactor the `POST /login` route to set the session and redirect to a user profile page.
+**Goal:** Refactor the `POST /login` route to set the session and redirect to a user profile page.
 
 1. After authenticating a user, log them in by calling `req.login(user)`, and redirect to the user's profile page. In `server.js`, your `POST /login` route should now look like this:
 
@@ -410,7 +400,7 @@ Goal: Refactor the `POST /login` route to set the session and redirect to a user
 
   ```js
   // server.js
-  
+
   // user profile page
   app.get('/profile', function (req, res) {
     // finds user currently logged in
@@ -428,16 +418,16 @@ Goal: Refactor the `POST /login` route to set the session and redirect to a user
 
 **Goal:** Set up a login view to test your login functionality in the browser.
 
-1. In the terminal, make a `views` directory and a view called `login.ejs`.
-
-  **Note:** We're using the <a href="https://github.com/mde/ejs" target="_blank">ejs</a> view engine to easily render files from our server. This means no more `res.sendFile`!
+1. In the terminal, make a `public` directory, a `views` directory (inside `public`), and a view called `login.html`.
 
   ```
+  $ mkdir public
+  $ cd public
   $ mkdir views
-  $ touch views/login.ejs
+  $ touch views/login.html
   ```
 
-2. In Sublime, open `login.ejs` and add this login form boilerplate. Writing ejs is no different from HTML, but the file must have the `.ejs` extension.
+2. In Sublime, open `login.html` and add this login form boilerplate.
 
   ```html
   <!DOCTYPE html>
@@ -457,12 +447,12 @@ Goal: Refactor the `POST /login` route to set the session and redirect to a user
         <div class="col-md-6 col-md-offset-3">
           <h1>Log In</h1>
           <hr>
-          
-          <!-- note: method and action refer to the request type (post) and request url (/login) -->
+
+          <!-- method and action refer to the request type (post) and request url (/login) -->
           <form method="post" action="/login">
             <div class="form-group">
-            
-              <!-- note: the `name` HTML attribute sends form data to the server -->
+
+              <!-- the `name` HTML attribute sends form data to the server -->
               <!-- setting the names `user[email]` and `user[password]` allows us to use `req.body.user` on the server-side, which gives us a user object with `email` and `password` keys -->
               <input type="text" name="user[email]" class="form-control" placeholder="Email" autofocus>
             </div>
@@ -487,7 +477,7 @@ Goal: Refactor the `POST /login` route to set the session and redirect to a user
 
   // login route (renders login view)
   app.get('/login', function (req, res) {
-    res.render('login');
+    res.sendFile(__dirname + '/public/views/login.html');
   });
   ```
 
@@ -509,5 +499,5 @@ Goal: Refactor the `POST /login` route to set the session and redirect to a user
 5. The `req.currentUser` middleware finds the user who is currently logged in. Use `req.currentUser` to *authorize* parts of your site.
   * Logged-in users should NOT be able to see the `/signup` or `/login` pages.
   * Users should only be able to see `/profile` when logged in.
-  
+
   **Hint:** You'll need to add some logic when calling `req.currentUser` to check if a logged-in user was found. You'll want to use `res.redirect` if a user tries to perform an unauthorized action.

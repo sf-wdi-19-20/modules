@@ -17,6 +17,5 @@
 ## Docs & Resources
 
 * <a href="https://github.com/ncb000gt/node.bcrypt.js" target="_blank">bcrypt</a>
-* <a href="https://github.com/mde/ejs" target="_blank">ejs</a>
 * <a href="https://github.com/expressjs/session" target="_blank">express-session</a>
 * <a href="http://mongoosejs.com/docs/guide" target="_blank">Mongoose Schemas</a>
