@@ -10,9 +10,7 @@
 
 ### Rspec-rails
 
-Rspec is a testing gem for Ruby.  It helps us write tests that sound like user stories or planning comments ("This function should..."). Rspec-rails is a testing framework specifically for Rails.  We'll use rspec-rails alone for lower-level tests of our models and controllers. 
-
-(It's always best to refer to offical documentation: [here are the rspec-rails docs](https://github.com/rspec/rspec-rails)!)
+Rspec is a testing gem for Ruby.  It helps us write tests that sound like user stories or planning comments ("This function should..."). [Rspec-rails](https://github.com/rspec/rspec-rails) is a testing framework specifically for Rails.  We'll use rspec-rails alone for lower-level tests of our models and controllers. 
 
 
 #### Adding Rspec-rails to Your Project
@@ -156,7 +154,7 @@ end
 
 ### Capybara
 
-We'll use Capybara to test client-side views and interactions (e.g. does clicking on "Logout" do what we expect)?
+We'll use [Capybara](https://github.com/jnicklas/capybara) to test client-side views and interactions (e.g. does clicking on "Logout" do what we expect)?
 
 
 ### Factory Girl
