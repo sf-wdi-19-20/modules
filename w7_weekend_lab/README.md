@@ -10,9 +10,11 @@ Here's what rails is made for! Make a straight up blog.
 
 ## Recommendations
 
-1. Remember to follow **Route-Side-In** - start with the routes, then controllers, then templates, then models.
-2. Pay attention to error messages closely - they are your best helpers!
-3. Work together and help each other.
+1. Remember to write a basic user narrative and do wireframing
+2. Use bootstrap to style first, then once you are done with functionality add more custom styling.
+3. Follow **Route-Side-In** - start with the routes, then controllers, then templates, then models.
+4. Pay attention to error messages closely - they are your best helpers!
+5. Work together and help each other.
 
 ## Stretch Options
 
