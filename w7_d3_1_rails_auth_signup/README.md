@@ -13,7 +13,7 @@
 
 #### Model Set Up
 
-2. Generate a `User` model with the attributes `email`, `password`, and `password_digest`:
+2. Generate a `User` model with the attributes `email` and `password_digest`:
 
   ```
   rails g model User email password_digest
