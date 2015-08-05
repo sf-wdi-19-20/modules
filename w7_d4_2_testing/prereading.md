@@ -62,7 +62,7 @@ As we practice TDD, we'll focus on a four-phase testing methodology. Each test s
 
 ## Testing Rails Applications
 
-Though Rails has built-in tools for testing, we'll use `rspec-rails`<!--, `capybara`, and `Factory Girl`--> instead of those default tools.  Read at least the first 6 sections (down to and including "Factory Girl") of this [thoughtbot post about rails testing](https://thoughtbot.com/) that goes over these tools.
+Though Rails has built-in tools for testing, Rails developers often use `rspec-rails`, `capybara`, and `Factory Girl` instead of those default tools.  Read the first 6 sections (down to and including "Factory Girl") of this [thoughtbot post about rails testing](https://thoughtbot.com/) that goes over these tools.
 
 ## Reflection Questions & Submission
 
