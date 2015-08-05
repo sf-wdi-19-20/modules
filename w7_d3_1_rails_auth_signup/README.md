@@ -91,7 +91,7 @@
 
     private
       def user_params
-        params.require(:user).permit(:name, :email, :password)
+        params.require(:user).permit(:email, :password)
       end
 
   end
@@ -154,7 +154,7 @@
   end
   ```
 
-  **Stretch Challenge:** Create a condition that checks if the user was saved correctly. **Hint:** first build the user in memory with `.new`, then check `if @user.save` proceed as normal `else` redirect to `"/users/new"` again.
+  **Stretch Challenge:** Create a condition that checks if the user was saved correctly. **Hint:** first build the user in memory with `User.new(user_params)`, then check `if @user.save` proceed as normal `else` redirect to `"/users/new"` again.
 
 15. The last step is to display attributes for the currently logged in user on the user show page. To do this, update the `users#show` method in the controller find a user in the database using the current `session[:user_id]`.
 
@@ -207,11 +207,9 @@
 
 3. Refactor your `flash[:error]` to display the error messages from the failed validations if a user doesn't save to the database. **Hint:** Try <a href="http://ruby-doc.org/core-2.2.0/Array.html#method-i-join" target="_blank">joining</a> the <a href="http://api.rubyonrails.org/classes/ActiveModel/Errors.html#method-i-full_messages" target="_blank">`full_messages`</a>.
 
+4. Implement `edit` and `update` actions for your users.
+
 ## Docs & Resources
 
 * <a href="http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password" target="_blank">`has_secure_password`</a>
 * <a href="http://guides.rubyonrails.org/active_record_validations.html" target="_blank">ActiveRecord Validations</a>
-
-**NOTES FOR LESON:**
-* Refactor "/users/new" to custom "/signup" route with "signup" alias
-* Refactor "/users/:id" to "/profile"
