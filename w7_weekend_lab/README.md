@@ -4,12 +4,19 @@ Here's what rails is made for! Make a straight up blog.
 
 ## Requirements
 
-1. Full CRUD on Posts and Comments
-2. Authentication - only make posts and comments if logged in
+1. Don't copy and paste or clone code. Start with `rails new <app name>`
+2. Full CRUD on Posts and Comments
+3. Authentication - only make posts and comments if logged in
 
-## Stretch
+## Recommendations
 
-As a stretch do something neat or challenging here are some ideas:
+1. Remember to follow **Route-Side-In** - start with the routes, then controllers, then templates, then models.
+2. Pay attention to error messages closely - they are your best helpers!
+3. Work together and help each other.
+
+## Stretch Options
+
+Add some stretches.
 
 1. add tags (many-to-many)
 2. Use will_paginate for pagination
