@@ -190,9 +190,10 @@
   * Validate the <a href="http://guides.rubyonrails.org/active_record_validations.html#presence" target="_blank">presence</a> of `email` and `password`.
   * Validate the <a href="http://guides.rubyonrails.org/active_record_validations.html#format" target="_blank">format</a> and <a href="http://guides.rubyonrails.org/active_record_validations.html#uniqueness" target="_blank">uniqueness</a> of `email`.
   * Validate that the `password` is <a href="http://guides.rubyonrails.org/active_record_validations.html#length" target="_blank">at least 6 characters long</a>.
-  * Add a validation for `password` <a href="http://guides.rubyonrails.org/active_record_validations.html#confirmation" target="_blank">confirmation</a>.
 
-2. Add a <a href="http://api.rubyonrails.org/classes/ActionDispatch/Flash.html" target="_blank">flash message</a> that notifies a user if they signed up successfully or not. **Hint:** In your `users#create` action, display a `flash[:notice]` if the user signed up successfully, or a `flash[:error]` if the user failed validations and didn't save to the database. You will also need a way to display your flash messages in the view:
+2. Add a `password_confirmation` field to your signup form. Adding the field requires the user to enter their password twice in order to sign up. Read more about it in the <a href="http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password" target="_blank">`has_secure_password` docs</a>. You will also need to edit your private method `user_params` in the `UsersController` to permit `password_confirmation`.
+
+3. Add a <a href="http://api.rubyonrails.org/classes/ActionDispatch/Flash.html" target="_blank">flash message</a> that notifies a user if they signed up successfully or not. **Hint:** In your `users#create` action, display a `flash[:notice]` if the user signed up successfully, or a `flash[:error]` if the user failed validations and didn't save to the database. You will also need a way to display your flash messages in the view:
 
   ```html+erb
   <!-- app/views/layouts/application.html.erb -->
@@ -205,9 +206,9 @@
 
   Here's an <a href="https://gist.github.com/suryart/7418454" target="_blank">example</a> of how to render flash messages with the help of Bootstrap's classes.
 
-3. Refactor your `flash[:error]` to display the error messages from the failed validations if a user doesn't save to the database. **Hint:** Try <a href="http://ruby-doc.org/core-2.2.0/Array.html#method-i-join" target="_blank">joining</a> the <a href="http://api.rubyonrails.org/classes/ActiveModel/Errors.html#method-i-full_messages" target="_blank">`full_messages`</a>.
+4. Refactor your `flash[:error]` to display the error messages from the failed validations if a user doesn't save to the database. **Hint:** Try <a href="http://ruby-doc.org/core-2.2.0/Array.html#method-i-join" target="_blank">joining</a> the <a href="http://api.rubyonrails.org/classes/ActiveModel/Errors.html#method-i-full_messages" target="_blank">`full_messages`</a>.
 
-4. Implement `edit` and `update` actions for your users.
+5. Implement `edit` and `update` actions for your users.
 
 ## Docs & Resources
 
