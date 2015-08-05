@@ -154,7 +154,7 @@
   end
   ```
 
-  **Stretch Challenge:** Create a condition that checks if the user was saved correctly. **Hint:** first build the user in memory with `User.new(user_params)`, then check `if @user.save` proceed as normal `else` redirect to `"/users/new"` again.
+  **Stretch Challenge:** Create a condition that checks if the user was saved correctly. **Hint:** first build the user in memory with `User.new(user_params)`, then check `if user.save` proceed as normal `else` redirect to `"/users/new"` again.
 
 15. The last step is to display attributes for the currently logged in user on the user show page. To do this, update the `users#show` method in the controller find a user in the database using the current `session[:user_id]`.
 
