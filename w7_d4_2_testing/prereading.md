@@ -22,19 +22,19 @@ As web developers, we'll use "automated testing" to check that our code is worki
 * Make it much easier to maintain, refactor, or extend your codebase
 * Organize your tests and testing procedure in a way that's easy to find and understand
 
-    
+
 **Automated testing is a pain! In the short term, you:**
 
 * Invest time up front deciding what to test
 * Invest time up front to create good tests that
    * accurately check whether your code is working
    * test the _right_ things about your system
-* Invest time to create new tests when you plan to add feature sets 
+* Invest time to create new tests when you plan to add feature sets
 
 
 ###Development Patterns
 
-We've looked at a few software development approaches so far. 
+We've looked at a few software development approaches so far.
 
 For the first part of the course, we used a relaxed version of **Behavior Driven Development** (BDD). BDD has us build towards expected behaviors of our project both at the level of user interactions (building towards user stories) and at the level of code (writing out comments to say what each part of our code should do and building toward those).
 
@@ -52,17 +52,17 @@ For Rails apps, we'll emphasize **Test Driven Development**. We'll start by maki
 
 ### Four Phase Tests
 
-As we practice TDD, we'll focus on a four-phase testing methodology. Each test should *set up* some scenario, run an *excersize* starting from that schenario, *verify* that the intended effect happened, and *tear down* any changes that were made for the purpose of the test. 
+As we practice TDD, we'll focus on a four-phase testing methodology. Each test should *set up* some scenario, run an *excersize* starting from that schenario, *verify* that the intended effect happened, and *tear down* any changes that were made for the purpose of the test.
 
 ### Testing Tips
 
-1. Don't try to test everything unless you have a really critical mission (space travel, nuclear missile defense, pacemaker timing...).  100% "test coverage" is almost unheard of in software development. It would be overkill for the projects we're doing and for the work many companies do.
+1. Don't try to test _everything_, unless you have a really critical mission (space travel, nuclear missile defense, pacemaker timing...).  Full testing, called "100% test coverage" is almost unheard of in software development. It would be overkill for the projects we're doing and for the work many companies do.
 
-2. Write tests that help you be more efficient as a developer.
+2. Write tests that help you be more efficient and effective as a developer.
 
 ## Testing Rails Applications
 
-Though Rails has built-in tools for testing, we'll use `rspec`, `capybara`, and `Factory Girl` instead of those default tools.  Read at least the first 6 sections (down to and including "Factory Girl") of this [thoughtbot post about rails testing](https://thoughtbot.com/) that goes over these tools.
+Though Rails has built-in tools for testing, we'll use `rspec-rails`<!--, `capybara`, and `Factory Girl`--> instead of those default tools.  Read at least the first 6 sections (down to and including "Factory Girl") of this [thoughtbot post about rails testing](https://thoughtbot.com/) that goes over these tools.
 
 ## Reflection Questions & Submission
 
