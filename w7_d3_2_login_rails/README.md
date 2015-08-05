@@ -22,52 +22,7 @@ We are going to use a RESTful pattern for logging in and out of our app. Since l
 7. Can you implement a method called "current_user" that is available everywhere? (hint: since all controllers inherit from `ApplicationController` you'll have to make a [helper method](http://apidock.com/rails/ActionController/Helpers/ClassMethods/helper_method) in that controller.)
 8. Can you implement another method called "requires_authorization" to require a current_user to be defined for users to access a `users#show` controller method. (hint: use a helper method and a [before_filter](http://apidock.com/rails/ActionController/Filters/ClassMethods/before_filter))?
 9. Implement a link to logout. Use a route-side-in approach.
-
----
-### Add a Flash
-
-What does the `flash` method do? Can you implement it to see?
-
-```ruby
-class SessionsController < ApplicationController
-  def new
-  end
-
-  def create
-    user_params = params.require(:user)
-    user = User.confirm(user_params[:email], user_params[:password])
-    if user
-      # use our handy login method
-      login(user)
-      redirect_to user_path(user.id)
-    else
-       # Flash an error message
-      flash[:error] = "Failed To Authenticate. Please try again."
-      redirect_to "/login"
-    end
-
-  end
-end
-```
-
-```html
-<!-- sessions/new.html.erb -->
-
-<%= form_for :user, url: "/login", method: "post" do |f| %>
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
-    <% end %>
-  <div>
-    <%= f.text_field :email %>
-  </div>
-  <div>
-    <%= f.text_field :password %>
-  </div>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
-```
+10. Add a flash message if the email or password is blank or the user is not authentic.
 
 ---
 [solution](https://gist.github.com/thebucknerlife/10090014)
