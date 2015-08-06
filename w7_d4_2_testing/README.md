@@ -220,166 +220,64 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
   end
   ```
 
-  ```
-  # generate User model spec
-  $ rails g rspec:model user
-  ```
-
-  ```ruby
-  #
-  # spec/models/user_spec.rb
-  #
-  RSpec.describe User, type: :model do
-    before do
-      user_params = Hash.new
-      user_params[:first_name] = Faker::Name.first_name
-      user_params[:last_name] = Faker::Name.last_name
-      user_params[:email] = Faker::Internet.email
-      user_params[:password] = Faker::Lorem.words(2).join
-      user_params[:password_confirmation] = user_params[:password]
-      @user = User.create(user_params)
-    end
-
-    describe "#full_name" do
-      it "joins first name and last name" do
-        expect(@user.full_name).to eq("#{@user.first_name} #{@user.last_name}")
-      end
-    end
-  end
-  ```
-
 1. Create and run a migration to add a `first_name` and a `last_name` column to the `users` table.
-
-  ```
-  $ rails g migration AddFieldsToUsers first_name last_name
-  ```
-
-  ```ruby
-  #
-  # db/migrate/20150806041236_add_fields_to_users.rb
-  #
-  class AddFieldsToUsers < ActiveRecord::Migration
-    def change
-      add_column :users, :first_name, :string
-      add_column :users, :last_name, :string
-    end
-  end
-  ```
-
-  ```
-  $ rake db:migrate
-  ```
 
 1. Write a `full_name` instance method in the `User` model to pass the test you added.
 
-  ```ruby
-  #
-  # app/models/user.rb
-  #
-  class User < ActiveRecord::Base
-
-    ...
-
-    def full_name
-      "#{first_name} #{last_name}"
-    end
-
-  end
-  ```
-
 1. Write a spec for a `generate_username` method that combines the first letter of a user's first name with the user's full last name and a random 2 digit number. All letters should be changed to lower case. Examples:
 
-    ```ruby
-    # user1 has first_name "Cameron", last_name "Jacoby"
-    user1.generate_username 
-    # => cjacoby64
+  ```ruby
+  # user1 has first_name "Cameron", last_name "Jacoby"
+  user1.generate_username 
+  # => cjacoby64
+  
+  # user2 has first_name "Adam", last_name "Braus"
+  user2.generate_username
+  # => abraus98
+  ```
     
-    # user2 has first_name "Adam", last_name "Braus"
-    user2.generate_username
-    # => abraus98
-    ```
-
-    ```ruby
-    #
-    # spec/models/user_spec.rb
-    #
-    RSpec.describe User, type: :model do
-
-      ...
-
-      describe "#generate_username" do
-        it "combines first initial, last name, and random number" do
-          username = @user.generate_username
-          expect(username).to include(@user.first_name[0].downcase)
-          expect(username).to include(@user.last_name.downcase)
-          # test format of username with regexp
-          expect(username).to match(/\A[a-z]+\d{2}\z/)
-        end
-      end
-
-    end
-    ```
-    
-   <!-- write a test that checks that the letters are all lowercase -->
-   <!-- decide what behavior you want your generate_username method to have when the user's first or last name is blank.  write a test to check that behavior -->
-   <!-- use a regular expression to check the format of the username -->
+  <!-- write a test that checks that the letters are all lowercase -->
+  <!-- decide what behavior you want your generate_username method to have when the user's first or last name is blank.  write a test to check that behavior -->
+  <!-- use a regular expression to check the format of the username -->
 
 1. Write a `generate_username` method in the `User` model that passes your tests.
 
-  ```ruby
-  #
-  # app/models/user.rb
-  #
-  class User < ActiveRecord::Base
-
-    ...
-
-    def generate_username
-      "#{first_name[0].downcase}#{last_name.downcase}#{rand(10..99)}"
-    end
-
-  end
-  ```
-
 **Controller Tests with Recipes!**
 
-1.  Create a `Recipe` model and its controller. A recipe should include the dish's title and the instructions for making the dish. You can assume the instructions are plain text.
+1. Create a `Recipe` model and its controller. A recipe should include the dish's title and the instructions for making the dish. You can assume the instructions are plain text.
 
-1. Write the spec for an `#index` action for the recipe controller. It should render an index view with data from all the existing recipes. Do you expect your tests to pass or fail? Run the spec.  
+1. Write the spec for `recipes#index` (`recipes` controller, `index` action). It should render an index view with data from all existing recipes in the database. Do you expect your tests to pass or fail? Run the spec.
 
-1. Update your controller to fill in the  `index` action, and make sure your `index` action passes the tests you wrote.
+1. Update your controller to fill in the `index` action, and make sure it passes the tests you wrote.
 
-1. Write the spec for a `new` action.  It should render a new view (which would have the new recipe form). Do you expect your tests to pass or fail? Run the tests.  
+1. Write the spec for a `new` action. It should render a new view (which would have the new recipe form). Do you expect your tests to pass or fail? Run the tests.
 
-1. Update your controller to fill in the `new` action, and pass the tests in your spec. 
+1. Update your controller to fill in the `new` action, and pass the tests in your spec.
 
-1. Write a spec for a `create` action. It should use data from parameters to add a recipe to the database, then redirect to a show view for the new recipe.  Do you expect your tests to pass?
+1. Write a spec for a `create` action. It should use data from parameters to add a recipe to the database, then redirect to a show view for the new recipe. Do you expect your tests to pass?
 
-1. Update your controller to fill in the `create` action, and pass as many of the tests you wrote as possible so far.  Hint: don't write a `show` action for this step!
+1. Update your controller to fill in the `create` action, and pass as many of the tests you wrote as possible so far. **Hint:** Don't write a `show` action for this step!
 
+1. Write a spec for a `show` action. It should render a show view with information for a single recipe. It will be associated with a parameterized url (as you can see in `rake routes`).  **Hint:** How will you get the `id` to use in the test?
 
-1. Write a spec for a `show` action. It should render a show view with information for a single recipe.  It will be associated with a parameterized url (as you can see in `rake routes`).  Hint: how will you get the `id` to use in the test?  
+1. Update your controller to pass the tests you wrote for your `show` action.
 
-1. Update your controller to pass the tests you wrote for your `show` action. 
+1. At this point, make sure all the tests you wrote for your `create` action are passing as well.
 
-1. Update your controller to pass the rest of the tests you wrote for your `create` action.
-
-<!--@ TODO solution with id params looks like http://stackoverflow.com/questions/9223336/how-to-write-an-rspec-test-for-a-simple-put-update-->
-
+<!-- solution with id params looks like: http://stackoverflow.com/questions/9223336/how-to-write-an-rspec-test-for-a-simple-put-update -->
 
 ### Stretch Challenges
 
-1. Write a spec for an `edit` action. It should render the edit view (which shows the edit recipe form). It will be associated with a parameterized url. Since we want to display the current version of the recipe within the form, the `edit` action will need to use the id from the url to get that information from the database. It should make that information available to the edit view.
+1. Write a spec for an `edit` action. It should render the edit view (which shows the edit recipe form). The `edit` action is associated with a parameterized url. Since we want to display the current version of the recipe within the form, the `edit` action will use the id from the url to get that information from the database and make it available in the edit view.
 
-1. Update your controller to pass the tests you wrote for your `edit` action. 
+1. Update your controller to pass the tests you wrote for your `edit` action.
 
-
-1. Write a spec for an `update` action. It should take in new data for a specific recipe, change the recipe in the database, and redirect to the show page for the item. 
+1. Write a spec for an `update` action. It should take in new data for a specific recipe, change the recipe in the database, and redirect to the show page for the item.
 
 1. Update your controller to pass the tests you wrote for your `update` action.
 
-1. Let's give users the ability to create recipes associated with their own account.  Set up a one to many relationship between a user and their recipes.
+1. Let's give users the ability to create recipes associated with their own account. Set up a one-to-many (1:N) relationship between a user and their recipes.
 
 1. Update your recipe controller spec to check that when a user creates a recipe, it's saved to the user's recipe list.
 
-1. Pass your new `create` action tests. Check out the [Nested Resources Rails Guide](http://guides.rubyonrails.org/routing.html#nested-resources) for info on how to deal with nested resource routes. 
+1. Refactor the `create` method in your `RecipesController` to pass your new `create` action tests.
