@@ -222,16 +222,16 @@ To test authentication, we need to define some `@current_user` before each of ou
 
 ## Testing Views
 
-We could use a tool like [Capybara](https://github.com/jnicklas/capybara) to test client-side views and interactions (e.g. does clicking on "Logout" do what we expect?).  We won't cover view testing today, though!
+We could use a tool like [Capybara](https://github.com/jnicklas/capybara) to test client-side views and interactions (e.g. does clicking on "Logout" do what we expect?). We won't cover view testing today, though!
 
 ## Resources
 
 1. **rspec-rails Documentation** https://github.com/rspec/rspec-rails
-2. **Model Specs** https://www.relishapp.com/rspec/rspec-rails/docs/model-specs
-3. **Request Specs** https://www.relishapp.com/rspec/rspec-rails/docs/request-specs/request-spec
-4. **Matchers**  https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-5. **Model Specs Example** https://github.com/wdi-sf-july/validation_tests
-6. **Controller Specs** https://www.relishapp.com/rspec/rspec-rails/docs/controller-specs
+2. **More rspec-rails Documentation** http://rspec.info/documentation/3.3/rspec-rails
+3. **Model Specs** https://www.relishapp.com/rspec/rspec-rails/docs/model-specs
+4. **Controller Specs** https://www.relishapp.com/rspec/rspec-rails/docs/controller-specs
+5. **Request Specs** https://www.relishapp.com/rspec/rspec-rails/docs/request-specs/request-spec
+6. **Matchers**  https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
 
 ## Challenges
 
