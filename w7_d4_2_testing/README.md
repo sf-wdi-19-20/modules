@@ -8,20 +8,19 @@
 
 
 
-## Rspec-rails
+## rspec-rails
 
-Rspec is a testing gem for Ruby.  It helps us write tests that sound like user stories or planning comments ("This function should..."). [Rspec-rails](https://github.com/rspec/rspec-rails) is a testing framework specifically for Rails.  We'll use rspec-rails alone to test our models and controllers. 
+Rspec is a testing gem for Ruby.  It helps us write tests that sound like user stories or planning comments ("This function should..."). [rspec-rails](https://github.com/rspec/rspec-rails) is a testing framework specifically for Rails.  We'll use rspec-rails alone to test our models and controllers. 
 
 
 ### Adding rspec-rails to Your Project
 
 1. Add rspec-rails to your Gemfile in the `development` and `test` groups:
 
-  *Gemfile*
   ```
-          group :development, :test do
-            gem 'rspec-rails', '~> 3.0.0'
-          end
+   group :development, :test do
+     gem 'rspec-rails', '~> 3.0.0'
+   end
   ```
 
 1. Run `bundle install` in your Terminal so that rspec-rails is actually added to your project.
@@ -32,7 +31,7 @@ Rspec is a testing gem for Ruby.  It helps us write tests that sound like user s
 
 1. If you created models before adding rspec-rails, create a spec file for each of your models. (This is only necessary if you had a model created before you installed rspec-rails.)  In your Terminal, use the command `rails generate rspec:model article`.
 
-### Running Rspec-rails Tests
+### Running rspec-rails Tests
 
 Typical Spec Folders For a Rails Project include:
 
@@ -53,42 +52,81 @@ To run only a specific set of tests, use `rspec` and the file path for the tests
 ```
 
 
-## Rspec-rails Tests
+## Writing rspec-rails Tests
+
+### Cool Tool: FFaker
+
+FFaker generates random data for us! We can use it to create fake data for tests.  For example, `FFaker::Name.first_name` generates a fake first name.  `FFaker::Internet.email` generates a fake email.  To see more that FFaker can do, check out the [FFaker docs](http://www.rubydoc.info/github/emmanueloga/ffaker/FFaker) and/or this [handy FFaker cheatsheet](http://ricostacruz.com/cheatsheets/ffaker.html).  
+
+Bonus: later, we can use FFaker to seed our database (but hold off!). 
+
+```ruby
+# seeds.rb file
+
+10.times do
+     Student.create(
+        first_name: FFaker::Name.first_name,
+        last_name: FFaker::Name.last_name,
+        grade: rand(9..12)
+      ) 
+end 
+```
+
+```bash
+$ rake db:seed
+```
 
 
+To add FFaker to your project, put it in your Gemfile for the development and test groups:
 
-### FFaker
+  ```
+   group :development, :test do
+     gem 'ffaker'
+   end
+  ```
 
-FFaker generates random data for us! We can use it to create fake data for tests.  For example, `FFaker::Name.first_name` generates a fake first name.  `FFaker::Internet.email` generates a fake email.  To see more that FFaker can do, check out the [FFaker docs](http://www.rubydoc.info/github/emmanueloga/ffaker/FFaker) and/or this [handy FFaker cheatsheet](http://ricostacruz.com/cheatsheets/ffaker.html).
+
 
 ### Testing Models
 
-<!--@TODO how to set the `@user` variable with  User.create  (can mention stubbing/anticipate stub questions)-->
+We can set up a user for testing purposes with `User.create`:
 
-Assuming we've already set a `@user` variable with first and last names, we can test that the `full_name` method correctly caluclates the full name.
+ ```ruby
+ before do
+    user_params = {}
+    user_params[:email] = FFaker::Internet.email
+    user_params[:email_confirmation] = user_params[:email]
+    user_params[:password]  = "blah"
+    user_params[:password_confirmation] = user_params[:password]
+    @user = User.create(user_params)
+  end
+  ```
 
-```
-    context "#full_name" do
-        it "joins first name and last name" do
-          expect( @user.full_name ).to eq "#{@user.first_name} #{@user.last_name}"
-        end
-    end
-```
+Assuming we've already set a `@user` variable with first and last names, we can then test that the `full_name` method correctly caluclates the full name:
+
+  ```ruby
+  context "#full_name" do
+      it "joins first name and last name" do
+        expect( @user.full_name ).to eq "#{@user.first_name} #{@user.last_name}"
+      end
+  end
+  ```
 
 
 
 ### Testing Controllers
 
-To test authentication, we need to have some `current_user`.   We might check a `current_user` method in a helper test, for example.
-
+To test authentication, we need to have some `current_user`.   
 <!-- @TODO - do we need to allow_any_instance_of ...?-->
-```
+
+<!--@TODO - note this example still uses stubbing for "should redirect when create fails"-->
+```ruby
 require 'rails_helper'
 
 RSpec.describe ArticlesController, :type => :controller do
   before do
     user_params = Hash.new
-    user_params[:email] = Faker::Internet.email
+    user_params[:email] = FFaker::Internet.email
     user_params[:email_confirmation] = user_params[:email]
     user_params[:password]  = "blah"
     user_params[:password_confirmation] = user_params[:password]
@@ -153,7 +191,7 @@ We could use a tool like [Capybara](https://github.com/jnicklas/capybara) to tes
 
 ## Resources
 
-1. **Rspec-Rails Documentation** https://github.com/rspec/rspec-rails  
+1. **rspec-rails Documentation** https://github.com/rspec/rspec-rails  
 2. **Model Specs** https://www.relishapp.com/rspec/rspec-rails/docs/model-specs  
 3. **Request Specs** https://www.relishapp.com/rspec/rspec-rails/docs/request-specs/request-spec  
 4. **Matchers**  https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -203,44 +241,45 @@ We'll build off of the auth app you started yesterday.  If you need a project wi
 
 1. Write a `generate_username` method for the `User` model that passes your tests.
 
+  **Controller Tests with Recipes!**
+
 1.  Create a `Recipe` model and its controller. A recipe should include the dish's title and the instructions for making the dish. You can assume the instructions are plain text.
 
 1. Write the spec for an `#index` action for the recipe controller. It should render an index view with data from all the existing recipes. Do you expect your tests to pass or fail? Run the spec.  
 
-1. Update your controller with the `index` action, and make sure your `#index action passes the test you wrote.
+1. Update your controller to fill in the  `index` action, and make sure your `index` action passes the tests you wrote.
 
-1. Write the spec for a `new` action.  It should display the new recipe form. Do you expect your tests to pass or fail? Run the tests.  
+1. Write the spec for a `new` action.  It should render a new view (which would have the new recipe form). Do you expect your tests to pass or fail? Run the tests.  
 
-1. Update your controller to fill in the `new` action, and pass the tests. 
+1. Update your controller to fill in the `new` action, and pass the tests in your spec. 
 
-1. Write a spec for a create action. It should add a recipe to the database.
+1. Write a spec for a `create` action. It should use data from parameters to add a recipe to the database, then redirect to a show view for the new recipe.  Do you expect your tests to pass?
 
-1. Update your controller to fill in the create action, and pass the tests you wrote.
+1. Update your controller to fill in the `create` action, and pass as many of the tests you wrote as possible so far.  Hint: don't write a `show` action for this step!
 
 
-1. Write a spec for a show action. It should have a parameterized url (as in `rake routes`).  Hint: how will you get the id to use in the test?
+1. Write a spec for a `show` action. It should render a show view with information for a single recipe.  It will be associated with a parameterized url (as you can see in `rake routes`).  Hint: how will you get the `id` to use in the test?  
 
-1. Update your controller to pass the test(s) you wrote for your show action. 
+1. Update your controller to pass the tests you wrote for your `show` action. 
 
+1. Update your controller to pass the rest of the tests you wrote for your `create` action.
 
 <!--@ TODO solution with id params looks like http://stackoverflow.com/questions/9223336/how-to-write-an-rspec-test-for-a-simple-put-update-->
 
 
 ### Stretch Challenges
 
+1. Write a spec for an `edit` action. It should render the edit view (which shows the edit recipe form). It will be associated with a parameterized url. Since we want to display the current version of the recipe within the form, the `edit` action will need to use the id from the url to get that information from the database. It should make that information available to the edit view.
+
+1. Update your controller to pass the tests you wrote for your `edit` action. 
 
 
-1. Write a spec for an edit action. It should display the edit form, with the current data for a specific recipe filled in. 
+1. Write a spec for an `update` action. It should take in new data for a specific recipe, change the recipe in the database, and redirect to the show page for the item. 
 
-1. Update your controller to past the tests you wrote for your edit action. 
+1. Update your controller to pass the tests you wrote for your `update` action.
 
-
-1. Write a spec for an update action. It should take in new data for a specific recipe, change the recipe in the database, and redirect to the show page for the item. 
-
-1. Update your controller to pass the tests you wrote for your update action.
-
-1. Let's give users the ability to create recipes associated with their own account.  Create a one to many association between a user and their recipes.
+1. Let's give users the ability to create recipes associated with their own account.  Set up a one to many relationship between a user and their recipes.
 
 1. Update your recipe controller spec to check that when a user creates a recipe, it's saved to the user's recipe list.
 
-1. Pass your new create action tests. Check out the [Nested Resources Rails Guide](http://guides.rubyonrails.org/routing.html#nested-resources) for info on how to deal with nested resource routes. 
+1. Pass your new `create` action tests. Check out the [Nested Resources Rails Guide](http://guides.rubyonrails.org/routing.html#nested-resources) for info on how to deal with nested resource routes. 
