@@ -17,42 +17,42 @@ In this example we will create a partial of a blog form and place that into a **
 
 **new.html.erb**
   ```
-  <h1>New Post</h1>
+<h1>New Post</h1>
 
 <%= form_for :article do |f| %>
-<p>
-  <%= f.label :title %><br>
-  <%= f.text_field :title %>
-</p>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
 
-<p>
-  <%= f.label :text %><br>
-  <%= f.text_area :text %>
-</p>
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </p>
 
-<p>
-  <%= f.submit %>
-</p>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>
   ```
 **edit.html.erb**
   ```
-  <h1>Edit Post</h1>
+<h1>Edit Post</h1>
 
 <%= form_for :article do |f| %>
-<p>
-  <%= f.label :title %><br>
-  <%= f.text_field :title %>
-</p>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
 
-<p>
-  <%= f.label :text %><br>
-  <%= f.text_area :text %>
-</p>
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </p>
 
-<p>
-  <%= f.submit %>
-</p>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>
   ```
 
@@ -61,19 +61,19 @@ As you can see, the form is exactly the same for both files.  We can take this f
 **_form.html.erb**
 ```
 <%= form_for :article do |f| %>
-<p>
-  <%= f.label :title %><br>
-  <%= f.text_field :title %>
-</p>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
 
-<p>
-  <%= f.label :text %><br>
-  <%= f.text_area :text %>
-</p>
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </p>
 
-<p>
-  <%= f.submit %>
-</p>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>
 ```
 With this partial you're able to clean up your code and simplify your page.
