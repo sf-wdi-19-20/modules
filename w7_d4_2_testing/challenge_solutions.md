@@ -106,15 +106,25 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
     ...
 
     describe "#generate_username" do
-      it "combines first initial, last name, and 2 digits" do
-        username = @user.generate_username
-        expect(username).to include(@user.first_name[0].downcase)
-        expect(username).to include(@user.last_name.downcase)
+      
+      before do
+	      @username = @user.generate_username
+      end
+
+      it "includes the first initial in lower case" do
+        expect(@username).to include(@user.last_name.downcase)
+      end 
+      
+      it "includes the last name in lower case" do
+        expect(@username).to include(@user.first_name[0].downcase)
+      end 
+      
+      it "combines first initial, last name, and a 2-digit number" do
+        letterpart = "#{@user.first_name[0]}#{@user.last_name}".downcase
         # test format of username with regexp
-        expect(username).to match(/\A[a-z]+\d{2}\z/)
+        expect(@username).to match(/\A#{letterpart}\d{2}\z/)
       end
     end
-
   end
   ```
 
