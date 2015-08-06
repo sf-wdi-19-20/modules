@@ -7,6 +7,10 @@
 | Test controllers using rspec-rails. |
 
 
+<!--@TODO finish writing challenges-->
+<!--@TODO start with github.com/sf-wdi-19-20/rails_auth-->
+
+
 ## Rspec-rails
 
 Rspec is a testing gem for Ruby.  It helps us write tests that sound like user stories or planning comments ("This function should..."). [Rspec-rails](https://github.com/rspec/rspec-rails) is a testing framework specifically for Rails.  We'll use rspec-rails alone for lower-level tests of our models and controllers. 
@@ -159,3 +163,65 @@ We could use a tool like [Capybara](https://github.com/jnicklas/capybara) to tes
 5. **Model Specs Example** https://github.com/wdi-sf-july/validation_tests
 6. **Controller Specs** https://www.relishapp.com/rspec/rspec-rails/docs/controller-specs
 
+
+## Challenges
+
+### Basic Challenges
+
+1. Add a `first_name` and a last name to user, and migrate
+
+1. Write a "#full_name" instance method for the user model class
+
+1. Put the model test from above into specs.
+
+   ```
+       context "#full_name" do
+           it "joins first name and last name" do
+             expect( @user.full_name ).to eq "#{@user.first_name} #{@user.last_name}"
+           end
+       end
+   ```
+   
+1. Write a test for a username generator that 1st letter of first name + full last name + rand number. It doesn't have to guarentee that the name is unique.
+
+1. Pass test.
+
+1.  Create a `Recipe` model and controller. 
+
+1. Write the spec for an `index` action for the Recipe controller. Remember, it should display an index view with all the existing recipes. Do you expect this test to pass or fail? Run the tests.  
+
+1. Make sure your index action passes the test you wrote.
+
+1. Write the spec for a `new` action.  It should display the new recipe form. Do you expect this test to pass or fail? Run the tests.  
+
+1. Pass the tests.
+
+1. `create` test. It should add a recipe to the db.
+
+1. pass
+
+
+1. `show`  test.  Hint: how will you get the id?
+
+1. pass
+
+
+<!--@ TODO solution with id params looks like http://stackoverflow.com/questions/9223336/how-to-write-an-rspec-test-for-a-simple-put-update-->
+
+
+### Stretch Challenges
+
+
+
+1. `edit` test. It should display the edit form with the current data filled in. 
+
+1. pass
+
+
+1. `update` test
+
+1. pass
+
+1. Let's let users store recipes.  Create a 1:N relationship between a user and recipes. Update the controller test to check that when a user creates a recipe, it's saved to the user's recipe list.
+
+1. Pass test (super stretch).  Check out the [Nested Resources Rails Guide](http://guides.rubyonrails.org/routing.html#nested-resources) for info on how to deal with nested resource. routes. 
