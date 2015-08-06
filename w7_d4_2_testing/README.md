@@ -4,14 +4,11 @@
 | :---- |
 | Identify various aspects of Rails apps that we might want to test.|
 | Test model methods using rspec-rails. |
-| Test controllers using rspec-rails. |
-
-
+| Test controller actions using rspec-rails. |
 
 ## rspec-rails
 
-Rspec is a testing gem for Ruby.  It helps us write tests that sound like user stories or planning comments ("This function should..."). [rspec-rails](https://github.com/rspec/rspec-rails) is a testing framework specifically for Rails.  We'll use rspec-rails alone to test our models and controllers. 
-
+Rspec is a testing gem for Ruby. It helps us write tests that sound like user stories or planning comments ("This method should..."). <a href="https://github.com/rspec/rspec-rails" target="_blank">rspec-rails</a> is a testing framework specifically for Rails. We'll use rspec-rails alone to test our models and controllers.
 
 ### Adding rspec-rails to Your Project
 
@@ -23,83 +20,91 @@ Rspec is a testing gem for Ruby.  It helps us write tests that sound like user s
    end
   ```
 
-1. Run `bundle install` in your Terminal so that rspec-rails is actually added to your project.
+1. Run `bundle install` (or `bundle` for short) in your terminal so that rspec-rails is actually added to your project.
 
-1. Add tests to your rails project using the Terminal: `rails generate rspec:install`. This will create a `spec` directory. It also adds `spec/spec_helper.rb` and `.rspec` files that are used for configuration. See those files for more information.
+1. Add tests to your rails project using the terminal:
 
-1. Configure your specs by going to the `.rspec` file and removing the line that says `--warnings`.    
+  ```
+  $ rails g rspec:install
+  ```
 
-1. If you created models before adding rspec-rails, create a spec file for each of your models. (This is only necessary if you had a model created before you installed rspec-rails.)  In your Terminal, use the command `rails generate rspec:model article`.
+  This creates a `spec` directory. It also adds `spec/spec_helper.rb` and `.rspec` files that are used for configuration. See those files for more information.
+
+1. Configure your specs by going into the `.rspec` file and removing the line that says `--warnings`.
+
+1. If you created models before adding rspec-rails, create a spec file for each of your models. (This is only necessary if you had a model created before you installed rspec-rails.)
+
+  ```
+  $ rails g rspec:model article
+  ```
 
 ### Running rspec-rails Tests
 
-Typical Spec Folders For a Rails Project include:
+Typical spec folders for a Rails project include:
 
 * `spec/models/user_spec.rb`
-* `spec/controllers`
+* `spec/controllers/users_controller_spec.rb`
 * `spec/views/user/show.html.erb_spec.rb`
 
-To run **all** test specs, go to the Terminal and type `rspec` or `bundle exec rspec`.
+To run **all** test specs, go to the terminal and type `rspec` or `bundle exec rspec`.
 
-To run only a specific set of tests, use `rspec` and the file path for the tests you want to run in the Terminal:
+To run only a specific set of tests, type `rspec` and the file path for the tests you want to run in the terminal:
 
-``` bash
-    # Run only model specs
-    rspec spec/models
-    
-    # Run only specs for ArticlesController
-    rspec spec/controllers/articles_controller_spec.rb
-```
+  ``` bash
+  # run only model specs
+  rspec spec/models
 
+  # run only specs for ArticlesController
+  rspec spec/controllers/articles_controller_spec.rb
+  ```
 
 ## Writing rspec-rails Tests
 
 ### Cool Tool: FFaker
 
-FFaker generates random data for us! We can use it to create fake data for tests.  For example, `FFaker::Name.first_name` generates a fake first name.  `FFaker::Internet.email` generates a fake email.  To see more that FFaker can do, check out the [FFaker docs](http://www.rubydoc.info/github/emmanueloga/ffaker/FFaker) and/or this [handy FFaker cheatsheet](http://ricostacruz.com/cheatsheets/ffaker.html).  
+FFaker generates random data for us! We can use it to create fake data for tests. For example, `FFaker::Name.first_name` generates a fake first name. `FFaker::Internet.email` generates a fake email. To see more that FFaker can do, check out the <a href="http://www.rubydoc.info/github/emmanueloga/ffaker/FFaker" target="_blank">FFaker docs</a> and/or this <a href="http://ricostacruz.com/cheatsheets/ffaker.html" target="_blank">handy FFaker cheatsheet</a>.
 
-Bonus: later, we can use FFaker to seed our database (but hold off!). 
+**Bonus:** Later, we can use FFaker to seed our database (but hold off!).
 
-```ruby
-# seeds.rb file
+  ```ruby
+  #
+  # db/seeds.rb
+  #
 
-25.times do
-     Student.create(
-        first_name: FFaker::Name.first_name,
-        last_name: FFaker::Name.last_name,
-        grade: rand(9..12),
-        yearbook_quote: FFaker::HipsterIpsum.sentence(5)
-      ) 
-end 
-```
+  25.times do
+    Student.create(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      grade: rand(9..12),
+      yearbook_quote: Faker::HipsterIpsum.sentence(5)
+    ) 
+  end 
+  ```
 
-```bash
-$ rake db:seed
-```
-
+  ```bash
+  $ rake db:seed
+  ```
 
 To add FFaker to your project, put it in your Gemfile for the development and test groups:
 
   ```
-   group :development, :test do
-     gem 'ffaker'
-   end
+  group :development, :test do
+    gem 'ffaker'
+  end
   ```
-  
-Then run `bundle install` in your Terminal.
 
-
+Then run `bundle` in your terminal.
 
 ### Testing Models
 
-We can set up a user for testing purposes with `User.create`:
+We can set up a `@user` for testing purposes with `User.create`:
 
- ```ruby
- before do
+  ```ruby
+  before do
     user_params = {}
     user_params[:email] = FFaker::Internet.email
     user_params[:email_confirmation] = user_params[:email]
-    user_params[:password]  = "blah"
+    user_params[:password] = "blah"
     user_params[:password_confirmation] = user_params[:password]
     @user = User.create(user_params)
   end
@@ -108,18 +113,16 @@ We can set up a user for testing purposes with `User.create`:
 Assuming we've already set a `@user` variable with first and last names, we can then test that the `full_name` method correctly caluclates the full name:
 
   ```ruby
-  context "#full_name" do
-      it "joins first name and last name" do
-        expect( @user.full_name ).to eq "#{@user.first_name} #{@user.last_name}"
-      end
+  describe "#full_name" do
+    it "joins first name and last name" do
+      expect(@user.full_name).to eq "#{@user.first_name} #{@user.last_name}"
+    end
   end
   ```
 
-
-
 ### Testing Controllers
 
-To test authentication, we need to have some `current_user`.   
+To test authentication, we need to define some `@current_user` before each of our tests run.
 <!-- @TODO - do we need to allow_any_instance_of ...?-->
 
 <!--@TODO - note this example still uses stubbing for "should redirect when create fails"-->
@@ -185,18 +188,15 @@ RSpec.describe ArticlesController, :type => :controller do
 end
 ```
 
-
-
-
 ## Testing Views
 
 We could use a tool like [Capybara](https://github.com/jnicklas/capybara) to test client-side views and interactions (e.g. does clicking on "Logout" do what we expect?).  We won't cover view testing today, though!
 
 ## Resources
 
-1. **rspec-rails Documentation** https://github.com/rspec/rspec-rails  
-2. **Model Specs** https://www.relishapp.com/rspec/rspec-rails/docs/model-specs  
-3. **Request Specs** https://www.relishapp.com/rspec/rspec-rails/docs/request-specs/request-spec  
+1. **rspec-rails Documentation** https://github.com/rspec/rspec-rails
+2. **Model Specs** https://www.relishapp.com/rspec/rspec-rails/docs/model-specs
+3. **Request Specs** https://www.relishapp.com/rspec/rspec-rails/docs/request-specs/request-spec
 4. **Matchers**  https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
 5. **Model Specs Example** https://github.com/wdi-sf-july/validation_tests
 6. **Controller Specs** https://www.relishapp.com/rspec/rspec-rails/docs/controller-specs
