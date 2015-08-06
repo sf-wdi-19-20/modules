@@ -46,7 +46,7 @@ end
   # Gemfile
   #
    group :development, :test do
-     gem 'rspec-rails', '~> 3.0.0'
+     gem 'rspec-rails'
    end
   ```
 
@@ -60,7 +60,7 @@ end
 
   This creates a `spec` directory. It also adds `spec/spec_helper.rb` and `.rspec` files that are used for configuration. See those files for more information.
 
-1. Configure your specs by going into the `.rspec` file and removing the line that says `--warnings`.
+1. Configure your specs by going into the `.rspec` file and removing the line that says `--warnings` if there is one.
 
 1. If you created models before adding rspec-rails, create a spec file for each of your models. (This is only necessary if you had a model created before you installed rspec-rails.)
 
