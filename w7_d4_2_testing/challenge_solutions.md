@@ -106,7 +106,7 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
     ...
 
     describe "#generate_username" do
-      it "combines first initial, last name, and random number" do
+      it "combines first initial, last name, and 2 digits" do
         username = @user.generate_username
         expect(username).to include(@user.first_name[0].downcase)
         expect(username).to include(@user.last_name.downcase)
