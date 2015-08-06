@@ -14,7 +14,10 @@ Rspec is a testing gem for Ruby. It helps us write tests that sound like user st
 
 1. Add rspec-rails to your Gemfile in the `development` and `test` groups:
 
-  ```
+  ```ruby
+  #
+  # Gemfile
+  #
    group :development, :test do
      gem 'rspec-rails', '~> 3.0.0'
    end
@@ -50,11 +53,11 @@ To run **all** test specs, go to the terminal and type `rspec` or `bundle exec r
 
 To run only a specific set of tests, type `rspec` and the file path for the tests you want to run in the terminal:
 
-  ``` bash
+  ```
   # run only model specs
   rspec spec/models
 
-  # run only specs for ArticlesController
+  # run only specs for `ArticlesController`
   rspec spec/controllers/articles_controller_spec.rb
   ```
 
@@ -77,8 +80,8 @@ FFaker generates random data for us! We can use it to create fake data for tests
       last_name: Faker::Name.last_name,
       grade: rand(9..12),
       yearbook_quote: Faker::HipsterIpsum.sentence(5)
-    ) 
-  end 
+    )
+  end
   ```
 
   ```bash
@@ -87,7 +90,10 @@ FFaker generates random data for us! We can use it to create fake data for tests
 
 To add FFaker to your project, put it in your Gemfile for the development and test groups:
 
-  ```
+  ```ruby
+  #
+  # Gemfile
+  #
   group :development, :test do
     gem 'ffaker'
   end
@@ -100,93 +106,117 @@ Then run `bundle` in your terminal.
 We can set up a `@user` for testing purposes with `User.create`:
 
   ```ruby
-  before do
-    user_params = {}
-    user_params[:email] = FFaker::Internet.email
-    user_params[:email_confirmation] = user_params[:email]
-    user_params[:password] = "blah"
-    user_params[:password_confirmation] = user_params[:password]
-    @user = User.create(user_params)
+  #
+  # spec/models/user_spec.rb
+  #
+  require 'rails_helper'
+  RSpec.describe User, type: :model do
+
+    before do
+      user_params = Hash.new
+      user_params[:first_name] = Faker::Name.first_name
+      user_params[:last_name] = Faker::Name.last_name
+      user_params[:email] = Faker::Internet.email
+      user_params[:password] = Faker::Lorem.words(2).join
+      user_params[:password_confirmation] = user_params[:password]
+      @user = User.create(user_params)
+    end
+
   end
   ```
 
-Assuming we've already set a `@user` variable with first and last names, we can then test that the `full_name` method correctly caluclates the full name:
+Assuming we've already set a `@user` variable with first and last names, we can then test that the `full_name` method correctly calculates the full name:
 
   ```ruby
-  describe "#full_name" do
-    it "joins first name and last name" do
-      expect(@user.full_name).to eq "#{@user.first_name} #{@user.last_name}"
+  #
+  # spec/models/user_spec.rb
+  #
+  require 'rails_helper'
+  RSpec.describe User, type: :model do
+
+    ...
+
+    describe "#full_name" do
+      it "joins first name and last name" do
+        expect(@user.full_name).to eq("#{@user.first_name} #{@user.last_name}")
+      end
     end
+
   end
   ```
 
 ### Testing Controllers
 
-To test authentication, we need to define some `@current_user` before each of our tests run.
-<!-- @TODO - do we need to allow_any_instance_of ...?-->
+To test authentication, we need to define some `@current_user` before each of our tests run. The `allow_any_instance_of(...` line gives us access to the `@current_user` we just created in the controller methods we want to test.
 
-<!--@TODO - note this example still uses stubbing for "should redirect when create fails"-->
-```ruby
-require 'rails_helper'
+  ```ruby
+  #
+  # spec/controllers/articles_controller_spec.rb
+  #
+  require 'rails_helper'
+  RSpec.describe ArticlesController, type: :controller do
 
-RSpec.describe ArticlesController, :type => :controller do
-  before do
-    user_params = Hash.new
-    user_params[:email] = FFaker::Internet.email
-    user_params[:email_confirmation] = user_params[:email]
-    user_params[:password]  = "blah"
-    user_params[:password_confirmation] = user_params[:password]
-    @current_user = User.create(user_params)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
+    before do
+      user_params = Hash.new
+      user_params[:first_name] = Faker::Name.first_name
+      user_params[:last_name] = Faker::Name.last_name
+      user_params[:email] = Faker::Internet.email
+      user_params[:password] = Faker::Lorem.words(2).join
+      user_params[:password_confirmation] = user_params[:password]
+      @current_user = User.create(user_params)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
+    end
+
+    describe "GET #index" do
+      it "should assign @articles" do
+        all_articles = Article.all
+        get :index
+        expect(assigns(:articles)).to eq(all_articles)
+      end
+
+      it "should render the :index view" do
+        get :index
+        expect(response).to render_template(:index)
+      end
+    end
+
+    describe "GET #new" do
+      it "should assign @article" do
+        get :new
+        expect(assigns(:article)).to be_instance_of(Article)
+      end
+
+      it "should render the :new view" do
+        get :new
+        expect(response).to render_template(:new)
+      end
+    end
+
+    describe "POST #create" do
+      context "success" do
+        it "should add new article to current_user" do
+          articles_count = @current_user.articles.count
+          post :create, article: {title: "blah", content: "blah"}
+          expect(@current_user.articles.count).to eq(articles_count + 1)
+        end
+
+        it "should redirect_to 'article_path' after successful create" do
+          post :create, article: {title: "blah", content: "blah"}
+          expect(response.status).to be(302)
+          expect(response.location).to match(/\/articles\/\d+/)
+        end
+      end
+
+      context "failure" do
+        it "should redirect to 'new_article_path' when create fails" do
+          # create blank article (assumes validations are set up in article model for presence of title and content)
+          post :create, article: { title: nil, content: nil}
+          expect(response).to redirect_to(new_article_path)
+        end
+      end
+    end
   end
-
-  describe "GET #index" do
-    it "should render the :index view" do 
-      get :index
-      expect(response).to render_template(:index)
-    end
-
-    it "should assign @articles" do
-     all_articles = Article.all
-     get :index
-     expect(assigns(:articles)).to eq(all_articles)
-    end
-  end
-  
-  describe "GET #new" do
-    it "should assign @article" do
-      get :new
-      expect(assigns(:article)).to be_instance_of(Article)
-    end
-
-    it "should render the :new view" do
-      get :new
-      expect(response).to render_template(:new)
-    end 
-  end
-  
-  describe "POST #create" do
-    it "should redirect_to 'article_path' after successful create" do
-      post :create, article: {title: "blah", content: "blah"}
-      expect(response.status).to be(302)
-      expect(response.location).to match(/\/articles\/\d+/)
-    end
-
-    it "should add article to current_user" do
-      count = @current_user.articles.all.count
-      post :create, article: {title: "blah", content: "blah"}
-      expect(@current_user.articles.count).to be > count
-    end
-
-    it "should redirect when create fails" do
-      # a stub on the create method
-      allow(@current_user.articles).to receive(:create).and_return(false)
-      post :create, article: { title: "blah", content: "blah"}
-      expect(response).to redirect_to(new_article_path)
-    end
-  end
-end
-```
+  ```
 
 ## Testing Views
 
@@ -208,7 +238,7 @@ We could use a tool like [Capybara](https://github.com/jnicklas/capybara) to tes
 We'll build off of the auth app you started yesterday. If you'd like to start with fresh code, you can fork and clone the <a href="github.com/sf-wdi-19-20/rails_auth" target="_blank">rails_auth solution</a>.
 
 **Model Method Tests**
-  
+
 1. Generate a spec for your `User` model. Add this model test (from above) into the `User` model spec:
 
   ```
@@ -227,14 +257,14 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
 
   ```ruby
   # user1 has first_name "Cameron", last_name "Jacoby"
-  user1.generate_username 
+  user1.generate_username
   # => cjacoby64
-  
+
   # user2 has first_name "Adam", last_name "Braus"
   user2.generate_username
   # => abraus98
   ```
-    
+
   <!-- write a test that checks that the letters are all lowercase -->
   <!-- decide what behavior you want your generate_username method to have when the user's first or last name is blank.  write a test to check that behavior -->
   <!-- use a regular expression to check the format of the username -->
