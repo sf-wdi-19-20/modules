@@ -6,6 +6,8 @@
 | Test model methods using rspec-rails. |
 | Test controller actions using rspec-rails. |
 
+Reference: [Testing Pre-reading](https://github.com/ajbraus/wdi-homework/blob/master/rails-testing.md)
+
 ## rspec-rails
 
 Rspec is a testing gem for Ruby. It helps us write tests that sound like user stories or planning comments ("This method should..."). <a href="https://github.com/rspec/rspec-rails" target="_blank">rspec-rails</a> is a testing framework specifically for Rails. We'll use rspec-rails alone to test our models and controllers.
