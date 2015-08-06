@@ -87,6 +87,8 @@ To run only a specific set of tests, type `rspec` and the file path for the test
   # run only specs for `ArticlesController`
   rspec spec/controllers/articles_controller_spec.rb
   ```
+  
+  Run `rspec` from the terminal now to check that your install worked.
 
 ## Writing rspec-rails Tests
 
