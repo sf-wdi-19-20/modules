@@ -7,7 +7,7 @@ Here's what rails is made for! Build a straight up blog, quickly!
 
 
 <!--1. Write user narratives and draw simple wireframes for your-->
-2. **Don't copy and paste or clone code. Start with `rails new -d postgresql <app name>`**
+2. **Don't copy and paste or clone code. Start with `rails new -d postgresql <app name>`**.
 1. Follow **Route-Side-In** - start with the routes, then controllers, then templates, then models.
 1. Start with one part of the site's functionality. Try enabling a splash page and an about page first, then move on to your data-driven routes and views.
 1. Pay attention to error messages closely - they are your best helpers!
@@ -47,6 +47,8 @@ Requirements:
 * We need a `posts` controller with all seven resources
 * We need a `sessions` controller with at least `new` and `create`.
 * We need `session_helper` methods for `login`, `logged_in?`, `logout`, and `current_user`.
+
+* We need views for any `index`, `new`, `show`, and `edit` routes.
 
 With all of the above, our site's users should be able to:
 
