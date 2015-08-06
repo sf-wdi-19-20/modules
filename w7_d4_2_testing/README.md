@@ -105,10 +105,10 @@ FFaker generates random data for us! We can use it to create fake data for tests
 
   25.times do
     Student.create(
-      first_name: Faker::Name.first_name,
-      last_name: Faker::Name.last_name,
+      first_name: FFaker::Name.first_name,
+      last_name: FFaker::Name.last_name,
       grade: rand(9..12),
-      yearbook_quote: Faker::HipsterIpsum.sentence(5)
+      yearbook_quote: FFaker::HipsterIpsum.sentence(5)
     )
   end
   ```
@@ -143,10 +143,10 @@ We can set up a `@user` for testing purposes with `User.create`:
 
     before do
       user_params = Hash.new
-      user_params[:first_name] = Faker::Name.first_name
-      user_params[:last_name] = Faker::Name.last_name
-      user_params[:email] = Faker::Internet.email
-      user_params[:password] = Faker::Lorem.words(2).join
+      user_params[:first_name] = FFaker::Name.first_name
+      user_params[:last_name] = FFaker::Name.last_name
+      user_params[:email] = FFaker::Internet.email
+      user_params[:password] = FFaker::Lorem.words(2).join
       user_params[:password_confirmation] = user_params[:password]
       @user = User.create(user_params)
     end
@@ -187,10 +187,10 @@ To test authentication, we need to define some `@current_user` before each of ou
 
     before do
       user_params = Hash.new
-      user_params[:first_name] = Faker::Name.first_name
-      user_params[:last_name] = Faker::Name.last_name
-      user_params[:email] = Faker::Internet.email
-      user_params[:password] = Faker::Lorem.words(2).join
+      user_params[:first_name] = FFaker::Name.first_name
+      user_params[:last_name] = FFaker::Name.last_name
+      user_params[:email] = FFaker::Internet.email
+      user_params[:password] = FFaker::Lorem.words(2).join
       user_params[:password_confirmation] = user_params[:password]
       @current_user = User.create(user_params)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
