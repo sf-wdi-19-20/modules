@@ -84,7 +84,7 @@ Add `ffaker` to your Gemfile and use it in your `db/seeds.rb` file to create fak
 
 2. Use bootstrap to style your blog.
 
-<!--5. Work together and help each other.-->
+   <!--5. Work together and help each other.-->
 
 1. Add `Tag`s, and create a many-to-many association between tags and posts.
 3. Add `Comment`s, and create a one-to-many association between posts and comments.
@@ -104,4 +104,4 @@ Add `ffaker` to your Gemfile and use it in your `db/seeds.rb` file to create fak
 6. Parse dates with Chronic
 7. Implement an 'undo' functionality with Paranoid
 
-<!--8. Implement a payment gateway with the stripe gem-->
+    <!--8. Implement a payment gateway with the stripe gem-->
