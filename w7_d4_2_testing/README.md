@@ -7,18 +7,15 @@
 | Test controllers using rspec-rails. |
 
 
-<!--@TODO finish writing challenges-->
-<!--@TODO start with github.com/sf-wdi-19-20/rails_auth-->
-
 
 ## Rspec-rails
 
-Rspec is a testing gem for Ruby.  It helps us write tests that sound like user stories or planning comments ("This function should..."). [Rspec-rails](https://github.com/rspec/rspec-rails) is a testing framework specifically for Rails.  We'll use rspec-rails alone for lower-level tests of our models and controllers. 
+Rspec is a testing gem for Ruby.  It helps us write tests that sound like user stories or planning comments ("This function should..."). [Rspec-rails](https://github.com/rspec/rspec-rails) is a testing framework specifically for Rails.  We'll use rspec-rails alone to test our models and controllers. 
 
 
-### Adding Rspec-rails to Your Project
+### Adding rspec-rails to Your Project
 
-1. Add rspec-rails to your Gemfile in the development in the `development` and `test` groups:
+1. Add rspec-rails to your Gemfile in the `development` and `test` groups:
 
   *Gemfile*
   ```
@@ -62,7 +59,7 @@ To run only a specific set of tests, use `rspec` and the file path for the tests
 
 ### FFaker
 
-FFaker generates random data for us! We can use it to create fake data for tests.  `Faker::Name.first_name` generates a fake first name.  `Faker::Internet.email` generates a fake email.  To see more that Ffaker can do, check out the [Ffaker docs](@TODO link).
+FFaker generates random data for us! We can use it to create fake data for tests.  For example, `FFaker::Name.first_name` generates a fake first name.  `FFaker::Internet.email` generates a fake email.  To see more that FFaker can do, check out the [FFaker docs](http://www.rubydoc.info/github/emmanueloga/ffaker/FFaker) and/or this [handy FFaker cheatsheet](http://ricostacruz.com/cheatsheets/ffaker.html).
 
 ### Testing Models
 
@@ -168,11 +165,12 @@ We could use a tool like [Capybara](https://github.com/jnicklas/capybara) to tes
 
 ### Basic Challenges
 
-1. Add a `first_name` and a last name to user, and migrate
+We'll build off of the auth app you started yesterday.  If you need a project with signup, you can start from the [rails auth solutions](github.com/sf-wdi-19-20/rails_auth).
 
-1. Write a "#full_name" instance method for the user model class
 
-1. Put the model test from above into specs.
+  ** Model Method Tests**
+  
+1. Generate a spec for your `User` model. Add this model test (from above) into the `User` model specs:
 
    ```
        context "#full_name" do
@@ -181,29 +179,48 @@ We could use a tool like [Capybara](https://github.com/jnicklas/capybara) to tes
            end
        end
    ```
-   
-1. Write a test for a username generator that 1st letter of first name + full last name + rand number. It doesn't have to guarentee that the name is unique.
 
-1. Pass test.
+1. Use a migration to add a `first_name` attribute and a `last_name` attribute to the `User` model. 
 
-1.  Create a `Recipe` model and controller. 
+1. Write a `#full_name` instance method for the User model class to pass the test you added.
 
-1. Write the spec for an `index` action for the Recipe controller. Remember, it should display an index view with all the existing recipes. Do you expect this test to pass or fail? Run the tests.  
+
+1. Write a spec for a `#generate_username` method that combines the first letter of a user's first name with the user's full last name and a random 2 digit number. All letters should be changed to lower case. Examples:
+
+    ```ruby
+    # user1 has first_name "Cameron", last_name "Jacoby"
+    user1.generate_username 
+    # => cjacoby64
+    
+    # user2 has first_name "Adam", last_name "Braus"
+    user2.generate_username
+    # => abraus98
+    ```
+    
+   <!--write a test that checks that the letters are all lowercase-->
+   <!--decide what behavior you want your generate_username method to have when the user's first or last name is blank.  write a test to check that behavior-->
+   <!--use a regular expression to check the format of the username-->
+
+1. Write a `#generate_username` method for the `User` model that passes your tests.
+
+1.  Create a `Recipe` model and its controller. A recipe should include the dish's title and the instructions for making the dish. You can assume the instructions are plain text.
+
+1. Write the spec for an `#index` action for the recipe controller. It should render an index view with data from all the existing recipes. Do you expect your tests to pass or fail? Run the spec.  
 
 1. Make sure your index action passes the test you wrote.
 
-1. Write the spec for a `new` action.  It should display the new recipe form. Do you expect this test to pass or fail? Run the tests.  
+1. Write the spec for a `new` action.  It should display the new recipe form. Do you expect your tests to pass or fail? Run the tests.  
 
-1. Pass the tests.
+1. Update your controller to fill in the `new` action, and pass the tests. 
 
-1. `create` test. It should add a recipe to the db.
+1. Write a spec for a create action. It should add a recipe to the database.
 
-1. pass
+1. Update your controller to fill in the create action, and pass the tests you wrote.
 
 
-1. `show`  test.  Hint: how will you get the id?
+1. Write a spec for a show action. It should have a parameterized url (as in `rake routes`).  Hint: how will you get the id to use in the test?
 
-1. pass
+1. Update your controller to pass the test(s) you wrote for your show action. 
 
 
 <!--@ TODO solution with id params looks like http://stackoverflow.com/questions/9223336/how-to-write-an-rspec-test-for-a-simple-put-update-->
@@ -213,15 +230,17 @@ We could use a tool like [Capybara](https://github.com/jnicklas/capybara) to tes
 
 
 
-1. `edit` test. It should display the edit form with the current data filled in. 
+1. Write a spec for an edit action. It should display the edit form, with the current data for a specific recipe filled in. 
 
-1. pass
+1. Update your controller to past the tests you wrote for your edit action. 
 
 
-1. `update` test
+1. Write a spec for an update action. It should take in new data for a specific recipe, change the recipe in the database, and redirect to the show page for the item. 
 
-1. pass
+1. Update your controller to pass the tests you wrote for your update action.
 
-1. Let's let users store recipes.  Create a 1:N relationship between a user and recipes. Update the controller test to check that when a user creates a recipe, it's saved to the user's recipe list.
+1. Let's give users the ability to create recipes associated with their own account.  Create a one to many association between a user and their recipes.
 
-1. Pass test (super stretch).  Check out the [Nested Resources Rails Guide](http://guides.rubyonrails.org/routing.html#nested-resources) for info on how to deal with nested resource. routes. 
+1. Update your recipe controller spec to check that when a user creates a recipe, it's saved to the user's recipe list.
+
+1. Pass your new create action tests. Check out the [Nested Resources Rails Guide](http://guides.rubyonrails.org/routing.html#nested-resources) for info on how to deal with nested resource routes. 
