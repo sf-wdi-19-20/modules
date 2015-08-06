@@ -282,7 +282,7 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
 
 1. Write a `full_name` instance method in the `User` model to pass the test you added.
 
-1. Write a spec for a `generate_username` method that combines the first letter of a user's first name with the user's full last name and a random 2 digit number. All letters should be changed to lower case. Examples:
+1. Write a spec for a `generate_username` method that combines the first letter of a user's first name with the user's full last name and a random 2 digit number (10 to 99). All letters should be changed to lower case. Examples:
 
   ```ruby
   # user1 has first_name "Cameron", last_name "Jacoby"
