@@ -29,10 +29,10 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
     
     before do
       user_params = Hash.new
-      user_params[:first_name] = Faker::Name.first_name
-      user_params[:last_name] = Faker::Name.last_name
-      user_params[:email] = Faker::Internet.email
-      user_params[:password] = Faker::Lorem.words(2).join
+      user_params[:first_name] = FFaker::Name.first_name
+      user_params[:last_name] = FFaker::Name.last_name
+      user_params[:email] = FFaker::Internet.email
+      user_params[:password] = FFaker::Lorem.words(2).join
       user_params[:password_confirmation] = user_params[:password]
       @user = User.create(user_params)
     end
@@ -249,7 +249,7 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
       context "success" do
         before do
           @recipes_count = Recipe.count
-          post :create, recipe: { title: Faker::Lorem.words(2).join(" "), instructions: Faker::Lorem.sentence }
+          post :create, recipe: { title: FFaker::Lorem.words(2).join(" "), instructions: FFaker::Lorem.sentence }
         end
 
         it "should add new recipe to current user" do
@@ -308,7 +308,7 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
 
     describe "#show" do
       before do
-        @recipe = Recipe.create(title: Faker::Lorem.words(2).join(" "), instructions: Faker::Lorem.sentence)
+        @recipe = Recipe.create(title: FFaker::Lorem.words(2).join(" "), instructions: FFaker::Lorem.sentence)
         get :show, id: @recipe.id
       end
 
@@ -363,7 +363,7 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
 
     describe "#edit" do
       before do
-        @recipe = Recipe.create(title: Faker::Lorem.words(2).join(" "), instructions: Faker::Lorem.sentence)
+        @recipe = Recipe.create(title: FFaker::Lorem.words(2).join(" "), instructions: FFaker::Lorem.sentence)
         get :edit, id: @recipe.id
       end
 
@@ -409,13 +409,13 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
 
     describe "#update" do
       before do
-        @recipe = Recipe.create(title: Faker::Lorem.words(2).join(" "), instructions: Faker::Lorem.sentence)
+        @recipe = Recipe.create(title: FFaker::Lorem.words(2).join(" "), instructions: FFaker::Lorem.sentence)
       end
 
       context "success" do
         before do
-          @new_title = Faker::Lorem.words(3).join(" ")
-          @new_instructions = Faker::Lorem.sentence
+          @new_title = FFaker::Lorem.words(3).join(" ")
+          @new_instructions = FFaker::Lorem.sentence
           put :update, id: @recipe.id, recipe: { title: @new_title, instructions: @new_instructions }
           # reload @recipe to get changes from :update
           @recipe.reload
@@ -523,10 +523,10 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
 
     before do
       user_params = Hash.new
-      user_params[:first_name] = Faker::Name.first_name
-      user_params[:last_name] = Faker::Name.last_name
-      user_params[:email] = Faker::Internet.email
-      user_params[:password] = Faker::Lorem.words(2).join
+      user_params[:first_name] = FFaker::Name.first_name
+      user_params[:last_name] = FFaker::Name.last_name
+      user_params[:email] = FFaker::Internet.email
+      user_params[:password] = FFaker::Lorem.words(2).join
       user_params[:password_confirmation] = user_params[:password]
       @current_user = User.create(user_params)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
@@ -538,7 +538,7 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
       context "success" do
         before do
           @recipes_count = @current_user.recipes.count
-          post :create, recipe: { title: Faker::Lorem.words(2).join(" "), instructions: Faker::Lorem.sentence }
+          post :create, recipe: { title: FFaker::Lorem.words(2).join(" "), instructions: FFaker::Lorem.sentence }
         end
 
         it "should add new recipe to database" do
