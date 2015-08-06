@@ -252,7 +252,7 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
           post :create, recipe: { title: Faker::Lorem.words(2).join(" "), instructions: Faker::Lorem.sentence }
         end
 
-        it "should add new recipe to database" do
+        it "should add new recipe to current user" do
           expect(Recipe.count).to eq(@recipes_count + 1)
         end
 
