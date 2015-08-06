@@ -204,27 +204,88 @@ We could use a tool like [Capybara](https://github.com/jnicklas/capybara) to tes
 
 ## Challenges
 
-### Basic Challenges
+### Base Challenges
 
-We'll build off of the auth app you started yesterday.  If you need a project with signup, you can start from the [rails auth solutions](github.com/sf-wdi-19-20/rails_auth).
+We'll build off of the auth app you started yesterday. If you'd like to start with fresh code, you can fork and clone the <a href="github.com/sf-wdi-19-20/rails_auth" target="_blank">rails_auth solution</a>.
 
-
-  ** Model Method Tests**
+**Model Method Tests**
   
-1. Generate a spec for your `User` model. Add this model test (from above) into the `User` model specs:
+1. Generate a spec for your `User` model. Add this model test (from above) into the `User` model spec:
 
-   ```
-       context "#full_name" do
-           it "joins first name and last name" do
-             expect( @user.full_name ).to eq "#{@user.first_name} #{@user.last_name}"
-           end
-       end
-   ```
+  ```
+  describe "#full_name" do
+    it "joins first name and last name" do
+      expect(@user.full_name).to eq("#{@user.first_name} #{@user.last_name}")
+    end
+  end
+  ```
 
-1. Use a migration to add a `first_name` attribute and a `last_name` attribute to the `User` model. 
+  ```
+  # generate User model spec
+  $ rails g rspec:model user
+  ```
 
-1. Write a `full_name` instance method for the User model class to pass the test you added.
+  ```ruby
+  #
+  # spec/models/user_spec.rb
+  #
+  RSpec.describe User, type: :model do
+    before do
+      user_params = Hash.new
+      user_params[:first_name] = Faker::Name.first_name
+      user_params[:last_name] = Faker::Name.last_name
+      user_params[:email] = Faker::Internet.email
+      user_params[:password] = Faker::Lorem.words(2).join
+      user_params[:password_confirmation] = user_params[:password]
+      @user = User.create(user_params)
+    end
 
+    describe "#full_name" do
+      it "joins first name and last name" do
+        expect(@user.full_name).to eq("#{@user.first_name} #{@user.last_name}")
+      end
+    end
+  end
+  ```
+
+1. Create and run a migration to add a `first_name` and a `last_name` column to the `users` table.
+
+  ```
+  $ rails g migration AddFieldsToUsers first_name last_name
+  ```
+
+  ```ruby
+  #
+  # db/migrate/20150806041236_add_fields_to_users.rb
+  #
+  class AddFieldsToUsers < ActiveRecord::Migration
+    def change
+      add_column :users, :first_name, :string
+      add_column :users, :last_name, :string
+    end
+  end
+  ```
+
+  ```
+  $ rake db:migrate
+  ```
+
+1. Write a `full_name` instance method in the `User` model to pass the test you added.
+
+  ```ruby
+  #
+  # app/models/user.rb
+  #
+  class User < ActiveRecord::Base
+
+    ...
+
+    def full_name
+      "#{first_name} #{last_name}"
+    end
+
+  end
+  ```
 
 1. Write a spec for a `generate_username` method that combines the first letter of a user's first name with the user's full last name and a random 2 digit number. All letters should be changed to lower case. Examples:
 
@@ -237,14 +298,50 @@ We'll build off of the auth app you started yesterday.  If you need a project wi
     user2.generate_username
     # => abraus98
     ```
+
+    ```ruby
+    #
+    # spec/models/user_spec.rb
+    #
+    RSpec.describe User, type: :model do
+
+      ...
+
+      describe "#generate_username" do
+        it "combines first initial, last name, and random number" do
+          username = @user.generate_username
+          expect(username).to include(@user.first_name[0].downcase)
+          expect(username).to include(@user.last_name.downcase)
+          # test format of username with regexp
+          expect(username).to match(/\A[a-z]+\d{2}\z/)
+        end
+      end
+
+    end
+    ```
     
-   <!--write a test that checks that the letters are all lowercase-->
-   <!--decide what behavior you want your generate_username method to have when the user's first or last name is blank.  write a test to check that behavior-->
-   <!--use a regular expression to check the format of the username-->
+   <!-- write a test that checks that the letters are all lowercase -->
+   <!-- decide what behavior you want your generate_username method to have when the user's first or last name is blank.  write a test to check that behavior -->
+   <!-- use a regular expression to check the format of the username -->
 
-1. Write a `generate_username` method for the `User` model that passes your tests.
+1. Write a `generate_username` method in the `User` model that passes your tests.
 
-  **Controller Tests with Recipes!**
+  ```ruby
+  #
+  # app/models/user.rb
+  #
+  class User < ActiveRecord::Base
+
+    ...
+
+    def generate_username
+      "#{first_name[0].downcase}#{last_name.downcase}#{rand(10..99)}"
+    end
+
+  end
+  ```
+
+**Controller Tests with Recipes!**
 
 1.  Create a `Recipe` model and its controller. A recipe should include the dish's title and the instructions for making the dish. You can assume the instructions are plain text.
 
