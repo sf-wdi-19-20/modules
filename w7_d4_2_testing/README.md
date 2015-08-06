@@ -1,19 +1,18 @@
+# Testing Rails Applications
+
 | Objectives |
 | :---- |
 | Identify various aspects of Rails apps that we might want to test.|
-| Test model validations using rspec-rails. |
+| Test model methods using rspec-rails. |
 | Test controllers using rspec-rails. |
-| Test the view with rspec-rails and capybara.
- 
 
-## Testing Rails Applications
 
-### Rspec-rails
+## Rspec-rails
 
 Rspec is a testing gem for Ruby.  It helps us write tests that sound like user stories or planning comments ("This function should..."). [Rspec-rails](https://github.com/rspec/rspec-rails) is a testing framework specifically for Rails.  We'll use rspec-rails alone for lower-level tests of our models and controllers. 
 
 
-#### Adding Rspec-rails to Your Project
+### Adding Rspec-rails to Your Project
 
 1. Add rspec-rails to your Gemfile in the development in the `development` and `test` groups:
 
@@ -30,10 +29,9 @@ Rspec is a testing gem for Ruby.  It helps us write tests that sound like user s
 
 1. Configure your specs by going to the `.rspec` file and removing the line that says `--warnings`.    
 
-
 1. If you created models before adding rspec-rails, create a spec file for each of your models. (This is only necessary if you had a model created before you installed rspec-rails.)  In your Terminal, use the command `rails generate rspec:model article`.
 
-#### Running Rspec-rails Tests
+### Running Rspec-rails Tests
 
 Typical Spec Folders For a Rails Project include:
 
@@ -54,39 +52,35 @@ To run only a specific set of tests, use `rspec` and the file path for the tests
 ```
 
 
-### Rspec-rails Tests
+## Rspec-rails Tests
 
-#### Testing Models
 
-Assuming we've already stubbed a user (`@user`)...
+
+### FFaker
+
+FFaker generates random data for us! We can use it to create fake data for tests.  `Faker::Name.first_name` generates a fake first name.  `Faker::Internet.email` generates a fake email.  To see more that Ffaker can do, check out the [Ffaker docs](@TODO link).
+
+### Testing Models
+
+<!--@TODO how to set the `@user` variable with  User.create  (can mention stubbing/anticipate stub questions)-->
+
+Assuming we've already set a `@user` variable with first and last names, we can test that the `full_name` method correctly caluclates the full name.
 
 ```
-    context "#fullname" do
+    context "#full_name" do
         it "joins first name and last name" do
-          expect( @user.fullname ).to eq "#{@user.first_name} #{@user.last_name}"
+          expect( @user.full_name ).to eq "#{@user.first_name} #{@user.last_name}"
         end
     end
 ```
 
 
 
-#### Testing Views
-Assuming we've already stubbed a user (`@user`) who has written some blog posts....
+### Testing Controllers
 
-```
-  it "displays the titles of blog posts authored by the user" do
-    assign(:user, @some_new_user)
+To test authentication, we need to have some `current_user`.   We might check a `current_user` method in a helper test, for example.
 
-    render :template => "users/show.html.erb"
-
-    expect(rendered).to match @some_new_user.posts.first.title
-  end
-```
-
-#### Testing Controllers
-
-The most common thing to stub for authentication testing is the `current_user`.   We might check a `current_user` method in a helper test, for example.
-
+<!-- @TODO - do we need to allow_any_instance_of ...?-->
 ```
 require 'rails_helper'
 
@@ -101,7 +95,7 @@ RSpec.describe ArticlesController, :type => :controller do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
   end
 
-  describe "Get #index" do
+  describe "GET #index" do
     it "should render the :index view" do 
       get :index
       expect(response).to render_template(:index)
@@ -114,7 +108,7 @@ RSpec.describe ArticlesController, :type => :controller do
     end
   end
   
-  describe "Get #new" do
+  describe "GET #new" do
     it "should assign @article" do
       get :new
       expect(assigns(:article)).to be_instance_of(Article)
@@ -126,7 +120,7 @@ RSpec.describe ArticlesController, :type => :controller do
     end 
   end
   
-  describe "Post #create" do
+  describe "POST #create" do
     it "should redirect_to 'article_path' after successful create" do
       post :create, article: {title: "blah", content: "blah"}
       expect(response.status).to be(302)
@@ -150,62 +144,18 @@ end
 ```
 
 
-<!--### Capybara-->
-
-<!--We'll use [Capybara](https://github.com/jnicklas/capybara) to test client-side views and interactions (e.g. does clicking on "Logout" do what we expect)?-->
-
-<!--![capybara](https://s-media-cache-ak0.pinimg.com/736x/40/d3/03/40d3037541de89c4086bcb99f12a4b0a.jpg)-->
 
 
-<!--### Factory Girl-->
+## Testing Views
 
-<!--Factory Girl lets us quickly generate test objects or instances.  -->
+We could use a tool like [Capybara](https://github.com/jnicklas/capybara) to test client-side views and interactions (e.g. does clicking on "Logout" do what we expect?).  We won't cover view testing today, though!
 
-
-<!--### FFaker-->
-
-<!--FFaker generates random data for us! We can use it in combination with Factory Girl. -->
-
-<!--``` ruby-->
-<!--    FactoryGirl.define do-->
-<!--      factory :user do-->
-<!--        first_name { Faker::Name.first_name }-->
-<!--        last_name { Faker::Name.last_name }-->
-<!--        email { Faker::Internet.email }-->
-<!--        password 'foobar'-->
-<!--        password_confirmation 'foobar'-->
-<!--      end-->
-<!--    end-->
-<!--```-->
-
-<!--Now we can use our "user factory" in tests:-->
-
-<!--``` ruby-->
-<!--    let(:user) { FactoryGirl.build(:user) }-->
-    
-<!--    context "#fullname" do-->
-<!--        it "joins first name and last name" do-->
-<!--          expect( user.fullname ).to eq "#{user.first_name} #{user.last_name}"-->
-<!--        end-->
-<!--    end-->
-    
-<!--```-->
-
-### Resources
+## Resources
 
 1. **Rspec-Rails Documentation** https://github.com/rspec/rspec-rails  
 2. **Model Specs** https://www.relishapp.com/rspec/rspec-rails/docs/model-specs  
 3. **Request Specs** https://www.relishapp.com/rspec/rspec-rails/docs/request-specs/request-spec  
 4. **Matchers**  https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-5. **Matchers** https://www.relishapp.com/rspec/rspec-expectations/v/3-1/docs/built-in-matchers
 5. **Model Specs Example** https://github.com/wdi-sf-july/validation_tests
 6. **Controller Specs** https://www.relishapp.com/rspec/rspec-rails/docs/controller-specs
-
-
-**Stubbing Resources**
-
-- **Rspec Stubs:** https://www.relishapp.com/rspec/rspec-mocks/v/2-3/docs/method-stubs  
-
-- **Rspec Stubs Examples:** http://old.rspec.info/documentation/mocks/stubs.html  
-
 
