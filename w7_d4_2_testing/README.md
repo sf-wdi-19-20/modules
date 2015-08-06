@@ -268,7 +268,7 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
 
 1. Generate a spec for your `User` model. Add this model test into the `User` model spec:
 
-  ```
+  ```ruby
   describe "#full_name" do
     it "joins first name and last name" do
       expect(@user.full_name).to eq("#{@user.first_name} #{@user.last_name}")
