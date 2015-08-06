@@ -182,10 +182,10 @@ We'll build off of the auth app you started yesterday.  If you need a project wi
 
 1. Use a migration to add a `first_name` attribute and a `last_name` attribute to the `User` model. 
 
-1. Write a `#full_name` instance method for the User model class to pass the test you added.
+1. Write a `full_name` instance method for the User model class to pass the test you added.
 
 
-1. Write a spec for a `#generate_username` method that combines the first letter of a user's first name with the user's full last name and a random 2 digit number. All letters should be changed to lower case. Examples:
+1. Write a spec for a `generate_username` method that combines the first letter of a user's first name with the user's full last name and a random 2 digit number. All letters should be changed to lower case. Examples:
 
     ```ruby
     # user1 has first_name "Cameron", last_name "Jacoby"
@@ -201,13 +201,13 @@ We'll build off of the auth app you started yesterday.  If you need a project wi
    <!--decide what behavior you want your generate_username method to have when the user's first or last name is blank.  write a test to check that behavior-->
    <!--use a regular expression to check the format of the username-->
 
-1. Write a `#generate_username` method for the `User` model that passes your tests.
+1. Write a `generate_username` method for the `User` model that passes your tests.
 
 1.  Create a `Recipe` model and its controller. A recipe should include the dish's title and the instructions for making the dish. You can assume the instructions are plain text.
 
 1. Write the spec for an `#index` action for the recipe controller. It should render an index view with data from all the existing recipes. Do you expect your tests to pass or fail? Run the spec.  
 
-1. Make sure your index action passes the test you wrote.
+1. Update your controller with the `index` action, and make sure your `#index action passes the test you wrote.
 
 1. Write the spec for a `new` action.  It should display the new recipe form. Do you expect your tests to pass or fail? Run the tests.  
 
