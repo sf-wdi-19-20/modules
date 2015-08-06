@@ -63,11 +63,12 @@ Bonus: later, we can use FFaker to seed our database (but hold off!).
 ```ruby
 # seeds.rb file
 
-10.times do
+25.times do
      Student.create(
         first_name: FFaker::Name.first_name,
         last_name: FFaker::Name.last_name,
-        grade: rand(9..12)
+        grade: rand(9..12),
+        yearbook_quote: FFaker::HipsterIpsum.sentence(5)
       ) 
 end 
 ```
@@ -84,6 +85,8 @@ To add FFaker to your project, put it in your Gemfile for the development and te
      gem 'ffaker'
    end
   ```
+  
+Then run `bundle install` in your Terminal.
 
 
 
