@@ -105,6 +105,6 @@ You can even use partials that are stored in other files.  You would just need t
 
 ## Challenges
 
-1.  Take a look at the lab that you worked on last weekend.  Create a partial file for the form that was used in this project.
+1.  Take a look at the Bog App that you worked on last weekend.  Create a partial file for the 'new' and 'edit' forms that were used in this project.
 
-2.  Look for other elements of your application that can be refactored into partials.  Experiment with implementing partials for these components.
+2.  Look for other elements in your Bog App that can be refactored into partials.  Experiment with implementing partials for these components and think of different ways you can use partials while refactoring for future Rails projects.
