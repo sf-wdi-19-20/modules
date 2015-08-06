@@ -12,6 +12,31 @@ Reference: [Testing Pre-reading](https://github.com/ajbraus/wdi-homework/blob/ma
 
 Rspec is a testing gem for Ruby. It helps us write tests that sound like user stories or planning comments ("This method should..."). <a href="https://github.com/rspec/rspec-rails" target="_blank">rspec-rails</a> is a testing framework specifically for Rails. We'll use rspec-rails alone to test our models and controllers.
 
+rspec-rails helps us implement the four-phase testing methodology (with setup, exercise, verify, and tear down steps). Here's what a simple rspec-rails test might look like:
+
+```ruby
+#
+# spec/models/pet_spec.rb
+#
+
+RSpec.describe Pet, type: :model do
+
+  # setup
+  before do
+    @pet = Pet.create({name: "Morocco", age: 3})
+  end
+
+  describe "#is_cute?" do
+    it "returns true" do
+      expect(@pet.is_cute?).to be true   #exercise and verify   
+    end
+  end
+
+  # teardown is automatic
+
+end
+```
+
 ### Adding rspec-rails to Your Project
 
 1. Add rspec-rails to your Gemfile in the `development` and `test` groups:
@@ -29,7 +54,7 @@ Rspec is a testing gem for Ruby. It helps us write tests that sound like user st
 
 1. Add tests to your rails project using the terminal:
 
-  ```
+  ```bash
   $ rails g rspec:install
   ```
 
@@ -39,7 +64,7 @@ Rspec is a testing gem for Ruby. It helps us write tests that sound like user st
 
 1. If you created models before adding rspec-rails, create a spec file for each of your models. (This is only necessary if you had a model created before you installed rspec-rails.)
 
-  ```
+  ```bash
   $ rails g rspec:model article
   ```
 
@@ -55,7 +80,7 @@ To run **all** test specs, go to the terminal and type `rspec` or `bundle exec r
 
 To run only a specific set of tests, type `rspec` and the file path for the tests you want to run in the terminal:
 
-  ```
+  ```bash
   # run only model specs
   rspec spec/models
 
@@ -241,7 +266,7 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
 
 **Model Method Tests**
 
-1. Generate a spec for your `User` model. Add this model test (from above) into the `User` model spec:
+1. Generate a spec for your `User` model. Add this model test into the `User` model spec:
 
   ```
   describe "#full_name" do
@@ -267,9 +292,7 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
   # => abraus98
   ```
 
-  <!-- write a test that checks that the letters are all lowercase -->
-  <!-- decide what behavior you want your generate_username method to have when the user's first or last name is blank.  write a test to check that behavior -->
-  <!-- use a regular expression to check the format of the username -->
+  Hint: use a regular expression to check the format of the username.
 
 1. Write a `generate_username` method in the `User` model that passes your tests.
 
