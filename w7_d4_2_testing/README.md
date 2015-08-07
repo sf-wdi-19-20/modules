@@ -264,13 +264,11 @@ We could use a tool like [Capybara](https://github.com/jnicklas/capybara) to tes
 
 ### Base Challenges
 
+
 We'll build off of the auth app you started yesterday. If you'd like to start with fresh code, you can fork and clone the <a href="github.com/sf-wdi-19-20/rails_auth" target="_blank">rails_auth solution</a>.
 
 **Model Method Tests**
 
-1. Generate a spec for your `User` model. Add this model test into the `User` model spec:
-
-  ```ruby
   describe "#full_name" do
     it "joins first name and last name" do
       expect(@user.full_name).to eq("#{@user.first_name} #{@user.last_name}")
@@ -298,6 +296,7 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
 
 1. Write a `generate_username` method in the `User` model that passes your tests.
 
+
 **Controller Tests with Recipes!**
 
 1. Create a `Recipe` model and its controller. A recipe should include the dish's title and the instructions for making the dish. You can assume the instructions are plain text.
@@ -319,8 +318,6 @@ We'll build off of the auth app you started yesterday. If you'd like to start wi
 1. Update your controller to pass the tests you wrote for your `show` action.
 
 1. At this point, make sure all the tests you wrote for your `create` action are passing as well.
-
-<!-- solution with id params looks like: http://stackoverflow.com/questions/9223336/how-to-write-an-rspec-test-for-a-simple-put-update -->
 
 ### Stretch Challenges
 
