@@ -87,13 +87,11 @@ We need a one-to-many association: one user has many posts.
 
 1. [Seed your database](https://github.com/sf-wdi-19-20/modules/tree/master/w7_d4_2_testing#cool-tool-ffaker) with fake data! Add `ffaker` to your Gemfile and use it in your `db/seeds.rb` file to create fake users and associated articles.  Run `rake db:seed` from the Terminal to actually seed the db.
 
-
-1. Refactor your site to use [nested routes](http://guides.rubyonrails.org/routing.html#nested-resources). Nest some or all of the routes and controller actions for posts under users.  Plan out how your code will change before you begin.
-
+1. Add comments, and create a one-to-many association between posts and comments.   Use [nested routes](http://guides.rubyonrails.org/routing.html#nested-resources)to nest comments under posts.  Plan out user stories and wireframe any views you'll need.
 
 1. Add tags, and create a many-to-many association between tags and posts. Plan out user stories and wireframe any views you'll need.
 
-1. Add comments, and create a one-to-many association between posts and comments.  Plan out user stories and wireframe any views you'll need.
+
 
 ## Independent Research Ideas  
 
