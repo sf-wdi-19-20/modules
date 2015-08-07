@@ -1,4 +1,4 @@
-# Rails Review Minilab Blog
+# Rails Review Minilab: Blog
 
 Here's what Rails is made for! Build a straight up blog, quickly!  
 
@@ -14,11 +14,11 @@ Here's what Rails is made for! Build a straight up blog, quickly!
   * view posts
   * create, update, and destroy *only their own* posts
  
-Based on these goals, we expect everyone to complete *at least* part 1 of this project. 
+   Based on these goals, we expect everyone to complete *at least* part 1 of this project. 
 
 1. Readme: the `README.md` file inside your app should list the steps you take to complete the project, including each terminal command you run and each change you make to a file.
 
-When you're ready, use [this form] (https://docs.google.com/a/generalassemb.ly/forms/d/1zSklHtCYKg_NhkLdjlQaCXFrHJQ4Io266cKUs9_Dg8I/viewform) to let us know how the project went and to submit the link to your project on github.
+   When you're ready, use [this form] (https://docs.google.com/a/generalassemb.ly/forms/d/1zSklHtCYKg_NhkLdjlQaCXFrHJQ4Io266cKUs9_Dg8I/viewform) to let us know how the project went and to submit the link to your project on github.
 
 
 ### Process
