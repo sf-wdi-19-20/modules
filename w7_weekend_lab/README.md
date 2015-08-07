@@ -1,6 +1,6 @@
-# Rails Review Minilab
+# Rails Review Minilab Blog
 
-Here's what rails is made for! Build a straight up blog, quickly!  
+Here's what Rails is made for! Build a straight up blog, quickly!  
 
 ## Part 0: Deliverables and Planning
 
@@ -13,6 +13,8 @@ Here's what rails is made for! Build a straight up blog, quickly!
   * log out
   * view posts
   * create, update, and destroy *only their own* posts
+ 
+Based on these goals, we expect everyone to complete *at least* part 1 of this project. 
 
 1. Readme: the `README.md` file inside your app should list the steps you take to complete the project, including each terminal command you run and each change you make to a file.
 
@@ -33,19 +35,27 @@ The features in part 1 of this lab would take a typical intermediate developer l
 
 Reference the modules and readings from the last two weeks!
 
-Requirements (Routeside-In):
+### Things to Build
 
-* We need routes to support our user stories.
+Your blog will have quite a few pieces. As you work, develop one piece of your site at a time, route-side in.
 
-* We need a `site` or `pages` controller with `index`, and `about`
-* We need a `users` controller with all seven resources
-* We need a `posts` controller with all seven resources
-* We need a `sessions` controller with at least `new` and `create`.
-* We need `session_helper` methods for `login`, `logged_in?`, `logout`, and `current_user`.
+### Routes & Controllers
 
-* We need views for any `index`, `new`, `show`, and `edit` routes.
+We need routes to support our user stories, and controllers to say what should happen at those routes.
 
-* We need 2 models
+We need a `site` or `pages` controller with `index` and `about`, to show those pages on our site.
+
+For auth, we need a `users` controller with all seven routes. We also need a `sessions` controller with at least `new` and `create`.
+
+We need a `posts` controller with all seven routes.   
+
+#### Views
+
+We need views for any `index`, `new`, `show`, and `edit` routes.
+
+#### Models
+
+We need 2 models: 
   * a `User` model, with
     * `email`, `first_name`, `last_name`, and `password_digest` attributes
     * authentication (i.e. `has_secure_password`)
@@ -53,29 +63,33 @@ Requirements (Routeside-In):
   * a `Post` model, with
     * `title` and `content` attributes
     * simple validations on the title and content for presence
-* We need a one-to-many association: one user has many posts.
+
+We need a one-to-many association: one user has many posts.
+
 
 ## Part 2: Testing
 
-* Come up with a fun username generation scheme. Add a `generate_username` model test for your `user`, then implement your `generate_username` method.
-* Add some basic `controller` tests for your `sessions` controller. Remember, `new` and `create` are the easiest actions to test in a controller.
-* Add some basic `controller` tests for your `posts` controller. Try testing the `index`, `new`, `create`, and `show` actions so that the basic user workflow of creating a new post is complete.
+1. Come up with a fun username generation scheme. Add a `generate_username` model test for your `user`, then implement your `generate_username` method.
+
+1. Add some basic `controller` tests for your `sessions` controller. Remember, `new` and `create` are the easiest actions to test in a controller.
+
+1. Add some basic `controller` tests for your `posts` controller. Try testing the `index`, `new`, `create`, and `show` actions so that the basic user workflow of creating a new post is complete.
 
 ## Part 3: Layouts & Partials
 
-* Add Bootstrap to your project with the asset pipeline.
+1. Add Bootstrap to your project with the asset pipeline.
 
-* Put a basic nav bar in your `layouts/application.html.erb`. 
+1. Put a basic nav bar in your `layouts/application.html.erb`. 
 
-* Go back through your application and separate your views into partials.
+1. Go back through your application and separate your views into partials.
 
 ## Additional Challenge Ideas
 
 1. [Seed your database](https://github.com/sf-wdi-19-20/modules/tree/master/w7_d4_2_testing#cool-tool-ffaker) with fake data! Add `ffaker` to your Gemfile and use it in your `db/seeds.rb` file to create fake users and associated articles.  Run `rake db:seed` from the Terminal to actually seed the db.
 
-1. Add tags, and create a many-to-many association between tags and posts. 
+1. Add tags, and create a many-to-many association between tags and posts. Plan out user stories and wireframe any views you'll need.
 
-1. Add comments, and create a one-to-many association between posts and comments.
+1. Add comments, and create a one-to-many association between posts and comments.  Plan out user stories and wireframe any views you'll need.
 
 ## Independent Research Ideas  
 
