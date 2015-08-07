@@ -22,9 +22,9 @@ We are going to use a RESTful pattern for logging in and out of our app. Since l
 7. Can you implement a method called "current_user" that is available everywhere? (hint: since all controllers inherit from `ApplicationController` you'll have to make a [helper method](http://apidock.com/rails/ActionController/Helpers/ClassMethods/helper_method) in that controller.)
 8. Can you implement another method called "requires_authorization" to require a current_user to be defined for users to access a `users#show` controller method. (hint: use a helper method and a [before_filter](http://apidock.com/rails/ActionController/Filters/ClassMethods/before_filter))?
 9. Implement a link to logout. Use a route-side-in approach.
+10. Add a flash message if the email or password is blank or the user is not authentic.
 
 ---
-### Add a Flash
 
 What does the `flash` method do? Can you implement it to see?
 
