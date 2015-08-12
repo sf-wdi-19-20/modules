@@ -1,58 +1,93 @@
-# Testing Review: RSpec, Validations, Flash Messages
+# Testing Review
 
-* Add rspec-rails to your Gemfile in the development and test groups:
+| Objectives |
+| :--- |
+| Review RSpec setup in a Rails app |
+| Write controller specs for `new` and `create` actions |
+| Validate model data |
+| Use flash messages to notify users of success and errors |
+
+## Review: RSpec Setup
+
+1. Add `rspec-rails` to your `Gemfile` in the development and test groups:
+
+  ```ruby
+  #
+  # Gemfile
+  #
+  group :development, :test do
+    gem 'rspec-rails'
+  end
+  ```
+
+2. Run `bundle` install to add `rspec-rails` to your project:
+
+  ```
+  $ bundle
+  ```
+
+3. Create the `spec` folder and set up `rspec-rails` configuration:
+
+  ```
+  $ rails g rspec:install
+  ```
+
+  This creates a `spec` directory. It also adds the configuration files `spec/spec_helper.rb`, `spec/rails_helper.rb` and `.rspec`. See those files for more information.
+
+4. Configure your specs by going into the `.rspec` file and removing the line that says `--warnings` if there is one.
+
+5. For any existing models or controllers you'd like to test, you'll have to manually create spec files:
+
+  ```
+  $ rails g rspec:model recipe
+  $ rails g rspec:controller recipes
+  ```
+
+  **Note:** Spec files for any models or controllers you create AFTER you install `rspec-rails` will automatically be generated as long as you use `rails g ...` to create models/controllers.
+
+6. To run all test specs, you can type `rspec` or `bundle exec rspec` in the terminal. To run only a specific set of tests, type `rspec` and the file path for the tests you want to run:
+
+  ```ruby
+  # run only model specs
+  rspec spec/models
+
+  # run only specs for `RecipesController`
+  rspec spec/controllers/recipes_controller_spec.rb
+  ```
+
+## Controller Specs
+
+We'll be working in our <a href="https://github.com/sf-wdi-19-20/recipe_app" target="_blank">recipe app</a>, and our goal is to write specs for the `new` and `create` actions in our `RecipesController`.
 
 ```ruby
 #
-# Gemfile
+# spec/controllers/recipes_controller_spec.rb
 #
-group :development, :test do
-  gem 'rspec-rails'
-end
-```
+require 'rails_helper'
 
-* Run bundle install (or bundle for short) in your terminal so that rspec-rails is actually added to your project:
+RSpec.describe RecipesController, type: :controller do
 
-```
-$ bundle
-```
+  # everything nested under `before do` runs before EVERY test
+  before do
+    user_params = Hash.new
+    user_params[:first_name] = Faker::Name.first_name
+    user_params[:last_name] = Faker::Name.last_name
+    user_params[:email] = Faker::Internet.email
+    user_params[:password] = Faker::Lorem.words(2).join
 
-* Add tests to your rails project using the terminal:
+    # our controller methods expect a `current_user` that returns the user currently logged in if there is one or `nil` if no one is logged in
+    # our specs have no sense of our app's `session`, so we make a contrived `@current_user` that we can pass to our controller methods
+    @current_user = User.create(user_params)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@current_user)
+  end
 
-```
-rails g rspec:install
-```
-
-This creates a spec directory. It also adds spec/spec_helper.rb and .rspec files that are used for configuration. See those files for more information.
-
-* Configure your specs by going into the .rspec file and removing the line that says --warnings if there is one.
-
-* If you created models before adding rspec-rails, create a spec file for each of your models. (This is only necessary if you had a model created before you installed rspec-rails.)
-
-```
-$ rails g rspec:model article
-```
-
-TODO: rails g rspec:controller?
-
-TODO: notes on running tests
-
-```
-$ rails g controller foods
-```
-
-```ruby
-#
-# foods_controller_spec.rb
-#
-require "rails_helper"
-
-RSpec.describe FoodsController, type: :controller do
-
+  # `describe` blocks group together tests by feature
   describe "#new" do
-    it "should assign @food" do
+
+    # each `it` block is an individual test
+    it "should assign @recipe" do
       get :new
-      expect(assigns(:food)).to be_instance_of(Food)
+      expect(assigns(:recipe)).to be_instance_of(Recipe)
     end
 
     it "should render the :new view" do
@@ -62,153 +97,29 @@ RSpec.describe FoodsController, type: :controller do
   end
 
   describe "#create" do
+
+    # `context` groups tests by certain scenarios within features
     context "success" do
-      it "should add new food" do
-        foods_count = Food.count
-        post :create, food: {name: "banana"}
-        expect(Food.count).to eq(foods_count + 1)
+      it "should add new recipe" do
+        recipes_count = Recipe.count
+        post :create, recipe: {name: "Kale Salad", instructions: "Toss kale with apples and walnuts."}
+        expect(Recipe.count).to eq(recipes_count + 1)
       end
 
-      it "should redirect_to 'food_path' on successful create" do
-        post :create, food: {name: "banana"}
+      it "should redirect_to 'recipe_path' on successful create" do
+        post :create, recipe: {name: "Kale Salad", instructions: "Toss kale with apples and walnuts."}
         expect(response.status).to be(302)
-        expect(response.location).to match(/\/foods\/\d+/)
+        expect(response.location).to match(/\/recipes\/\d+/)
       end
     end
 
     context "failure" do
-      it "should redirect to 'new_food_path' when create fails" do
-        post :create, food: {name: nil}
-        expect(response).to redirect_to(new_food_path)
+      it "should redirect to 'new_recipe_path' when create fails" do
+        post :create, recipe: {name: nil}
+        expect(response).to redirect_to(new_recipe_path)
       end
     end
   end
 
-end
-```
-
-**RUN TESTS**
-
-```
-#
-# routes.rb
-#
-resources :foods, only: [:new, :create]
-```
-
-**RUN TESTS**
-
-```
-#
-# foods_controller.rb
-#
-class FoodsController < ApplicationController
-
-  def new
-    @food = Food.new
-    render :new
-  end
-
-  def create
-
-  end
-
-end
-```
-
-```html
-#
-# views/foods/new.html.erb
-#
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <h1>New Food</h1>
-    <hr>
-    <%= form_for @food do |f| %>
-      <div class="form-group">
-        <%= f.text_field :name, placeholder: "Name", autofocus: true, class: "form-control" %>
-      </div>
-      <%= f.submit "Save Food", class: "btn btn-default" %>
-    <% end %>
-  </div>
-</div>
-```
-
-**RUN TESTS**
-
-```
-$ rails g model food name
-$ rake db:migrate
-```
-
-**RUN TESTS**
-
-```ruby
-#
-# foods_controller.rb
-#
-class FoodsController < ApplicationController
-
-  def new
-    @food = Food.new
-    render :new
-  end
-
-  def create
-    food = Food.new(food_params)
-    if food.save
-      redirect_to food_path(food)
-    else
-      redirect_to new_food_path
-    end
-  end
-
-  private
-    def food_params
-      params.require(:food).permit(:name)
-    end
-
-end
-```
-
-**RUN TESTS**
-
-```ruby
-#
-# routes.rb
-#
-resources :foods, only: [:new, :create, :show]
-```
-
-**RUN TESTS**
-
-```ruby
-#
-# food.rb
-#
-class Food < ActiveRecord::Base
-  validates :name, presence: true
-end
-```
-
-TODO: add length validation
-
-**RUN TESTS** PASSING!!!
-
-## Flash Messages
-
-```ruby
-#
-# foods_controller.rb
-#
-def create
-  food = Food.new(food_params)
-  if food.save
-    flash[:success] = "Successfully created food."
-    redirect_to food_path(food)
-  else
-    flash[:error] = food.errors.full_messages.join(", ")
-    redirect_to new_food_path
-  end
 end
 ```
