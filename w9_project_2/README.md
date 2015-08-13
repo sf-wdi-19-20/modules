@@ -1,5 +1,5 @@
-## WDI SECOND PROJECT DESCRIPTION
-For the second project you will use your knowledge of front and back-end web development to produce an awesome web application that can be used by friends, family or others online. The type of web application you create is your choice: utilities, social networks, games, mashups, etc. Ensure, however, that the scope of your project is not too large so that you can reasonably complete an [MVP](http://en.wikipedia.org/wiki/Minimum_viable_product) in the allotted time. 
+# WDI PROJECT 2
+For the second project, you will use your knowledge of front and back-end web development to produce an awesome web application that can be used by friends, family or others online. The type of web application you create is your choice: utilities, social networks, games, mashups, etc. Ensure, however, that the scope of your project is not too large so that you can reasonably complete an [MVP](http://en.wikipedia.org/wiki/Minimum_viable_product) in the allotted time. 
 
 The objective of this project is to:
 
@@ -14,11 +14,7 @@ You will be working in **groups of 3-4** for this project.
 
 * **Postgres** Use [Postgres.app](http://postgresapp.com) for your database in development and production.
 * **Models** Your app should have at least 3 models with appropriate associations and validations.
-
-
 * **Testing** All custom model methods should have test specs, and some controllers and/or views should also have specs. Fewer than 10 tests total will reflect very negatively on your overall assessment. Start writing tests early, or you will struggle to get them done. 
-
-
 * **Validation** Your application should validate incoming data before entering it into the database.
 * **Error Handling** Forms in your application should also validate data, handle incorrect inputs, and provide  on the client side.
 * **Views.** Use **partials** heavily to follow DRY (Don’t Repeat Yourself) development in your views.
@@ -28,9 +24,6 @@ You will be working in **groups of 3-4** for this project.
 * **User Experience** Ensure a pleasing and logical user experience. It is suggested to use a front-end CSS framework like Bootstrap to enhance and ease your CSS styling. 
 * **JavaScript & jQuery.** Spice up the front-end of your app and have some event driven functionality. Try out a new plugin or a library.
 * **Responsive Design** Make sure your app looks decent on a phone or tablet.
-
-## Stretch Goals
-
 
 
 ## OTHER IDEAS
@@ -47,7 +40,7 @@ We may not have covered all of these in class, but if you want to push yourself 
 ## PLANNING & DELIVERABLES
 
 
-####Project Plan deliverables:
+###Project plan deliverables:
 *You should review the following with your instructional team BEFORE you start to code.*
 
 * **Group members.** You'll be working in groups of 3-4. Use your strengths to contribute to all parts of the project.
@@ -58,7 +51,7 @@ We may not have covered all of these in class, but if you want to push yourself 
 * **Milestones.** Outline some milestones for your group based on how you prefer to work.
 
 
-####Completed project deliverables:
+###Completed project deliverables:
 
 * Link to Heroku hosted project
 * Link to source code on GitHub
