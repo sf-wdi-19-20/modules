@@ -80,7 +80,7 @@ Use web technologies to understand internet communication and the browser enviro
 
 Design and develop modern, interactive experiences in the browser.
 
-  - **AJAX Fundamental:** _Connect to a service and make a request asynchronously._
+  - **AJAX Fundamentals:** _Connect to a service and make a request asynchronously._
 
   - **CSS Libraries:** _Use external libraries to take advantage of existing styles._
 
@@ -137,6 +137,8 @@ Manage and access large amounts of data in your application in a structured way.
   - **Grouping and Aggregate Queries:** _Write queries that process sets of data and return summary results._
 
   - **Alternative Datastores:** _Use document and object databases to quickly store and retrieve data._
+  
+  - **Database Migrations:** _Write and run migrations that safely update your database._
 
 
 ## Security
@@ -156,7 +158,6 @@ Host your applications in the cloud and learn to setup your app to scale with us
 
   - **Basic Deployment Setup:** _Set up and deploy an application to a managed hosting environment._
 
-  - **Database Migrations:** _Write and run migrations that safely update your database._
 
 
 ## Product Development and Teams
@@ -182,7 +183,7 @@ Design algorithms and describe the basic principles that define low-level comput
 
   - **Recursion:** _Distinguish between iterative and recursive algorithms and trace recursive function calls._
   
-  **Sorting Algorithms:** _Explore various types of algorithms in the context of this classic practical problem._
+  - **Sorting Algorithms:** _Explore various types of algorithms in the context of this classic practical problem._
 
   - **Algorithm Efficiency:** _Write code that solves problems without using unnecessary time or memory resources._
 
