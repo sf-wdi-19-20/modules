@@ -115,11 +115,112 @@ RSpec.describe RecipesController, type: :controller do
 
     context "failure" do
       it "should redirect to 'new_recipe_path' when create fails" do
-        post :create, recipe: {name: nil}
+        post :create, recipe: {name: nil, instructions: nil}
         expect(response).to redirect_to(new_recipe_path)
       end
     end
   end
 
 end
+```
+
+## Model Validations
+
+Our `context "failure"` spec for the `recipes#create` action assumes that `create` will fail if we try to create a new recipe with blank `name` and `instructions`. We should add some validations to the recipe model to require the presence of `name` and `instructions`.
+
+```ruby
+#
+# app/models/recipe.rb
+#
+class Recipe < ActiveRecord::Base
+  belongs_to :user
+
+  # add validations
+  validates :name, :instructions,
+    presence: true,
+    length: { maximum: 255 }
+end
+```
+
+**Note:** The database columns `name` and `instructions` are strings. The `string` datatype is restricted to 255 characters in our database. Because of this, it's a good idea to put a length validation on any string column, so we can handle the error if the user tries to enter in more than 255 characters.
+
+## Error-Handling
+
+Now that we have model validations for recipes, we should make sure we're properly handling any errors that occur when users try to submit invalid form data. To do this, we'll refactor our `recipes#create` action:
+
+```ruby
+#
+# app/controllers/recipe_controller.rb
+#
+class RecipesController < ApplicationController
+  before_filter :authorize, except: [:index, :show]
+
+  ...
+
+  def create
+    # recipe = current_user.recipes.create(recipe_params)
+    # redirect_to recipe_path(recipe)
+
+    # refactor
+    recipe = current_user.recipes.new(recipe_params)
+    if recipe.save
+      redirect_to recipe_path(recipe)
+    else
+      redirect_to new_recipe_path
+    end
+  end
+
+  ...
+
+end
+```
+
+## Flash Messages
+
+Now that we're handling errors, it would be nice to let our users know when their actions succeed or fail - this is where flash messages come in.
+
+> The flash provides a way to pass temporary primitive-types (String, Array, Hash) between actions. Anything you place in the flash will be exposed to the very next action and then cleared out. This is a great way of doing notices and alerts before redirecting to a display action that can then expose the flash to its template.
+
+<a href="http://api.rubyonrails.org/classes/ActionDispatch/Flash.html" target="_blank">Flash API Docs</a>
+
+We'll add flash messages to our `recipes#create` action for the success and failure cases:
+
+```ruby
+#
+# app/controllers/recipe_controller.rb
+#
+class RecipesController < ApplicationController
+  before_filter :authorize, except: [:index, :show]
+
+  ...
+
+  def create
+    recipe = current_user.recipes.new(recipe_params)
+    if recipe.save
+      flash[:notice] = "Successfully created recipe."
+      redirect_to recipe_path(recipe)
+    else
+      flash[:error] = recipe.errors.full_messages.join(", ")
+      redirect_to new_recipe_path
+    end
+  end
+
+  ...
+
+end
+```
+
+**Note:** If the new recipe is not valid (i.e. it fails our model validations), `.errors.full_messages` returns an array of the error messages in plain English. We can use `.join` to concatenate the array elements together into one string.
+
+Setting up flash messages in the controller makes them available in our view, but doesn't actually render them. To render flash messages, we need to explicitly display them in the view. It makes sense to put this in the application layout so it's rendered on every view.
+
+```html
+#
+# app/views/layouts/application.html.erb
+#
+<body>
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: "alert #{name == 'error' ? 'alert-danger' : 'alert-notice'}" %>
+  <% end %>
+</body>
 ```
