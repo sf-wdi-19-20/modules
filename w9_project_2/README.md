@@ -1,4 +1,4 @@
-# WDI PROJECT 2
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) WDI PROJECT 2
 For the second project, you will use your knowledge of front and back-end web development to produce an awesome web application that can be used by friends, family or others online. The type of web application you create is your choice: utilities, social networks, games, mashups, etc. Ensure, however, that the scope of your project is not too large so that you can reasonably complete an [MVP](http://en.wikipedia.org/wiki/Minimum_viable_product) in the allotted time. 
 
 The objective of this project is to:
