@@ -35,7 +35,7 @@ In addition to those base requirements, complete at least 3 of the following 5 g
 
 We may not have covered all of these in class, but if you want to push yourself and learn something new, optionally consider doing some of the following with your app.
 
-* **Charting** Visualize your data! Possibilities include [Morris.js](http://www.oesmith.co.uk/morris.js/), [D3](http://d3js.org/), highcharts, charts.js, and google charts.
+* **Charting** Visualize your data! Possibilities include D3, Morris.js, highcharts, charts.js, and google charts.
 * **Job Scheduling** Find a way to include Sidekiq (or Delayed Job or Resque) to your project.
 * **Emails** Use ActionMailer with Mandrill 
 * **Text Messaging** Use  Twilio to send your users email/text updates!
