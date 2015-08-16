@@ -37,8 +37,8 @@ We may not have covered all of these in class, but if you want to push yourself 
 
 * **Charting** Visualize your data! Possibilities include D3, Morris.js, highcharts, charts.js, and google charts.
 * **Job Scheduling** Find a way to include Sidekiq (or Delayed Job or Resque) to your project.
-* **Emails** Use ActionMailer with Mandrill 
-* **Text Messaging** Use  Twilio to send your users email/text updates!
+* **Emails** Use ActionMailer with Mandrill to send your users email updates!
+* **Text Messaging** Use  Twilio to send your users texts!
 * **Payment** Use Stripe to allow your users to purchase from or donate to your site.
 * **Material Design** Research the material design paradigm and apply it to ground your app's UI in the physical realm.
 * **CSS Animations** Use jQuery or animate.css to include one or more animations on the site.
