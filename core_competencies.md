@@ -48,7 +48,7 @@ Describe the basic anatomy of programs and programming languages.
 
   - **Classes:** _Use classes to define standard behavior and data and organize related types of objects._
 
-  - **Closures and Scope:** _Dictate which parts of your can access and modify which variables._
+  - **Closures and Scope:** _Dictate which parts of your code can access and modify which variables._
 
   - **Testing:** _Write test code to make sure your code does what it should._
 
