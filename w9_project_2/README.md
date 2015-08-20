@@ -1,7 +1,7 @@
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) WDI PROJECT 2
 For the second project, you will use your knowledge of front and back-end web development to produce an awesome web application that can be used by friends, family or others online. The type of web application you create is your choice: utilities, social networks, games, mashups, etc. Ensure, however, that the scope of your project is not too large so that you can reasonably complete an [MVP](http://en.wikipedia.org/wiki/Minimum_viable_product) in the allotted time.
 
-The objective of this project is to:
+**The objective of this project is to:**
 
 * Work with a group in a shared GitHub repository, and contribute code to a project which you do not own.
 * Plan and implement a larger scale project as part of a development team.
@@ -75,14 +75,14 @@ We may not have covered all of these in class, but if you want to push yourself 
 
 ## TIMELINE
 
-* August 14 - Friday - Project spec and Groups assigned
-* August 21 - Friday - Completed project deliverables due at 10am
+* **Friday, August 14** - Project spec and Groups assigned
+* **Friday, August 21** - Completed project deliverables due at 10am
 
 ## PRESENTATIONS
 
 Each group will present their project on **Friday, August 21st** starting at **10:00am**. Your group's presentation should be **8 minutes or less** and cover the following:
 
-* What is your project and what does it do? (demo)
+* What is your project, and what does it do? (demo)
 * What was your team's motivation to build it?
 * Each group member should answer the following:
   * What parts of the project did you work on?
