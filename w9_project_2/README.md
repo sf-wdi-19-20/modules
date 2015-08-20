@@ -1,5 +1,5 @@
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) WDI PROJECT 2
-For the second project, you will use your knowledge of front and back-end web development to produce an awesome web application that can be used by friends, family or others online. The type of web application you create is your choice: utilities, social networks, games, mashups, etc. Ensure, however, that the scope of your project is not too large so that you can reasonably complete an [MVP](http://en.wikipedia.org/wiki/Minimum_viable_product) in the allotted time. 
+For the second project, you will use your knowledge of front and back-end web development to produce an awesome web application that can be used by friends, family or others online. The type of web application you create is your choice: utilities, social networks, games, mashups, etc. Ensure, however, that the scope of your project is not too large so that you can reasonably complete an [MVP](http://en.wikipedia.org/wiki/Minimum_viable_product) in the allotted time.
 
 The objective of this project is to:
 
@@ -13,12 +13,12 @@ You will be working in **groups of 3-4** for this project.
 ## CORE REQUIREMENTS
 
 * **PostgreSQL** Use [Postgres.app](http://postgresapp.com) for your database in development and production.
-* **Testing** All custom model methods should have test specs, and some controllers should also have specs. Start writing tests early, or you will struggle to get them done. 
+* **Testing** All custom model methods should have test specs, and some controllers should also have specs. Start writing tests early, or you will struggle to get them done.
 * **Validation** Your application should validate incoming data before entering it into the database.
 * **Error Handling** Forms in your application should also validate data, handle incorrect inputs, and provide user feedback on the client side.
 * **Views** Use **partials** heavily to follow DRY (Don’t Repeat Yourself) development in your views.
-* **Home and About Pages** - Don't forget to work on a proper homepage, clearly explaining what your app is and will do. Create an about page with photos to show off your team. 
-* **User Experience** Ensure a pleasing and logical user experience. Use Bootstrap to enhance and ease your CSS styling. 
+* **Home and About Pages** - Don't forget to work on a proper homepage, clearly explaining what your app is and will do. Create an about page with photos to show off your team.
+* **User Experience** Ensure a pleasing and logical user experience. Use Bootstrap to enhance and ease your CSS styling.
 * **JavaScript & jQuery** Spice up the front-end of your app and have some event driven functionality.
 * **Responsive Design** Make sure your app looks great on a phone or tablet.
 * **User-Friendly URLs** Make pretty URLs with friendly-id.
@@ -46,19 +46,19 @@ We may not have covered all of these in class, but if you want to push yourself 
 
 ## PLANNING & DELIVERABLES
 
-###Project plan deliverables:
+### Project plan deliverables:
 
 *You should review the following with your instructional team BEFORE you start to code.*
 
 * **Group members.** You'll be working in groups of 3-4. Use your strengths to contribute to all parts of the project.
 * **Scope.** What are you planning to build? What do you reasonably think you can implement in the time period?
 * **User stories.** What features will your app have? Set up your project and user stories in [Trello](https://trello.com).
-* **Wireframes.** Sketch out what your core pages will look like and how they will work. 
+* **Wireframes.** Sketch out what your core pages will look like and how they will work.
 * **Object Models.** Draw out the model associations for your project in an entity relationship diagram (ERD).
 * **Milestones.** Outline milestones/sprints for your group.
 
 
-###Completed project deliverables:
+### Completed project deliverables:
 
 * Link to Heroku hosted project
 * Link to source code on GitHub
@@ -70,10 +70,21 @@ We may not have covered all of these in class, but if you want to push yourself 
   * An Entity Relationship Diagram
   * APIs used
   * Libraries used
-  * Wishlist / Future Development 
+  * Wishlist / Future Development
   * Contributors (with links to their github pages)
 
 ## TIMELINE
 
 * August 14 - Friday - Project spec and Groups assigned
 * August 21 - Friday - Completed project deliverables due at 10am
+
+## PRESENTATIONS
+
+Each group will present their project on **Friday, August 21st** starting at **10:00am**. Your group's presentation should be **8 minutes or less** and cover the following:
+
+* What is your project and what does it do? (demo)
+* What was your team's motivation to build it?
+* Each group member should answer the following:
+  * What parts of the project did you work on?
+  * What was the most challenging aspect? Was there anything that was surprisingly easy to implement?
+  * What did you learn? (can be about tech or working in a team)
