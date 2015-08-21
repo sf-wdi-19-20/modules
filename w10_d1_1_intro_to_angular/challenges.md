@@ -2,7 +2,7 @@
 
 | Objectives |
 | :--- |
-| Start an Angular 1.4 app with `ng-app` |
+| Start an Angular 1.3 app with `ng-app` |
 | Setup a two way data binding with `ng-model` |
 | Display a list with `ng-repeat` |
 | Manipulate the DOM with `$scope` |
@@ -23,7 +23,7 @@ Angular is very modular and lets you add controllers to your views. Tomorrow we'
   <html ng-app>
   <head>
     <title>My Angular App</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
   </head>
   <body>
 
