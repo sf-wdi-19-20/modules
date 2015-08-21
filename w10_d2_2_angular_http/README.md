@@ -90,9 +90,7 @@ Read more about the available shortcut methods in the <a href="https://docs.angu
 
 ## Challenges
 
-TODO: Add DareToDiscover docs
-
-We're going to be using Angular $http and the <a href="http://daretodiscover.herokuapp.com" target="_blank">DareToDiscover API</a> to build a wine discovery app. DareToDiscover is a RESTful API, so its request syntax follows this pattern:
+We're going to be using Angular $http and the <a href="https://github.com/arsood/SampleAPI#wines" target="_blank">DareToDiscover API</a> to build a wine discovery app. DareToDiscover is a RESTful API, so its request syntax follows this pattern:
 
 **Base URL:** http://daretodiscover.herokuapp.com
 
@@ -104,15 +102,31 @@ We're going to be using Angular $http and the <a href="http://daretodiscover.her
 | PUT | /wines/:id | UPDATES one wine |
 | DELETE | /wines/:id | DESTROYS one wine |
 
-1. Open up Postman and make a request to get all wines.
-2. Set up a new project with an `app.js` and an `index.html`.
+----------
+
+1. Open up Postman and make a request to get all wines. Make sure the response is a list of wine objects, and familiarize yourself with how the data is structured.
+
+2. Set up a new Angular project with an `app.js` and an `index.html`.
   * Your `app.js` should have:
     * Angular app defined (`angular.module( ... )`)
   * Your `index.html` should have:
     * Angular CDN
     * `app.js` script
     * `ng-app` in either the `<html>` tag
-3. Make a new controller called `WinesCtrl`
+
+3. Make a new controller called `winesCtrl` and include `$http` as a dependency. **Hint:** Make sure you add your `winesCtrl` to your Angular app in `app.js`, and use `ng-controller` to include it in `index.html`.
+
+4. When a user opens your app, they should see a list of all the wines from DareToDiscover. Display all the wine attributes, including the photo.
+
+5. Make a form to create a new wine. When a user submits the form, it should send an `$http` request to CREATE a new wine in the DareToDiscover database.
+
+6. Each wine in your list should have an edit button. When a user clicks the edit button, the wine should hide and the edit form should show.
+
+7. When a user submits the edit form, send a request to update the wine in the DareToDiscover database.
+
+8. Implement a delete button. When the user clicks it, send a delete request to remove the wine from the DareToDiscover database.
+
+## Stretch Challenges
 
 TODO: Finish writing challenges. Solution is in `angular_wine_app` repo
 
