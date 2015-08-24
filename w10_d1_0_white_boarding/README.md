@@ -2,9 +2,18 @@
 
 ## Problem #1 - Palindrome
 
+Write a program that determines if a string is a palindrome, meaning it reads the same forwards as backwards, like "racecar".
+
+For additional complexity, discount white space and punctuation, so that a string like "never odd or even" would be accepted as well.
+
+```js
+isPalindrome('racecar')
+// => true
+```
+
 ## Problem #2 - Greatest Difference
 
-Given an array of numbers, find the two elements with the greatest difference.
+Given an array of numbers, write a program that returns the greatest difference from subtracting any two elements.
 
 ## Problem #3 - Calculate Change
 
