@@ -14,11 +14,11 @@
 ##Programming Paradigms
 
 <!--
-![XKCD goto](https://imgs.xkcd.com/comics/goto.png)    
+![XKCD goto](https://imgs.xkcd.com/comics/goto.png)
 *Dev culture reference: 'goto considered harmful.' Google it LATER.*
 -->
 
-We've been working with **procedural programming**, putting blocks of code in functions (aka procedures) that we call at various points in the code. 
+We've been working with **procedural programming**, putting blocks of code in functions (aka procedures) that we call at various points in the code.
 
 ```
 data <--> global or local variables
@@ -47,13 +47,13 @@ Objects created with the `new` keyword are cloned "instances" of the "object typ
 
 ###Composition
 
-Object types are built up or composed of other data types, including objects. 
+Object types are built up or composed of other data types, including objects.
 
 ###Delegation
 
 Basically, "delegating" tasks to another part of the program. In JS, think of **prototype chain** lookup.
 
-###Inheritance 
+###Inheritance
 
 Basically, letting objects be "a kind of" other objects. The process by which, for example, we can easily create both `Employee` and `Student` object types starting from the features of a base `Person` object type. Tomorrow!
 
@@ -66,7 +66,7 @@ Private variables always need *getter* and *setter* methods if they're going to 
 
 ```
 function Person (name, realAge, feelsOld){
-  this.name = name; 
+  this.name = name;
   this.feelsOld = feelsOld;
 
   var _realAge = realAge;  // this variable will be "private", not accessible
@@ -98,7 +98,7 @@ console.log("'age': ",grandpa.getAge());  // 62 :D
 * data is "embedded" in each instance
 
 **Prototypes**
- 
+
 * all instances share the same function and variable declarations
 * when you update the prototype, previously created instances DO get the updates
 * data is "referenced" from the prototype copy
@@ -147,7 +147,7 @@ For each challenge that asks you to add a variable to the Car object type, write
 
 1. Create an `carCount` variable that counts how many cars the dealership has entered into inventory.  Should this be on the constructor or the prototype?
 
-1. Stretch: Use `carCount` to assign an `inventoryID` to each car when it's created. A car's `inventoryID` should be unique to that car. Should this be on the constructor or the prototype? 
+1. Stretch: Use `carCount` to assign an `inventoryID` to each car when it's created. A car's `inventoryID` should be unique to that car. Should this be on the constructor or the prototype?
 
 
 
@@ -189,18 +189,18 @@ You can use `localStorage.clear()` to get rid of all of your localStorage data.
 
 **What about functions?**
 
-We can't store functions in localStorage, so we'll have to create new instances of objects programmatically from localStorage when we start up our site. 
+We can't store functions in localStorage, so we'll have to create new instances of objects programmatically from localStorage when we start up our site.
 
 <!--So if we have car data:
 
 ```
 $form.on("submit", function(event){
-  // create new object 
+  // create new object
   new car = {
-      make: $makeInput.val(), 
+      make: $makeInput.val(),
       model: $modelInput.val(),
       price: $priceInput.val(),
-      sold: false 
+      sold: false
   }
   // push into array
 
@@ -211,18 +211,18 @@ $form.on("submit", function(event){
 
 ###Using LocalStorage
 
-If you're interested in using localStorage for your projects, read [MDN's guide](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API) and pay special attention to their examples. 
+If you're interested in using localStorage for your projects, read [MDN's guide](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API) and pay special attention to their examples.
 
 ##Later this afternoon: Modeling relationships
 
 ```
 function Person (first_name, last_name, money){
   this.first_name = first_name;
-  this.last_name = last_name; 
-  
+  this.last_name = last_name;
+
   this.money = money;
   this.stuff = [];
-  
+
 }
 
 Person.prototype.buyStuff = function(newStuff, cost){
@@ -247,8 +247,3 @@ var iPhone6 = new CellPhone("iPhone", "6", 649.99);
 gal.buyStuff(iPhone6);
 
 ```
-
-
-
-
-
