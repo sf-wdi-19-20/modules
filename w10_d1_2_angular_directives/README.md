@@ -38,6 +38,7 @@
 
 1. Add an attribute to your todos that gives each todo a `kind`, and decide 2-3 kinds of todos your users might have.
 1. Add a radio button to your new todo form that allows the user to pick one of the existing `kind`s for the new todo.
+
 <!--1. Update your new todo form's validations to require that the user select a kind.-->
  
 **Goal: Allow the user to filter the kinds of todos displayed.**
