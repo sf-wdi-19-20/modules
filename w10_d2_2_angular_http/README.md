@@ -1,10 +1,10 @@
 # Angular $http
 
-The <a href="https://docs.angularjs.org/api/ng/service/$http" target="_blank">$http</a> service is a core Angular service that facilitates communication with the remote HTTP servers via the browser's XMLHttpRequest object or via JSONP.
-
-| Objectives |
+| Objective |
 | :--- |
-|  |
+| Use Angular $http to query an API and CRUD one resource |
+
+The <a href="https://docs.angularjs.org/api/ng/service/$http" target="_blank">$http</a> service is a core Angular service that facilitates communication with the remote HTTP servers via the browser's XMLHttpRequest object or via JSONP.
 
 ## Set Up
 
@@ -20,11 +20,20 @@ $http will be a dependency in your Angular controller, so before including it, m
   ```html
   <!-- index.html -->
   <html ng-app="exampleApp">
-    ...
+    <head>
+      <title>Example Angular App</title>
+      <!-- angular -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+      <!-- custom script -->
+      <script type="text/javascript" src="app.js"></script>
+    </head>
+    <body>
+      ...
+    </body>
   </html>
   ```
 
-2. Include the $http dependency in your Angular controller. Don't forget to also include the controller in `index.html`.
+2. Define an Angular controller and include the $http dependency. Don't forget to also include the controller in the `<body>` tag in `index.html`.
 
   ```js
   // app.js
@@ -36,16 +45,25 @@ $http will be a dependency in your Angular controller, so before including it, m
 
   ```html
   <!-- index.html -->
-  <body ng-controller="MainCtrl">
-    ...
-  </body>
+  <html ng-app="exampleApp">
+    <head>
+      <title>Example Angular App</title>
+      <!-- angular -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+      <!-- custom script -->
+      <script type="text/javascript" src="app.js"></script>
+    </head>
+    <body ng-controller="MainCtrl">
+      ...
+    </body>
+  </html>
   ```
 
 ## $http Syntax
 
 #### 1. Long-Form
 
-Similar to jQuery's `$.ajax()`.
+Similar to jQuery's `$.ajax()`
 
 ```js
 $http({method: 'GET', url: '/someUrl'})
@@ -114,22 +132,26 @@ We're going to be using Angular $http and the <a href="https://github.com/arsood
     * `app.js` script
     * `ng-app` in either the `<html>` tag
 
-3. Make a new controller called `winesCtrl` and include `$http` as a dependency. **Hint:** Make sure you add your `winesCtrl` to your Angular app in `app.js`, and use `ng-controller` to include it in `index.html`.
+3. Make a new controller called `winesCtrl` and include `$http` as a dependency. **Hint:** Make sure you add `winesCtrl` to your Angular app in `app.js`, and use `ng-controller` to include it in the `<body>` tag in `index.html`.
 
-4. When a user opens your app, they should see a list of all the wines from DareToDiscover. Display all the wine attributes, including the photo.
+4. When a user opens your app, they should see a list of all the wines from DareToDiscover. Display all the wine attributes, including the photo. **Hint:** Look up `ng-src` for images.
 
 5. Make a form to create a new wine. When a user submits the form, it should send an `$http` request to CREATE a new wine in the DareToDiscover database.
 
-6. Each wine in your list should have an edit button. When a user clicks the edit button, the wine should hide and the edit form should show.
+6. Each wine in your list should have an edit button. When a user clicks the edit button, the wine information should hide and the edit form should show.
 
-7. When a user submits the edit form, send a request to update the wine in the DareToDiscover database.
+7. When a user submits the edit form, send an `$http` request to UPDATE the wine in the DareToDiscover database.
 
-8. Implement a delete button. When the user clicks it, send a delete request to remove the wine from the DareToDiscover database.
+8. Implement a delete button. When the user clicks it, send an `$http` request to DESTROY the wine from the DareToDiscover database.
 
-## Stretch Challenges
+## Stretch Challenge
 
-TODO: Finish writing challenges. Solution is in `angular_wine_app` repo
+Link the `name` of each wine to a view that shows only the details for that wine. **Hints:**
+
+* Use `ngRoute` and `ng-view` to set up multiple views in your Angular app.
+* Use `$routeParams` to figure out which wine to display.
+* Your view for a single wine will have a different controller than your view that displays all wines.
 
 ## Docs & Resources
 
-* <a href="https://docs.angularjs.org/api/ng/service/$http" target="_blank">Angular $http Docs</a>
+* <a href="https://docs.angularjs.org/api/ng/service/$http" target="_blank">Angular $http</a>
