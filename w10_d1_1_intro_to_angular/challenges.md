@@ -44,7 +44,7 @@ Angular is very modular and lets you add controllers to your views. Tomorrow we'
   <html ng-app="starter">
   <head>
     <title>My Angular App</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
     <script src="app.js"></script>
   </head>
   ...
