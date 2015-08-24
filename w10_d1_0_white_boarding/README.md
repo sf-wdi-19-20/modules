@@ -7,13 +7,20 @@ Write a program that determines if a string is a palindrome, meaning it reads th
 For additional complexity, discount white space and punctuation, so that a string like "never odd or even" would be accepted as well.
 
 ```js
-isPalindrome('racecar')
+isPalindrome('racecar');
 // => true
+isPalindrome('apple');
+// => false
 ```
 
 ## Problem #2 - Greatest Difference
 
 Given an array of numbers, write a program that returns the greatest difference from subtracting any two elements.
+
+```js
+greatestDiff([-18, 72, 5, 43, -34, 106]);
+// => 140
+```
 
 ## Problem #3 - Calculate Change
 
