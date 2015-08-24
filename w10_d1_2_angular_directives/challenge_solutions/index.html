@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html ng-app="toDoApp">
+<head>
+ 	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>To Do</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- Optional bootstrap theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+	<!-- Custom ToDo CSS -->
+	<link rel="stylesheet" href="styles.css">
+
+</head>
+<body ng-controller="MainCtrl">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h1>To Do App</h1>
+
+				<h2>New To Do</h2>
+				<form name="newForm" ng-submit="createToDo()">
+					<label>What do you need to do?</label><br>
+					<input type="text" placeholder="enter task" ng-model="newFormData.title" required><br>
+					<label>What kind of todo is this?</label>
+					<div ng-repeat="kind in kinds">
+						<input type="radio" ng-model="newFormData.newKind" ng-value="kind">{{kind}}<br>
+					</div>
+					<button type="submit" class="btn btn-default" ng-disabled="newForm.$invalid">submit</button>
+				</form>
+
+				<h2>Current To Do List</h2>
+				<ng-pluralize count="todos.length"
+                 when="{'0': 'You have nothing to do.',
+                     'one': 'You have 1 thing to do.',
+                     'other': 'You have {} things to do.'}">
+				</ng-pluralize><br>
+				<ul class="list-group" >
+					<li ng-repeat="todo in todos" 
+						ng-include="'single-todo.html'" 
+						class="list-group-item">
+					   <!--  <p>{{todo.title}} -- posted on {{todo.created_at | date : 'EEEE, MMMM d, yyyy'}}</p>
+					    <button class="btn btn-default" ng-click="deleteToDo(todo)">Delete To Do</button> -->
+	    			</li>
+	    		</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- single-todo.html -->
+	<script type="text/ng-template" id="single-todo.html">
+	 	<p ng-class="{ 'strikethrough' : todo.completed }">{{todo.title}} -- posted on {{todo.created_at | date : 'EEEE, MMMM d, yyyy'}}</p>
+		<button class="btn btn-default" ng-click="deleteToDo(todo)">Delete To Do</button>
+		<button class="btn btn-default" ng-click="completeToDo(todo)">Mark Complete</button>
+		</script>
+
+
+	<!-- jQuery -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<!-- Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	<!-- Angularjs 1.4.4 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+
+	<!-- Custom To Do JS -->
+	<script type="text/javascript" src="app.js"></script>
+
+
+</body>
+</html>
