@@ -67,17 +67,23 @@ I DO (5 min) - find one of the correct directives based on the answers given by 
 
 WE DO (5 min) - ng-if (hard to figure this one out yourself, also note creates a new scope like ng-repeat)
 
-`<div ng-if="shoppingCart.length"><p>You have {{shoppingCart.length}} items in your cart!</p> <button ng-click="shoppingCart.checkout()">Check Out</button>`
+`<div ng-if="shoppingCart.length"><p>You have {{shoppingCart.length}} items in your cart!</p>`
 
+` <button ng-click="shoppingCart.checkout()">Check Out</button>`
 or `...<button ng-click="$parent.checkout()">...`
 
 
-## YOU DO Challenges (~50 min)
+## YOU DO Challenges (~45 min)
 
 
-## Circle around (10 min)
+## Circle around (15 min)
 
-Go over first few challenges....
+* How well did strategy work?
+* Go over first few challenges (10 min)
+* Tomorrow learning about using partials and external apis (reference list of things we did on front end earlier)
+* Thursday services (non-view-related logic) and custom directives
+* reference any remaining things we did on front end earlier
+* This afternoon, instructor mtg then standups. Homework is to continue challenges from today. Reading for tomorrow is __________
 
 
 
