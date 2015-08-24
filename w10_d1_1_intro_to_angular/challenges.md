@@ -89,21 +89,24 @@ Angular is very modular and lets you add controllers to your views. Tomorrow we'
 ## Base Challenges
 
 1. Add bootstrap using the CDN. Using the bootstrap grid put your list of todos in the center third of the page.
-1. Inside the <body> create a <div> element and attach an Angular controller called `TodoCtrl`. (you guessed it! a todo app!)
+1. Inside the `<body>`, create a `<div>`, element and attach an Angular controller called `TodoCtrl` (you guessed it! a todo app!).
 2. Create this TodoCtrl in your `app.js` by dot-chaining it to the end of the `MainCtrl`.
 3. Write a console log in the controller to make sure its working.
-4. Assign an array of simple todo objects with the attribute "title" to `$scope.todos`.
+4. Assign an array of simple todo objects, each with a single key "title", to `$scope.todos`.
 5. Use `<li ng-repeat="todo in todos">{{todo.title}}</li>` to display the list of todos.
 6. Above the list create an input field and use `ng-model` to bind the field to a variable in `$scope` called `todo.title`.
-7. Make a button that has a click function that takes the `$scope.todo` and pushes it on to the `$scope.todos` array. After pushing the new todo, set `$scope.todo.title` to "".
+7. Make a button that has a click function that takes the `$scope.todo` and pushes it on to the `$scope.todos` array. After pushing the new todo, set `$scope.todo.title` to `""`.
 9. Display a counter of how many todos you have.
 
 ## Evening Challenges
 
-1. Make a button on each todo that deletes that todo from the array of todos. Add underscore and use the `_.findWhere()` function to find the todo where the title is equal to the title clicked. (Remember that to access the clicked element use the reserved word `this`)
-1.
+1. Make a button on each todo that deletes that todo from the array of todos. Add underscore and use the `_.findWhere()` function to find the todo where the title is equal to the title clicked. (Hint: Remember that to access the clicked element with vanilla JavaScript we used the reserved word `this`?  Use console logging to investigate what `this` stores now.)
+
+1. What bug occurs with the method of deletion outlined above? (Hint: Think of the to do list "push-ups, squats, push-ups".  Bigger hint: What happens if we try to delete the second "push-ups"?)  
+
+1. Outline a strategy to fix this bug using vanilla JavaScript or jQuery.  Outline a strategy to fix it with AngularJS, where you should only manipulate the DOM through directives.
 
 
 ## Extra Challenges
 
-1. Write a blog in AngularJS. It should have posts and the posts should have comments. (hint use `post.comments.push($scope.comment)` to push a comment into a comments attribute).
+1. Write a blog in AngularJS. It should have posts, and the posts should have comments. (Hint: Use `post.comments.push($scope.comment)` to push a comment into a `comments` attribute).
