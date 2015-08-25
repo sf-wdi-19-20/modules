@@ -15,24 +15,54 @@ If you're asked an interview question about a linked list, make sure to clarify 
 
 ## So like... arrays?
 
-###No!
+**No!**
 
 We need to back up a step and take a closer look at arrays... it turns out they're not what we thought they were!
 
-**Arrays store data in one continuous block of computer memory.**  The computer sets aside just enough memory when the array is created. That means, whenever you need to change the size of an array, you have to find a whole new block of memory that's big enough to fit the array. It also means you have to tell the computer exactly how big you want the array to be when you create it.
+Arrays store data in one continuous block of computer memory.  The computer sets aside just enough memory when the array is created. That means, whenever you need to change the size of an array, you have to find a whole new block of memory that's big enough to fit the array. It also means you have to tell the computer exactly how big you want the array to be when you create it.
 
-###... No I don't.
+**... No I don't.**
 
 No, you don't. In lower level computer programming languages like C, you *would* have to. Our high-level languages abstract that away and handle array resizing for you efficiently. But it's good to know that's what's happening in the background, because that's the biggest difference between arrays and linked lists. 
 
-### So linked lists rock because...
+** Linked lists don't need to be resized with one giant block of memory; they can grow with pointers to other parts of the computer's memory. **
 
-**Linked lists don't need to be resized with one giant block of memory;** they can grow with pointers to other parts of the computer's memory.    
+** It's easier to insert into and delete from a linked list**, because with an array you'd need to move every element after the insertion point over by one. With a linked list... well you'll figure that out in the challenges. 
 
-**It's easier (and faster!) to insert into and delete from a linked list**, because with an array you'd need to move every element over by one after making a change. With a linked list... well you'll figure that out in the challenges.    
+On the other hand...
 
-### On the other hand...
+** You can't quickly access a particular node in a linked list, like you can with array indices.** You have to start with the head and move sequentially.
+** Linked lists take up a tiny bit more space** because in addition to storing the actual data, you have to store the pointers. 
+** It can take more time to access a full linked list,** because the data living in different places can't just be read as a continous chunk.
 
-**You can't quickly access a particular node in a linked list, like you can with array indices.** You have to start with the head and move sequentially.   
-**Linked lists take up a tiny bit more space** because in addition to storing the actual data, you have to store the pointers.     
-**It can take more time to access a full linked list,** because the data living in different places can't just be read as a continous chunk.   
+## Applications
+
+* **file systems** Files are often stored in chunks, but when files grow large they may not fit in their original chunk. You can think of a file as a series of nodes with chunks of data and links to the next section of the file. (They're often actually implemented with a more complex data structure called a B-tree, but you can think of them as being like linked lists.)
+
+* **implementing stacks and queues** Linked lists are a natural choice for these data structures that need fast access to beginning or end of a list... much more natural than arrays.
+
+## Base Challenges
+
+Implement:
+
+1.  a Linked List object type and 
+1. a Node object type.
+
+The linked list should store its `head` and `tail`. The `head` and `tail` will both be Nodes.  
+
+The linked list object type should also have methods to:
+
+1. given a starter value, create a new list,
+1. `append` a value to the end of the list, 
+1. `prepend` a value to the start of the list,
+1. find the `size` of the list,
+1. given one node, `insert` another node into the list after it 
+1. given one node, `delete` the node after it from the list
+
+## Stretch Challenge (Interview Question)
+
+Cycles in linked lists (repeated nodes) can make them stop working for a lot of applications.  
+
+Write a method to detect whether a linked list has a cycle in it. 
+
+Hint: Use two pointers to track two locations in the list
