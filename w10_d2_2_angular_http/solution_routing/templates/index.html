@@ -1,0 +1,80 @@
+<h2 class="text-center">Wine App</h2>
+<hr>
+
+<!-- form to create new wine -->
+<h4>Add New Wine</h4>
+<form ng-submit="createWine()">
+  <div class="form-group">
+    <input type="text" ng-model="wine.name" class="form-control" placeholder="Name" autofocus>
+  </div>
+  <div class="form-group">
+    <input type="text" ng-model="wine.year" class="form-control" placeholder="Year">
+  </div>
+  <div class="form-group">
+    <input type="text" ng-model="wine.grapes" class="form-control" placeholder="Grapes">
+  </div>
+  <div class="form-group">
+    <input type="text" ng-model="wine.country" class="form-control" placeholder="Country">
+  </div>
+  <div class="form-group">
+    <input type="text" ng-model="wine.region" class="form-control" placeholder="Region">
+  </div>
+  <div class="form-group">
+    <input type="text" ng-model="wine.price" class="form-control" placeholder="Price">
+  </div>
+  <div class="form-group">
+    <input type="text" ng-model="wine.picture" class="form-control" placeholder="Picture">
+  </div>
+  <input type="submit" value="Save Wine" class="btn btn-default">
+</form>
+<hr>
+
+<!-- show all wines -->
+<div ng-repeat="wine in wines">
+  <div class="row">
+    <div class="col-xs-4">
+      <img ng-src="{{wine.picture}}" class="img-responsive">
+    </div>
+    <div class="col-xs-8">
+
+      <!-- wine content -->
+      <div ng-hide="wine.editForm">
+        <h5><a href="/wines/{{wine.id}}">{{wine.name}}</a></h5>
+        <p><strong>Year:</strong> {{wine.year}}</p>
+        <p><strong>Grapes:</strong> {{wine.grapes}}</p>
+        <p><strong>Country:</strong> {{wine.country}}</p>
+        <p><strong>Region:</strong> {{wine.region}}</p>
+        <p><strong>Price:</strong> ${{wine.price}}</p>
+        
+        <!-- edit/delete buttons -->
+        <a ng-click="wine.editForm = true" href="javascript:void(0)" class="btn btn-default">Edit</a>
+        <a ng-click="deleteWine(wine)" href="javascript:void(0)" class="btn btn-default">Delete</a>
+      </div>
+      
+      <!-- form to edit wine -->
+      <form ng-show="wine.editForm" ng-submit="updateWine(wine)">
+        <div class="form-group">
+          <input type="text" ng-model="wine.name" class="form-control" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <input type="text" ng-model="wine.year" class="form-control" placeholder="Year">
+        </div>
+        <div class="form-group">
+          <input type="text" ng-model="wine.grapes" class="form-control" placeholder="Grapes">
+        </div>
+        <div class="form-group">
+          <input type="text" ng-model="wine.country" class="form-control" placeholder="Country">
+        </div>
+        <div class="form-group">
+          <input type="text" ng-model="wine.region" class="form-control" placeholder="Region">
+        </div>
+        <div class="form-group">
+          <input type="text" ng-model="wine.price" class="form-control" placeholder="Price">
+        </div>
+        <input type="submit" value="Save Wine" class="btn btn-default">
+      </form>
+    </div>
+  </div>
+  <hr>
+</div>
+<!-- end ng-repeat -->
