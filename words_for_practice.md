@@ -73,7 +73,56 @@
 * GET request
 * POST request
 * PUT request
+* PATCH request
 * HTML templating
 * string interpolation
 * seperation of concerns
 * RESTful routing
+
+#### Week 4
+* database
+* query
+* MongoDB
+* mongoose
+* NoSQL
+* document store
+* drop (database)
+* entity relationship diagram
+* one-to-one, one-to-many, many-to-many
+
+#### Week 6
+* Ruby
+* hash
+* key value store
+* class
+* method
+* attribute
+* class-based inheritance
+* Ruby on Rails
+* model
+* view
+* controller
+* erb
+* scss
+
+#### Week 7
+* SQL
+  * SQL query
+  * join
+* relational database (RDB)
+* ORM
+* ActiveRecord
+
+#### Week 8
+* pull request
+* git fetch
+* git merge
+* branch, feature branch
+* code review
+* kanban board
+* sprint
+
+#### Week 10
+* Angularjs
+  * directive
+* framework
