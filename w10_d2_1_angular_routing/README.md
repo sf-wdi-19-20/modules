@@ -4,9 +4,9 @@
 
 | Objectives |
 | :--- |
-| Add multiple views to the todo app you created this morning using `ng-route` with route-specific view templates and controllers. |
-| Create a restful routing for a resource |
-| Negotiate nested resources in AngularJS |
+| Add multiple views to the todo app you created yesterday using `ng-route` with route-specific view templates and controllers. |
+| Create a restful routing for a resource. |
+| Negotiate nested resources in AngularJS. |
 
 ## Base Challenges
 
