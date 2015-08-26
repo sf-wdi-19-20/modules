@@ -29,10 +29,17 @@ Your app should meet all of the following requirements:
 Your app should also meet 4 of the following 6 criteria:
 
 * Create and use a custom angular directive.
+
 * Use an <a href="https://angular-ui.github.io">angular-ui module</a> for a UI component or feature.
+
 * Incorporate an external angular directive *other than an angular-ui module* (for example, `ngDraggable` or `ngStorage` -- once place to browse is <a href="http://ngmodules.org" target="_blank">ng-modules.org</a>).
-* Read data from an external API. 
+
+* Incorporate data from an external API using `ngResource`.  
+
+<!-- @TODO ^ or $http? -->
+
 * Create multiple view templates and use routing to navigate.
+
 * For a stretch challenge, move from mocked data to a Backend as a Service (see details below).
 
 ## App Ideas
