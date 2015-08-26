@@ -1,32 +1,30 @@
-# Angular Directives Challenges
+# Custom & External Angular Directives
 
 | Objectives |
 | :--- |
-| Show and hide data with `ng-hide` |
-| Filter data in an `ng-repeat` with a custom filter |
-| Pluralize words with `ng-pluralize` |
-| Insert partial templates with `ng-include` |
-| Use `ng-submit` to do validation |
+| Make your own custom Angular directives |
+| Add external Angular directives to your project |
 
 # Challenges
 
 ## Base Challenges
 
-For these challenges use your todo app from yesterday
+1. Make a new Angular app, and add the <a href="http://ajbraus.gitbooks.io/wdi-homework/content/angular-custom-directives.html#making-your-own-directive" target="_blank">`currentWeather` directive</a> from the <a href="http://ajbraus.gitbooks.io/wdi-homework/content/angular-custom-directives.html">Angular Directives reading</a>.
 
-1. Pluralize the label of the count of your todos. e.g. "4 Todos"
-1. Add an attribute `created_at` to your todos and use the `date` filter to display this time as "posted on Monday April 24, 2015"
-1. Update your todo form to use an actual `<form>` and `ng-submit`.
-1. Require the `todo.title` and disable the button if `todo.title.$invalid`
-1. Use a partial and the `ng-include` directive to iterate over your todos.
-1. Add an attribute "completed" to each todo.
-1. Make a button that when you click it sets the "completed" to true.
-1. Use the directive `ng-class` to conditionally set a class that strikes through the todo title and turns the text grey if "completed" is true. Look up the ng-class docs to complete.
+2. Pull out the template into a different file and use the `templateUrl` option.
+
+3. Improve the template and show more information from inside the `weather` JSON.
+
+4. Add the <a href="https://github.com/TheSharpieOne/angular-validation-match" target="_blank">angular-validation-match</a> directive to validate that a password field matches a password confirmation field. **Hint:** Add the <a href="https://github.com/TheSharpieOne/angular-validation-match/blob/master/dist/angular-validation-match.min.js" target="_blank">source file</a> to your app, then link to it using a `<script>` tag in your `index.html`. You'll also need to add `'validation.match'` as a dependency in your Angular app.
+
+5. Add the <a href="https://github.com/allenhwkim/angularjs-google-maps" target="_blank">ngMap</a> directive to display a map in your app centered on SF. <a href="http://allenhwkim.tumblr.com/post/70986888283/google-map-as-the-simplest-way" target="_blank">This blog post</a> has some very helpful examples.
 
 ## Evening Challenges
 
-1. Add a new resource to your todos called "Lists".
-  * Lists have a title and many todos. (Hint: Think mongo nested resource).
-  * Wireframe how you would navigate between lists of todos and add new todos to various lists.
-  * Use `ng-repeat` and `filter` to filter to see only one list's todos.
-  * Make new lists and make new todos on the lists.
+1. Create a directive called `five-day-forecast` that fetches and displays the five day forecast from the <a href="http://openweathermap.org/forecast5" target="_blank">openweathermap api</a>.
+
+2. Add the <a href="https://github.com/urish/angular-moment" target="_blank">angular-moment</a> directive to show a date and time in your app that ticks down by the second.
+
+3. Find and implement an edit-in-place directive.
+
+4. Come up with an idea for a custom directive and implement it. For a bonus, use an external API like the weather example above.
