@@ -76,16 +76,17 @@ angular.module('app', ['ngResource']);
 ## Base Challenges
 
 We're going to build a CRUD app like the `$http` one we built yesterday but using `$resource`.
-1. Display all the books with all their attributes including the photo.
-1. Create a form to add a new book. Make it work!
-1. Add an edit button next to each book. Make it work!
+
+1. Display all the books with all their attributes including the photo.  
+1. Create a form to add a new book. Make it work!  
+1. Add an edit button next to each book. Make it work!  
 1. Add a delete button next to each book. Make it work!
 
 ## Stretch Challenges
 Link the `name` of each book to a view that shows only the details for that book. **Hints:**
 
-* Use `ngRoute` and `ng-view` to set up multiple views in your Angular app.
-* Use `$routeParams` to figure out which book to display.
-* Your view for a single book will have a different controller than your view that displays all books.
+* Use `ngRoute` and `ng-view` to set up multiple views in your Angular app.  
+* Use `$routeParams` to figure out which book to display.  
+* Your view for a single book will have a different controller than your view that displays all books.  
 
 Add a filter (client side search) to your app. See docs here: https://docs.angularjs.org/api/ng/filter/filter
