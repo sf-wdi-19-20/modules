@@ -28,7 +28,7 @@ angular.module('app', ['ngResource']);
 1. Let’s see how we can use the `get()`, `query()`, `save()`, and `delete()` methods in a controller:
   ```js
   angular.module('myApp').controller('ResourceController',function($scope, Book) {
-      $scope.book = Book.get({ id: $scope.id }, function(data) {
+      $scope.book = Book.get({ id: 200 }, function(data) {
         console.log(data);
       }); // get() returns a single book
 
@@ -67,25 +67,26 @@ angular.module('app', ['ngResource']);
 
 1. Now we can use the `update` function like this:
   ```js
-  var book = Book.get({ id: $scope.id }, function() {
+  var book = Book.get({ id: 200 }, function() {
       book.title = "Updated Title";
-      Book.update({id: $scope.id}, book)
+      Book.update({id: 200}, book)
   });
   ```
 
 ## Base Challenges
 
 We're going to build a CRUD app like the `$http` one we built yesterday but using `$resource`.
-1. Display all the books with all their attributes including the photo.
-1. Create a form to add a new book. Make it work!
-1. Add an edit button next to each book. Make it work!
+
+1. Display all the books with all their attributes including the photo.  
+1. Create a form to add a new book. Make it work!  
+1. Add an edit button next to each book. Make it work!  
 1. Add a delete button next to each book. Make it work!
 
 ## Stretch Challenges
 Link the `name` of each book to a view that shows only the details for that book. **Hints:**
 
-* Use `ngRoute` and `ng-view` to set up multiple views in your Angular app.
-* Use `$routeParams` to figure out which book to display.
-* Your view for a single book will have a different controller than your view that displays all books.
+* Use `ngRoute` and `ng-view` to set up multiple views in your Angular app.  
+* Use `$routeParams` to figure out which book to display.  
+* Your view for a single book will have a different controller than your view that displays all books.  
 
 Add a filter (client side search) to your app. See docs here: https://docs.angularjs.org/api/ng/filter/filter
