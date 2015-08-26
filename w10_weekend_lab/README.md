@@ -2,7 +2,7 @@
 
 **Objective**: Build a full-featured, front-end application. Don't worry about storing data persistently between page refreshes; you will not need to build a server. You can use data from external APIs, or store mock data (which will reset when the page loads).
 
-We'd like you to use AngularJS to **do one simple thing very well**.  Your app should solve a small, focused problem.  
+We'd like you to use AngularJS to **do one thing very well**.  Your app should solve a small, focused problem.  
 
 ## Background
 
@@ -18,10 +18,6 @@ Your app should meet all of the following requirements:
 
 * Your code should be organized and commented, and you should push your project to github with frequent, descriptive commit messages.
 
-* Your app should not only be interactive but create fun or meaningful opportunities for interaction. (Don't just CRUD!)  
-
-<!-- @TODO ^ perhaps? -->
-
 * Your app must include built-in angular directives, and it must only interact with the DOM through those directives. You should not write any jQuery code yourself (though it is okay to include the jQuery library if it is required by another library you use).
 
 * Your app must include at least one controller with associated models.
@@ -34,9 +30,7 @@ Your app should also meet 4 of the following 6 criteria:
 
 * Incorporate an external angular directive *other than an angular-ui module* (for example, `ngDraggable` or `ngStorage` -- once place to browse is <a href="http://ngmodules.org" target="_blank">ng-modules.org</a>).
 
-* Incorporate data from an external API using `ngResource`.  
-
-<!-- @TODO ^ or $http? -->
+* Use data from an external API.
 
 * Create multiple view templates and use routing to navigate.
 
