@@ -28,7 +28,7 @@ angular.module('app', ['ngResource']);
 1. Let’s see how we can use the `get()`, `query()`, `save()`, and `delete()` methods in a controller:
   ```js
   angular.module('myApp').controller('ResourceController',function($scope, Book) {
-      $scope.book = Book.get({ id: $scope.id }, function(data) {
+      $scope.book = Book.get({ id: 200 }, function(data) {
         console.log(data);
       }); // get() returns a single book
 
@@ -67,9 +67,9 @@ angular.module('app', ['ngResource']);
 
 1. Now we can use the `update` function like this:
   ```js
-  var book = Book.get({ id: $scope.id }, function() {
+  var book = Book.get({ id: 200 }, function() {
       book.title = "Updated Title";
-      Book.update({id: $scope.id}, book)
+      Book.update({id: 200}, book)
   });
   ```
 
