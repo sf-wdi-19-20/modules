@@ -14,9 +14,7 @@ angular.module('directivesApp', ['validation.match', 'angularMoment', 'ngMap'])
         city: '@'
       },
       // template: '<div class="current-weather"><h4>Weather for {{city}}</h4>{{weather.main.temp}}</div>',
-      templateUrl: function(element, attrs) {
-        return attrs.templateUrl || 'templates/currentWeather.html';
-      },
+      templateUrl: 'templates/currentWeather.html',
       controller: ['$scope', '$http', function ($scope, $http) {
         var url = "http://api.openweathermap.org/data/2.5/weather?mode=json&units=imperial&callback=JSON_CALLBACK&q=";
         $scope.getWeather = function(city) {
@@ -38,9 +36,7 @@ angular.module('directivesApp', ['validation.match', 'angularMoment', 'ngMap'])
       scope: {
         city: '@'
       },
-      templateUrl: function(element, attrs) {
-        return attrs.templateUrl || 'templates/fiveDayForecast.html';
-      },
+      templateUrl: 'templates/fiveDayForecast.html',
       controller: ['$scope', '$http', function ($scope, $http) {
         var url = "http://api.openweathermap.org/data/2.5/forecast?mode=json&units=imperial&callback=JSON_CALLBACK&q=";
         $scope.getForecast = function(city) {
