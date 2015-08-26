@@ -15,25 +15,17 @@ This process a lot helps with freelance and contract work because your clients w
 Your app should meet all of the following requirements:
 
 * Your app should be beautifully designed and pleasant to use. Write out user stories, draw out wireframes, and use well-designed websites as inspiration.
-
 * Your code should be organized and commented, and you should push your project to github with frequent, descriptive commit messages.
-
 * Your app must include built-in angular directives, and it must only interact with the DOM through those directives. You should not write any jQuery code yourself (though it is okay to include the jQuery library if it is required by another library you use).
-
 * Your app must include at least one controller with associated models.
 
 Your app should also meet 4 of the following 6 criteria:
 
 * Create and use a custom angular directive.
-
 * Use an <a href="https://angular-ui.github.io">angular-ui module</a> for a UI component or feature.
-
 * Incorporate an external angular directive *other than an angular-ui module* (for example, `ngDraggable` or `ngStorage` -- once place to browse is <a href="http://ngmodules.org" target="_blank">ng-modules.org</a>).
-
 * Use data from an external API.
-
 * Create multiple view templates and use routing to navigate.
-
 * For a stretch challenge, move from mocked data to a Backend as a Service (see details below).
 
 ## App Ideas
