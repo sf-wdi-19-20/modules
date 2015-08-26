@@ -18,7 +18,7 @@ angular.module('app', ['ngResource']);
 1. To use `$resource` inside your controller/service you need to declare a dependency on `$resource`. The next step is calling the `$resource()` function with your REST endpoint, as shown in the following example. This function call returns a `$resource` class representation which can be used to interact with the REST backend. Create a `services.js` file and put your new `$resource` service in it.
 
   ```js
-  angular.module('myApp').factory('Book', function($resource) {
+  angular.module('myApp').service('Book', function($resource) {
     return $resource('http://daretodiscover.herokuapp.com/books/:id');
   });
   ```
@@ -87,3 +87,5 @@ Link the `name` of each book to a view that shows only the details for that book
 * Use `ngRoute` and `ng-view` to set up multiple views in your Angular app.
 * Use `$routeParams` to figure out which book to display.
 * Your view for a single book will have a different controller than your view that displays all books.
+
+Add a filter (client side search) to your app. See docs here: https://docs.angularjs.org/api/ng/filter/filter
