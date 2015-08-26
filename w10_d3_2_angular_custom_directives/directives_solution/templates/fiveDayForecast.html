@@ -1,0 +1,5 @@
+<div class="five-day-forecast">
+  <h3>5 Day Forecast for {{city}}</h3>
+  <br>
+  <p ng-repeat="forecast in weather.list | filter:onceDaily"><strong>{{forecast.dt_txt | formattedDate}}:</strong>&nbsp; Low {{forecast.main.temp_min}}˚F / High {{forecast.main.temp_max}}˚F</p>
+</div>
