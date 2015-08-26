@@ -30,10 +30,10 @@ Your app should also meet 4 of the following 6 criteria:
 
 ## App Ideas
 
-You can make any app idea you like, but it should be small enough in scope that you can build it over one weekend and focused enough that you can build it *well* in that time. You could even do a first draft of a front end for one of your project 3 ideas. If you're having trouble coming up with ideas, remember to use Startup Ninja! Here are some suggestions for app ideas that you could build:
+You can make any app idea you like, but it should be small enough in scope that you can build it over one weekend and focused enough that you can build it *well* in that time. You could even do a first pass of a front end for your project 3 idea. If you're having trouble coming up with ideas, remember to use Startup Ninja! Here are some suggestions for app ideas that you could build:
 
 1. A Stack Overflow clone with questions, comments, answers, and votes. (Remember, the data would be mocked to start out!)
-1. A dance party app with gifs and music!
+1. <a href="https://github.com/sf-wdi-19-20/angular_party" target="_blank">A dance party app with gifs and music!</a>
 1. <a href="https://github.com/sf-wdi-19-20/angular_hangman" target="_blank">A hangman game!</a>
 1. Any idea you'd like!
 
