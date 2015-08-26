@@ -16,6 +16,8 @@ Your app should meet all of the following requirements:
 
 * Your app should be beautifully designed and pleasant to use. Write out user stories, draw out wireframes, and use well-designed websites as inspiration. 
 * Your code should be organized and commented, and you should push your project to github with frequent, descriptive commit messages.
+* Your app should not only be interactive but create fun or meaningful opportunities for interaction. (Don't just CRUD!)  
+<!-- @TODO ^ check in with group -->
 * Your app must include built-in angular directives, and it must only interact with the DOM through those directives. You should not write any jQuery code yourself (though it is okay to include the jQuery library if it is required by another library you use).
 * Your app must include at least one controller with associated models.
 
