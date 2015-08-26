@@ -6,7 +6,7 @@ Built on the top of the `$http` service, Angular’s `$resource` is a service th
 1. Create a new angular app and controller.
 1. The `$resource` service doesn’t come bundled with the main Angular script. Add it to your `index.html` file.
 ```html
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-resource.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-resource.min.js"></script>
 ```
 
 1. Now you need to load the `$resource` module into your application.
