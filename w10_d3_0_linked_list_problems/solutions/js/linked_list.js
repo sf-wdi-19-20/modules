@@ -7,17 +7,21 @@ var LinkedList = function(val){
 	this.head = new Node(val, null);
 	this.tail = this.head;
 }
-// display a LinkedList nicely
+// returns a nicely formatted LinkedList string
 LinkedList.prototype.pretty = function(){
+	// starts by putting all elements of linked list into an array
+	// this is a GREAT candidate for its own function by the way
+	// but i'm only doing it here
 	var arr = [];
 	var current = this.head;
 	while (current.next){
 		arr.push(current.val);
-		arr.push(" -> ");
 		current = current.next;
 	}
 	arr.push(current.val);
-	return arr.join("");
+	// then, join the list into a string
+	var sep = " -> "
+	return arr.join(sep);
 }
 
 
