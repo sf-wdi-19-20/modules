@@ -8,6 +8,11 @@ Assume you have an implementation of linked lists in your language of choice tha
 * `llist.append(val)` - inserts a node with value `val` at the end of the list and makes it the list's new `tail`
 * `llist.prepend(val)` - inserts a node with value `val` at the beginning of the list and makes it the list's new `head`
 
+Additionally, you should assume each node has:
+
+* `node.val` - returns the value stored at that node
+* `node.next` (JavaScript) or `node.next_node` (Ruby) - returns the next node in the linked list
+
 ## In Class Problems
 
 1. Write a function that, given a number n, finds the nth from last node in a linked list.
