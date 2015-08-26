@@ -1,6 +1,6 @@
 # Linked List Interview Problems
 
-## Assumption
+## Assumptions
 
 Assume you have an implementation of linked lists in your language of choice that gives you the following interface:
 
@@ -8,7 +8,7 @@ Assume you have an implementation of linked lists in your language of choice tha
 * `llist.append(val)` - inserts a node with value `val` at the end of the list and makes it the list's new `tail`
 * `llist.prepend(val)` - inserts a node with value `val` at the beginning of the list and makes it the list's new `head`
 
-## Phone Interview / In Class
+## In Class Problems
 
 1. Write a function that, given a number n, finds the nth from last node in a linked list.
 
@@ -18,7 +18,7 @@ Assume you have an implementation of linked lists in your language of choice tha
 
 1. Write a function that reverses a linked list. Bonus: Do it without creating a new linked list.
 
-## Whiteboarding / CS Practice
+## Further Practice
 
 1. Write a function that sorts a linked list, given that the values in the list's nodes are all `2`, `3`, or `4`.  Bonus: write another function that solves this problem in a different way.
 
