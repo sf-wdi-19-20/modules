@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="directivesApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- bootstrap css -->
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <title>Angular Directives</title>
+
+  <!-- angular -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+
+  <!-- angular-validation-match -->
+  <script type="text/javascript" src="angular-validation-match.min.js"></script>
+
+  <!-- moment.js -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+
+  <!-- angular moment -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.2/angular-moment.min.js"></script>
+
+  <!-- google maps -->
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>
+
+  <!-- ng-map -->
+  <script type="text/javascript" src="http://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.min.js"></script>
+
+  <!-- custom script -->
+  <script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h1>Angular Directives</h1>
+        <hr>
+
+        <!-- currentWeather -->
+        <div current-weather city="San Francisco"></div>
+        <hr>
+
+        <!-- fiveDayForecast -->
+        <div five-day-forecast city="San Francisco"></div>
+        <hr>
+
+        <!-- validation.match -->
+        <form class="form-inline" name="myForm">
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" id="password" ng-model="user.password">
+          </div>
+          <div class="form-group">
+            <label for="password-confirm">Confirm</label>
+            <input type="password" name="passwordConfirm" class="form-control" id="password-confirm" ng-model="user.passwordConfirm" match="user.password">
+          </div>
+          <div class="text-danger" ng-show="myForm.passwordConfirm.$error.match">Password does not match confirmation!</div>
+        </form>
+        <hr>
+
+        <!-- angularMoment -->
+        <p><strong>{{message.text}}</strong> - <span am-time-ago="message.time"></span></p>
+        <hr>
+
+        <!-- ngMap -->
+        <map center="San Francisco" zoom="10">
+          <marker position="San Francisco">
+        </map>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>
