@@ -2,7 +2,7 @@
 
 ## Process
 
-Pair up! One person will act as the interviewer, while the other will act as the interviewee.  Switch off after each question.  The interviewer may reference the solutions. 
+Pair up! One person will act as the interviewer, while the other will act as the interviewee.  Switch off after each question.  The interviewer may reference the solutions and give hints.  
 
 Be thinking about <a href="http://www.amazon.com/Cracking-Coding-Interview-6th-Edition/dp/0984782850" target="_blank">Cracking the Coding Interview</a>'s "Five Steps to a Technical Question", paraphrased below:
 
@@ -22,10 +22,8 @@ Also, talk out loud! Your interviewer is trying to learn how you think through p
 	to_hash [:name, :age, :height], ["bill", 47, 70]
 	# => {:name => "bill", :age => 47, :height => 70}
 	```
-
-1. Write a function to 'compress' a string by counting repeated characters.  For example, the string `"ooohmmmmmmm"` would become `"o3h1m7"`. If your compressed string would be longer than the original, you should return the original instead. 
-
-1. Given a sorted array and a particular value, write a function to find the index of that value in the array. Don't use `arr.indexOf(val)` (in JavaScript) or `arr.index(val)` (in Ruby).  If the value is not in the array, return `-1`.  Hint: You can use the fact the array is sorted to do this problem _without looking at every value in the array_.  It's much faster.  Hint: That faster algorithm is <a href="https://www.youtube.com/watch?v=Rz4i37pOVps" target="_blank">binary search</a>.
+	
+1. Given a sorted array and a particular value, write a function to find the index of that value in the array. Don't use `arr.indexOf(val)` (in JavaScript) or `arr.index(val)` (in Ruby).  If the value is not in the array, return `-1`.  Hint: You can use the fact the array is sorted to do this problem _without looking at every value in the array_.  It's much faster.  Hint: That faster algorithm is <a href="https://www.youtube.com/watch?v=Rz4i37pOVps" target="_blank">binary search</a>. Binary search is **a big deal** and something technical interviewers will expect you to be able to understand, explain, and implement in at least one language.
 
   ```js
   search([1,4,7,9,14,15], 7)
@@ -34,6 +32,10 @@ Also, talk out loud! Your interviewer is trying to learn how you think through p
   // -1
   
   ```
+
+
+1. Write a function to 'compress' a string by counting repeated characters.  For example, the string `"ooohmmmmmmm"` would become `"o3h1m7"`. If your compressed string would be longer than the original, you should return the original instead. 
+
 
 1. Given two strings, check if the first string occurs within the second string. Return true if the second is within the first.  Hint: you can use built-in methods.
 
