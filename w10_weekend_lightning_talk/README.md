@@ -31,3 +31,28 @@ Get creative and play with your tech.  You're not required to build a demo (and 
 
 
 ### Topics
+
+Lightening talk ideas
+	- Parse
+	- Firebase
+	- Ionic
+	- Redis
+	- HTML Canvas
+	- Swift
+	- Jade
+	- D3
+	- Laravel
+	- GoPro
+	- Python
+	- Django
+	- Payment Gateways -Stripe, Braintree, Coinbase
+	- ES6
+	- AWS
+	- Backbone
+	- React
+	- Ember
+	- Sockets
+	- Writing your own computer language
+	- Make your own framework
+	- Handlebars || Mustache
+
