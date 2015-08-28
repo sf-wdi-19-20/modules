@@ -1,6 +1,6 @@
 |  | Monday | Tuesday | Wednesday | Thursday | Friday |
 | :----------: | :----------: | :----------: | :----------: | :----------: | :----------: |
-| **Interview Prep** | Mock Interviews (All) / <a href="#science-fair">Weekend Project "Science Fair"</a> | Mock Interviews (All) | Usability Lesson (Adam) | **Final Project Plan Due** - Instructor meetings for approval | Final Project |
+| **Interview Prep** | <a href="https://docs.google.com/spreadsheets/d/1gZdCqz6KwMCpsbTNFbH3eVkR_Kh-eR3dyZCk64jhFCI/edit#gid=0" target="_blank">Mock Interviews</a> (All) / <a href="#science-fair">Weekend Project "Science Fair"</a> | <a href="https://docs.google.com/spreadsheets/d/1gZdCqz6KwMCpsbTNFbH3eVkR_Kh-eR3dyZCk64jhFCI/edit#gid=0" target="_blank">Mock Interviews</a> (All) | Usability Lesson (Adam) | **Final Project Plan Due** - Instructor meetings for approval | Final Project |
 | **Module 1** | Mongo/Express/Node (MEN) Review (Brianna / Juliana) | MEAN CRUD (Juliana / Cameron) | Final Project Intro (All) | Final Project | Final Project |
 | **Module 2** | MEN Nested Resources Review (Cameron / Adam) | MEAN Auth Strategies (Adam) | Final Project Planning | Final Project | Final Project |
 | **Homework** | Finish MEN API Challenges | Finish MEAN CRUD Challenges | Finish Final Project Planning | Final Project | Final Project |
