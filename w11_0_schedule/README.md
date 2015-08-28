@@ -16,7 +16,7 @@ Please submit <a href="https://docs.google.com/a/generalassemb.ly/forms/d/1zSklH
 
 ----------
 
-<div id="science-fair"><strong>Weekend Project Science Fair:</strong></div>
+<div id="science-fair"><strong>Weekend Project Science Fair:</strong></div><br>
 
 During Mock Interview time on Monday morning, please have your Weekend Angular Project on display on your laptop, "science-fair" style, for your classmates to come around and view. Show off what you built, and walk around to learn about what your classmates made!
 
