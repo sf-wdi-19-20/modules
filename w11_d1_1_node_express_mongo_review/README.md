@@ -2,7 +2,7 @@
 
 ## Why MEAN stack?
 
-MEAN allows developers to build full-stack applications using only JavaScript (and of course HTML and CSS).
+MEAN allows developers to build full-stack applications using only JavaScript (and of course HTML and CSS).  Because they use Node.js, MEAN stack applications can also scale well to handle large numbers of client requests quickly and smoothly.
 
 **<span style="font-size:200%">M</span>ongoDB**
 * uses JS for its query language (instead of the more traditional SQL -- which is why it's a *NoSQL database*) 
@@ -24,6 +24,15 @@ MEAN allows developers to build full-stack applications using only JavaScript (a
 
 ## Questions and Answers App
 
-To review Node, Express, and Mongo, we'll create a server-side only application. Applications without a front end are often called "headless". Many real world APIs are written as "headless" apps that allow access from sites on other domains.  Separating, or decoupling, the front and back end can allow more flexibility.  We'll add an angular front end to this project to complete our MEAN stack, but for today we're going to build only the server side API and test it with Postman. 
+To review Node, Express, and Mongo, we'll create a server-side only application. Applications without a front end are often called "headless". Many real world APIs are written as "headless" apps that allow access from sites on other domains. Today we'll write use Node, Express, and Mongo to write our own API, but we won't allow access from anywhere, yet.
 
-##
+## Basic Setup
+
+We already have Node.js and MongoDB installed, so we'll start from that point.  
+
+
+
+
+## Resources
+
+* <a href="http://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js" target="_blank">Why Use Node.js?</a> 
