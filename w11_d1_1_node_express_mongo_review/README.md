@@ -29,6 +29,8 @@ To review Node, Express, and Mongo, we'll create a server-side only application.
 
 We'll test our routes with Postman. Remember to use the `x-www-form-urlencoded` option to send data.
 
+As you go along, remember to start your server with `npm start` or start your server and have it listen for changes with `nodemon`. Also, keep your database running with `mongod`.
+
 ## Project Structure Setup
 
 We already have Node.js and MongoDB installed, so we'll start from that point. Type these instructions in your Terminal to do basic project setup. 
@@ -182,11 +184,15 @@ The final additional feature to show here is the addition of an `id` that comes 
 
 ## Challenges
 
-In `server.js`, add the correct restful route method declarations for the actions listed below. Get the routes set up before filling them in. 
+1. Test your current routes using Postman.
+2. Create a few questions in your database with Postman.
+1. In `server.js`, add the correct restful route method declarations for the actions listed below. For this step, just get the routes set up and use comments to plan what should happen in each route. 
   * Get one specific question.
   * Delete one specific question.
   * Update a question by completely overwriting its data. 
-
+1. Fill in the route to send back a specific question from the database, and test your route with Postman.
+1. Fill in the route to delete a question, and test it with Postman.
+1. Fill in the route to update a question by owerwriting it.  Test it with Postman.  
 
 
 
