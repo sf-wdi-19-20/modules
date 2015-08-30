@@ -6,6 +6,9 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose');
 
+// require model file
+var Question = require('./models/question.js');
+
 // connect to mongodb
 mongoose.connect(
   process.env.MONGOLAB_URI ||
