@@ -5,10 +5,10 @@
 MEAN allows developers to build full-stack applications using only JavaScript (and of course HTML and CSS).  Because they use Node.js, MEAN stack applications can also scale well to handle large numbers of client requests quickly and smoothly.
 
 **<span style="font-size:200%">M</span>ongoDB**
-* uses JS for its query language (instead of the more traditional SQL -- which is why it's a *NoSQL database*) 
+* uses JS for its query language (instead of the more traditional SQL -- which is why it's a *NoSQL database*)
 * stores data in *documents*, a JSON-like format
 
-**<span style="font-size:200%">E</span>xpress** 
+**<span style="font-size:200%">E</span>xpress**
 * unopioninated, minimalist, fast **back end** web framework for use with Node.js
 * a thin layer over Node.js that provides extra convenince methods written in JS
 
@@ -25,16 +25,16 @@ MEAN allows developers to build full-stack applications using only JavaScript (a
 
 ## Questions and Answers App
 
-To review Node, Express, and Mongo, we'll create a server-side only application. Applications without a front end are often called "headless". Many real world APIs are written as "headless" apps that allow access from sites on other domains. Today we'll write use Node, Express, and Mongo to write our own API, but we won't allow access from anywhere, yet.
+To review Node, Express, and Mongo, we'll create a server-side only application. Applications without a front end are often called "headless". Many real world APIs are written as "headless" apps that allow access from sites on other domains. Today we'll use Node, Express, and Mongo to write our own API, but we won't allow access from anywhere, yet.
 
 We'll test our routes with Postman. Remember to use the `x-www-form-urlencoded` option to send data.
 
-As you go along, remember to start your server with `npm start` or start your server and have it listen for changes with `nodemon`. Also, keep your database running with `mongod`.
+As you go along, remember to start your server with `npm start`, or start your server and have it listen for changes with `nodemon`. Also, keep your database running with `mongod`.
 
 ## Project Structure Setup
 
-We already have Node.js and MongoDB installed, so we'll start from that point. Type these instructions in your Terminal to do basic project setup. 
-  
+We already have Node.js and MongoDB installed, so we'll start from that point. Type these instructions in your Terminal to do basic project setup.
+
   ```bash
   $ mkdir QnA  # make a directory for your project and cd into it
   $ cd QnA
@@ -49,7 +49,7 @@ Now, let's set it up as a Node.js project.
   $ ls    # check that your dir has README.md and server.js
   $ npm init   # initialize a node project in this directory. fill in the answers to each question
   $ ls   # note that your dir now has package.json in it
-  $ cat package.json  #  take a look at the config data npm install put into package.json
+  $ cat package.json  #  take a look at the config data that `npm install` put into package.json
   ```
 
 Let's install express and a few other node modules we know we'll need.
@@ -58,7 +58,7 @@ Let's install express and a few other node modules we know we'll need.
   $ npm install --save express   # our back end framework
   $ ls     # note that we now have a node_modules folder - thanks npm!
   $ cat package.json   # also note that package.json now lists express as a dependency for our app
-  $ npm install --save body-parser   # we use this node module to parse data from requests 
+  $ npm install --save body-parser   # we use this node module to parse data from requests
   ```
 
 Finally, we know we want to use MongoDB with mongoose, so let's set up a directory and install the module for that.
@@ -68,11 +68,11 @@ Finally, we know we want to use MongoDB with mongoose, so let's set up a directo
   $ touch models/question.js  # this store our questions model code
   $ npm install --save mongoose   # like ActiveRecord, provides convenience methods for accessing our DB
   ```
-  
+
 ## Server File Setup  
 
 ```js
-// server.js 
+// server.js
 
 // require express and other modules
 var express = require('express'),
@@ -94,7 +94,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // listen on port 3000
 app.listen(process.env.PORT || 3000, function () {
-  console.question('server started on localhost:3000');
+  console.log('server started on localhost:3000');
 });
 ```
 
@@ -186,10 +186,10 @@ The final additional feature to show here is the addition of an `id` that comes 
 
 1. Test your current routes using Postman.
 2. Create a few questions in your database with Postman.
-1. In `server.js`, add the correct restful route method declarations for the actions listed below. For this step, just get the routes set up and use comments to plan what should happen in each route. 
+1. In `server.js`, add the correct restful route method declarations for the actions listed below. For this step, just get the routes set up and use comments to plan what should happen in each route.
   * Get one specific question.
   * Delete one specific question.
-  * Update a question by completely overwriting its data. 
+  * Update a question by completely overwriting its data.
 1. Fill in the route to send back a specific question from the database, and test your route with Postman.
 1. Fill in the route to delete a question, and test it with Postman.
 1. Fill in the route to update a question by owerwriting it.  Test it with Postman.  
@@ -199,7 +199,7 @@ The final additional feature to show here is the addition of an `id` that comes 
 ## Full server.js File
 
 ```js
-// server.js 
+// server.js
 
 // require express and other modules
 var express = require('express'),
@@ -310,4 +310,4 @@ app.listen(process.env.PORT || 3000, function () {
 
 ## Resources
 
-* <a href="http://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js" target="_blank">Why Use Node.js?</a> 
+* <a href="http://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js" target="_blank">Why Use Node.js?</a>
