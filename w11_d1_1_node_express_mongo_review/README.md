@@ -117,6 +117,8 @@ var Question = mongoose.model('Question', QuestionSchema);
 module.exports = Question;
 ```
 
+**Once the model file is set up, remember to require it in `server.js`!**
+
 ## Routes
 
 If we think about a Rails analogy, our `server.js`  file for Express apps has been where we write our routes and our controller code.  Let's look at three routes - a GET for all questions, a  POST to create a new question, and a PATCH to update parts of an existing question.
