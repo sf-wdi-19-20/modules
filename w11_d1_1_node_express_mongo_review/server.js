@@ -106,5 +106,5 @@ app.delete('/questions/:id', function (req, res) {
 
 // listen on port 3000
 app.listen(process.env.PORT || 3000, function () {
-  console.question('server started on localhost:3000');
+  console.log('server started on localhost:3000');
 });
