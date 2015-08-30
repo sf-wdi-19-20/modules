@@ -27,6 +27,18 @@ Lesson Notes:
 
 6. Make a route to delete an answer that's embedded in a question. **Hint:** Take a similar approach as your update method, but you'll need to `remove` the answer after finding it embedded inside the question.
 
+## Stretch Challenges
+
+1. Add <a href="http://mongoosejs.com/docs/validation" target="_blank">validations</a> to both the `Question` and `Answer` models. Both the question `text` and answer `content` should be <a href="http://mongoosejs.com/docs/api.html#schematype_SchemaType-required" target="_blank">required</a>.
+
+2. In your API routes to create and update questions, respond with an error if the required validation is not met.
+
+3. Implement the same error-handling for your API routes to create and update an embedded answer.
+
+4. Install `mocha`, `chai`, and `request`, and write request specs for all your API routes. Start with testing your `get` routes for a response code of 200, then move on to testing `post`, `put`, and `delete`.
+
+TODO: add links/examples of error-handling and request specs.
+
 ```js
 //
 // models/answer.js
