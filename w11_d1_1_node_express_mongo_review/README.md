@@ -1,8 +1,15 @@
 # MEAN Stack: Node/Express/Mongo Review
 
+| Objectives |
+| :--- |
+| Start a project with Node.js, Express, and MongoDB. |
+| Create restful routing for a resource with Express. |
+| CRUD data for the resource from MongoDB. |
+
 ## Why MEAN stack?
 
 MEAN allows developers to build full-stack applications using only JavaScript (and of course HTML and CSS).  Because they use Node.js, MEAN stack applications can also scale well to handle large numbers of client requests quickly and smoothly.
+
 
 **<span style="font-size:200%">M</span>ongoDB**
 * uses JS for its query language (instead of the more traditional SQL -- which is why it's a *NoSQL database*)
@@ -33,16 +40,16 @@ As you go along, remember to start your server with `npm start`, or start your s
 
 ## Project Structure Setup
 
-We already have Node.js and MongoDB installed, so we'll start from that point. Type these instructions in your Terminal to do basic project setup.
+We already have Node.js and MongoDB installed, so we'll start from that point. Use your Terminal to do basic project setup.
 
   ```bash
-  $ mkdir QnA  # make a directory for your project and cd into it
+  $ mkdir QnA  # make a directory for your project!
   $ cd QnA
   $ git init  # turn this directory into a git repo
   $ touch README.md
   ```
 
-Now, let's set it up as a Node.js project.
+Now, let's make it a Node.js project with server-side code.
 
   ```bash
   $ touch server.js  # create server-side js file
@@ -77,8 +84,8 @@ Finally, we know we want to use MongoDB with mongoose, so let's set up a directo
 // require express and other modules
 var express = require('express'),
     app = express(),
-    bodyParser = require('body-parser'),
-    mongoose = require('mongoose');
+    bodyParser = require('body-parser'),  // for data from the request body
+    mongoose = require('mongoose');       // to interact with our db
 
 // connect to mongodb
 mongoose.connect(
@@ -116,6 +123,8 @@ var Question = mongoose.model('Question', QuestionSchema);
 
 module.exports = Question;
 ```
+
+**Once the model file is set up, require it in `server.js`!**
 
 ## Routes
 
