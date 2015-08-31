@@ -166,10 +166,8 @@ var IngredientSchema = new Schema({
 
 1. Add <a href="http://mongoosejs.com/docs/validation" target="_blank">validations</a> to both the `Question` and `Answer` models. Both the question `text` and answer `content` should be <a href="http://mongoosejs.com/docs/api.html#schematype_SchemaType-required" target="_blank">required</a>.
 
-2. In your API routes to create and update questions, respond with an error if the required validation is not met.
+2. In your API routes to create and update questions, respond with an error if the required validation is not met. **Hint:** Send back the <a href="http://mongoosejs.com/docs/validation#validation-errors" target="_blank">validation error</a> from Mongoose. Also, take a look at this <a href="http://expressjs.com/guide/error-handling.html" target="_blank">guide to Express error-handling</a>.
 
 3. Implement the same error-handling for your API routes to create and update an embedded answer.
 
-4. Install `mocha`, `chai`, and `request`, and write request specs for all your API routes. Start with testing your `get` routes for a response code of 200, then move on to testing `post`, `put`, and `delete`.
-
-TODO: Add links/examples of error-handling and request specs.
+4. Install `mocha`, `chai`, and `request`, and write <a href="https://github.com/sf-wdi-19-20/modules/tree/master/w3_d4_2_js_integration_testing" target="_blank">request specs</a> for all your API routes. Start with testing your `get` routes for a response code of 200, then move on to testing `post`, `put`, and `delete`.
