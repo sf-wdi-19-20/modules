@@ -134,7 +134,7 @@ If we think about a Rails analogy, our `server.js`  file for Express apps has be
 // server.js
 
 // send back all questions
-app.get('/questions', function (req, res) {
+app.get('/api/questions', function (req, res) {
   Question.find({}, function (err, questions) {
     res.json(questions);
   });
@@ -150,7 +150,7 @@ Remember, the `app.VERB` methods in our Express code say what the server should 
 // server.js
 
 // create new question
-app.post('/questions', function (req, res) {
+app.post('/api/questions', function (req, res) {
   // create new question with data from the body of the request (`req.body`)
   // body should contain the question text itself
   var newQuestion = new Question({
@@ -171,7 +171,7 @@ Here we use mongoose for database interactions, again. The `new` method creates 
 
 // update question, but only the part(s) passed in in the request body
 // not currently that exciting when question has only one attribute
-app.put('/questions/:id', function (req, res) {
+app.put('/api/questions/:id', function (req, res) {
   // set the value of the id
   var targetId = req.params.id;
 
