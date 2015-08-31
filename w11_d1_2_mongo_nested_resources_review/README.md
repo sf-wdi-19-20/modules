@@ -84,8 +84,9 @@ app.put('/api/lists/:listId/todos/:id', function (req, res) {
   List.findOne({_id: listId}, function (err, foundList) {
     // find todo embedded in list
     var foundTodo = foundList.todos.id(todoId);
-    // update todo content with data from request body
-    foundTodo.content = req.body.todo.content;
+    // update todo text and completed with data from request body
+    foundTodo.text = req.body.todo.text;
+    foundTodo.completed = req.body.todo.completed;
     foundList.save(function (err, savedList) {
       res.json(foundTodo);
     });
