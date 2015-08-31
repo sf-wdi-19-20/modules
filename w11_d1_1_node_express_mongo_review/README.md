@@ -129,7 +129,7 @@ module.exports = Question;
 ```js
 // server.js
 
-var Question = require('./models/questions');
+var Question = require('./models/question');
 ```
 
 ## Routes
