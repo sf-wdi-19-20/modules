@@ -1,132 +1,152 @@
 # Mongo Nested Resources Review
 
-Terms:
-* Mongo
-* Mongoose
-* Database
-* Collection
-* Document
-* Embedded Data
-* Reference Data
+| Objectives |
+| :--- |
+| Add a nested resource to Mongoose schema |
+| Create, update, and delete data for the nested resource |
 
-Lesson Notes:
-* Discuss strengths and weaknesses of embedded vs. reference data.
-* List examples of both.
+## Mongoose Data Relationships
 
-## Embedded Data Example
+**Embedded Data** is directly nested inside of other data. Each record has a copy of the data.
 
-TODO: Change this to "lists have many todos" so it's not exactly the same as in-class challenge solutions.
+**Referenced Data** is stored as an id inside other data. The id can be used to look up the information. All records that reference the same data look up the same copy.
+
+There are trade-offs between *efficiency* and *consistency* depending on which type of data relationship you choose.
+
+## Embedded Data Example: To-Do Lists
+
+Image you had a database of todo `Lists`, each with many `Todos`. Since todos only belong to one list, you could use embedded data to store todos inside the list they belong to. If you needed to update or delete a todo, you would first need to find the associated list, then the todo to update or delete.
 
 ```js
-//
-// models/answer.js
-//
+// List model
+
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    // require Todo model
+    Todo = require('./todo');
+
+var ListSchema = new Schema({
+  name: String,
+  // embed todos in list
+  todos: [Todo.schema]
+});
+
+var List = mongoose.model('List', ListSchema);
+module.exports = List;
+```
+
+```js
+// Todo model
+
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var AnswerSchema = new Schema({
-  content: String
+var TodoSchema = new Schema({
+  text: String,
+  completed: Boolean
 });
 
-var Answer = mongoose.model('Answer', AnswerSchema);
-
-module.exports = Answer;
+var Todo = mongoose.model('Todo', TodoSchema);
+module.exports = Todo;
 ```
 
+### Route to Create Embedded Data
+
 ```js
-//
-// models/question.js
-//
+// create todo embedded in list
+app.post('/api/lists/:listId/todos', function (req, res) {
+  // set the value of the list id
+  var listId = req.params.listId;
+
+  // store new todo in memory with data from request body
+  var newTodo = new Todo(req.body.todo);
+
+  // find list in db by id and add new todo
+  List.findOne({_id: listId}, function (err, foundList) {
+    foundList.todos.push(newTodo);
+    foundList.save(function (err, savedList) {
+      res.json(newTodo);
+    });
+  });
+});
+```
+
+### Route to Update Embedded Data
+
+```js
+// update todo embedded in list
+app.put('/api/lists/:listId/todos/:id', function (req, res) {
+  // set the value of the list and todo ids
+  var listId = req.params.listId;
+  var todoId = req.params.id;
+
+  // find list in db by id
+  List.findOne({_id: listId}, function (err, foundList) {
+    // find todo embedded in list
+    var foundTodo = foundList.todos.id(todoId);
+    // update todo content with data from request body
+    foundTodo.content = req.body.todo.content;
+    foundList.save(function (err, savedList) {
+      res.json(foundTodo);
+    });
+  });
+});
+```
+
+### Route to Delete Embedded Data
+
+```js
+// delete todo embedded in list
+app.delete('/api/lists/:listId/todos/:id', function (req, res) {
+  // set the value of the list and todo ids
+  var listId = req.params.listId;
+  var todoId = req.params.id;
+
+  // find list in db by id
+  List.findOne({_id: listId}, function (err, foundList) {
+    // find todo embedded in list
+    var foundTodo = foundList.todos.id(todoId);
+    // remove todo
+    foundTodo.remove();
+    foundList.save(function (err, savedList) {
+      res.json(foundTodo);
+    });
+  });
+});
+```
+
+## Referenced Data Example: Recipes
+
+Image you had a database of `Recipes`, each with many `Ingredients`. It's very likely that ingredients could appear in multiple recipes, so it makes sense to use referenced data. Since we only need to store ingredient ids inside recipes, if an ingredient needs to be updated or deleted, the action only needs to happen in one place.
+
+```js
+// Recipe model
+
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    // require Answer model
-    Answer = require('./answer');
+    // require Ingredient model
+    Ingredient = require('./ingredient');
 
-var QuestionSchema = new Schema({
-  text: String,
-  // embed answers in questions
-  answers: [Answer.schema]
+var RecipeSchema = new Schema({
+  name: String,
+  instructions: String,
+  ingredients: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Ingredient'
+  }]
 });
-
-var Question = mongoose.model('Question', QuestionSchema);
-
-module.exports = Question;
 ```
 
 ```js
-//
-// server.js
-//
+// Ingredient model
 
-...
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
-// require Question and Answer models
-var Question = require('./models/question'),
-    Answer = require('./models/answer');
-
-...
-
-//// API ROUTES
-
-// CREATE new answer for one question
-app.post('/questions/:questionId/answers', function (req, res) {
-  // question id comes from url params
-  var questionId = req.params.questionId;
-
-  // answer data comes from form params
-  var answerData = req.body.answer;
-
-  // store new answer in memory
-  var newAnswer = new Answer({
-    content: answerData.content
-  });
-
-  // find question in db by id and add new answer
-  Question.findOne({_id: questionId}, function (err, foundQuestion) {
-    foundQuestion.answers.push(newAnswer);
-    foundQuestion.save(function (err, savedQuestion) {
-      res.json(newAnswer);
-    });
-  });
-});
-
-// UPDATE one answer (embedded under a question)
-app.put('/questions/:questionId/answers/:id', function (req, res) {
-  // question and answer ids come from url params
-  var questionId = req.params.questionId;
-  var answerId = req.params.id;
-
-  // answer data comes from form params
-  var answerData = req.body.answer;
-
-  // find question in db by id, find answer embedded in question, update answer
-  Question.findOne({_id: questionId}, function (err, foundQuestion) {
-    var foundAnswer = foundQuestion.answers.id(answerId);
-    foundAnswer.content = answerData.content;
-    foundQuestion.save(function (err, savedQuestion) {
-      res.json(foundAnswer);
-    });
-  });
-});
-
-// DELETE one answer (embedded under a question)
-app.delete('/questions/:questionId/answers/:id', function (req, res) {
-  // question and answer ids come from url params
-  var questionId = req.params.questionId;
-  var answerId = req.params.id;
-
-  // find question in db by id, find answer embedded in question, remove answer
-  Question.findOne({_id: questionId}, function (err, foundQuestion) {
-    var foundAnswer = foundQuestion.answers.id(answerId);
-    foundAnswer.remove();
-    foundQuestion.save(function (err, savedQuestion) {
-      res.json(foundAnswer);
-    });
-  });
+var IngredientSchema = new Schema({
+  name: String
 });
 ```
-
-TODO: Link to example of reference data.
 
 ## Challenges
 
