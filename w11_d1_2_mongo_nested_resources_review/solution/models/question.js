@@ -3,7 +3,10 @@ var mongoose = require('mongoose'),
     Answer = require('./answer');
 
 var QuestionSchema = new Schema({
-  text: String,
+  text: {
+    type: String,
+    required: true
+  },
   answers: [Answer.schema]
 });
 
