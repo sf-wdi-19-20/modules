@@ -6,6 +6,8 @@
 | **Review Sessions (4-5pm)** | Mongo/Express/Node (Ben, Annie) |  |  | Interview Tips (Jane, Chhun) |  |
 | **Homework** | Finish MEN API Challenges (<a href="https://github.com/sf-wdi-19-20/modules/tree/master/w11_d1_1_node_express_mongo_review#challenges" target="_blank">morning</a> and <a href="https://github.com/sf-wdi-19-20/modules/tree/master/w11_d1_2_mongo_nested_resources_review#challenges" target="_blank">afternoon</a>) | Finish MEAN CRUD Challenges | Finish Final Project Planning | Final Project | Final Project |
 
+----------
+
 *Please submit <a href="https://docs.google.com/a/generalassemb.ly/forms/d/1zSklHtCYKg_NhkLdjlQaCXFrHJQ4Io266cKUs9_Dg8I/viewform">this form</a> at the end of each day after finishing in-class challenges and homework.*
 
 ----------
