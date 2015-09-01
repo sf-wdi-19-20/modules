@@ -86,6 +86,7 @@ Now we're going to build out an `angular.js` app for our front end in the `publi
 
 ## Challenges
 **Use `$resource` to interact with the database.**
+
 1. Create a home view that has a list of questions. Make these questions modifiable and deletable.
 1. Add functionality to add new questions.
 1. Make the questions hyperlinks that link to a page that displays the question with its answers. hint: `/:id`
@@ -97,6 +98,6 @@ Now we're going to build out an `angular.js` app for our front end in the `publi
             method: 'PUT'
         }
       });
-  }]);
+    }]);
   ```
 1. Add functionality to add new answers.
