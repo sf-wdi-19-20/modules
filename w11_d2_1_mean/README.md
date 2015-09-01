@@ -14,7 +14,7 @@ As you go along, remember to start your server with `npm start`, or start your s
 
 ## Project Structure Setup
 
-Use your Terminal to create the front-end files. Navigate to your QnA app from yesterday.
+Use your Terminal to create the front-end files. Navigate to your QnA app from yesterday or clone from here https://github.com/sf-wdi-19-20/question_answer_api_starter
 
 ```bash
 cd QnA
