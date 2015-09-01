@@ -1,6 +1,6 @@
 # Lightning Talks!
 
-**What:** Prepare a **5-minute lightening talk** about a tool or technology we haven't covered in class. This can be a topic you choose to independently research, something you want to incorporate into your final project, or something you've already used or know about.
+**What:** Prepare a **5-minute lightning talk** about a tool or technology we haven't covered in class. This can be a topic you choose to independently research, something you want to incorporate into your final project, or something you've already used or know about.
 
 ## Requirements
 
