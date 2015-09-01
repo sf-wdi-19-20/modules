@@ -8,7 +8,7 @@
 
 Make sure it's **something you can accomplish in the limited time we have**, and make sure it's **something that'll be impressive visually**.
 
-We expect most students will complete this project individually, but pairs may be approved on a case-by-case basis. See the planning deliverables section below. 
+We expect most students will complete this project individually, but pairs may be approved on a case-by-case basis. See the planning deliverables section below for extra planning requirements for pairs. 
 
 ---
 
@@ -59,7 +59,7 @@ Your app must:
 
 
 In addition to the above requirements, students working as pairs should:
-  * detail the responsibilities of each person, 
+  * detail the responsibilities carried by each person, 
   * describe how the two people will communicate, and 
   * demonstrate that each individual will be challenged to contribute excellent work.
 
