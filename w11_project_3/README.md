@@ -56,6 +56,7 @@ Your app must:
 * **Wireframes.** Sketch out what your core pages will look like and how they will work. Consider making a *paper prototype* to demonstrate and/or test key user interactions.
 * **Object Models.** Draw out the model associations for your project in an entity relationship diagram (ERD).
 * **Milestones.** Divide your work into about three phases, including the most essential features for your MVP, features that are important but not essential, and features that are less important. 
+* **Feasibility Study.** If you are using an external API or scraping a website, make sure you can get that data.  If you are using a new tool, go through its getting started tutorial. We *will* ask for to see your results.
 
 
 In addition to the above requirements, students working as pairs should:
