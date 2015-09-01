@@ -36,3 +36,6 @@ The teddy bear is already getting information about prerequisities, but it's not
 	* An ordered list (or array) of the tasks in a reasonable order that they can be completed, respecting prerequisites. 
 	* like `[1, 5, 2, 3, 4 ]` or `[5, 1, 3, 2, 4]`
 
+**Solution**
+
+The algorithm to use for this problem is called *topological sort*. Look it up to read about ways to solve it. 
