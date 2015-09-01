@@ -17,3 +17,8 @@ Each event has a start time, an end time, and a description.
 
 1. What format are the event times given to you in?  
 	* Assume they're given in minutes since midnight, for the day of the conference. For example, the time `540` would be 9:00AM. 
+
+
+**Solution**
+
+Look for a "greedy algorithm" solution to "scheduling" to see an approach for this kind of problem!
