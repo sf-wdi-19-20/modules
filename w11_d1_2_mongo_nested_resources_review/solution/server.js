@@ -25,9 +25,7 @@ app.get('/api/questions', function (req, res) {
 app.post('/api/questions', function (req, res) {
   // create new question with data from the body of the request (`req.body`)
   // body should contain the question text itself
-  var newQuestion = new Question({
-    text: req.body.text
-  });
+  var newQuestion = new Question(req.body);
 
   // save new question
   newQuestion.save(function (err, savedQuestion) {
@@ -88,7 +86,7 @@ app.post('/api/questions/:questionId/answers', function (req, res) {
   var questionId = req.params.questionId;
 
   // store new answer in memory with data from request body
-  var newAnswer = new Answer(req.body.answer);
+  var newAnswer = new Answer(req.body);
 
   // find question in db by id and add new answer
   Question.findOne({_id: questionId}, function (err, foundQuestion) {
@@ -110,7 +108,7 @@ app.put('/api/questions/:questionId/answers/:id', function (req, res) {
     // find answer embedded in question
     var foundAnswer = foundQuestion.answers.id(answerId);
     // update answer content with data from request body
-    foundAnswer.content = req.body.answer.content;
+    foundAnswer.content = req.body.content;
     foundQuestion.save(function (err, savedQuestion) {
       res.json(foundAnswer);
     });
