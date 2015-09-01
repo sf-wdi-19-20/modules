@@ -31,7 +31,11 @@ app.post('/api/questions', function (req, res) {
 
   // save new question
   newQuestion.save(function (err, savedQuestion) {
-    res.json(savedQuestion);
+    if (err) {
+      res.status(422).send(err.errors.text.message);
+    } else {
+      res.json(savedQuestion);
+    }
   });
 });
 
@@ -58,7 +62,11 @@ app.put('/api/questions/:id', function (req, res) {
 
     // save updated question in db
     foundQuestion.save(function (err, savedQuestion) {
-      res.json(savedQuestion);
+      if (err) {
+        res.status(422).send(err.errors.text.message);
+      } else {
+        res.json(savedQuestion);
+      }
     });
   });
 });
