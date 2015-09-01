@@ -102,3 +102,12 @@ Now we're going to build out an `angular.js` app for our front end in the `publi
     }]);
   ```
 1. Add functionality to add new answers.
+
+If you'd like, you can now safely get rid of the # in the url!
+
+```js
+$locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+});
+```
