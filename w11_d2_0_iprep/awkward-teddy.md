@@ -1,8 +1,6 @@
 ## Awkward Teddy
 
-You're working on a robotic teddy bear toy that will teach children basic tasks. It's working for task lists that can happen in any order, like gathering each toy into the toy bin. Unfortunately, the teddy bear doesn't do very well when one task requires another to be done ahead of time.  For example, the teddy bear has a tendency to instruct children to "pour the juice" before they "get a cup", or to "put on underwear" when they've already "put on pants".
-
-The teddy bear is already getting information about prerequisities, but it's not using that information yet.
+You're working on a robotic teddy bear toy that will teach children basic tasks. It's working for task lists that can happen in any order, like gathering each toy into the toy bin. 
 
 ```
 Gathering Toys
@@ -10,6 +8,9 @@ Gathering Toys
 * put the blocks into the toy bin
 * put the doll into the toy bin
 ```
+
+Unfortunately, the teddy bear doesn't do very well when one task requires another to be done ahead of time.  For example, the teddy bear has a tendency to instruct children to "pour the juice" before they "get a cup", or to "put on underwear" when they've already "put on pants".
+
 
 ```
 Getting Dressed
@@ -20,7 +21,10 @@ Getting Dressed
 * task 5: put on underwear 
 ```
 
-Key questions:
+
+The teddy bear is already getting information about prerequisities, but it's not using that information yet. Write a program that takes in a list of tasks (including prerequisite information) and orders them in a way that respects all prerequisites. 
+
+**Key questions:**
 * What kind of input does the teddy bear's function get?
 	* List of tasks, like:
 		`{task_id: 1, description: "put on socks", prerequisites: []}`    
