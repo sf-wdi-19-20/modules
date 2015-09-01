@@ -3,8 +3,8 @@
 | Objectives |
 | :--- |
 | Hook up our backend (Node.js, Express, and MongoDB) with a front end (Angular.js) |
-| Implement restful routing. |
-| CRUD data. |
+| Implement RESTful routing |
+| CRUD data |
 
 ## Questions and Answers App
 
@@ -14,39 +14,46 @@ As you go along, remember to start your server with `npm start`, or start your s
 
 ## Project Structure Setup
 
-Use your Terminal to create the front end files. Navigate to your QnA app from yesterday.
+Use your Terminal to create the front-end files. Navigate to your QnA app from yesterday.
 
 ```bash
 cd QnA
 mkdir public
 cd public
-touch app.js
-touch index.html
-cd public
-touch answers.html
-touch home.html
+mkdir scripts
+touch scripts/app.js
+mkdir views
+touch views/index.html
+cd views
+mkdir templates
+touch templates/home.html
+touch templates/answers.html
+cd ../..
 ```
 
 ## Server File Modifications
-Now that we have our file structure setup, we're going to modify our `server.js` file. Add this right after you do the `require`s.
+Now that we have our file structure setup, we're going to modify our `server.js` file. Add this near the top of the file, after your `require` statements:
+
 ```js
 // configure body-parser
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 ```
 
-And add this to the bottom of `server.js`
-```js
-app.use(express.static(__dirname + '/public')); // set the static files location
+And add this to the bottom of `server.js`, before your `app.listen(3000)`:
 
-app.get('*', function(req, res) {
-    res.sendfile('./public/index.html'); // load our public/index.html file
+```js
+// set location for static files
+app.use(express.static(__dirname + '/public'));
+
+// load public/index.html file (angular app)
+app.get('*', function (req, res) {
+  res.sendFile(__dirname + '/public/views/index.html');
 });
 ```
-## Client files
-Now we're going to build out an `angular.js` app for our front end in the `public` folder. Here is a boiler plate HTML file to get you started:
+## Client Files
+
+Now we're going to build out an `angular.js` app for our front end in the `public` folder. Here is a boiler plate for your `index.html` file to get you started:
 
 ```html
 <!doctype html>
@@ -62,52 +69,51 @@ Now we're going to build out an `angular.js` app for our front end in the `publi
 
   <!-- angular -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-resource.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-resource.min.js"></script>
 
   <!-- custom script -->
-  <script src="app.js"></script>
-
+  <script src="scripts/app.js"></script>
 </head>
 <body>
-
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div ng-view></div>
-      </div>
+      <div class="col-md-6 col-md-offset-3" ng-view></div>
     </div>
   </div>
-
-
 </body>
 </html>
 ```
 
 ## Challenges
+
 **Use `$resource` to interact with the database.**
 
 1. Create a home view that has a list of questions. Make these questions modifiable and deletable.
-1. Add functionality to add new questions.
-1. Make the questions hyperlinks that link to a page that displays the question with its answers. hint: `/:id`
-1. Make the answers on the answers page modifiable and deletable. hint:
+
+2. Add functionality to add new questions.
+
+3. Make the questions hyperlinks that link to a page that displays the question with its answers. **Hint:** `/:id`
+
+4. Make the answers on the answers page modifiable and deletable. **Hint:**
 
   ```js
-    app.service('Answer', ['$resource', function ($resource) {
-      return $resource('/api/questions/:id/answers/:ida', { id: '@_id' }, {
-        update: {
-            method: 'PUT'
-        }
-      });
-    }]);
+  app.service('Answer', ['$resource', function ($resource) {
+    return $resource('/api/questions/:questionId/answers/:id', {id: '@_id'}, {
+      update: {
+        method: 'PUT'
+      }
+    });
+  }]);
   ```
-1. Add functionality to add new answers.
 
-If you'd like, you can now safely get rid of the # in the url!
+5. Add functionality to add new answers.
+
+If you'd like, you can now safely get rid of the `#` in the url!
 
 ```js
 $locationProvider.html5Mode({
-    enabled: true,
-    requireBase: false
+  enabled: true,
+  requireBase: false
 });
 ```
