@@ -91,13 +91,14 @@ Now we're going to build out an `angular.js` app for our front end in the `publi
 1. Add functionality to add new questions.
 1. Make the questions hyperlinks that link to a page that displays the question with its answers. hint: `/:id`
 1. Make the answers on the answers page modifiable and deletable. hint:
-    ```js
-      app.service('Answer', ['$resource', function ($resource) {
-        return $resource('/api/questions/:id/answers/:ida', { id: '@_id' }, {
-          update: {
-              method: 'PUT'
-          }
-        });
-      }]);
-    ```
+
+  ```js
+    app.service('Answer', ['$resource', function ($resource) {
+      return $resource('/api/questions/:id/answers/:ida', { id: '@_id' }, {
+        update: {
+            method: 'PUT'
+        }
+      });
+    }]);
+  ```
 1. Add functionality to add new answers.
