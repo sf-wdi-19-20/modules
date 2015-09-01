@@ -89,9 +89,8 @@ In addition to the above requirements, students working as pairs should:
 
 ## PRESENTATIONS
 
-Project 3 presentations will start at **10:00am** on **Thursday, September 9th**. Each presentation should be **6 minutes or less** and cover the following:
+Project 3 presentations will start at **10:00am** on **Thursday, September 9th**. Each presentation should be **5 minutes or less** and cover the following:
 
 * What is your project, and what does it do? (demo)
 * What was your motivation to build it?
-* What was the most challenging aspect? 
 * What did you learn?
