@@ -51,11 +51,11 @@ We expect most students will complete this project individually, but pairs may b
 * **User stories.** What features will your app have? Set up your project and user stories in [Trello](https://trello.com).
 * **Wireframes.** Sketch out what your core pages will look like and how they will work. Consider making a *paper prototype* to demonstrate and/or test key user interactions.
 * **Object Models.** Draw out the model associations for your project in an entity relationship diagram (ERD).
-* **Milestones.** Divide your work into about three phases, including the most essential features for your MVP, features that are important but not essential, and features that are less important.
+* **Milestones.** Divide your work into parts -- the most essential features for your MVP, features that are important but not essential, and features that are less important. Create about three milestones with dates saying when you expect essential features will be done. 
 * **Feasibility Study.** If you are using an external API or scraping a website, make sure you can get that data.  If you are using a new tool, go through its getting started tutorial. We *will* ask to see your results.
 
 **In addition to the above requirements, students working as pairs should:**
-  * Detail the responsibilities carried by each person,
+  * Detail the responsibitilies / sucess ownership of each person,
   * Describe how the two people will communicate, and
   * Demonstrate that each individual will be challenged to contribute excellent work.
 
