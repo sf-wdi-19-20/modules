@@ -26,7 +26,7 @@ Your talk doesn't have to be in that order.
 
 ### Suggestions
 
-Get creative and play with your tech. You're not required to build a demo (and you probably wouldn't have enough time to present it!), but try out tech instead of just reading about it.
+Get creative and play with your tech. You're not required to build a demo (and you probably wouldn't have enough time to present it while introing a totally new tool!), but try out your tech instead of just reading about it.
 
 ## Topic Ideas
 
