@@ -182,7 +182,7 @@ class Monster
 end
 ```
 
-... how could we make a `Warewolf` class and `Zombie` classes while being DRY and not duplicating the method `lets_get_dangerous` in each? 
+... how could we make a `Werewolf` class and `Zombie` classes while being DRY and not duplicating the method `lets_get_dangerous` in each? 
 
 **Challenge:** Create a `Zombie` class that inherits from the base `Monster` class. Set it up so that all zombies (instances) start with a habitat of `"graveyard"`.
 
