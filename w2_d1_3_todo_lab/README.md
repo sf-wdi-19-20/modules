@@ -29,9 +29,9 @@ When the page loads, display all of the starter items hard coded into your `scri
 Consider using the JavaScript [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) data structure.
 
 1. Think about the places where you'll have to make changes:
-	* the list item view will have to display the quantity
-	* the item input form will need another blank for the quantity
-	* the data model will have to include the quantity
+	* the list item view will have to display the date
+	* the item input form will need another blank for the date
+	* the data model will have to include the date
 2. Change the hard coded tasks in your HTML to display a due date.
 3. Update the form to ask for a due date.
 4. Update the form submit event handler so that the new tasks it creates match the format you used in your hard coded HTML.
