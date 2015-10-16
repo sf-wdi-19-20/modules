@@ -43,13 +43,19 @@ Note: Attributes can be represented as line items under a heading (like all of t
 
 ##Data Relationships with Mongoose
 
-###Embedded Data
 
-* **Embedded Data** is directly nested *inside* of other data. Each record has a copy of the data.
+## Organizing the Data
 
-###Referenced Data
+### Document Structure
 
-* **Referenced Data** is stored as an *id* inside other data. The id can be used to look up the information. All records that reference the same data look up the same copy.
+**Embedded Data** is directly nested *inside* of other data. Each record has a copy of the data.
+
+![](http://docs.mongodb.org/manual/_images/data-model-denormalized.png)
+
+**Referenced Data** is stored as an *id* inside other data. The id can be used to look up the information. All records that reference the same data look up the same copy.
+
+![](http://docs.mongodb.org/manual/_images/data-model-normalized.png)
+
 
 There are tradeoffs between *efficiency* and *consistency* depending on which one you choose.
 
