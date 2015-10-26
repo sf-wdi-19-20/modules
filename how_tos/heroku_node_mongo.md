@@ -115,3 +115,7 @@
   ```
   $ heroku open
   ```
+
+## Moving Data into MongoLab Database
+
+Your existing data won't show up in the MongoLab Database to start. Not everyone will need their existing data to transfer, but for people with large amounts of seed data in a CSV file or JSON, <a href="http://docs.mongolab.com/migrating/" target="_blank">MongoLab's documentation on "migrating" data</a> is a potential resource to get started.  Another strategy would be to seed your database with a seed file on Heroku like we did on localhost.
