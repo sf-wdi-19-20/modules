@@ -54,7 +54,8 @@ class Zombie < Monster
   @class_description = "Shuffling, decaying flesh. Hungry and without remorse!"
 
   # we'll use the reserved word super (shoutout Jason!)
-  # to call Monster's initialize and keep our code more DRY
+  # to call Monster's initialize as a starting point
+  # and keep our code more DRY
   def initialize(name="zombie", threat_level=:semi_danger)
     # note that zombies created without a threat level
     # will have a default threat_level of :semi_danger
@@ -63,9 +64,9 @@ class Zombie < Monster
   end
 end
 
-class Warewolf < Monster
+class Werewolf < Monster
 
-  # warewolf version of class_description
+  # Werewolf version of class_description
   @class_description = "A man... a wolf... a monster!"
 
   def check_threat_level(full_moon=false)
@@ -85,6 +86,6 @@ end
 # rob = Zombie.new()
 # p rob
 
-# teenwolf = Warewolf.new(:meh)
+# teenwolf = Werewolf.new(:meh)
 # puts teenwolf.check_threat_level
 # puts teenwolf.check_threat_level(true)
