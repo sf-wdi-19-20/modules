@@ -115,11 +115,11 @@ Here are three ways to add bootstrap to a project.
 
 2. Next run `$ bower init` to create a bower.json file (like your `packages.json` file in express). Just select all defaults by hitting enter at every question.
 3. Ready to install stuff? NOPE! If we just ran `bower install <<package_name>>` now, it would create a `bower_components` folder in the root of our project. But we don't want that. We want the files to load into our `vendor/assets` folder. To configure bower we add a `.bowerrc` file that tells bower to save into a new `vendor/assets/components` folder.
-```
-  {
-      "directory": "vendor/assets/components"
-  }
-```
+  ```
+    {
+        "directory": "vendor/assets/components"
+    }
+  ```
 4. Now we can install bootstrap
 
   ```
