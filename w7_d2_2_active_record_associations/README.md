@@ -120,7 +120,9 @@
   nathan = Owner.create(name: "Nathan")
   nathan.pets
   fido.owner
-  nathan.pets << fido # makes Fido one of Nathan's pets
+  nathan.pets << fido # makes Fido one of Nathan's pets  
+  # ^ same as:
+  # nathan.pets.push(fido)
   nathan.pets << lassie # makes Lassie another one of Nathan's pets
   nathan.pets.count
   nathan.pets.map(&:name)
