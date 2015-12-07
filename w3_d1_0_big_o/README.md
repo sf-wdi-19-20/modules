@@ -112,24 +112,20 @@ Big O is the most commonly-used notations for comparing functions in computer sc
     the input array [0,4,5]   
     an input array with 8 elements    
     any input array with `n` elements   
+
+    What is the asymptotic time complexity of your algorithm?
     
 1. Write a function to find the maximum element in an array. How many calculations (including comparisons) does your function do for:    
     the input array [0,4,5]    
     any input array with 8 elements     
     any input array with `n` elements    
 
-1. Write a function called `indexOf` that takes in a number and an array and searches for the number in the array. If the number is in the array, it should return the array index where it found the number. If the number is not in the array, it should return `null`.  How many calculations (including comparisons) does your function do for:    
-    the input array [0,4,5]    
-    any input array with 8 elements    
-    any input array with `n` elements    
+    What is the asymptotic time complexity of your algorithm?
 
-1. Write a function called `countNums` that takes in an array of numbers and counts how many times each number in the array appears.  How many calculations (including comparisons) does your function do for:    
-    the input array [0,4,5]      
-    any input array with 8 elements    
-    any input array with `n` elements    
+1. Write a function called `indexOf` that takes in a number and an array and searches for the number in the array. If the number is in the array, it should return the array index where it found the number. If the number is not in the array, it should return `null`.  What is the asymptotic time complexity of your algorithm?   
+    
+
+1. Write a function called `countNums` that takes in an array of numbers and counts how many times each number in the array appears.  What is the asymptotic time complexity of your algorithm?
 
 
-1. Write a function called `findShared` that takes in two arrays and outputs a new array that contains every number appearing in both input arrays. How many calculations (including comparisons) does your function do for:    
-    the input array [0,4,5]      
-    any input array with 8 elements    
-    any input array with `n` elements    
+1. Write a function called `findShared` that takes in two arrays and outputs a new array that contains every number appearing in both input arrays. What is the asymptotic time complexity of your algorithm?
